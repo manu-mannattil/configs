@@ -280,11 +280,6 @@ PACKAGES=(
   vim-gnome                 # Vi IMproved - enhanced vi editor - with GTK3 GUI
   emacs                     # GNU Emacs metapackage
 
-  # Themes {{{2
-  # -----------
-  adwaita-qt                # Qt 5 port of GNOME's Adwaita theme
-  adwaita-icon-theme-full   # default icon theme of GNOME
-
   # Utilities {{{2
   # --------------
 
