@@ -111,7 +111,7 @@ URxvt*keysym.C-underscore: font-size:decglobal
 ! URxvt*letterSpace: -1
 ! URxvt*lineSpace: 0
 
-! URxvt font: Fira Mono {{{2
+! URxvt font: Source Code Pro {{{2
 URxvt*font: xft:Source Code Pro:Semibold:size=9, xft:DejaVu Sans Mono:Bold:size=9
 URxvt*letterSpace: -2
 URxvt*lineSpace: 0
