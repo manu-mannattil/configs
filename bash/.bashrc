@@ -404,10 +404,8 @@ complete -F _mutt mutt
 : ${TMUX_DEFAULT_SESSION:="default"}
 
 mux() {
-    if (( $# == 0 ))
+    if [[ "$*" ]]
     then
-        mux "$TMUX_DEFAULT_SESSION"
-    else
         if [[ -f "$1" ]]
         then
             bash "$1"
@@ -418,6 +416,8 @@ mux() {
             echo >&2 "mux: '${1}': no such session script"
             return 1
         fi
+    else
+        mux "$TMUX_DEFAULT_SESSION"
     fi
 }
 
