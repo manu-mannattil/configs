@@ -1,0 +1,51 @@
+#!/bin/sh
+#
+# ~/.git-pass -- get passwords for git repositories using pass(1)
+#
+# This is a simple shell/AWK script that serves as a git
+# credential helper for retrieving passwords from
+# a pass(1)-managed store.  Git expects a credential helper to
+# accept an action argument and read additional data from the
+# stdin.  Based on the action argument and the stdin data, the
+# credential helper is supposed to print (on the stdout) the
+# password and other details that git will read.  For more, see:
+#
+#   https://git-scm.com/book/en/v2/Git-Tools-Credential-Storage
+#
+# An alternative more featureful helper:
+# 
+#   https://github.com/languitar/pass-git-helper
+#
+
+# Continue only if the action argument is "get".
+[ "$1" = "get" ] || exit 0
+
+exec awk -F = '
+    END {
+        if (host ~ /bitbucket.org/) {
+            entry = "dev/bitbucket"
+        } else if (host ~ /github.com/) {
+            entry = "/dev/github"
+        } else {
+            print "pass-helper: no matches found." >"/dev/stderr"
+            exit 1
+        }
+
+        cmd = "pass show " entry
+        cmd | getline password
+
+        printf("password=%s\n", password)
+    }
+
+    BEGIN {
+        protocol = ""
+        host     = ""
+        username = ""
+    }
+
+    # Based on how complex you want your configuration to be, one can
+    # use these variables to determine the pass(1) entry and username.
+    /protocol/ { protocol = $2; print }
+    /host/     { host = $2; print }
+    /username/ { username = $2; print }
+'

@@ -37,6 +37,6 @@
   binary = true
   textconv = gpg --decrypt --quiet --yes --compress-algo=none --no-encrypt-to --batch --use-agent
 
-[credential "https://github.com"]
-  username = "manu-mannattil"
-  helper = cache
+[credential]
+  # Run ~/.git-pass using the shell.
+  helper = !~/.git-pass $@
