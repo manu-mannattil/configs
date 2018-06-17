@@ -497,9 +497,6 @@ nnoremap <silent> <left>  :bprev<CR>
 " Default ftplugins {{{2
 " ----------------------
 
-" Highlight code blocks in Markdown.
-let g:markdown_fenced_languages = ['python', 'bash=sh']
-
 " Disable syntax error checking in POSIX sh, bash, etc.
 let g:sh_no_error = 1
 
