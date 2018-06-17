@@ -2,8 +2,17 @@ Configuration files
 ===================
 
 This is a repository for my configuration files (aka dotfiles), yak
-shaved over the years.  Though I don't use [GNU Stow][1] to manage these
-files, I have organized them into "stowable" packages.
+shaved over the years.
+
+Installation
+------------
+
+To "install" the configuration files, clone the repository and run
+the `install.sh' script.  Alternatively, one can use [GNU Stow][1] to
+install the configuration files on a per-package basis.  For instance,
+to install the configuration files for Vim and Mutt, one could do
+
+    stow --target="$HOME" vim mutt
 
 License
 -------

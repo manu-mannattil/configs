@@ -338,14 +338,14 @@ augroup ftdetect
   " Detect files starting with #!/bin/dash, #!/bin/posh files as sh.
   autocmd BufRead,BufNewFile *
         \ if getline(1) =~ '#!.*\/\(da\|po\)sh$'                     |
-        \ set filetype=sh                                            |
+        \   set filetype=sh                                          |
         \ endif
 
   " Detect files starting with MathematicaScript, WolframScript, etc. as
   " Mathematica files.
   autocmd BufRead,BufNewFile *
         \ if getline(1) =~ '#!.*\/\(MathematicaScript\|WolframScript\).*$' |
-        \ set filetype=mma                                                 |
+        \   set filetype=mma                                               |
         \ endif
 augroup END
 
