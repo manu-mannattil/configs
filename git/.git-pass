@@ -26,6 +26,8 @@ exec awk -F = '
             entry = "dev/bitbucket"
         } else if (host ~ /github.com/) {
             entry = "/dev/github"
+        } else if (host ~ /gitlab.com/) {
+            entry = "/dev/gitlab"
         } else {
             print "pass-helper: no matches found." >"/dev/stderr"
             exit 1
