@@ -1,0 +1,481 @@
+# vim: ft=muttrc fdm=marker et sts=2 sw=2
+
+# NOTE: Comment out the system wide mutt configuration in /etc/Muttrc as it
+# might contain options that might conflict with this configuration file.
+
+# Profile management {{{1
+# -----------------------
+
+# For this to work the MUTT_PROFILE environment variable must be set
+# externally (i.e., from the shell).  We also need to source the profile first
+# as some variables (e.g., $spoolfile) have to be appropriately initialized
+# before they appear in macros.
+source ~/.mutt/profiles/$MUTT_PROFILE
+
+# Appearance {{{1
+# ---------------
+
+# Colorscheme.
+source ~/.mutt/colors
+
+# Print Mutt version on startup.
+push V
+
+# Format of the status line displayed in the compose menu.
+set compose_format = "%a attachment(s) -- %l approx. size"
+
+# Tweaked $index_format.  (1) Slightly wider "From" column to accommodate
+# Indian names.  (2) Shows the number of messages in a collapsed thread.
+# set index_format = "%3C %Z │ %{%b %d} %-20.20L │ %?l?%4l&%4c? │ %s%?M? (%M messages)?"
+# Version that also indicates if there are attachments.
+set index_format = "%3C %Z %?X?@& ? │ %{%b %d} %-20.20L │ %?l?%4l&%4c? │ %s%?M? (%M messages)?"
+
+# Show only a specific set of headers.
+ignore *
+unignore  from sender reply-to to cc bcc date subject user-agent x-mailer
+hdr_order from sender reply-to to cc bcc date subject user-agent x-mailer
+
+# Don't display `+' signs at the beginning of long wrapped lines.
+set markers = no
+
+# Number of lines to keep in context while scrolling inside the index.
+set menu_context = 3
+
+# Scroll menus (e.g., in the index) continuously.  (Will increase the number of
+# terminal redraws.)
+set menu_scroll = yes
+
+# Number of lines to keep in context while scrolling inside the pager.
+set pager_context = 3
+
+# Tweaked $pager_format that does not repeat information already available on
+# the screen.  Shows the local date/time when the message was received as well
+# as the number of attachments.
+set pager_format="%e/%E - %[!%a, %d %b %y %I:%M %p]%?X? -- %X attachment(s)? %> %P"
+
+# Show a mini-index with 10 (= 11 - 1) lines at the top of the pager while
+# reading a message.
+set pager_index_lines = 11
+
+# Don't automatically jump to the next message when you have finished reading a
+# message in the pager.
+set pager_stop = yes
+
+# Display the "personal" name from the alias list in the index menu if an
+# alias that matches the message's sender is found.
+set reverse_alias = yes
+
+# Ask Mutt to sort messages into threads by default.
+set sort = threads
+
+# The number of (context) lines shown before search results.
+set search_context = 5
+
+# Controls how threads should be sorted among each other.  Can be set to any
+# value that $sort can, except "threads".  "reverse-last-date-received" means
+# that the thread in which the latest message appeared will be at the top.
+# Another good choice is "reverse-date-received".
+set sort_aux = reverse-last-date-received
+
+# Unchanged/modified/read-only/attach-message-mode indicator.  Note that
+# $status_chars requires 8-bit characters (which means that Unicode characters
+# will not work).
+set status_chars = "~MRA"
+
+# Prettier and more useful status bar.
+#
+#   /---------------------------------------\
+#   | Tot: Total messages                   |
+#   | New: New messages                     |
+#   | Old: New, but seen messages           |
+#   | Del: Deleted messages                 |
+#   | Flg: Flagged (i.e., starred) messages |
+#   | Tag: Temporarily tagged messages      |
+#   | Drf: Number of drafts                 |
+#   | Oth: Other mailboxes with messages    |
+#   \---------------------------------------/
+#
+set status_format="─(%r)─[ $MUTT_PROFILE%f | Tot:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flg:%F?%?t? Tag:%t?%?p? Drf:%p?%?b? Oth:%b?%?l? %l? ]───%>─/ %s / %?V?%V / ?%P /──"
+
+# Only make use of the "In-Reply-To" and "References" fields to construct
+# threads.  By default, messages with the same subject are grouped together in
+# "pseudo threads" (like Gmail).
+set strict_threads = yes
+
+# Pad blank lines in the internal pager to the bottom of the screen with a
+# tilde (just like Vim).
+set tilde = yes
+
+# Wrap text at $wrap characters in the internal pager.  Setting it to zero
+# makes mutt wrap text at the terminal width.
+# set wrap = 90
+
+# Files and directories {{{1
+# --------------------------
+
+# Aliases are saved in the $alias_file.  You also need to explicitly source
+# this file to load existing aliases.
+set alias_file = ~/.mutt/aliases
+source $alias_file
+
+# Mutt will save it's history (e.g., to addresses, limit messages, :commands,
+# or basically anything that happens in its "command line") here.
+set history_file = ~/.cache/mutt/history
+
+# Directory/file to use as the header cache database.  If the value of
+# $header_cache is a directory, then an individual cache database is created
+# inside it for each mail folder.
+set header_cache = ~/.cache/mutt/headers
+
+# Don't compress header cache database.  Improves performance slightly.
+set header_cache_compress = no
+
+# Setting $message_cachedir is only required if you use IMAP/POP through Mutt.
+# Since I use OfflineIMAP to fetch messages, I don't use this.
+# set message_cachedir =
+
+# Directory to store messages while they're being composed or displayed.
+# If Mutt (or your editor) crashes, this is where you might find the message
+# you were composing.
+set tmpdir = ~/.cache/mutt
+
+# General settings {{{1
+# ---------------------
+
+# Don't ask anything and continue as usual if the subject is empty when
+# composing an email.
+set abort_nosubject = no
+
+# Assume that message is in UTF-8 if no encoding is explicitly specified.
+set assumed_charset = "utf-8"
+
+# Mutt's default attribution style, "On %d, %n wrote:", is actually good
+# enough.  Unfortunately, certain supposedly "smart" MUAs (e.g., Office 365)
+# hide the quoted text following this attribution, making it difficult to use
+# an interleaved email style.  But the following attribution seems to
+# (thankfully) disable Office 365's "smartness", and the quoted text is
+# displayed just as usual.
+set attribution = "%n said on %d:"
+
+# Apply the next function call/operation in the index menu to all tagged
+# messages (if there are any).
+set auto_tag = yes
+
+# Send a beep notification if new mail arrives in the *currently open* folder.
+# If this is set and Mutt is running inside tmux, then a visual-bell is rung
+# (e.g., the window status changes).
+set beep_new = yes
+
+# Don't prompt for confirmation when appending messages to an existing mailbox.
+set confirmappend = no
+
+# Purge messages on closing/synchronizing a mailbox without prompting.
+set delete
+
+# Allow headers to be edited through the editor.
+set edit_headers
+
+# Don't prompt for recipients and subject when replying to messages.  Also skip
+# the prompt for subject when forwarding messages.
+set fast_reply
+
+# Format the subject of forwarded messages like how common MUAs (Gmail,
+# Thunderbird, etc.) do it.
+set forward_format = "Fwd: %s"
+
+# The size (in number of strings remembered) of the string history buffer per
+# category.
+set history = 100
+
+# Always include original message in reply.
+set include
+
+# How often (in seconds) mutt should look for new mail.
+set mail_check = 20
+
+# Notify me of any new mail that has arrived, regardless of whether I have seen
+# it already.  Won't notify of "old" messages unless $mark_old is disabled.
+set mail_check_recent = no
+
+# Don't mark new unread messages as old if I exit a mailbox without reading
+# them.  The main reason I don't want this is because I can't see the buffy
+# list (by pressing .) if this is set.  It also screws up $mail_check_recent
+# for me.
+set mark_old = no
+
+# Default mailbox type used for creating new folders.
+set mbox_type = Maildir
+
+# Don't recall postponed messages when composing a new message.
+set recall = no
+
+# The size of the  history (per category) saved in the $history_file file.
+set save_history = 100
+
+# Preference of character encodings for *outgoing* messages.  Mutt will use the
+# first encoding into which the message can be converted exactly.
+set send_charset = "us-ascii:utf-8"
+
+# Don't pause while displaying certain informational messages, while moving
+# from folder to folder and after expunging messages from the current
+# folder.
+set sleep_time = 0
+
+# Sets the time to wait (when idle) before the status is updated again as if a
+# key were pressed.  You should set $mail_check < $timeout to scan for new
+# messages before every update.  See FAQ: http://dev.mutt.org/trac/wiki/MuttFaq
+set timeout = 60
+
+# Don't wait for a keypress to return back to Mutt after interacting with an
+# external command through <pipe-message>, <print-message>, etc.
+set wait_key = no
+
+# Attachments {{{2
+# ----------------
+
+# Configuration for Mutt's attachment-counting and searching support.  In order
+# to count and search attachments, Mutt needs to fully MIME-parse all messages
+# with attachments, so using this is bound to slow things down.
+
+# How I understand "inline" and "attachment" dispositions:
+#
+# * Inline disposition means that the attachment is part of the message and
+#   is meant to be viewed along with it (e.g., images in HTML mail are usually
+#   inlined).
+#
+# * Attachment disposition means that the attachment is meant to be downloaded
+#   and viewed separately.
+
+# Give all MIME parts an "attachment" disposition, EXCEPT for text/x-vcard,
+# application/pgp, and x-pkcs7.
+attachments +A */.*
+attachments -A text/x-vcard application/pgp.*
+attachments -A application/x-pkcs7-.*
+
+# Ignore all deleted attachments.
+attachments -A message/external-body
+attachments -I message/external-body
+
+# View HTML automatically but prefer plaintext if it's available.
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+
+# Keybindings and macros {{{1
+# ---------------------------
+
+# Map names for menu-like interfaces
+# ----------------------------------
+#
+#   generic  - fallback for other menus expect pager and editor
+#   alias    - alias menu displaying suggested aliases
+#   attach   - attachment menu
+#   browser  - file/directory browser
+#   index    - the main menu showing messages in a folder
+#   pgp      - menu to select the PGP keys used to encrypt messages
+#   postpone - similar to index, but is used when recalling messages
+#   query    - menu displaying results of query command
+#   smime    - menu to select the OpenSSL certs used to encrypt messages
+#
+# Map names for others
+# --------------------
+#
+#   pager    - where the contents of the message are displayed
+#   editor   - single line editor for `To:', `Subject:' prompts
+#   compose  - screen used when sending a new message
+#   mix      - mixmaster screen used for remailer options for outgoing messages
+
+# Unbind some defaults.
+bind index <esc>V noop
+bind index <esc>v noop
+bind index \Cn noop
+bind index \Cp noop
+
+bind generic,alias,attach,browser,index,pgp,postpone,query,smime G last-entry
+bind pager G bottom
+
+bind generic,alias,attach,browser,index,pgp,postpone,query,smime gg first-entry
+bind pager gg top
+
+bind generic,alias,attach,browser,index,pager,pgp,postpone,query,smime \Cd half-down
+bind generic,alias,attach,browser,index,pager,pgp,postpone,query,smime \Cu half-up
+
+bind generic,alias,attach,browser,index,pager,pgp,postpone,query,smime \Cf next-page
+bind generic,alias,attach,browser,index,pager,pgp,postpone,query,smime \Cb previous-page
+
+bind index zM collapse-all
+bind index za collapse-thread
+
+bind index n search-next
+bind index p search-opposite
+
+bind index { previous-thread
+bind pager { half-up
+
+bind index } next-thread
+bind pager } half-down
+
+bind index,pager A create-alias
+bind index,pager a group-reply
+
+# Skip trash when deleting with the delete key.
+bind index,pager <delete> purge-message
+
+# Vim-like history browsing using up/down keys (and CTRL-P/CTRL-N).
+bind editor <up> history-up
+bind editor \Cp history-up
+bind editor <down> history-down
+bind editor \Cn history-down
+
+# Convenient macros to switch between common folders.  Also tells me what other
+# folders have new mail once I make a switch.
+macro index,pager ,d "<change-folder>$postponed<enter><buffy-list>" "open drafts"
+macro index,pager ,i "<change-folder>$spoolfile<enter><buffy-list>" "open inbox"
+macro index,pager ,j "<change-folder>+spam<enter><buffy-list>"      "open junk mail (spam)"
+macro index,pager ,r "<change-folder>^<enter><buffy-list>"          "refresh folder"
+macro index,pager ,s "<change-folder>$record<enter><buffy-list>"    "open sent mail"
+macro index,pager ,t "<change-folder>$trash<enter><buffy-list>"     "open trash"
+
+# I use this whenever I know that a folder hook is acting and I just want the
+# message to go to the default save folder.
+macro index,pager I "<save-message><enter>" "save message to default folder without confirming"
+
+# Limit messages quickly using ' + key.
+macro index \'\' "<limit>~A<enter>"       "reset all limits"
+macro index \'d  "<limit>~D<enter>"       "limit to deleted messages"
+macro index \'f  "<limit>~F<enter>"       "limit to flagged messages"
+macro index \'l  "<limit>~=<enter>"       "limit to duplicate messages"
+macro index \'m  "<limit>~p<enter>"       "limit to messages sent to me"
+macro index \'M  "<limit>!~p<enter>"      "limit to general messages"
+macro index \'n  "<limit>~N|~O<enter>"    "limit to new messages"
+macro index \'p  "<limit>~g|~G<enter>"    "limit to signed or encrypted messages"
+macro index \'u  "<limit>!~Q<enter>"      "limit to unreplied messages"
+
+# Send message to spam/junk folder.  (If +spam doesn't exist, mutt will create
+# it for us.)
+macro index,pager S "<save-message>+spam<enter>" "mark message as spam"
+
+# Rebind CTRL_S in pager to skip quoted text.
+macro pager \Cs "<skip-quoted>" "skip quoted text"
+
+# Macro to mark all new messages as read.
+macro index \Cn "<tag-pattern>~N<enter><clear-flag>N<untag-pattern>~T<enter>" "mark all messages as read"
+
+# Toggle the mailbox list with "y".
+macro index,pager y "<change-folder>?<toggle-mailboxes>" "show incoming mailboxes list"
+bind browser y exit
+
+# Call urlview with gx (like netrw).
+macro index,pager,attach,compose gx                                             \
+  "<enter-command>set my_pipe_decode=\$pipe_decode pipe_decode<Enter>           \
+  <pipe-message>urlview<Enter>                                                  \
+  <enter-command>set pipe_decode=\$my_pipe_decode; unset my_pipe_decode<Enter>" \
+  "call urlview to extract URLs out of a message"
+
+# Pipe message to pbcopy with gy.  pipe_decode will ensure that
+# unnecessary headers are removed and the message is processed.
+macro index,pager,attach,compose gy                                             \
+  "<enter-command>set my_pipe_decode=\$pipe_decode pipe_decode<Enter>           \
+  <pipe-message>pbcopy<Enter>                                                   \
+  <enter-command>set pipe_decode=\$my_pipe_decode; unset my_pipe_decode<Enter>" \
+  "copy message to clipboard using pbcopy"
+
+# Mutt/Notmuch integration {{{1
+# -----------------------------
+
+# You'll need the mutt-notmuch script [1] for this to work.
+#
+#   Key    Action
+#
+#    \     Search mail using notmuch.
+#    X     Add 'delete' tag to current message.
+#    Y     Remove 'delete' tag from current message.
+#    E     Expand (reconstruct) parent thread of current message.
+#
+# Tagging a message with 'delete' does not delete it.  To actually
+# delete the tagged messages, search for messages with the 'delete' tag
+# and remove them appropriately.  E.g.,
+#
+#   $ notmuch search --output=files tag:delete | xargs rm
+#
+# [1]: https://github.com/manu-mannattil/scripts/blob/master/mutt-notmuch
+
+# Search mail using Notmuch.
+macro index,pager \\                                                                                              \
+  "<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter> \
+  <shell-escape>mutt-notmuch -d -o ~/.cache/mutt/notmuch search<enter>                                            \
+  <change-folder-readonly>~/.cache/mutt/notmuch<enter>                                                            \
+  <enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>"                          \
+  "notmuch: search mail"
+
+# Add 'delete' tag to message.
+macro index,pager X                                                                                               \
+  "<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter> \
+  <pipe-message>mutt-notmuch tag +delete<enter>                                                                   \
+  <next-entry>                                                                                                    \
+  <enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>"                          \
+  "notmuch: add 'delete' tag to message"
+
+# Remove 'delete' tag from message.
+macro index,pager Y                                                                                               \
+  "<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter> \
+  <pipe-message>mutt-notmuch tag -delete<enter>                                                                   \
+  <next-entry>                                                                                                    \
+  <enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>"                          \
+  "notmuch: remove 'delete' tag from message"
+
+# Expand thread containing the message.
+macro index,pager E                                                                                               \
+  "<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter> \
+  <pipe-message>mutt-notmuch -o ~/.cache/mutt/notmuch thread<enter>                                               \
+  <change-folder-readonly>~/.cache/mutt/notmuch<enter>                                                            \
+  <enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>"                          \
+  "notmuch: expand thread"
+
+# PGP/GnuPG integration {{{1
+# --------------------------
+
+# One could use GPGME instead of the following commands.  For more, see the
+# tutorial at http://blog.sanctum.geek.nz/linux-crypto-email/
+#
+# But if we use GPGME, some options like "pgp_mime_signature_filename" won't
+# work and digital signatures and encrypted messages will be attached without
+# proper names or descriptions.  This shouldn't be a problem for most MUAs
+# though.
+
+# From Mutt's `examples' directory:
+set pgp_decode_command="gpg --status-fd=2 %?p?--passphrase-fd 0? --no-verbose --quiet --batch --output - %f"
+set pgp_verify_command="gpg --status-fd=2 --no-verbose --quiet --batch --output - --verify %s %f"
+set pgp_decrypt_command="gpg --status-fd=2 %?p?--passphrase-fd 0? --no-verbose --quiet --batch --output - %f"
+set pgp_sign_command="gpg --no-verbose --batch --quiet --output - %?p?--passphrase-fd 0? --armor --detach-sign --textmode %?a?-u %a? %f"
+set pgp_clearsign_command="gpg --no-verbose --batch --quiet --output - %?p?--passphrase-fd 0? --armor --textmode --clearsign %?a?-u %a? %f"
+set pgp_encrypt_only_command="/usr/lib/mutt/pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust -- -r %r -- %f"
+set pgp_encrypt_sign_command="/usr/lib/mutt/pgpewrap gpg %?p?--passphrase-fd 0? --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
+set pgp_import_command="gpg --no-verbose --import %f"
+set pgp_export_command="gpg --no-verbose --export --armor %r"
+set pgp_verify_key_command="gpg --verbose --batch --fingerprint --check-sigs %r"
+set pgp_list_pubring_command="gpg --no-verbose --batch --quiet --with-colons --with-fingerprint --with-fingerprint --list-keys %r"
+set pgp_list_secring_command="gpg --no-verbose --batch --quiet --with-colons --with-fingerprint --with-fingerprint --list-secret-keys %r"
+set pgp_good_sign="^\\[GNUPG:\\] GOODSIG"
+
+# PGP/GnuPG options {{{1
+# ----------------------
+
+# Default PGP key to use for signing.
+set pgp_sign_as = 0x9D5931F4                            
+
+# Use a gpg-agent processes if available.
+set pgp_use_gpg_agent = yes                             
+
+# Automatically encrypt replies to any encrypted email that's received.
+set crypt_replyencrypt = yes                            
+
+# Automatically sign replies to any signed (but not necessarily encrypted)
+# email that's received.
+set crypt_replysign = yes                              
+
+# Automatically sign and encrypt replies to any signed and encrypted email
+# that's received.
+set crypt_replysignencrypted = yes                      
+
+# Attempt to verify email signatures automatically.
+set crypt_verify_sig = yes                              

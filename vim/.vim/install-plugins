@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+#
+# NAME
+#
+#   install-plugins - a script to install/update Vim plugins
+#
+# SYNOPSIS
+#
+#   install-plugins
+#
+# DESCRIPTION
+#
+#   A simple script to install/update Vim plugins.  To uninstall
+#   a plugin, just use rm -rf.
+#
+# DEPENDENCIES
+#
+#   bash >=4.0, vim >=8.0, git
+#
+
+# We use Bash's associative arrays (i.e., dictionaries) to create a list
+# of plugins to install.  That's the reason why we need Bash >=4.0.
+[[ "$BASH_VERSION" =~ ^[0-3] ]] && {
+  echo >&2 "${0##*/}: we need GNU Bash >=4.0"
+  exit 1
+}
+
+# List of plugins as an associative array.  Each plugin to be installed
+# should have a unique name and a URL pointing to a Git repository.
+declare -A plugin_urls
+plugin_urls=(
+  ['commentary']='https://github.com/tpope/vim-commentary.git'
+  ['gnupg']='https://github.com/jamessan/vim-gnupg.git'
+  ['mma']='https://github.com/rsmenon/vim-mathematica.git'
+  ['rsi']='https://github.com/tpope/vim-rsi.git'
+  ['surround']='https://github.com/tpope/vim-surround.git'
+  ['tabular']='https://github.com/godlygeek/tabular.git'
+  ['vimtex']='https://github.com/lervag/vimtex.git'
+  ['slime']='https://github.com/jpalardy/vim-slime.git'
+)
+
+# Absolute path to the plugin directory.  We make use of Vim's new
+# package feature (:help packages) to store all remote plugins under one
+# directory.  This way, the entire directory can be added in .gitignore.
+plugin_dir="${HOME}/.vim/pack/opt-git/start"
+
+# Install/update.
+mkdir -p "$plugin_dir"
+for plugin in "${!plugin_urls[@]}"
+do
+  repodir="${plugin_dir}/${plugin}"
+  if [[ -e "$repodir" ]]
+  then
+    if git -C "$repodir" rev-parse &>/dev/null
+    then
+      echo >&2 "${0##*/}: plugin '$plugin' is already installed."
+      echo >&2 "${0##*/}: updating '$plugin' ..."
+      git -C "$repodir" pull
+    else
+      echo >&2 "${0##*/}: error installing plugin to '$repodir'; file exists."
+    fi
+  else
+    echo >&2 "${0##*/}: installing '$plugin'"
+    git -C "$plugin_dir" clone "${plugin_urls[$plugin]}" "$plugin"
+  fi
+done
+
+# vim: ft=sh fdm=marker et sts=2 sw=2

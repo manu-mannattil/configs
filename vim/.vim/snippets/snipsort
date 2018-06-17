@@ -1,0 +1,31 @@
+#!/bin/sh
+#
+# snipsort -- sort snippet files alphabetically
+#
+# Usage: snipsort [<file>...]
+#
+#   o   This script will remove ALL comments in a snippet file
+#       (i.e., any line beginning with a #).  I don't see the need of
+#       commenting snippets.
+#
+#   o   You'll probably need GNU Gawk for this script to work.
+#
+
+# Separate lines by a null character, sort the result, and unpack.
+awk '
+  ! /^#/ {
+    if ($0 ~ /^snippet/)
+      printf("\n")
+
+    printf("%s\0", $0)
+  }
+'  "$1"  \
+  | sort \
+  | uniq \
+  | awk '
+      ! /^$/ {
+        gsub("\0+$", "\n")
+        gsub("\0", "\n")
+        printf("%s", $0)
+      }
+    '

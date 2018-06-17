@@ -1,0 +1,42 @@
+# vim: ft=gitconfig fdm=marker et sts=2 sw=2
+
+[user]
+  name  = Manu Mannattil
+  email = "m""a""n""u"".""m""a""n""n""a""t""t""i""l""@""g""m""a""i""l"".""c""o""m"
+
+[core]
+  attributesfile = ~/.gitattributes
+  excludesfile = ~/.cvsignore
+  editor = vim
+
+[alias]
+  br = branch
+  ci = commit
+  cl = clone
+  co = checkout
+  dc = diff --cached
+  df = diff
+  dt = difftool
+  lg = log --branches --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)[%an]%Creset' --abbrev-commit --date-order
+  st = status -s
+  wd = diff --word-diff
+
+[color]
+  ui = auto
+
+[diff]
+  tool = vimdiff
+
+[difftool]
+  prompt = false
+
+[push]
+  default = matching
+
+[diff "gpg"]
+  binary = true
+  textconv = gpg --decrypt --quiet --yes --compress-algo=none --no-encrypt-to --batch --use-agent
+
+[credential "https://github.com"]
+  username = "manu-mannattil"
+  helper = cache

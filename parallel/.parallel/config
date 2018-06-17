@@ -1,0 +1,12 @@
+# vim: ft=conf fdm=marker et sts=2 sw=2
+
+# Show the estimated number of seconds before finishing. This forces GNU
+# parallel to read all jobs before starting to find the number of jobs.
+--eta
+
+# Keep sequence of output same as the order of input. Normally the output of
+# a job will be printed as soon as the job completes.
+--keep-order
+
+# Do not display citation notice.
+--no-notice

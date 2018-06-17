@@ -1,0 +1,46 @@
+artwork.filemask album.jpg
+close_send_to_tray 1
+filebrowser.coverart_files album.jpg
+filebrowser.sidebar_width 200
+gtkui.embolden_current_track 1
+gtkui.hide_remove_from_disk 1
+gtkui.layout.0.6.2 vbox expand="0 1" fill="1 1" homogeneous=0 {hbox expand="0 1 0" fill="1 1 1" homogeneous=0 {playtb {} seekbar {} volumebar {} } hsplitter pos=276 locked=0 {filebrowser {} tabbed_playlist hideheaders=0 {} } }
+gtkui.titlebar_playing %a — %t
+gtkui.titlebar_stopped DeaDBeeF
+notify.albumart 1
+notify.albumart_size 128
+notify.enable 1
+notify.format %t
+notify.format_content %a — %b
+gtkui.columns.playlist [{"title":"♫","id":"1","format":"","size":"35","align":"0","color_override":"0","color":"#ff000000"},{"title":"Track","id":"-1","format":"%tracknumber%","size":"45","align":"1","color_override":"0","color":"#ff000000"},{"title":"Title","id":"-1","format":"%title%","size":"320","align":"0","color_override":"0","color":"#ff000000"},{"title":"Artist","id":"-1","format":"%artist%","size":"300","align":"0","color_override":"0","color":"#ff000000"},{"title":"Album","id":"-1","format":"%album%","size":"282","align":"0","color_override":"0","color":"#ff000000"},{"title":"Bitrate","id":"-1","format":"%bitrate%","size":"50","align":"0","color_override":"0","color":"#ff000000"},{"title":"Duration","id":"-1","format":"%length%","size":"65","align":"0","color_override":"0","color":"#ff000000"},{"title":"Year","id":"-1","format":"%date%","size":"50","align":"0","color_override":"0","color":"#ff000000"}]
+hotkey.key01 "Ctrl f" 0 0 find
+hotkey.key02 "Ctrl o" 0 0 open_files
+hotkey.key03 "Ctrl q" 0 0 quit
+hotkey.key04 "Ctrl n" 0 0 new_playlist
+hotkey.key05 "Ctrl a" 0 0 select_all
+hotkey.key06 "Escape" 0 0 deselect_all
+hotkey.key07 "Ctrl m" 0 0 toggle_stop_after_current
+hotkey.key08 "Ctrl j" 0 0 jump_to_current_track
+hotkey.key09 "F1" 0 0 help
+hotkey.key10 "Delete" 1 0 remove_from_playlist
+hotkey.key11 "Ctrl w" 0 0 remove_current_playlist
+hotkey.key14 "Return" 0 0 play
+hotkey.key15 "Ctrl p" 0 0 toggle_pause
+hotkey.key16 "Alt 1" 0 0 playlist1
+hotkey.key17 "Alt 2" 0 0 playlist2
+hotkey.key18 "Alt 3" 0 0 playlist3
+hotkey.key19 "Alt 4" 0 0 playlist4
+hotkey.key20 "Alt 5" 0 0 playlist5
+hotkey.key21 "Alt 6" 0 0 playlist6
+hotkey.key22 "Alt 7" 0 0 playlist7
+hotkey.key23 "Alt 8" 0 0 playlist8
+hotkey.key24 "Alt 9" 0 0 playlist9
+hotkey.key25 "Alt 0" 0 0 playlist10
+hotkey.key26 z 0 0 prev
+hotkey.key27 x 0 0 play
+hotkey.key28 c 0 0 toggle_pause
+hotkey.key29 v 0 0 stop
+hotkey.key30 b 0 0 next
+hotkey.key31 n 0 0 playback_random
+hotkey.key32 "Ctrl k" 0 0 toggle_stop_after_album
+hotkeys_created 1

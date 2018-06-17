@@ -1,0 +1,92 @@
+# vim: ft=muttrc fdm=marker et sts=2 sw=2
+#
+# A Mutt colorscheme for dark terminals that uses only the first 16
+# terminal colors.
+#
+
+# Separator in pager for attachment, PGP, etc.
+color attachment brightblue default
+
+# Error messages printed by Mutt at the bottom.
+color error black red
+
+# Default color of the message header in the pager.
+color hdrdefault white default
+
+# Highlight specific things in the header.
+color header brightblue default "^From:"
+color header blue default "^(Sender|Reply-[tT]o):"
+color header brightmagenta default "^To:"
+color header magenta default "^(Bcc|Cc):"
+color header brightgreen default "^Date:"
+color header brightyellow default "^Subject:"
+
+# Arrow or bar used to indicate the current item in a menu.
+color indicator black green
+
+# The "+" markers at the beginning of wrapped lines in the pager.
+color markers brightblack default
+
+# Informational messages (e.g., Mutt version displayed at the bottom).
+color message brightcyan default
+
+# How normal text appears in the pager.
+color normal brightwhite default
+
+# Color for prompt displayed at the bottom.
+color prompt brightcyan default
+
+# Quote levels.
+color quoted brightmagenta default
+color quoted1 magenta default
+color quoted2 magenta default
+color quoted3 brightblack default
+color quoted4 brightblack default
+color quoted5 brightblack default
+
+# Signature at the bottom of messages.
+color signature brightblack default
+
+# Highlighting of searched words in the pager.
+color search black brightyellow
+
+# Colors for the status line and the infoline at the very top.
+color status yellow default
+
+# The ~ used to pad blank lines in the pager.
+color tilde brightblack default
+
+# Thread tree ( └─> ) drawn in the message index and attachment menu.
+color tree brightblack default
+
+# Colors for the index.  Colors have a descending order of preference.
+color index white default "~A"                    # normal read messages
+color index black white "~v"                      # collapsed thread
+color index brightyellow white "~v~(~N|~O)"       # collapsed thread with new message
+color index brightblack default "~="              # duplicate messages
+color index brightyellow default "~N|~O"          # new messages
+color index brightmagenta default "~T"            # tagged messages
+color index brightred default "~F"                # flagged messages
+color index black red "~D"                        # deleted messages
+
+# Highlight stuff between _'s and *'s (works inconsistently).
+color body brightyellow default "(^| |\t)_+[^_]+_+"
+color body brightred default "(^| |\t)[*]+[^*]+[*]+"
+
+# GPG specific highlighting.
+# Bad GPG signature should really stand out.
+color body brightcyan default "^gpg:.*"
+color body brightgreen default "^gpg: Good signature.*"
+color body black brightred "^gpg: BAD signature.*"
+
+# Highlight URLs.  Regex from urlview(1).
+color body brightcyan default "(((http|https|ftp|gopher)|mailto):(//)?[^ <>\"\t]*|(www|ftp)[0-9]?\.[-a-z0-9.]+)[^ .,;\t\n\r<\">\):]?[^, <>\"\t]*[^ .,;\t\n\r<\">\):]"
+
+# Highlight email addresses.
+color body brightcyan default "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[^a-zA-Z]{2,}"
+
+# Horizontal lines that are at least 3 characters wide.
+color body brightblack default "^[ \t]*[~*+=#_-]{3,}[ \t]*$"
+
+# Highlight P.S. at the end of email.
+color body brightyellow default "^p[. ]*s[. *].*"

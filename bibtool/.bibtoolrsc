@@ -1,0 +1,147 @@
+# vim: ft=conf fdm=marker et sts=2 sw=2 syn=off
+#
+# BiBTool configuration file.
+#
+# A lot of the options have been taken from the BiBTool
+# examples directory.
+#
+
+# Delete double entries.
+check.double = on
+check.double.delete = on
+
+# Use spaces instead of tabs for alignment.
+print.use.tab = false
+
+# Sort entries.
+sort = on
+
+# Don't print a newline in the beginning.
+suppress.initial.newline = true
+
+# Delete empty fields.
+rewrite.rule { "^\" *\"$" }
+rewrite.rule { "^{ *}$" }
+
+# Correct page ranges.
+rewrite.rule { pages # "\([0-9]+\) *\(-\|---\) *\([0-9]+\)" = "\1--\3"}
+
+# Delete delimiters if the field is purely numerical.
+rewrite.rule { "^[\"{] *\([0-9]+\) *[\"}]$" "\1" }
+
+# Translate double quotes as delimiters "" by braces {}.
+rewrite.rule { "^\"\([^#]*\)\"$" = "{\1}" }
+rewrite.rule { "# \"\([^#]*\)\"$" = "# {\1}" }
+rewrite.rule { "^\"\([^#]*\)\" #" = "{\1} #" }
+rewrite.rule { "# \"\([^#]*\)\" #" = "# {\1} #" }
+
+# Delete rarely used fields.
+delete.field = {abstract}
+delete.field = {affiliation}
+delete.field = {correspondence_address1}
+delete.field = {references}
+delete.field = {keywords}
+delete.field = {author_keywords}
+delete.field = {source}
+
+# Be verbose.
+verbose = on
+
+# Use lower case entry names.
+new.entry.type {article}
+new.entry.type {artwork}
+new.entry.type {audio}
+new.entry.type {bibnote}
+new.entry.type {bookinbook}
+new.entry.type {booklet}
+new.entry.type {book}
+new.entry.type {cdata}
+new.entry.type {collection}
+new.entry.type {commentary}
+new.entry.type {conference}
+new.entry.type {customa}
+new.entry.type {customb}
+new.entry.type {customc}
+new.entry.type {customd}
+new.entry.type {custome}
+new.entry.type {customf}
+new.entry.type {electronic}
+new.entry.type {image}
+new.entry.type {inbook}
+new.entry.type {incollection}
+new.entry.type {inreference}
+new.entry.type {jurisdiction}
+new.entry.type {legal}
+new.entry.type {legislation}
+new.entry.type {letter}
+new.entry.type {mvbook}
+new.entry.type {mvcollection}
+new.entry.type {mvproceedings}
+new.entry.type {mvreference}
+new.entry.type {manual}
+new.entry.type {masterthesis}
+new.entry.type {misc}
+new.entry.type {movie}
+new.entry.type {music}
+new.entry.type {online}
+new.entry.type {patent}
+new.entry.type {performance}
+new.entry.type {periodical}
+new.entry.type {phdthesis}
+new.entry.type {proceedings}
+new.entry.type {reference}
+new.entry.type {report}
+new.entry.type {review}
+new.entry.type {set}
+new.entry.type {software}
+new.entry.type {standard}
+new.entry.type {suppbook}
+new.entry.type {suppcollection}
+new.entry.type {suppperiodical}
+new.entry.type {techreport}
+new.entry.type {thesis}
+new.entry.type {unpublished}
+new.entry.type {video}
+new.entry.type {www}
+
+# Sort common fields as they would appear in references.
+# Sort other fields alphabetically.
+sort.order {* = author #
+  # editor
+  # title
+  # journal
+  # institution
+  # booktitle
+  # publisher
+  # volume
+  # edition
+  # chapter
+  # pages
+  # year
+  # doi
+  # url
+  # address
+  # adsurl
+  # archive
+  # archiveprefix
+  # archivePrefix
+  # bookaddress
+  # collaboration
+  # eid
+  # eprint
+  # howpublished
+  # isbn
+  # issn
+  # key
+  # language
+  # month
+  # note
+  # number
+  # organization
+  # primaryClass
+  # school
+  # series
+  # SLACcitation
+  # translation
+  # type
+}

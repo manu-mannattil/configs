@@ -1,0 +1,12 @@
+# vim: ft=conf fdm=marker et sts=2 sw=2
+
+sequence "default" {
+  utf_8;
+  lower;
+  safe {
+    filename "/home/manu/.config/detox/safe.tbl";
+  };
+  wipeup {
+    remove_trailing;
+  };
+};

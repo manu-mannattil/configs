@@ -1,0 +1,12 @@
+# vim: ft=mailcap fdm=marker et sts=2 sw=2
+
+# text/html; w3m -T text/html -dump %s; copiousoutput
+# text/html; lynx -force_html -dump %s; copiousoutput
+text/html; elinks -force-html -dump %s; copiousoutput;
+
+# Use mutt-open to open other files.
+# https://github.com/manu-mannattil/scripts/blob/master/mutt-open
+application/*; mutt-open %s
+audio/*; mutt-open %s
+image/*; mutt-open %s
+text/*; mutt-open %s

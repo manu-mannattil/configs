@@ -1,0 +1,25 @@
+% newtxx.sty -- the newtx package with some customizations
+%
+% Requires: newtx{text,math} >= 1.451
+%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{newtxx}[2017/12/24 v0.1]
+
+\RequirePackage[helvratio=0.92]{newtxtext}
+\RequirePackage[
+  amssymbols,
+  bigdelims,
+  cmintegrals
+]{newtxmath}
+
+% Use Computern Modern Typewriter for fixed-with text.
+\renewcommand{\ttdefault}{cmtt}
+
+% Use Computer Modern's \sum: https://tex.stackexchange.com/a/200915
+\DeclareSymbolFont{largesymbolsCM}{OMX}{cmex}{m}{n}
+\let\txsum\sum
+\let\sum\relax
+\DeclareMathSymbol{\sum}{\mathop}{largesymbolsCM}{"50}
+
+\endinput

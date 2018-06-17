@@ -1,0 +1,73 @@
+# vim: ft=conf fdm=marker et sts=2 sw=2
+
+# Perform hash check on torrents that have finished downloading.
+check_hash = no
+
+# Support for querying the distributed hash table (DHT) to find peers for
+# trackerless torrents or when all trackers are down.
+dht = auto
+
+# Set the UDP listen port for DHT. Defaults to 6881.
+dht_port = 6881
+
+# Set the default download directory. Defaults to "./".
+directory = ~/torrents/
+
+# Set the maximum global upload and and download rates (in KB).
+download_rate = 0
+upload_rate = 0
+
+# Encrypt both incoming and outgoing traffic (might slow down things and
+# make less peers available to download from).
+# encryption = require,require_RC4,allow_incoming,try_outgoing
+
+# Prefer encryption, but if it's not possible revert back to an
+# unecrypted connection.
+encryption = allow_incoming,try_outgoing,enable_retry
+
+# Set the maximum number of peers to allow in each download.
+max_peers = 100
+
+# Set the maximum number of peers to allow while seeding, or -1
+# (default) to use max_peers.
+max_peers_seed = -1
+
+# Set the maximum number of simultaneous uploads per download.
+max_uploads = 15
+
+# Set the minimum number of peers to allow in each download.
+min_peers = 40
+
+# Set the minimum number of peers to allow while seeding, or -1
+# (default) to use max_peers.
+min_peers_seed = -1
+
+# Enable/disable peer exchange for torrents that aren't marked private.
+# Disabled by default.
+peer_exchange = yes
+
+# Try to open a listening port in the given range.
+port_range = 49375-49375
+
+# Stop torrents when they reach the given upload ratio min.ratio in percent.
+# If the optional upload.set is given, require a total upload amount of this
+# many bytes as well. If the optional max.set is given, stop the torrent when
+# reaching this ratio regardless of the total upload amount. Exclude certain
+# torrent by pressing Shift+I in the downlist list.
+ratio.enable = yes
+ratio.max.set = 2000
+ratio.min.set = 500
+ratio.upload.set = 5G
+
+# Stop, close or remove the torrents that are tied to filenames that have
+# been deleted. Clear the association with the 'U' key.
+remove_untied = yes
+
+# Session management will be enabled and the torrent files for all open
+# downloads will be stored in this directory. Only one instance of
+# rtorrent can be used per session directory. An empty string will disable the
+# session directory.
+session = ~/torrents/.rtorrent/
+
+# After reading .torrent files, move them to another directory.
+system.method.set_key = event.download.inserted_new,move_tor,"execute=mv,-u,$d.get_loaded_file=,~/torrents/.torrents/"

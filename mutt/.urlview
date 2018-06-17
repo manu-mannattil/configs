@@ -1,0 +1,10 @@
+# vim: ft=conf fdm=marker et sts=2 sw=2
+
+# Regular expression to use to match URLs.
+REGEXP (((http|https|ftp|gopher)|mailto):(//)?[^ <>"\t]*|(www|ftp)[0-9]?\.[-a-z0-9.]+)[^ .,;\t\n\r<">\):]?[^, <>"\t]*[^ .,;\t\n\r<">\):]
+
+# Command to invoke for selected URL.
+COMMAND ff -P private
+
+# Set to yes to enable menu wrapping.
+WRAP Yes

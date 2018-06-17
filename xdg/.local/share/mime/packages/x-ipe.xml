@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-ipe">
+    <comment>Ipe drawing</comment>
+    <acronym>IPE</acronym>
+    <expanded-acronym>Ipe drawing</expanded-acronym>
+    <glob pattern="*.ipe"/>
+    <icon name="ooo-draw"/>
+  </mime-type>
+</mime-info>

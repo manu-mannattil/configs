@@ -1,0 +1,104 @@
+snippet article
+	@article{${1:id},
+		author = {${2:authors separated by "and"}},
+		title = {${3:title}},
+		journal = {${4:journal}},
+		year = ${5:year},
+	}
+snippet book
+	@book{${1:id},
+		${2:author/editor} = {${3:$2s separated by "and"}},
+		title = {${4:title}},
+		publisher = {${5:publisher}},
+		year = ${6:year},
+	}
+snippet booklet
+	@booklet{${1:id},
+		title = {${2:title}},
+		author = {${3:authors separated by "and"}},
+	}
+snippet conference
+	@conference{${1:id},
+		author = {${2:authors separated by "and"}},
+		title = {${3:title}},
+		booktitle = {${4:book title}},
+		year = ${5:year},
+	}
+snippet inbook
+	@inbook{${1:id},
+		${2:author/editor} = {${3:$2s separated by "and"}},
+		title = {${4:title}},
+		${5:chapter/pages} = {${6:$5}},
+		publisher = {${7:publisher}},
+		year = ${8:year},
+	}
+snippet incollection
+	@incollection{${1:id},
+		author = {${2:authors separated by "and"}},
+		title = {${3:title}},
+		booktitle = {${4:book title}},
+		year = ${5:year},
+	}
+snippet inproceedings
+	@inproceedings{${1:id},
+		author = {${2:authors separated by "and"}},
+		title = {${3:title}},
+		booktitle = {${4:book title}},
+		year = ${5:year},
+	}
+snippet manual
+	@manual{${1:id},
+		title = {${2:title}},
+		author = {${3:authors separated by "and"}},
+	}
+snippet masters
+	@mastersthesis{${1:id},
+		author = {${2:authors separated by "and"}},
+		title = {${3:title}},
+		school = {${4:school}},
+		year = ${5:year},
+	}
+snippet misc
+	@misc{${1:id},
+		author = {${2:authors separated by "and"}},
+		title = {${3:title}},
+	}
+snippet phd
+	@phdthesis{${1:id},
+		author = {${2:authors separated by "and"}},
+		title = {${3:title}},
+		school = {${4:school}},
+		year = ${5:year},
+	}
+snippet proceedings
+	@proceedings{${1:id},
+		title = {${2:title}},
+		year = {${3:year}},
+	}
+snippet techreport
+	@techreport{${1:id},
+		author = {${2:authors separated by "and"}},
+		title = {${3:title}},
+		institution = {${4:institution}},
+		year = ${5:year},
+	}
+snippet unpublished
+	@unpublished{${1:id},
+		author = {${2:authors separated by "and"}},
+		title = {${3:title}},
+		note = {${4:note}},
+	}
+snippet web w/o explicit URL
+	@misc{${1:id},
+		author = {${2:authors separated by "and"}},
+		title = {${3:title}},
+		url    = {${4:url}},
+		year   = {accessed `strftime("%Y-%m-%d")`}
+	}
+snippet web w/ explicit URL
+	@misc{${1:id},
+		author = {${2:authors separated by "and"}},
+		title = {${3:title}},
+		note    = {\url{${4:url}}},
+		year   = {accessed `strftime("%Y-%m-%d")`}
+	}

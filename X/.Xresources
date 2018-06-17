@@ -1,0 +1,161 @@
+! vim: ft=xdefaults fdm=marker et sts=2 sw=2
+
+! xterm settings {{{1
+! -------------------
+
+! Do not use bold fonts.  Overrides all other settings for bold fonts.
+XTerm*allowBoldFonts: false
+
+! Do not allow programs (e.g., Vim) to modify the window title.
+XTerm*allowTitleOps: false
+
+! Strip newlines when text is selected through a triple-click.
+XTerm*cutNewLine: true
+
+! Suppress screen refreshes when the output to the screen has completely
+! shifted the contents off-screen.  Scrolling with not be smooth, but it
+! will be fast.
+XTerm*fastScroll: true
+
+! XTerm fonts: Terminus (default, small, medium, large, and huge).
+! XTerm.vt100.font:  -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-*
+! XTerm.vt100.font3: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-*
+! XTerm.vt100.font4: -*-terminus-medium-r-*-*-16-*-*-*-*-*-iso10646-*
+! XTerm.vt100.font5: -*-terminus-medium-r-*-*-20-*-*-*-*-*-iso10646-*
+! XTerm.vt100.font6: -*-terminus-medium-r-*-*-24-*-*-*-*-*-iso10646-*
+
+! Set the initial window size.  Do not use xterm*geometry instead of
+! xterm*VT100.geometry because that will change the size of the menus as well.
+XTerm*VT100.geometry: 95x42+0+0
+
+! Always respect highlightTextColor and highlightColor instead of inverting
+! colors in a selection.
+XTerm*highlightColorMode: true
+XTerm*highlightReverse: false
+
+! When highlighting, only highlight portions of text that can be selected.
+! (This is a nice feature urxvt does not have.)
+XTerm*highlightSelection: true
+
+! The internal border around the VT100 viewport.
+XTerm*internalBorder: 6
+
+! The number of lines to save that have been scrolled off the top of the screen.
+XTerm*saveLines: 15000
+
+! Disable blinking characters and show them in bold instead.
+XTerm*showBlinkAsBold: true
+
+! Indicate missing glyphs using the familiar "box".
+XTerm*showMissingGlyphs: true
+
+! $TERM variable will be set to this.
+XTerm*termName: xterm-256color
+
+! Always run xterm in UTF-8 mode.
+XTerm*utf8: always
+
+! xterm window title.
+XTerm*title: xterm
+
+! Ctrl + Shift + C for copying to CLIPBOARD.
+! Ctrl + Shift + V for pasting from CLIPBOARD.
+! Ctrl + + for increasing font size.
+! Ctrl + - for decreasing font size.
+XTerm*translations: #override Ctrl Shift <KeyPress> C: copy-selection(CLIPBOARD)   \n\
+                              Ctrl Shift <KeyPress> V: insert-selection(CLIPBOARD) \n\
+                              Ctrl <Key> plus: larger-vt-font()                    \n\
+                              Ctrl <Key> minus: smaller-vt-font()                  \n
+! Colors.
+XTerm*background: #000000
+XTerm*foreground: #ffffff
+
+! urxvt settings {{{1
+! -------------------
+
+! Colors.  We do not need to specify the full path to the "colors file" since
+! ~/.Xresources is usually sourced when ~/.xprofile is run (and it is usually
+! run from the home directory of the user).
+#include ".urxvt/colors/distinguished"
+
+! Do not use any bold/italic fonts.
+URxvt*boldFont:
+URxvt*boldItalicFont:
+URxvt*italicFont:
+
+URxvt*geometry: 95x42+0+0
+URxvt*iconFile: /usr/share/icons/elementary-xfce/apps/64/terminal.png
+URxvt*internalBorder: 6
+URxvt*iso14755: False
+URxvt*saveLines: 30000
+URxvt*scrollBar: off
+URxvt*termName: rxvt-unicode-256color
+
+! Perl extensions.
+URxvt*perl-ext-common: matcher,font-size
+URxvt*url-launcher: /usr/bin/firefox
+URxvt*matcher.button: 1
+URxvt*keysym.C-0: font-size:reset
+URxvt*keysym.C-equal: font-size:increase
+URxvt*keysym.C-plus: font-size:incglobal
+URxvt*keysym.C-minus: font-size:decrease
+URxvt*keysym.C-underscore: font-size:decglobal
+
+! URxvt font: Comano (aka Monaco) {{{2
+! URxvt*font: xft:Comano:Bold:size=8, xft:DejaVu Sans Mono:Bold:size=9
+! URxvt*letterSpace: -1
+! URxvt*lineSpace: 1
+
+! URxvt font: Fira Mono {{{2
+! URxvt*font: xft:DejaVu Sans Mono:size=9
+! URxvt*letterSpace: -1
+! URxvt*lineSpace: 0
+
+! URxvt font: Fira Mono {{{2
+URxvt*font: xft:Source Code Pro:Semibold:size=9, xft:DejaVu Sans Mono:Bold:size=9
+URxvt*letterSpace: -2
+URxvt*lineSpace: 0
+
+! URxvt font: Terminus {{{2
+! URxvt*font: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-*
+! URxvt*lineSpace: 2
+
+! Miscellaneous {{{1
+! ------------------
+
+! QT applications do not seem to respect fonts.conf(5) for some reason.
+! So we keep equivalent settings here.
+Xft*antialias: true
+Xft*autohint: false
+Xft*dpi: 96
+Xft*hinting: false
+Xft*hintstyle: hintnone
+Xft*lcdfilter: lcddefault
+Xft*rgba: rgb
+
+! Notes {{{1
+! ----------
+
+! The X11 "-misc-fixed-*" font is the classic no-nonsense font
+! distributed with X11.  It has many different variants [1]:
+!
+!     5x7   -Misc-Fixed-Medium-R-Normal--7-70-75-75-C-50-ISO10646-1
+!     5x8   -Misc-Fixed-Medium-R-Normal--8-80-75-75-C-50-ISO10646-1
+!     6x9   -Misc-Fixed-Medium-R-Normal--9-90-75-75-C-60-ISO10646-1
+!    6x10   -Misc-Fixed-Medium-R-Normal--10-100-75-75-C-60-ISO10646-1
+!    6x12   -Misc-Fixed-Medium-R-Semicondensed--12-110-75-75-C-60-ISO10646-1
+!    6x13   -Misc-Fixed-Medium-R-SemiCondensed--13-120-75-75-C-60-ISO10646-1
+!   6x13B   -Misc-Fixed-Bold-R-SemiCondensed--13-120-75-75-C-60-ISO10646-1
+!    7x13   -Misc-Fixed-Medium-R-Normal--13-120-75-75-C-70-ISO10646-1
+!   7x13B   -Misc-Fixed-Bold-R-Normal--13-120-75-75-C-70-ISO10646-1
+!    7x14   -Misc-Fixed-Medium-R-Normal--14-130-75-75-C-70-ISO10646-1
+!   7x14B   -Misc-Fixed-Bold-R-Normal--14-130-75-75-C-70-ISO10646-1
+!    8x13   -Misc-Fixed-Medium-R-Normal--13-120-75-75-C-80-ISO10646-1
+!   8x13B   -Misc-Fixed-Bold-R-Normal--13-120-75-75-C-80-ISO10646-1
+!    9x15   -Misc-Fixed-Medium-R-Normal--15-140-75-75-C-90-ISO10646-1
+!   9x15B   -Misc-Fixed-Bold-R-Normal--15-140-75-75-C-90-ISO10646-1
+!   10x20   -Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO10646-1
+!
+! By default, most X11 applications use 6x13.
+!
+! [1]: https://www.cl.cam.ac.uk/~mgk25/ucs-fonts.html

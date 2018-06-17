@@ -1,0 +1,49 @@
+# Edit this file to introduce tasks to be run by cron.
+#
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task.
+#
+#   <minute> <hour> <day-of-month> <month> <day-of-week> <command>
+#
+# To define the time you can provide concrete values for minute, hour,
+# day of month, month, and day of week or use '*' in these fields.
+#
+#       field          allowed values
+#       -----          --------------
+#       minute         0-59
+#       hour           0-23
+#       day of month   1-31
+#       month          1-12 (or names, see below)
+#       day of week    0-7 (0 or 7 is Sun, or use names)
+#
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+#
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+#
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+#
+#   0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+#
+# For more information see the manual pages of crontab(5) and cron(8)
+#
+
+# Backup some system configuration files hourly/daily.
+@hourly crontab -l >"$HOME/code/configs/misc/crontab"
+@daily cp -f /etc/apt/sources.list "$HOME/code/configs/misc/apt/sources.list"
+
+# Delete cached mutt attachments hourly.  But only delete files created at
+# least a day ago.
+@hourly find "$HOME/.cache/mutt/attach" -type f -mtime +1 -delete
+
+# Clean temporary files created by ff.
+@hourly rm -f /tmp/ff*
+
+# Clean temporary LaTeX files in ~
+@hourly "$HOME/code/scripts/texclean" "$HOME/templates" "$HOME/documents/notes"
+
+# Delete *.meta files created by rtorrent when magnet links are added.
+@hourly find "$HOME/torrents" -maxdepth 1 -type f -name '*.meta' -delete

@@ -1,0 +1,20 @@
+snippet ~
+	~~~~
+snippet --
+	&ndash;
+snippet ---
+	&mdash;
+snippet cn
+	{{Citation needed|reason=${1:reason}|date=`strftime("%B %Y")`}}
+snippet journal
+	<ref>{{cite journal |last=${1:last_name} |first=${2:first_name} |last2=${3:last_name} |first2=${4:first_name} |date=${5:year} |title=${6:title} |journal=${7:journal} |volume=${8:volume} |pages=${9:} |doi=${10:doi} |arxiv=${11:id} }}</ref>
+snippet news
+	<ref>{{cite news |last=${1:last_name} |first=${2:first_name} |access-date=${3:`strftime("%Y-%m-%d")`} |date=${4:date} |title=${5:title} |url=${6:url} |newspaper=${7:newspaper} |location=${8:location} }}</ref>
+snippet plainlink
+	<span class="plainlinks">[${1:url} ${2:title}]</span>
+snippet ref
+	<ref>${1:}</ref>
+snippet reply
+	{{reply to|${1:user}} ${2:message} ~~~~
+snippet web
+	<ref>{{cite web |url=${1:url} |title=${2:title} |access-date=${3:`strftime("%Y-%m-%d")`} |last=${4:last_name} |first=${5:first_name} |date=${6:date} |website=${7:website} |publisher=${8:publisher} |quote=$9 }}</ref>

@@ -1,0 +1,74 @@
+snippet #!
+	#!/usr/bin/env bash
+snippet case
+	case ${1:word} in
+		${2:pattern}) ${3:#statements} ;;
+	esac
+snippet die
+	die() {
+		printf >&2 "%s: %s\n" "${${0:0}##*/}" "$*"
+		exit 1
+	}
+snippet elif
+	elif ${1:condition}
+	then
+		${2:#statements}
+snippet err
+	echo >&2 "${${0:0}##*/}: ${1:error}"
+snippet for
+	for ${1:variable} in ${2:list}
+	do
+		${3:#statements}
+	done
+snippet fun
+	${1:function}() {
+		${2:#statements}
+	}
+snippet getopts
+	while getopts ":${2:hv}" ${1:var}
+	do
+		case "$$1" in
+			h)  grep '^#:' <"$${0:0}" | cut >&2 -c 4-
+			    exit 0 ;;
+			v)  set -x ;;
+			:)  printf >&2 "%s: -%s requires an argument\n" "${${0:0}##*/}" "$OPTARG"
+			    exit 1 ;;
+			\?) printf >&2 "%s: -%s is not a valid option\n" "${${0:0}##*/}" "$OPTARG"
+			    exit 1 ;;
+		esac
+	done
+	shift $(( OPTIND - 1 ))
+snippet if
+	if ${1:condition}
+	then
+		${2:#statements}
+	fi
+snippet inplace
+	{
+		# Warning: if $2 fails, $1 is removed!
+		rm "${1:file}"
+		${2:command} >"$1"
+	} <"$1"
+snippet mktemp
+	${2:tmpfile}="$(${1:mktemp})"
+	trap 'rm -rf "$$2" >/dev/null 2>&1' EXIT
+	trap 'exit 2' HUP INT QUIT TERM
+snippet shdir
+	shdir=$(dirname "$(readlink -f -- "$${0:0}")")
+snippet until
+	until ${1:condition}
+	do
+		${2:#statements}
+	done
+snippet usage
+	grep '^#:' <"$${0:0}" | cut >&2 -c 4-
+snippet while
+	while ${1:condition}
+	do
+		${2:#statements}
+	done
+snippet while-read
+	while IFS= read -r ${1:var}
+	do
+		${2:#statements}
+	done

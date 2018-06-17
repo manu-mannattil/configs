@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-dbpl">
+    <comment>DeaDBeeF Playlist</comment>
+    <acronym>DBPL</acronym>
+    <expanded-acronym>DeaDBeeF Playlist</expanded-acronym>
+    <glob pattern="*.dbpl"/>
+    <icon name="audio-x-mp3-playlist"/>
+  </mime-type>
+</mime-info>

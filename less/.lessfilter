@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+# .lessfilter -- transform certain files into plain text so that they
+#                can be viewed using less(1)
+#
+# Usage: .lessfilter <file>
+#
+# Requires: elinks, epub2txt, pandoc, pdftotext, ps2ascii, rst2html.py, tree
+#
+
+if [ -d "$1" ]
+then
+    tree -C "$1"
+else
+    case "${1##*.}" in
+        epub)       epub2txt "$1" ;;
+        htm|html)   elinks -force-html -dump "$1" ;;
+        md|mkd)     pandoc -Ss -f markdown -t html "$1" | elinks -force-html -dump ;;
+        odt|doc*)   off2txt "$1" ;;
+        pdf)        pdftotext -layout "$1" - ;;
+        ps)         ps2ascii "$1" ;;
+        rst)        rst2html.py "$1" | elinks -force-html -dump ;;
+        *)          exit 1
+    esac
+fi
+
+exit 0

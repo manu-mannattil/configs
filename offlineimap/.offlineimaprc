@@ -1,0 +1,149 @@
+# vim: ft=conf fdm=marker et sts=2 sw=2
+
+# General settings {{{1
+# ---------------------
+
+[general]
+accounts = gmail, syr, yahoo
+ui = ttyui
+socktimeout = 90
+pythonfile = ~/.offlineimap.py
+
+# Gmail {{{1
+# ----------
+
+# To make Gmail work with OfflineIMAP better, I have set the following
+# through the web interface (Settings -> Forwading POP/IMAP).
+#
+#  o  Keep "auto expunge" off and ask Gmail to wait for the client to
+#     update the server.  If this is not set, Gmail does not delete the
+#     message properly and it would still be accessible from the "All
+#     Mail" folder.  I don't want that.
+#
+#  o  When a message is marked as deleted and expunged from the last
+#     visible IMAP folder, delete the message immediately.
+#
+# It's also useful to disable syncing of the "All Mail" and "Starred"
+# folders.  The reason is that starring a message is equivalent to
+# toggling its "important" flag (you do this by pressing "F" in Mutt).
+# But if you do that, Gmail will put a copy of the same message in the
+# "Starred" folder as well.  This means that you'll have two copies of
+# the same message.  Enabling "All Mail" in IMAP also does the same
+# thing (i.e., if you don't make use of Gmail's archival "features").
+
+[Account gmail]
+localrepository = gmail-local
+remoterepository = gmail-remote
+
+[Repository gmail-local]
+localfolders = ~/mail/gmail
+type = Maildir
+nametrans = lambda folder: {'inbox': 'INBOX',
+                            'drafts': '[Gmail]/Drafts',
+                            'sent': '[Gmail]/Sent Mail',
+                            'spam': '[Gmail]/Spam',
+                            'trash': '[Gmail]/Trash'}.get(folder, folder)
+
+[Repository gmail-remote]
+auth_mechanisms = LOGIN
+maxconnections = 1
+remotehost = imap.gmail.com
+remoteport = 993
+remoteuser = manu.mannattil@gmail.com
+remotepasseval = get_pass("email/gmail")
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+type = IMAP
+folderfilter = lambda folder: folder not in ('[Gmail]/All Mail', '[Gmail]/Starred')
+nametrans = lambda folder: {'INBOX': 'inbox',
+                            '[Gmail]/Drafts': 'drafts',
+                            '[Gmail]/Sent Mail': 'sent',
+                            '[Gmail]/Spam': 'spam',
+                            '[Gmail]/Trash': 'trash'}.get(folder, folder)
+
+# Yahoo! Mail {{{1
+# ----------------
+
+[Account yahoo]
+localrepository = yahoo-local
+remoterepository = yahoo-remote
+
+[Repository yahoo-local]
+localfolders = ~/mail/yahoo
+type = Maildir
+nametrans = lambda folder: {'spam': 'Bulk Mail',
+                            'drafts': 'Draft'}.get(folder, folder).title()
+
+[Repository yahoo-remote]
+auth_mechanisms = LOGIN
+maxconnections = 1
+remotehost = imap.mail.yahoo.com
+remoteport = 993
+remoteuser = manu.mannattil@yahoo.com
+remotepasseval = get_pass("email/yahoo")
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+type = IMAP
+folderfilter = lambda folder: folder not in ('Archive', 'Y! Conversations')
+nametrans = lambda folder: {'Bulk Mail': 'spam',
+                            'Draft': 'drafts'}.get(folder, folder).lower()
+
+# IITK {{{1
+# ---------
+#
+# [Account iitk]
+# localrepository = iitk-local
+# remoterepository = iitk-remote
+#
+# [Repository iitk-local]
+# localfolders = ~/mail/iitk
+# type = Maildir
+# nametrans = lambda folder: {'inbox': 'INBOX',
+#                             'archives': 'INBOX.Archives',
+#                             'drafts': 'INBOX.Drafts',
+#                             'sent': 'INBOX.Sent',
+#                             'trash': 'INBOX.Trash'}.get(folder, folder)
+# [Repository iitk-remote]
+# remotehost = newmailhost.cc.iitk.ac.in
+# remoteport = 143
+# remoteuser = mmanu
+# remotepasseval = get_pass("email/iitk")
+# type = IMAP
+# nametrans = lambda folder: {'INBOX': 'inbox',
+#                             'INBOX.Archives': 'archives',
+#                             'INBOX.Drafts': 'drafts',
+#                             'INBOX.Sent': 'sent',
+#                             'INBOX.Trash': 'trash'}.get(folder, folder)
+
+# SUMail {{{1
+# -----------
+
+[Account syr]
+localrepository = syr-local
+remoterepository = syr-remote
+
+[Repository syr-local]
+localfolders = ~/mail/syr
+type = Maildir
+nametrans = lambda folder: {'inbox': 'INBOX',
+                            'drafts': 'Drafts',
+                            'sent': 'Sent Items',
+                            'spam': 'Junk Email',
+                            'trash': 'Deleted Items'}.get(folder, folder)
+
+[Repository syr-remote]
+auth_mechanisms = LOGIN
+maxconnections = 1
+remotehost = pod51000.outlook.com
+remoteport = 993
+remoteuser = mmannatt@syr.edu
+remotepasseval = get_pass("email/syr")
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+type = IMAP
+folderfilter = lambda folder: folder.split('/')[0] not in ('Archive', 'Calendar', 'Contacts', 'Conversation History', 'Journal', 'Notes', 'Outbox', 'Tasks')
+nametrans = lambda folder: {'INBOX': 'inbox',
+                            'Drafts': 'drafts',
+                            'Sent Items': 'sent',
+                            'Junk Email': 'spam',
+                            'Deleted Items': 'trash'}.get(folder, folder)

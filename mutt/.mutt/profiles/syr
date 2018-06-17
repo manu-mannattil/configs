@@ -1,0 +1,16 @@
+# vim: ft=muttrc fdm=marker et sts=2 sw=2
+#
+# Mutt profile for SU mail.
+#
+
+set from      = "\m\m\ann\att\@\s\yr.e\d\u"
+set realname  = "Manu Mannattil"
+set sendmail  = "msmtp -a syr"
+
+set folder    = ~/mail/syr
+set postponed = +drafts
+set spoolfile = +inbox
+set trash     = +trash
+set record    = +sent
+
+mailboxes `echo ~/mail/syr/*`

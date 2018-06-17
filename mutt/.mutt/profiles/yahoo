@@ -1,0 +1,26 @@
+# vim: ft=muttrc fdm=marker et sts=2 sw=2
+#
+# Mutt profile for Yahoo! Mail.
+#
+
+set from      = "\m\an\u\.\m\ann\att\i\l\@\y\a\h\o\o\.c\o\m"
+set realname  = "Manu Mannattil"
+set sendmail  = "/usr/bin/msmtp -a yahoo"
+
+set folder    = ~/mail/yahoo
+set postponed = +drafts
+set record    = +sent
+set spoolfile = +inbox
+set trash     = +trash
+
+mailboxes `echo ~/mail/yahoo/*`
+
+# Groups are defined in the $alias_file.
+save-hook '%f shopping' +bills
+save-hook '%f travel' +tickets
+
+save-hook '~s "(bill|deliver|dispatch|invoice|order|payment|place(ment|ed)|process|purchase|receipt|recharge|refund|ship|transact)"' +bills
+save-hook '~s "(board|book|flight|hotel|journey|taxi|ticket|train)"' +tickets
+
+macro index,pager ,b "<change-folder>=/bills<enter><buffy-list>" "open bills"
+macro index,pager ,k "<change-folder>=/tickets<enter><buffy-list>" "open tickets"

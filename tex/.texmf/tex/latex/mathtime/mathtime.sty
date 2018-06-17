@@ -1,0 +1,29 @@
+% mathtime.sty -- MathTime Pro 2 fonts with some customizations
+%
+% Requires: mtpro2, helvet
+%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mathtime}[2017/12/19 v0.1]
+
+% Times for Roman, CM Typewriter for fixed-width text, and
+% Helvetica for sans serif.
+\renewcommand{\rmdefault}{ptm}
+\renewcommand{\ttdefault}{cmtt}
+\RequirePackage[scaled=0.92]{helvet}
+
+% To avoid conflicts with amssymb and Springer's svjour.
+\let\Bbbk\relax
+\let\heavymath\relax
+\let\vec\relax
+
+\RequirePackage[
+  morphedbraces,
+  mtpbb,
+  mtpcal,
+  nofontinfo,
+  subscriptcorrection,
+  zswash
+]{mtpro2}
+
+\endinput

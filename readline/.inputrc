@@ -1,0 +1,68 @@
+# vim: ft=readline fdm=marker et sts=2 sw=2
+
+# Allow eight-bit input.
+set convert-meta off
+set input-meta on
+set meta-flag on
+set output-meta on
+
+# Controls what happens when readline wants to ring the terminal bell.
+# If set to none, readline never rings the bell.
+set bell-style none
+
+# Display possible completions using different colors (as defined by
+# LS_COLORS) to indicate their file type.
+set colored-stats on
+
+# Display the common prefix of the set of possible completions using
+# a different color (as defined in LS_COLORS).
+set colored-completion-prefix on
+
+# Performs filename matching and completion in a case-insensitive
+# fashion.
+set completion-ignore-case on
+
+# Common prefixes with number of characters more than this value are
+# replaced with an ellipsis when displaying possible completions.
+set completion-prefix-display-length 2
+
+# Use vi-like keybindings.
+set editing-mode vi
+
+# Only complete hidden files if the leading "." is explicitly supplied
+# by the user.
+set match-hidden-files off
+
+# Show matches for words that have more than one possible completion
+# immediately instead of ringing the bell.
+set show-all-if-ambiguous on
+
+# List matches immediately for words which have more than one possible
+# completion.
+set show-all-if-unmodified on
+
+# Do not insert characters from the completion that match characters
+# after point in the word being completed, so that portions of the word
+# following the cursor are not duplicated.
+set skip-completed-text on
+
+# Append a character denoting a file's type as reported by stat(2) to
+# the filename when listing possible completions.
+set visible-stats on
+
+# pattern<up/down> will cycle through the command line history and
+# complete using lines with 'pattern' in it.  IMHO, the best readline
+# hack!
+"\eOA": history-search-backward
+"\eOB": history-search-forward
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+$if Bash
+  # Ctrl + L to clear screen.  (Missing in vi-mode.)
+  "\C-l": clear-screen
+
+  # Perform history expansion (i.e, !$, !1, !!, etc.) on the current
+  # line and insert a space.
+  Space: magic-space
+$endif
