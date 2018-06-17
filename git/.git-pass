@@ -25,9 +25,9 @@ exec awk -F = '
         if (host ~ /bitbucket.org/) {
             entry = "dev/bitbucket"
         } else if (host ~ /github.com/) {
-            entry = "/dev/github"
+            entry = "dev/github"
         } else if (host ~ /gitlab.com/) {
-            entry = "/dev/gitlab"
+            entry = "dev/gitlab"
         } else {
             print "pass-helper: no matches found." >"/dev/stderr"
             exit 1
@@ -35,6 +35,7 @@ exec awk -F = '
 
         cmd = "pass show " entry
         cmd | getline password
+        close(cmd)
 
         printf("password=%s\n", password)
     }
