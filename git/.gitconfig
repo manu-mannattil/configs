@@ -40,3 +40,5 @@
 [credential]
   # Run ~/.git-pass using the shell.
   helper = !~/.git-pass $@
+  # Supply the full path of the repository to the helper program.
+  useHttpPath = true

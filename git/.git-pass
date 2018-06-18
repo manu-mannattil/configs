@@ -12,8 +12,8 @@
 #
 #   https://git-scm.com/book/en/v2/Git-Tools-Credential-Storage
 #
-# An alternative more featureful helper:
-# 
+# Another more featureful helper:
+#
 #   https://github.com/languitar/pass-git-helper
 #
 
@@ -21,15 +21,27 @@
 [ "$1" = "get" ] || exit 0
 
 exec awk -F = '
+    # Capture the host name to determine the pass entry.
+    # Alternatively, one can also look at the full path of the
+    # repository (after enabling useHttpPath in ~/.gitconfig) to
+    # determine the entry name.
+    /^host/ { host = $2 }
+    /^path/ { path = $2 }
+
+    { print }
+
     END {
         if (host ~ /bitbucket.org/) {
+            username = "manu-mannattil"
             entry = "dev/bitbucket"
         } else if (host ~ /github.com/) {
+            username = "manu-mannattil"
             entry = "dev/github"
         } else if (host ~ /gitlab.com/) {
+            username = "manu-mannattil"
             entry = "dev/gitlab"
         } else {
-            print "pass-helper: no matches found." >"/dev/stderr"
+            printf("error: no matches found for %s\n", host)
             exit 1
         }
 
@@ -37,18 +49,7 @@ exec awk -F = '
         cmd | getline password
         close(cmd)
 
+        printf("username=%s\n", username)
         printf("password=%s\n", password)
     }
-
-    BEGIN {
-        protocol = ""
-        host     = ""
-        username = ""
-    }
-
-    # Based on how complex you want your configuration to be, one can
-    # use these variables to determine the pass(1) entry and username.
-    /protocol/ { protocol = $2; print }
-    /host/     { host = $2; print }
-    /username/ { username = $2; print }
 '
