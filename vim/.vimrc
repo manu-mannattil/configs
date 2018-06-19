@@ -347,6 +347,8 @@ augroup ftdetect
         \ if getline(1) =~ '#!.*\/\(MathematicaScript\|WolframScript\).*$' |
         \   set filetype=mma                                               |
         \ endif
+
+  autocmd BufRead,BufNewFile \*sdcv\* set filetype=sdcv
 augroup END
 
 " Enable the longlines plugin for TeX and MediaWiki files.
@@ -488,8 +490,19 @@ nnoremap ,B :ls<CR>:buffer<Space>
 nnoremap ,pB :ls<CR>:sbuffer<Space>
 nnoremap ,vB :ls<CR>:vertical sbuffer<Space>
 
-nnoremap <silent> <right> :bnext<CR>
-nnoremap <silent> <left>  :bprev<CR>
+augroup leftright
+  autocmd!
+
+  " Switch between buffers using left/right arrow keys.
+  nnoremap <silent> <right> :bnext<CR>
+  nnoremap <silent> <left>  :bprev<CR>
+
+  " The above mapping isn't useful in many filetypes, but since there's no way
+  " to unmap a mapping on a per-buffer basis, we re-remap it here.
+  autocmd FileType help,qf,sdcv
+        \ nnoremap <buffer> <left> <left> |
+        \ nnoremap <buffer> <right> <right>
+augroup END
 
 " Plugin settings {{{1
 " --------------------
