@@ -124,7 +124,7 @@ if has('gui_running')
   colorscheme cake16
 else
   set background=dark
-  colorscheme distinguished
+  colorscheme apprentice
 endif
 
 " Highlight `bad' words so that they *always* stand out boldly.
