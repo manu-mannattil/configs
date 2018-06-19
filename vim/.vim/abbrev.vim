@@ -1,26 +1,37 @@
-" vim: ft=vim fdm=marker et sts=2 sw=2
 " Insert mode abbreviations.
 
 " Capitalizations {{{1
-iabbrev <buffer> Ok OK
+" --------------------
+
 iabbrev <buffer> asoiaf ASoIaF
 iabbrev <buffer> biblatex BiBLaTeX
 iabbrev <buffer> bibtex BiBTeX
 iabbrev <buffer> ebay eBay
 iabbrev <buffer> fbm fBm
+iabbrev <buffer> Github GitHub
+iabbrev <buffer> Gitlab GitLab
 iabbrev <buffer> latex LaTeX
 iabbrev <buffer> lotr LotR
 iabbrev <buffer> nolitsa NoLiTSA
+iabbrev <buffer> numpy NumPy
+iabbrev <buffer> Ok OK
 iabbrev <buffer> ok OK
 iabbrev <buffer> restructuredtext reStructuredText
+iabbrev <buffer> scipy SciPy
 iabbrev <buffer> tex TeX
+iabbrev <buffer> vim Vim
+iabbrev <buffer> xelatex XeLaTeX
 iabbrev <buffer> xetex XeTeX
 
 " Punctuation {{{1
+" ----------------
+
 iabbrev <buffer> wrt w.r.t.
 iabbrev <buffer> Wrt W.r.t.
 
 " Acronyms {{{1
+" -------------
+
 iabbrev <buffer> BTW By the way
 iabbrev <buffer> OTOH On the other hand
 iabbrev <buffer> IMO In my opinion
@@ -28,6 +39,8 @@ iabbrev <buffer> IMHO In my opinion
 iabbrev <buffer> FWIW For what it's worth
 
 " Common typos {{{1
+" -----------------
+
 iabbrev <buffer> abotu about
 iabbrev <buffer> aboutit about it
 iabbrev <buffer> acn can
@@ -355,6 +368,8 @@ iabbrev <buffer> yuo you
 iabbrev <buffer> yuor your
 
 " Accents {{{1
+" ------------
+
 if &ft == "tex"
   iabbrev <buffer> Ampere Amp\`{e}re
   iabbrev <buffer> Benard B\'{e}nard
@@ -376,3 +391,5 @@ else
   iabbrev <buffer> Schrodinger Schrödinger
   iabbrev <buffer> Sierpinski Sierpiński
 endif
+
+" vim: ft=vim fdm=marker et sts=2 sw=2

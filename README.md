@@ -8,10 +8,11 @@ Installation
 ------------
 
 To "install" the configuration files, clone the repository and run
-the `install.sh` script.  Alternatively, one can use [GNU Stow][1] to
-install the configuration files on a per-package basis.  For instance,
-to install the configuration files for Vim and Mutt, from the cloned
-repository, one could issue the command
+the `install.sh` script.  Alternatively, one can use a symlink farm
+manager like [GNU Stow][1] to install the configuration files on
+a per-package basis.  For instance, to install the configuration files
+for Vim and Mutt, from the cloned repository, one could issue the
+command
 
     stow --target="$HOME" vim mutt
 
