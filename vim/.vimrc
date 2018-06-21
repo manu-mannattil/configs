@@ -404,11 +404,11 @@ command! -nargs=0 WildToggle
       \   echo "wildignore off"            |
       \ endif
 
-" Use Ag for grepping.
-set grepprg=ag\ --column
-set grepformat=%f:%l:%c:%m
-command! -nargs=+ Ag silent grep! <args> | silent redraw! | cwindow
-command! -nargs=+ LAg silent lgrep! <args> | silent redraw! | lwindow
+" Use brep (my GNU grep wrapper) for grepping.
+set grepprg=brep
+set grepformat=%f:%l:%m
+command! -nargs=+ Brep silent grep! <args> | silent redraw! | cwindow
+command! -nargs=+ LBrep silent lgrep! <args> | silent redraw! | lwindow
 
 " Paste the range to ix.io.  Requires: curl, xclip.
 command! -range=% Pastebin <line1>,<line2>write !curl -\#kLF 'f:1=<-' ix.io | xclip -selection clipboard
