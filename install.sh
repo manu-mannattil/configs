@@ -4,13 +4,13 @@
 #
 # Usage: install.sh
 #
-# It makes sense to symlink only those configuration files that won't
-# get overwritten or edited by programs.  Others should be copied
-# instead.
-#
 # WARNING: This script will do everything to get the new files in the
 # right places -- including deleting and overwriting files.  Backups of
 # existing files will NOT be kept.  You have been warned!
+#
+# It makes sense to symlink only those configuration files that won't
+# get overwritten or edited by programs.  Others should be copied
+# instead.
 #
 # Requires: readlink, dirname, git, etc.
 #
@@ -124,6 +124,12 @@ copy                                                                            
 
 # Strip comments and empty lines when copying.
 grep -v '\(^$\|^#\)' "${REPO}/cvs/.cvs_ignore" | sort | uniq >"${HOME}/.cvsignore"
+
+# darktable {{{1
+# --------------
+
+symlink "darktable/.config/darktable/darktable.css"
+copy "darktable/.config/darktable/darktablerc"
 
 # DeaDBeeF {{{1
 # -------------

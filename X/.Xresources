@@ -76,7 +76,7 @@ XTerm*foreground: #ffffff
 ! Colors.  We do not need to specify the full path to the "colors file" since
 ! ~/.Xresources is usually sourced when ~/.xprofile is run (and it is usually
 ! run from the home directory of the user).
-#include ".urxvt/colors/apprentice"
+#include ".urxvt/colors/distinguished"
 
 ! Do not use any bold/italic fonts.
 URxvt*boldFont:

@@ -299,6 +299,7 @@ PACKAGES=(
   pinentry-curses           # curses-based PIN or pass-phrase entry dialog for GnuPG
   pinentry-gtk2             # GTK+-2-based PIN or pass-phrase entry dialog for GnuPG
   pv                        # Shell pipeline element to meter data passing through
+  rename                    # Perl extension for renaming multiple files
   rlwrap                    # readline feature command line wrapper
   scrot                     # command line screen capture utility
   silversearcher-ag         # very fast grep-like program, alternative to ack-grep
@@ -311,6 +312,7 @@ PACKAGES=(
   xclip                     # command line interface to X selections
   xdotool                   # simulate (generate) X11 keyboard/mouse input events
   xsel                      # command-line tool to access X clipboard and selection buffers
+
 
   # Version control {{{2
   # --------------------
