@@ -124,6 +124,7 @@ PACKAGES=(
   # Graphics {{{2
   # -------------
 
+  darktable                 # RAW developer and image organizer
   djview-plugin             # Browser plugin for the DjVu image format
   djview4                   # Viewer for the DjVu image format
   djvulibre-bin             # Utilities for the DjVu image format
@@ -141,6 +142,7 @@ PACKAGES=(
   gimp-plugin-registry      # repository of optional extensions for GIMP
   gnuplot-doc               # Command-line driven interactive plotting program.  Doc-package
   gnuplot-qt                # Command-line driven interactive plotting program.  QT-package
+  gthumb                    # GNOME image viewer and organizer
   gv                        # PostScript and PDF viewer for X
   hugin                     # panorama photo stitcher - GUI tools
   ink-generator             # Inkscape extension to automatically generate files from a template
@@ -156,7 +158,6 @@ PACKAGES=(
   tesseract-ocr-eng         # tesseract-ocr language files for English
   toilet                    # display large colourful characters in text mode
   wkhtmltopdf               # Command line utilities to convert html to pdf or image using WebKit
-
 
   # Miscellaneous languages/runtime environments {{{2
   # -------------------------------------------------
