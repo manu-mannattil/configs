@@ -26,9 +26,17 @@ info() {
     echo >&2 "${0##*/}: $@"
 }
 
-# Function to copy a file from the repository tree into $HOME.
+# Function to copy/symlink a file from the repository tree into $HOME.
 # Parent directories will be created if they don't exist.
-copy() {
+install() {
+    if [[ "$1" == "-s" || "$1" == "--symlink" ]]
+    then
+        cmd=(ln --verbose --symbolic)
+        shift
+    else
+        cmd=(cp --verbose --recursive)
+    fi
+
     for file
     do
         origin="${REPO}/${file}"
@@ -36,9 +44,9 @@ copy() {
         tardir=$(dirname "$target")
 
         # Catch potential rm -rf $HOME!
-        if [[ "$(echo "$target" | sed 's|/*$||')" = "$HOME" ]]
+        if [[ "$(echo "$target" | sed 's|/*$||')" == "$HOME" ]]
         then
-            info "error copying '$file'"
+            info "error installing '$file'"
             info "target cannot be \$HOME!"
             exit 1
         else
@@ -49,74 +57,49 @@ copy() {
         [[ -f "$tardir" ]] && rm -vr -- "$tardir"
         mkdir -vp -- "$tardir"
 
-        cp -vr -- "$origin" "$target"
-    done
-}
-
-# Function to symlink a file from the repository tree into $HOME.
-# Parent directories will be created if they don't exist.
-symlink() {
-    for file
-    do
-        origin="${REPO}/${file}"
-        target="${HOME}/${file#*/}"
-        tardir=$(dirname "$target")
-
-        # Catch potential rm -rf $HOME!
-        if [[ "$(echo "$target" | sed 's|/*$||')" = "$HOME" ]]
-        then
-            info "error symlinking '$file'"
-            info "target cannot be \$HOME!"
-            exit 1
-        else
-            rm -vrf -- "$target"
-        fi
-
-        # If $tardir is a file, mkdir -p will fail.
-        [[ -f "$tardir" ]] && rm -vr -- "$tardir"
-        mkdir -vp -- "$tardir"
-
-        ln -vs -- "$origin" "$target"
+        "${cmd[@]}" -- "$origin" "$target"
     done
 }
 
 # Files to symlink {{{1
 # ---------------------
-symlink                                                                           \
-    "X/.XCompose" "X/.xprofile" "X/.Xresources"                                   \
-    "aria2/.aria2"                                                                \
-    "bash/.bashrc" "bash/.bash_profile"                                           \
-    "bibtool/.bibtoolrsc"                                                         \
-    "curl/.curlrc"                                                                \
-    "detox/.detoxrc" "detox/.config/detox"                                        \
-    "dircolors/.dir_colors"                                                       \
-    "emacs/.emacs"                                                                \
-    "fontconfig/.config/fontconfig"                                               \
-    "git/.gitconfig" "git/.gitattributes" "git/.git-pass"                         \
-    "ipe/.ipe/ipelets" "ipe/.ipe/styles"                                          \
-    "ipython/.ipython/profile_default/ipython_config.py"                          \
-    "latexmk/.latexmkrc"                                                          \
-    "less/.lessfilter"                                                            \
-    "mathematica/.Mathematica/FrontEnd/init.m"                                    \
-    "matplotlib/.config/matplotlib"                                               \
-    "mpv/.config/mpv/mpv.conf" "mpv/.config/mpv/input.conf"                       \
-    "notmuch/.notmuch-config"                                                     \
-    "offlineimap/.offlineimaprc" "offlineimap/.offlineimap.py"                    \
-    "parallel/.parallel/config"                                                   \
-    "python/.pythonrc.py"                                                         \
-    "tex/.texmf"                                                                  \
-    "tmux/.tmux" "tmux/.tmux.conf"                                                \
-    "urxvt/.urxvt/ext" "urxvt/.urxvt/colors"                                      \
-    "wget/.wgetrc"                                                                \
-    "xdg/.config/user-dirs.dirs"                                                  \
+
+install --symlink                                                            \
+    "X/.XCompose" "X/.xprofile" "X/.Xresources"                              \
+    "aria2/.aria2"                                                           \
+    "bash/.bashrc" "bash/.bash_profile"                                      \
+    "bibtool/.bibtoolrsc"                                                    \
+    "curl/.curlrc"                                                           \
+    "detox/.detoxrc" "detox/.config/detox"                                   \
+    "dircolors/.dir_colors"                                                  \
+    "emacs/.emacs"                                                           \
+    "fontconfig/.config/fontconfig"                                          \
+    "git/.gitconfig" "git/.gitattributes" "git/.git-pass"                    \
+    "ipe/.ipe/ipelets" "ipe/.ipe/styles"                                     \
+    "ipython/.ipython/profile_default/ipython_config.py"                     \
+    "latexmk/.latexmkrc"                                                     \
+    "less/.lessfilter"                                                       \
+    "mathematica/.Mathematica/FrontEnd/init.m"                               \
+    "matplotlib/.config/matplotlib"                                          \
+    "mpv/.config/mpv/mpv.conf" "mpv/.config/mpv/input.conf"                  \
+    "notmuch/.notmuch-config"                                                \
+    "offlineimap/.offlineimaprc" "offlineimap/.offlineimap.py"               \
+    "parallel/.parallel/config"                                              \
+    "python/.pythonrc.py"                                                    \
+    "tex/.texmf"                                                             \
+    "tmux/.tmux" "tmux/.tmux.conf"                                           \
+    "urxvt/.urxvt/ext" "urxvt/.urxvt/colors"                                 \
+    "wget/.wgetrc"                                                           \
+    "xdg/.config/user-dirs.dirs"                                             \
     "youtube-dl/.config/youtube-dl.conf"
 
 # Files to copy over {{{1
 # -----------------------
-copy                                                                              \
-    "htop/.config/htop"                                                           \
-    "qpdfview/.config/qpdfview/qpdfview.conf"                                     \
-    "xfce/.local/share/xfce4/helpers/terminal.desktop"                            \
+
+install                                                                      \
+    "htop/.config/htop"                                                      \
+    "qpdfview/.config/qpdfview/qpdfview.conf"                                \
+    "xfce/.local/share/xfce4/helpers/terminal.desktop"                       \
     "xfce/.config/xfce4/helpers.rc"
 
 # cvsignore {{{1
@@ -128,8 +111,8 @@ grep -v '\(^$\|^#\)' "${REPO}/cvs/.cvs_ignore" | sort | uniq >"${HOME}/.cvsignor
 # darktable {{{1
 # --------------
 
-symlink "darktable/.config/darktable/darktable.css"
-copy "darktable/.config/darktable/darktablerc"
+install --symlink "darktable/.config/darktable/darktable.css"
+install "darktable/.config/darktable/darktablerc"
 
 # DeaDBeeF {{{1
 # -------------
@@ -138,10 +121,10 @@ copy "darktable/.config/darktable/darktablerc"
 if [[ -f "${HOME}/.config/deadbeef/config" ]]
 then
     grep "^playlist.tab" "${HOME}/.config/deadbeef/config" >"${HOME}/.config/deadbeef/tabs"
-    copy "deadbeef/.config/deadbeef/config"
+    install "deadbeef/.config/deadbeef/config"
     cat "${HOME}/.config/deadbeef/tabs" >>"${HOME}/.config/deadbeef/config"
 else
-    copy "deadbeef/.config/deadbeef"
+    install "deadbeef/.config/deadbeef"
 fi
 
 # Firefox {{{1
@@ -152,9 +135,9 @@ if [[ -f "${HOME}/.mozilla/firefox/profiles.ini" ]]
 then
     while IFS= read -r profile
     do
-        cp -vf "${REPO}/firefox/.mozilla/firefox/profile/search.json.mozlz4"      \
+        cp -vf "${REPO}/firefox/.mozilla/firefox/profile/search.json.mozlz4" \
                "${HOME}/.mozilla/firefox/${profile}"
-        ln -sf "${REPO}/firefox/.mozilla/firefox/profile/user.js"                 \
+        ln -sf "${REPO}/firefox/.mozilla/firefox/profile/user.js"            \
                "${HOME}/.mozilla/firefox/${profile}"
     done < <(sed -n 's/^Path=//p' "${HOME}/.mozilla/firefox/profiles.ini")
 fi
@@ -167,7 +150,7 @@ ln -v -s /dev/null "${HOME}/.adobe"
 # GnuPG {{{1
 # ----------
 
-symlink "gnupg/.gnupg/gpg.conf" "gnupg/.gnupg/gpg-agent.conf"
+install --symlink "gnupg/.gnupg/gpg.conf" "gnupg/.gnupg/gpg-agent.conf"
 
 # Set the right permissions.
 chmod -v 700 "${HOME}/.gnupg"
@@ -178,12 +161,12 @@ chmod -v 600 "${HOME}/.gnupg/gpg.conf" "${HOME}/.gnupg/gpg-agent.conf"
 
 # msmtp requires ~/.msmtprc to be rw only by the user.
 chmod -v 600 "${REPO}/msmtp/.msmtprc"
-symlink "msmtp/.msmtprc"
+install --symlink "msmtp/.msmtprc"
 
 # Mutt {{{1
 # ---------
 
-symlink "mutt/.mutt" "mutt/.mailcap" "mutt/.urlview"
+install --symlink "mutt/.mutt" "mutt/.mailcap" "mutt/.urlview"
 
 mkdir -vp "${HOME}/.cache/mutt/attach"
 mkdir -vp "${HOME}/.cache/mutt/notmuch"
@@ -199,7 +182,7 @@ xfconf-query --channel thunar --property /misc-exec-shell-scripts-by-default --c
 # Vim {{{1
 # --------
 
-symlink "vim/.vimrc" "vim/.vim" "vim/.gvimrc"
+install --symlink "vim/.vimrc" "vim/.vim" "vim/.gvimrc"
 
 mkdir -vp "${HOME}/.cache/vim/swap"
 mkdir -vp "${HOME}/.cache/vim/backup"
@@ -207,7 +190,7 @@ mkdir -vp "${HOME}/.cache/vim/undo"
 
 # Run :mkspell on spell files.
 info "compiling vim spell files"
-find "${HOME}/.vim/spell" -type f ! -name '*.spl'                                 \
+find "${HOME}/.vim/spell" -type f ! -name '*.spl'                            \
      -exec vim -e -s -u NONE -c ':mkspell! %' -c ':qall!' {}                      \;
 
 # Install plugins.
@@ -216,7 +199,7 @@ find "${HOME}/.vim/spell" -type f ! -name '*.spl'                               
 # Readline {{{1
 # --------------
 
-symlink "readline/.inputrc"
+install --symlink "readline/.inputrc"
 
 # Cache directory for rlwrap command history.
 mkdir -vp "${HOME}/.cache/rlwrap"
@@ -224,14 +207,14 @@ mkdir -vp "${HOME}/.cache/rlwrap"
 # rtorrent {{{1
 # -------------
 
-symlink "rtorrent/.rtorrent.rc"
+install --symlink "rtorrent/.rtorrent.rc"
 mkdir -vp "${HOME}/torrents/.rtorrent"
 mkdir -vp "${HOME}/torrents/.torrents"
 
 # XDG MIME and other miscellanea {{{1
 # -----------------------------------
-copy "xdg/.local/share/applications"/*                                            \
-     "xdg/.local/share/mime/packages"/*
+install "xdg/.local/share/applications"/*                                    \
+        "xdg/.local/share/mime/packages"/*
 
 update-mime-database -V "${HOME}/.local/share/mime"
 
