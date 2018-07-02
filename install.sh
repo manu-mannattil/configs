@@ -1,18 +1,27 @@
 #!/usr/bin/env bash
 #
-# install.sh -- configuration files installation script
+# NAME
 #
-# Usage: install.sh
+#   install.sh - configuration files installation script
 #
-# WARNING: This script will do everything to get the new files in the
-# right places -- including deleting and overwriting files.  Backups of
-# existing files will NOT be kept.  You have been warned!
+# SYNOPSIS
 #
-# It makes sense to symlink only those configuration files that won't
-# get overwritten or edited by programs.  Others should be copied
-# instead.
+#   install.sh
 #
-# Requires: readlink, dirname, git, etc.
+# DESCRIPTION
+#
+#   install.sh is a simple shell script to copy/symlink my configuration files
+#   to $HOME.  It makes sense to symlink only those configuration files that
+#   would not get overwritten or edited by programs.  Others should be copied
+#   instead.
+#
+#   WARNING: This script will do everything to get the new files in the right
+#   places -- including deleting and overwriting files.  Backups of existing
+#   files will NOT be kept.  You have been warned!
+#
+# DEPENDENCIES
+#
+#   dirname(1), git(1), readlink(1), etc.
 #
 
 set -eu
@@ -31,17 +40,17 @@ info() {
 install() {
     if [[ "$1" =~ ^(-c|--copy)$ ]]
     then
-        cmd=(cp --verbose --recursive)
+        local cmd=(cp -vr)
         shift
     else
-        cmd=(ln --verbose --symbolic)
+        local cmd=(ln -vs)
     fi
 
     for file
     do
-        origin="${REPO}/${file}"
-        target="${HOME}/${file#*/}"
-        tardir=$(dirname "$target")
+        local origin="${REPO}/${file}"
+        local target="${HOME}/${file#*/}"
+        local tardir=$(dirname "$target")
 
         # Catch potential rm -rf $HOME: if the file/directory name ends
         # in a `/', $target reduces to $HOME.
@@ -227,3 +236,5 @@ touch "${HOME}/.hushlogin"
 cd "$OLDPWD"
 
 info "finished setting up configuration files"
+
+# vim: ft=sh fdm=marker et sts=4 sw=4
