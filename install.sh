@@ -80,7 +80,6 @@ install                                                                      \
     "ipython/.ipython/profile_default/ipython_config.py"                     \
     "latexmk/.latexmkrc"                                                     \
     "less/.lessfilter"                                                       \
-    "mathematica/.Mathematica/FrontEnd/init.m"                               \
     "matplotlib/.config/matplotlib"                                          \
     "mpv/.config/mpv/mpv.conf" "mpv/.config/mpv/input.conf"                  \
     "notmuch/.notmuch-config"                                                \
@@ -99,6 +98,7 @@ install                                                                      \
 
 install --copy                                                               \
     "htop/.config/htop"                                                      \
+    "mathematica/.Mathematica/FrontEnd/init.m"                               \
     "qpdfview/.config/qpdfview/qpdfview.conf"                                \
     "xfce/.local/share/xfce4/helpers/terminal.desktop"                       \
     "xfce/.config/xfce4/helpers.rc"
