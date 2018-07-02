@@ -29,7 +29,7 @@ info() {
 # Function to copy/symlink a file from the repository tree into $HOME.
 # Parent directories will be created if they don't exist.
 install() {
-    if [[ "$1" =~ ^(-c|--copy) ]]
+    if [[ "$1" =~ ^(-c|--copy)$ ]]
     then
         cmd=(cp --verbose --recursive)
         shift
@@ -43,7 +43,8 @@ install() {
         target="${HOME}/${file#*/}"
         tardir=$(dirname "$target")
 
-        # Catch potential rm -rf $HOME!
+        # Catch potential rm -rf $HOME: if the file/directory name ends
+        # in a `/', $target reduces to $HOME.
         if [[ "$(echo "$target" | sed 's|/*$||')" == "$HOME" ]]
         then
             info "error installing '$file'"
@@ -213,6 +214,7 @@ mkdir -vp "${HOME}/torrents/.torrents"
 
 # XDG MIME and other miscellanea {{{1
 # -----------------------------------
+
 install "xdg/.local/share/applications"/*                                    \
         "xdg/.local/share/mime/packages"/*
 
