@@ -248,6 +248,8 @@ PACKAGES=(
   # -----------------
 
   cryptsetup                # disk encryption support - startup scripts
+  exfat-fuse                # read and write exFAT driver for FUSE
+  exfat-utils               # utilities to create, check, label and dump exFAT filesystem
   extundelete               # utility to recover deleted files from ext3/ext4 partition
   firejail                  # sandbox to restrict the application environment
   foremost                  # forensic program to recover lost files
