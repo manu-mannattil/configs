@@ -39,3 +39,6 @@ user_pref("font.name.serif.x-western", "Nimbus Roman No9 L");
 
 // Always ask for where to store downloaded files.
 user_pref("browser.download.useDownloadDir", false);
+
+// Disable autofilling of saved addresses.
+user_pref("extensions.formautofill.addresses.enabled", false);
