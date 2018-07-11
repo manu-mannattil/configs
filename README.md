@@ -19,7 +19,9 @@ command
 License
 -------
 
-Public domain.  (Quite obviously this only applies to stuff I've
-written, i.e., things without an explicit attribution.)
+Public domain.  See the file UNLICENSE for more details.
+
+(Quite obviously this only applies to stuff I've written, i.e., things
+without an explicit attribution.)
 
 [1]: https://www.gnu.org/software/stow/stow.html
