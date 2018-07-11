@@ -417,7 +417,7 @@ command! -range=% Pastebin <line1>,<line2>write !curl -\#kLF 'f:1=<-' ix.io | xc
 command! -nargs=* Make silent make! <args> | silent redraw! | cwindow
 command! -nargs=* LMake silent lmake! <args> | silent redraw! | lwindow
 
-" Titlecase the range.  Requires: https://github.com/ap/titlecase
+" Titlecase the range.  Requires the Python module titlecase.
 if executable('titlecase')
   command! -range TitleCase <line1>,<line2>!titlecase
 endif

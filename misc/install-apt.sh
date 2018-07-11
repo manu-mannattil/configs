@@ -35,13 +35,12 @@
 # ---------
 
 PPAS=(
-  ppa:micahflee/ppa         # Onionshare
-  ppa:micahflee/ppa         # Tor browser launcher
+  ppa:micahflee/ppa         # Onionshare, Tor browser launcher, etc.
   ppa:jonathonf/vim         # Vim
 )
 
 # Packages {{{1
-# ------------
+# -------------
 
 PACKAGES=(
   # Computer specific {{{2
