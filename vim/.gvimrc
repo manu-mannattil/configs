@@ -56,7 +56,7 @@ set mousehide
 " Pieced together from the function at Vim Wikia:
 " http://vim.wikia.com/wiki/Change_font_size_quickly
 function! AdjustFontSize(amount)
-  if has("gui_gtk2") && has("gui_running")
+  if ('gui_gtk') && has('gui_running')
     let fontname = substitute(&guifont, '^\(.* \)\([1-9][0-9]*\)$', '\1', '')
     let cursize = substitute(&guifont, '^\(.* \)\([1-9][0-9]*\)$', '\2', '')
     let newsize = cursize + a:amount
@@ -73,5 +73,5 @@ endfunction
 " we compromise:
 " + (plus) to increase GUI font size
 " _ (underscore) to decrease GUI font size
-nnoremap _ :call AdjustFontSize(-1)<cr>
-nnoremap + :call AdjustFontSize(+1)<cr>
+nnoremap <silent> _ :call AdjustFontSize(-1)<CR>
+nnoremap <silent> + :call AdjustFontSize(+1)<CR>
