@@ -83,6 +83,7 @@ install                                                                      \
     "detox/.detoxrc" "detox/.config/detox"                                   \
     "dircolors/.dir_colors"                                                  \
     "emacs/.emacs"                                                           \
+    "exiftool/.exiftool"                                                     \
     "fontconfig/.config/fontconfig"                                          \
     "git/.gitconfig" "git/.gitattributes" "git/.git-pass"                    \
     "ipe/.ipe/ipelets" "ipe/.ipe/styles"                                     \
