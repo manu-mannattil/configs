@@ -1,0 +1,4 @@
+# ExifTool argfile to add CanoScane LiDE 110 as the scanner/camera
+-Make=Canon
+-Model=CanoScan LiDE 110
+-Overwrite_original
