@@ -2,7 +2,7 @@
 
 # text/html; w3m -T text/html -dump %s; copiousoutput
 # text/html; lynx -force_html -dump %s; copiousoutput
-text/html; elinks -force-html -dump %s; copiousoutput;
+text/html; elinks -force-html -dump-width 79 -dump %s; copiousoutput;
 
 # Use mutt-open to open other files.
 # https://github.com/manu-mannattil/scripts/blob/master/mutt-open
