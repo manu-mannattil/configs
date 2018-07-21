@@ -33,10 +33,10 @@ plugin_urls=(
   ['gnupg']='https://github.com/jamessan/vim-gnupg.git'
   ['mma']='https://github.com/rsmenon/vim-mathematica.git'
   ['rsi']='https://github.com/tpope/vim-rsi.git'
+  ['slime']='https://github.com/jpalardy/vim-slime.git'
   ['surround']='https://github.com/tpope/vim-surround.git'
   ['tabular']='https://github.com/godlygeek/tabular.git'
   ['vimtex']='https://github.com/lervag/vimtex.git'
-  ['slime']='https://github.com/jpalardy/vim-slime.git'
 )
 
 # Absolute path to the plugin directory.  We make use of Vim's new

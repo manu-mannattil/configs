@@ -108,7 +108,7 @@ set tilde = yes
 
 # Wrap text at $wrap characters in the internal pager.  Setting it to zero
 # makes mutt wrap text at the terminal width.
-# set wrap = 90
+set wrap = 79
 
 # Files and directories {{{1
 # --------------------------
@@ -461,21 +461,21 @@ set pgp_good_sign="^\\[GNUPG:\\] GOODSIG"
 # ----------------------
 
 # Default PGP key to use for signing.
-set pgp_sign_as = 0x9D5931F4                            
+set pgp_sign_as = 0x9D5931F4
 
 # Use a gpg-agent processes if available.
-set pgp_use_gpg_agent = yes                             
+set pgp_use_gpg_agent = yes
 
 # Automatically encrypt replies to any encrypted email that's received.
-set crypt_replyencrypt = yes                            
+set crypt_replyencrypt = yes
 
 # Automatically sign replies to any signed (but not necessarily encrypted)
 # email that's received.
-set crypt_replysign = yes                              
+set crypt_replysign = yes
 
 # Automatically sign and encrypt replies to any signed and encrypted email
 # that's received.
-set crypt_replysignencrypted = yes                      
+set crypt_replysignencrypted = yes
 
 # Attempt to verify email signatures automatically.
-set crypt_verify_sig = yes                              
+set crypt_verify_sig = yes
