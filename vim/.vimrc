@@ -230,7 +230,7 @@ set backupdir^=~/.cache/vim/backup/
 
 " Don't keep backups for common temporary files.  Also skip /dev/shm/* which is
 " used by some programs (e.g., pass) to securely read/write temporary files.
-set backupskip+=/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,/*/shm/*,*/.private/*
+set backupskip+=$TMPDIR/*,$TMP/*,$TEMP/*,/dev/shm/*
 
 " Use the improved Blowfish cipher for encryption using :X.  (However, you
 " shouldn't be using Vim to encrypt files.)

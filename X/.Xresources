@@ -89,7 +89,6 @@ URxvt*internalBorder: 6
 URxvt*iso14755: False
 URxvt*saveLines: 30000
 URxvt*scrollBar: off
-URxvt*termName: rxvt-unicode-256color
 
 ! Perl extensions.
 URxvt*perl-ext-common: matcher,font-size
