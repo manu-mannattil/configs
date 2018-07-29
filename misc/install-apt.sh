@@ -8,7 +8,6 @@
 # This script is for installing a bunch of packages after a fresh
 # Ubuntu install.  However, some packages need to be manually installed:
 #
-#   Calibre               http://calibre-ebook.com/download_linux
 #   DeaDBeeF              http://deadbeef.sourceforge.net/download.html
 #   DeaDBeeF FB plugin    https://gitlab.com/zykure/deadbeef-fb/tree/release/binary
 #   Dropbox               https://www.dropbox.com/install?os=lnx
@@ -18,14 +17,18 @@
 #   Ipe                   https://dl.bintray.com/otfried/generic/ipe/
 #   KindleGen             http://www.amazon.com/gp/feature.html?docId=1000765211
 #   krop                  http://arminstraub.com/software/krop
-#   Latexmk               http://personal.psu.edu/jcc8/software/latexmk-jcc/versions.html
 #   latexrun              https://github.com/aclements/latexrun/archive/master.zip
-#   Pass                  https://git.zx2c4.com/password-store/
 #   PDF Scale             https://github.com/tavinus/pdfScale/releases
 #   Signal                https://www.signal.org/download/
-#   TestDisk/PhotoRec     http://www.cgsecurity.org/wiki/TestDisk_Download
+#
+# The following programs are usually have outdated versions in the
+# Debian/Ubuntu repositories, therefore it makes sense to install them
+# manually:
+#
+#   Calibre               http://calibre-ebook.com/download_linux
+#   Latexmk               http://personal.psu.edu/jcc8/software/latexmk-jcc/versions.html
+#   Pass                  https://git.zx2c4.com/password-store/
 #   youtube-dl            http://rg3.github.io/youtube-dl/download.html
-#   Zeal Docs             https://zealdocs.org/download.html
 #
 
 # Always run as root.
@@ -78,6 +81,7 @@ PACKAGES=(
   diffutils                 # File comparison utilities
   patch                     # Apply a diff file to an original
   quilt                     # Tool to work with series of patches
+  zeal                      # Simple offline API documentation browser
 
   # Desktop {{{2
   # ------------
@@ -266,6 +270,7 @@ PACKAGES=(
   macchanger                # utility for manipulating the MAC address of network interfaces
   playonlinux               # front-end for Wine
   scalpel                   # fast filesystem-independent file recovery
+  testdisk                  # Partition scanner and disk recovery tool, and PhotoRec file recovery tool
   whois                     # intelligent WHOIS client
   wine-stable               # Microsoft Windows Compatibility Layer (meta-package)
   xbacklight                # simple utility to set the backlight level
