@@ -14,18 +14,18 @@
 #   epub2txt              https://github.com/kevinboone/epub2txt/releases
 #   fzf                   https://github.com/junegunn/fzf-bin/releases
 #   Google Chrome         https://www.google.com/intl/en_in/chrome/browser/
-#   Ipe                   https://dl.bintray.com/otfried/generic/ipe/
 #   KindleGen             http://www.amazon.com/gp/feature.html?docId=1000765211
 #   krop                  http://arminstraub.com/software/krop
 #   latexrun              https://github.com/aclements/latexrun/archive/master.zip
 #   PDF Scale             https://github.com/tavinus/pdfScale/releases
 #   Signal                https://www.signal.org/download/
 #
-# The following programs are usually have outdated versions in the
+# The following programs usually have outdated versions in the
 # Debian/Ubuntu repositories, therefore it makes sense to install them
 # manually:
 #
 #   Calibre               http://calibre-ebook.com/download_linux
+#   Ipe                   https://dl.bintray.com/otfried/generic/ipe/
 #   Latexmk               http://personal.psu.edu/jcc8/software/latexmk-jcc/versions.html
 #   Pass                  https://git.zx2c4.com/password-store/
 #   youtube-dl            http://rg3.github.io/youtube-dl/download.html
