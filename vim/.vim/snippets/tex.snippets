@@ -65,6 +65,18 @@ snippet geometry
 	\usepackage[includeheadfoot,margin=1.0in]{geometry}
 snippet	helvet
 	\usepackage[scaled=0.92]{helvet}
+snippet hyperref
+	\usepackage[x11names]{xcolor}
+	\usepackage[
+		allcolors=Blue3,
+		colorlinks,
+		pdftex,
+		pdfauthor={${1:author}},
+		pdftitle={${2:title}},
+		pdfsubject={${3:subject}},
+		pdfkeywords={${4:keywords}}
+	]{hyperref}
+	\urlstyle{same}
 snippet it
 	\textit{${1:text}}
 snippet itd

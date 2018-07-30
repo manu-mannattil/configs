@@ -35,20 +35,11 @@ setxkbmap -variant altgr-intl              \
           -option rupeesign:4              \
           -option terminate:ctrl_alt_bkspc
 
-# PATH manipulation {{{1
-# ----------------------
-
-for dir in                  \
-    "${HOME}/code/scripts"  \
-    "${HOME}/.local/bin"
-do
-    PATH="${dir}:${PATH}"
-done
-
-export PATH
-
 # Environment {{{1
 # ----------------
+
+# Set the PATH.
+export PATH="${HOME}/code/bin:${PATH}"
 
 # Preferred web browser.
 export BROWSER="/usr/bin/firefox"

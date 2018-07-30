@@ -256,6 +256,8 @@ EXEC 01;33
 .xspf 00;31
 
 # Temporary files and those that are rarely edited.
+*COPYING 01;30
+*LICENSE 01;30
 *MANIFEST 01;30
 *Notes.bib 01;30
 *Thumbs.db 01;30
