@@ -143,8 +143,6 @@ PACKAGES=(
   gimp-help-en              # Documentation for the GIMP (English)
   gimp-lensfun              # Gimp plugin to correct lens distortion using the lensfun library
   gimp-plugin-registry      # repository of optional extensions for GIMP
-  gnuplot-doc               # Command-line driven interactive plotting program.  Doc-package
-  gnuplot-qt                # Command-line driven interactive plotting program.  QT-package
   gthumb                    # GNOME image viewer and organizer
   gv                        # PostScript and PDF viewer for X
   hugin                     # panorama photo stitcher - GUI tools
@@ -152,6 +150,7 @@ PACKAGES=(
   inkscape                  # vector-based drawing program
   ipe                       # a vector graphics editor for technical drawing
   libimage-exiftool-perl    # library and program to read and write meta information in multimedia files
+  luminance-hdr             # graphical user interface providing a workflow for HDR imaging
   pdf2djvu                  # PDF to DjVu converter
   pinta                     # Simple drawing/painting program
   qpdfview                  # tabbed document viewer
@@ -231,6 +230,8 @@ PACKAGES=(
   # ---------------
 
   geogebra                  # Dynamic mathematics software for education
+  gnuplot-doc               # Command-line driven interactive plotting program.  Doc-package
+  gnuplot-qt                # Command-line driven interactive plotting program.  QT-package
   stellarium                # real-time photo-realistic sky generator
 
   # Shells {{{2
@@ -319,7 +320,6 @@ PACKAGES=(
   xclip                     # command line interface to X selections
   xdotool                   # simulate (generate) X11 keyboard/mouse input events
   xsel                      # command-line tool to access X clipboard and selection buffers
-
 
   # Version control {{{2
   # --------------------
