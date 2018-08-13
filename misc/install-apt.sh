@@ -304,6 +304,7 @@ PACKAGES=(
   p7zip-rar                 # non-free rar module for p7zip
   par                       # Paragraph reformatter
   parallel                  # build and execute command lines from standard input in parallel
+  pdfgrep                   # search in pdf files for strings matching a regular expression
   pinentry-curses           # curses-based PIN or pass-phrase entry dialog for GnuPG
   pinentry-gtk2             # GTK+-2-based PIN or pass-phrase entry dialog for GnuPG
   pv                        # Shell pipeline element to meter data passing through

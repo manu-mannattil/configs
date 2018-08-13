@@ -33,7 +33,6 @@
 
 # Backup some system configuration files hourly/daily.
 @hourly crontab -l >"$HOME/code/configs/misc/crontab"
-@daily cp -f /etc/apt/sources.list "$HOME/code/configs/misc/apt/sources.list"
 
 # Delete cached mutt attachments hourly.  But only delete files created at
 # least a day ago.
