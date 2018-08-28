@@ -1,6 +1,0 @@
-# ExifTool argfile to add Helios 44M-4 as the lens
--LensMake=KMZ
--LensModel=MC Helios-44M-4 58mm 1:2
--Lens=MC Helios-44M-4 58mm 1:2
--FocalLength=58 mm
--Overwrite_original

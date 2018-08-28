@@ -14,6 +14,7 @@
 #   epub2txt              https://github.com/kevinboone/epub2txt/releases
 #   fzf                   https://github.com/junegunn/fzf-bin/releases
 #   Google Chrome         https://www.google.com/intl/en_in/chrome/browser/
+#   JSMin                 https://raw.githubusercontent.com/douglascrockford/JSMin/master/jsmin.c
 #   KindleGen             http://www.amazon.com/gp/feature.html?docId=1000765211
 #   krop                  http://arminstraub.com/software/krop
 #   latexrun              https://github.com/aclements/latexrun/archive/master.zip
