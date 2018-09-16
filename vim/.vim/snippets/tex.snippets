@@ -95,6 +95,13 @@ snippet mat
 	\begin{${1:p/b/v/V/B/small}matrix}
 		${2}
 	\end{$1matrix}
+snippet maxwell
+	\begin{align*}
+	\nabla\cdot\mathbf{E} =& \frac{\rho}{\epsilon_0}\\
+	\nabla\cdot\mathbf{B} =& 0\\
+	\nabla\times\mathbf{E} =& -\frac{\partial\mathbf{B}}{\partial{t}}\\
+	\nabla\times\mathbf{B} =& \mu_0\mathbf{J} + \epsilon_0\mu_0\frac{\partial\mathbf{E}}{\partial{t}}
+	\end{align*}
 snippet multiline
 	\begin{multline${1:*}}
 		${1}
