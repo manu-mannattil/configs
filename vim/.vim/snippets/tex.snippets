@@ -97,10 +97,10 @@ snippet mat
 	\end{$1matrix}
 snippet maxwell
 	\begin{align*}
-	\nabla\cdot\mathbf{E} =& \frac{\rho}{\epsilon_0}\\
-	\nabla\cdot\mathbf{B} =& 0\\
-	\nabla\times\mathbf{E} =& -\frac{\partial\mathbf{B}}{\partial{t}}\\
-	\nabla\times\mathbf{B} =& \mu_0\mathbf{J} + \epsilon_0\mu_0\frac{\partial\mathbf{E}}{\partial{t}}
+		\nabla\cdot\mathbf{E} &= \frac{\rho}{\epsilon_0}\\
+		\nabla\cdot\mathbf{B} &= 0\\
+		\nabla\times\mathbf{E} &= -\frac{\partial\mathbf{B}}{\partial{t}}\\
+		\nabla\times\mathbf{B} &= \mu_0\mathbf{J} + \epsilon_0\mu_0\frac{\partial\mathbf{E}}{\partial{t}}
 	\end{align*}
 snippet multiline
 	\begin{multline${1:*}}
@@ -130,6 +130,13 @@ snippet provide
 	\providecommand{${1:\name}}[${2:1}]${3:[default]}{
 		${4:%definition}
 	}
+snippet quote
+	\begin{quote}
+		${1:quote}
+		\begin{flushright}
+			\normalfont{---${2:attribution}}
+		\end{flushright}
+	\end{quote}
 snippet renew
 	\renewcommand{${1:\name}}[${2:1}]${3:[default]}{
 		${4:%definition}
