@@ -1,31 +1,37 @@
-#!/bin/sh
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 #
-# snipsort -- sort snippet files alphabetically
+# NAME
 #
-# Usage: snipsort [<file>...]
+#   snipsort - sort the snippets in a given file alphabetically
 #
-#   o   This script will remove ALL comments in a snippet file
-#       (i.e., any line beginning with a #).  I don't see the need of
-#       commenting snippets.
+# SYNOPSIS
 #
-#   o   You'll probably need GNU Gawk for this script to work.
+#   snipsort <file>...
 #
 
-# Separate lines by a null character, sort the result, and unpack.
-awk '
-  ! /^#/ {
-    if ($0 ~ /^snippet/)
-      printf("\n")
+import fileinput
+import re
 
-    printf("%s\0", $0)
-  }
-'  "$1"  \
-  | sort \
-  | uniq \
-  | awk '
-      ! /^$/ {
-        gsub("\0+$", "\n")
-        gsub("\0", "\n")
-        printf("%s", $0)
-      }
-    '
+if __name__ == '__main__':
+    name, contents = None, []
+    snippets = {}
+
+    with fileinput.input() as fd:
+        for line in fd:
+            if re.match(r"^(#|snippet)", line) and name:
+                snippets[name] = contents
+                name, contents = None, []
+
+            match = re.match(r"^snippet\s+(.*)$", line)
+            if match:
+                name = match.group(1).strip()
+
+            contents += [line.rstrip()]
+
+    if name:
+        snippets[name] = contents
+
+    for name in sorted(snippets.keys()):
+        for line in snippets[name]:
+            print(line)
