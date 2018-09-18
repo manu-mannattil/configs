@@ -1,23 +1,22 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# NAME
+# snipsort is a Python 3 script to sort the snippets in a given file
+# alphabetically.  For more information, run
 #
-#   snipsort - sort the snippets in a given file alphabetically
-#
-# SYNOPSIS
-#
-#   snipsort <file>...
+#   snipsort -h
 #
 
-import fileinput
 import re
+import argparse
 
-if __name__ == '__main__':
+
+def snipsort(file, inplace=False):
+    """Sort all the snippets in a given file alphabetically."""
     name, contents = None, []
     snippets = {}
 
-    with fileinput.input() as fd:
+    with open(file, "r") as fd:
         for line in fd:
             if re.match(r"^(#|snippet)", line) and name:
                 snippets[name] = contents
@@ -32,6 +31,22 @@ if __name__ == '__main__':
     if name:
         snippets[name] = contents
 
-    for name in sorted(snippets.keys()):
-        for line in snippets[name]:
-            print(line)
+    if inplace:
+        with open(file, "w") as fd:
+            for name in sorted(snippets.keys()):
+                print("\n".join(snippets[name]), file=fd)
+    else:
+        for name in sorted(snippets.keys()):
+            print("\n".join(snippets[name]))
+
+
+if __name__ == "__main__":
+    arg_parser = argparse.ArgumentParser(prog="snipsort",
+        description="A script to sort snippets.")
+    arg_parser.add_argument("-i", "--inplace", action="store_true",
+        default=False, help="write files in place")
+    arg_parser.add_argument("file", help="snippets file", nargs="+")
+    args = arg_parser.parse_args()
+
+    for file in args.file:
+        snipsort(file, inplace=args.inplace)
