@@ -110,7 +110,8 @@ install --copy                                                               \
     "mathematica/.Mathematica/FrontEnd/init.m"                               \
     "qpdfview/.config/qpdfview/qpdfview.conf"                                \
     "xfce/.local/share/xfce4/helpers/terminal.desktop"                       \
-    "xfce/.config/xfce4/helpers.rc"
+    "xfce/.config/xfce4/helpers.rc"                                          \
+    "xnview/.config/xnviewmp/xnview.ini"
 
 # cvsignore {{{1
 # --------------
