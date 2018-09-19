@@ -227,10 +227,12 @@ PACKAGES=(
   lyx                               # document processor
   pandoc                            # general markup converter
   pandoc-citeproc                   # Pandoc support for Citation Style Language - tools
+  pdfcrack                          # PDFCrack is a simple tool for recovering passwords from pdf documents
   poppler-utils                     # PDF utilities (based on Poppler)
   sdcv                              # StarDict Console Version
   texlive-full                      # metapackage pulling in all components of TeX Live
   texstudio                         # LaTeX Editor
+
 
   # Scientific {{{2
   # ---------------
