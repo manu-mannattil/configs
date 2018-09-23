@@ -6,6 +6,10 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
 
+;; Be evil.
+(require 'evil)
+(evil-mode 1)
+
 ;; Show line/column numbers.
 (global-linum-mode 1)
 (column-number-mode 1)
