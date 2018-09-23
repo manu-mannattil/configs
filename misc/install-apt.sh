@@ -233,7 +233,6 @@ PACKAGES=(
   texlive-full                      # metapackage pulling in all components of TeX Live
   texstudio                         # LaTeX Editor
 
-
   # Scientific {{{2
   # ---------------
 
