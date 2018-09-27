@@ -13,4 +13,9 @@ set spoolfile = +inbox
 set trash     = +trash
 set record    = +sent
 
+# Outlook automatically puts a copy of every sent mail in the "Sent" folder.
+# If you set $copy, Mutt will also put a copy, leading to duplicate copies.
+# Either way, you'll waste some bandwidth, so let Outlook do this.
+set copy = no
+
 mailboxes `echo ~/mail/syr/*`
