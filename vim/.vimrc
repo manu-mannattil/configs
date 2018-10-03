@@ -319,8 +319,8 @@ set splitright
 " Autocommands {{{1
 " -----------------
 
-" Fix file type detection.
-augroup ftdetect
+" File type related.
+augroup ft_related
   autocmd!
 
   autocmd BufRead,BufNewFile *.conf set filetype=conf
@@ -351,12 +351,11 @@ augroup ftdetect
         \ endif
 
   autocmd BufRead,BufNewFile \*sdcv\* set filetype=sdcv
-augroup END
 
-" Enable the longlines plugin for TeX and MediaWiki files.
-augroup longlines
-  autocmd!
-  autocmd FileType mediawiki,tex call longlines#on()
+  " Enable the longlines plugin for TeX and MediaWiki files.
+  autocmd FileType mediawiki,tex
+        \ LongLinesOn       |
+        \ setlocal norelativenumber
 augroup END
 
 " Miscellaneous.
