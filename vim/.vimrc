@@ -9,15 +9,6 @@ syntax enable
 " Enable the filetype plugin.
 filetype plugin indent on
 
-if !has('packages')
-  " Use pathogen to load plugins if I'm using an old version Vim.
-  execute pathogen#infect('pack/bundle/start/{}')
-  execute pathogen#infect('pack/opt-git/start/{}')
-  execute pathogen#infect('pack/opt/start/{}')
-else
-  command! -bar Helptags :call pathogen#helptags()
-endif
-
 " Settings {{{1
 " -------------
 
@@ -423,16 +414,26 @@ if executable('titlecase')
   command! -range TitleCase <line1>,<line2>!titlecase
 endif
 
+" Command to run helptags on all plugin directories in ~/.vim.
+function! s:helptags() abort
+  for dir in split(&rtp, ',')
+    if dir[0:strlen($VIM)-1] !=# $VIM && isdirectory(dir.'/doc')
+      helptags `=dir.'/doc'`
+    endif
+  endfor
+endfunction
+command! -bar Helptags call s:helptags()
+
 " Keybindings {{{1
 " ----------------
 
 " ,$ strips trailing spaces.
-function! StripTrailingSpaces()
+function! s:rm_trailing_spaces() abort
   let winview = winsaveview()
-  %s/\s\+$//e
+  %substitute/\s\+$//e
   call winrestview(winview)
 endfunction
-nnoremap <silent> ,$ :call StripTrailingSpaces()<CR>
+nnoremap <silent> ,$ :call <SID>rm_trailing_spaces()<CR>
 
 " Toggle search highlighting, spelling etc.
 nnoremap <silent> ,l :noh<CR>

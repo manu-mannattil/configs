@@ -253,11 +253,6 @@ alias shred='shred -vzfun 5'
 # Hack to 'sudo' aliases.
 alias sudo='sudo '
 
-# TeXPretty with sensible defaults.  Use two spaces for indentation, use
-# $ ... $ for inline math, and \begin{equation} ... \end{equation} for
-# displaymath.  Also suppresses all errors and warnings.
-alias texpretty='texpretty --indent 2 --math-conversions 33 --no-comment-banner --logfile /dev/null'
-
 # HTML -> Text using elinks.
 alias html2txt='elinks -force-html -dump'
 

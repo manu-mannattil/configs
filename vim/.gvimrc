@@ -38,7 +38,7 @@ set guioptions-=r
 set guicursor+=a:blinkon0
 
 " Initial window size.
-set lines=40 columns=100
+set lines=42 columns=95
 
 " Enable mouse.
 set mouse=a
@@ -55,7 +55,7 @@ set mousehide
 " Function to increase and decrease GUI font size on the fly.
 " Pieced together from the function at Vim Wikia:
 " http://vim.wikia.com/wiki/Change_font_size_quickly
-function! AdjustFontSize(amount)
+function! s:guifontsize(amount) abort
   if has('gui_gtk') && has('gui_running')
     let fontname = substitute(&guifont, '^\(.* \)\([1-9][0-9]*\)$', '\1', '')
     let cursize = substitute(&guifont, '^\(.* \)\([1-9][0-9]*\)$', '\2', '')
@@ -73,5 +73,5 @@ endfunction
 " we compromise:
 " + (plus) to increase GUI font size
 " _ (underscore) to decrease GUI font size
-nnoremap <silent> _ :call AdjustFontSize(-1)<CR>
-nnoremap <silent> + :call AdjustFontSize(+1)<CR>
+nnoremap <silent> _ :call <SID>guifontsize(-1)<CR>
+nnoremap <silent> + :call <SID>guifontsize(+1)<CR>
