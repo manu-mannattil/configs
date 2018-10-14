@@ -42,3 +42,14 @@ user_pref("browser.download.useDownloadDir", false);
 
 // Disable autofilling of saved addresses.
 user_pref("extensions.formautofill.addresses.enabled", false);
+
+// Minimize crash reporting.
+user_pref("dom.ipc.plugins.flash.subprocess.crashreporter.enabled", false);
+user_pref("dom.ipc.plugins.reportCrashURL", false);
+user_pref("breakpad.reportURL", "");
+user_pref("browser.tabs.crashReporting.sendReport", false);
+user_pref("browser.crashReports.unsubmittedCheck.enabled", false);
+user_pref("browser.selfsupport.url", "");
+
+// Disable "Recommended by Pocket" in Firefox Quantum.
+user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
