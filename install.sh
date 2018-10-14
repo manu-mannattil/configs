@@ -87,6 +87,7 @@ install                                                                      \
     "git/.gitconfig" "git/.gitattributes" "git/.git-pass"                    \
     "ipe/.ipe/ipelets" "ipe/.ipe/styles"                                     \
     "ipython/.ipython/profile_default/ipython_config.py"                     \
+    "latexindent/.latexindent.yaml"                                          \
     "latexmk/.latexmkrc"                                                     \
     "less/.lessfilter"                                                       \
     "matplotlib/.config/matplotlib"                                          \

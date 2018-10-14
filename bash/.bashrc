@@ -76,7 +76,9 @@ export MANWIDTH=80
 # Set up $LS_COLORS.
 if [[ -f "${HOME}/.dir_colors" ]]
 then
-    eval $(dircolors "${HOME}/.dir_colors") &>/dev/null
+    eval $(dircolors "${HOME}/.dir_colors")
+else
+    eval $(dircolors)
 fi
 
 # Bash history {{{2
@@ -215,6 +217,18 @@ alias dash='rlwrap -a -c dash'
 alias gnuplot='rlwrap -pgreen -a -c gnuplot'
 alias posh='rlwrap -a -c posh'
 
+# latexindent.pl with some customizations:
+#
+# option    description
+# ------    -----------
+#
+#   -m      breaks lines; useful to format LaTeX so that
+#           each sentence is on one physical line
+#   -g      send indent.log to /dev/null
+#   -l      use settings from ~/.latexindent.yaml
+#
+alias latexindent='latexindent -m -g /dev/null -l="$HOME/.latexindent.yaml"'
+
 # Markdown using Pandoc.
 alias markdown='pandoc -S -f markdown+superscript+subscript -t html'
 
@@ -250,7 +264,7 @@ alias html2txt='elinks -force-html -dump'
 # Always tell w3m that we're opening HTML files.
 alias w3m='w3m -T text/html'
 
-# Colored wdiff
+# Colored wdiff.
 alias wdiff='wdiff --start-delete="$COLOR_BRIGHT_RED" --end-delete="$COLOR_RESET" --start-insert="$COLOR_BRIGHT_GREEN" --end-insert="$COLOR_RESET"'
 
 # What is my external IP?
