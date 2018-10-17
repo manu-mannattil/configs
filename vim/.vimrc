@@ -344,8 +344,7 @@ augroup ft_related
   autocmd BufRead,BufNewFile \*sdcv\* set filetype=sdcv
 
   " Enable the longlines plugin for TeX and MediaWiki files.
-  autocmd FileType mediawiki,tex
-        \ LongLines       |
+  autocmd FileType mail,mediawiki,tex LongLines |
         \ setlocal norelativenumber
 augroup END
 
@@ -439,6 +438,7 @@ nnoremap <silent> ,$ :call <SID>rm_trailing_spaces()<CR>
 nnoremap <silent> ,l :noh<CR>
 nnoremap <silent> ,h :set list!<CR>
 nnoremap <silent> ,s :set spell!<CR>
+nnoremap <silent> ,n :LongLines<CR>
 
 " Make Y behave like C and D (and not yy).
 noremap Y y$
