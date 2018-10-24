@@ -344,9 +344,8 @@ augroup ft_related
   autocmd BufRead,BufNewFile \*sdcv\* set filetype=sdcv
 
   " Enable the longlines plugin for TeX and MediaWiki files.
-  autocmd FileType mail,mediawiki,tex
-        \ LongLines                                                        |
-        \ setlocal norelativenumber
+  autocmd FileType mail,mediawiki  LongLines | setlocal norelativenumber
+  autocmd BufRead,BufNewFile *.tex LongLines | setlocal norelativenumber
 augroup END
 
 " Miscellaneous.

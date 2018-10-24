@@ -41,11 +41,11 @@ snippet eq
 	\end{equation}
 snippet fig
 	\begin{figure}
-	\begin{center}
-	\includegraphics[scale=$1]{Figures/$2}
-	\end{center}
-	\caption{$3}
-	\label{fig:$4}
+		\begin{center}
+			\includegraphics[scale=${1:100}]{${2:file}}
+		\end{center}
+		\caption{${3}}
+		\label{fig:${4}}
 	\end{figure}
 snippet figure
 	${1:Figure}~\ref{${2:fig:}}${3}
@@ -189,3 +189,7 @@ snippet tt
 	\texttt{${1:text}}
 snippet under
 	\underline{${1:text}}
+snippet frame
+	\begin{frame}{${1:title}}
+	${2}
+	\end{frame}

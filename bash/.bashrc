@@ -181,6 +181,9 @@ alias cowsay='cowsay -n'
 alias dos2unix='sed -r "s/\r*$//"'
 alias unix2dos='sed -r "s/\r*$/\r/"'
 
+# CLI Emacs.
+alias emacs='emacs -nw'
+
 # Dateutils: the executables in the official Debian package have `dateutils'
 # prefixed in their names, which makes them cumbersome to type.
 alias dadd='dateutils.dadd'
