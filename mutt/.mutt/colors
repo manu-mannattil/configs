@@ -88,5 +88,5 @@ color body brightcyan default "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[^a-zA-Z]{2,}"
 # Horizontal lines that are at least 3 characters wide.
 color body brightblack default "^[ \t]*[~*+=#_-]{3,}[ \t]*$"
 
-# Highlight P.S. at the end of email.
-color body brightyellow default "^p[. ]*s[. *].*"
+# Highlight P.S./P.P.S. at the end of email.
+color body brightyellow default "^p[. ]*p?[. ]*s[. *].*"
