@@ -198,8 +198,12 @@ PACKAGES=(
   elinks                            # advanced text-mode WWW browser
   elinks-doc                        # advanced text-mode WWW browser - documentation
   hexchat                           # IRC client for X based on X-Chat 2
+  krb5-user                         # basic programs to authenticate using MIT Kerberos
   lynx                              # classic non-graphical (text-mode) web browser
+  mosh                              # Mobile shell that supports roaming and intelligent local echo
   onionshare                        # Share a file over Tor Hidden Services anonymously and securely
+  openssh-client                    # secure shell (SSH) client, for secure access to remote machines
+  openssh-server                    # secure shell (SSH) server, for secure access from remote machines
   qbittorrent                       # bittorrent client based on libtorrent-rasterbar with a Qt4 GUI
   rtorrent                          # ncurses BitTorrent client based on LibTorrent from rakshasa
   tor                               # anonymizing overlay network for TCP
@@ -247,13 +251,6 @@ PACKAGES=(
   ksh                               # Real, AT&T version of the Korn shell
   posh                              # Policy-compliant Ordinary SHell
   zsh                               # shell with lots of features
-
-  # SSH {{{2
-  # --------
-
-  mosh                              # Mobile shell that supports roaming and intelligent local echo
-  openssh-server                    # secure shell (SSH) server, for secure access from remote machines
-  openssh-client                    # secure shell (SSH) client, for secure access to remote machines
 
   # System tools {{{2
   # -----------------

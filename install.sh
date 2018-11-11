@@ -90,6 +90,7 @@ install                                                                      \
     "latexindent/.latexindent.yaml"                                          \
     "latexmk/.latexmkrc"                                                     \
     "less/.lessfilter"                                                       \
+    "lensfun/.local/share/lensfun"                                           \
     "matplotlib/.config/matplotlib"                                          \
     "mpv/.config/mpv/mpv.conf" "mpv/.config/mpv/input.conf"                  \
     "notmuch/.notmuch-config"                                                \
