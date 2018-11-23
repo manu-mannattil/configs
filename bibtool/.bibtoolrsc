@@ -44,9 +44,6 @@ delete.field = {keywords}
 delete.field = {author_keywords}
 delete.field = {source}
 
-# Be verbose.
-verbose = on
-
 # Use lower case entry names.
 new.entry.type {article}
 new.entry.type {artwork}
