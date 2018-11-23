@@ -6,19 +6,15 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{newtxx}[2017/12/24 v0.1]
 
-\RequirePackage[helvratio=0.92]{newtxtext}
-\RequirePackage[
-  amssymbols,
-  bigdelims,
-  cmintegrals
-]{newtxmath}
-
-% Use Computer Modern Typewriter for fixed-with text.
+% Times for Roman, CM Typewriter for fixed-width text, and
+% Helvetica for sans serif, and newtxmath for math.
+\renewcommand{\rmdefault}{ptm}
 \renewcommand{\ttdefault}{cmtt}
+\RequirePackage[scaled=0.92]{helvet}
+\RequirePackage[amssymbols,cmbraces,subscriptcorrection]{newtxmath}
 
 % Use Computer Modern's \sum: https://tex.stackexchange.com/a/200915
 \DeclareSymbolFont{largesymbolsCM}{OMX}{cmex}{m}{n}
-\let\txsum\sum
 \let\sum\relax
 \DeclareMathSymbol{\sum}{\mathop}{largesymbolsCM}{"50}
 

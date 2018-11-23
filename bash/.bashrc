@@ -349,6 +349,31 @@ ls() {
     fi
 }
 
+# lyrics {{{2
+# -----------
+
+# usage: lyrics [<args>] [<keyword>...]
+#
+# A wrapper function around my lyrics script.
+
+lyrics() {
+    while [[ "$1" ]]
+    do
+        case "$1" in
+            -*) local args+=("$1")     ;;
+            *)  local keywords+=("$1") ;;
+        esac
+        shift
+    done
+
+    if [[ "${keywords[@]}" ]]
+    then
+        command lyrics "${args[@]}" "${keywords[@]}"
+    else
+        command lyrics "${args[@]}" $(deadbeef --nowplaying '%a %t' 2>/dev/null)
+    fi
+}
+
 # mergepath {{{2
 # --------------
 
