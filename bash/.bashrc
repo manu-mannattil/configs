@@ -370,6 +370,8 @@ lyrics() {
     then
         command lyrics "${args[@]}" "${keywords[@]}"
     else
+        # If no keyword is supplied, see if there's a song
+        # playing in DeaDBeeF.
         command lyrics "${args[@]}" $(deadbeef --nowplaying '%a %t' 2>/dev/null)
     fi
 }

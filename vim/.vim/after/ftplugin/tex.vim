@@ -13,4 +13,6 @@ setlocal wildignore+=*.Notes.bib,*.acn,*.acr,*.alg,*.aux,*.bcf,*.blg,*.dvi,*.fdb
 setlocal suffixes+=*.bbl,*.sty,*.bst,*.cls
 
 " Vimtex maps K to 'lookup keyword using texdoc'.
-nunmap <buffer> K
+if mapcheck('K', 'n') != ""
+  nunmap <buffer> K
+endif
