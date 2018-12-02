@@ -155,6 +155,7 @@ PACKAGES=(
   libimage-exiftool-perl            # library and program to read and write meta information in multimedia files
   luminance-hdr                     # graphical user interface providing a workflow for HDR imaging
   pdf2djvu                          # PDF to DjVu converter
+  pdfshuffler                       # merge, split and re-arrange pages from PDF documents
   pinta                             # Simple drawing/painting program
   pngcrush                          # optimizes PNG (Portable Network Graphics) files
   qpdfview                          # tabbed document viewer
@@ -165,7 +166,6 @@ PACKAGES=(
   tesseract-ocr-eng                 # tesseract-ocr language files for English
   toilet                            # display large colourful characters in text mode
   wkhtmltopdf                       # Command line utilities to convert html to pdf or image using WebKit
-
 
   # Miscellaneous languages/runtime environments {{{2
   # -------------------------------------------------
