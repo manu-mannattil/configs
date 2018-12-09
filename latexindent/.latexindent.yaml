@@ -123,7 +123,7 @@ lookForPreamble:
 preambleCommandsBeforeEnvironments: 0
 
 # Default value of indentation
-defaultIndent: "\t"
+defaultIndent: "  "
 
 # environments that have tab delimiters, add more
 # as needed
@@ -255,8 +255,8 @@ noAdditionalIndent:
 # or commands, put them in here; for example, you might just want
 # to use a space " " or maybe a double tab "\t\t"
 indentRules:
-   myenvironment: "\t\t"
-   anotherenvironment: "\t\t\t\t"
+   myenvironment: "    "
+   anotherenvironment: "        "
    chapter: " "
    section: " "
    item: "      "
@@ -375,7 +375,7 @@ commandCodeBlocks:
 # Naturally, you can specify settings for individual environments,
 # commands, headings, etc, populate as you wish.
 modifyLineBreaks:
-    preserveBlankLines: 1
+    preserveBlankLines: 0
     condenseMultipleBlankLinesInto: 1
     textWrapOptions:
         columns: 0
@@ -425,14 +425,14 @@ modifyLineBreaks:
             filecontents: 0
             comments: 0
     environments:
-        BeginStartsOnOwnLine: 0
-        BodyStartsOnOwnLine: 0
-        EndStartsOnOwnLine: 0
-        EndFinishesWithLineBreak: 0
+        BeginStartsOnOwnLine: 1
+        BodyStartsOnOwnLine: 1
+        EndStartsOnOwnLine: 1
+        EndFinishesWithLineBreak: 1
         equation*:
-            BeginStartsOnOwnLine: 0
-            BodyStartsOnOwnLine: 0
-            EndStartsOnOwnLine: 0
+            BeginStartsOnOwnLine: 1
+            BodyStartsOnOwnLine: 1
+            EndStartsOnOwnLine: 1
             EndFinishesWithLineBreak: 0
     ifElseFi:
         IfStartsOnOwnLine: 0

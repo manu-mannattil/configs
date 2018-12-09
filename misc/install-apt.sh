@@ -19,6 +19,7 @@
 #   krop                  http://arminstraub.com/software/krop
 #   latexrun              https://github.com/aclements/latexrun/archive/master.zip
 #   PDF Scale             https://github.com/tavinus/pdfScale/releases
+#   pdfsizeopt            https://github.com/pts/pdfsizeopt
 #   Signal                https://www.signal.org/download/
 #
 # The following programs usually have outdated versions in the

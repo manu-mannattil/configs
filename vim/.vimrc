@@ -362,6 +362,13 @@ augroup misc
   autocmd VimResized * wincmd =
 augroup END
 
+" Show the current line only in the active window.
+augroup cursor_line
+  autocmd!
+  autocmd VimEnter,BufWinEnter,WinEnter * setlocal cursorline
+  autocmd WinLeave * setlocal nocursorline
+augroup END
+
 " Commands {{{1
 " -------------
 
