@@ -8,9 +8,16 @@
 
 % Times for Roman, CM Typewriter for fixed-width text, and
 % Helvetica for sans serif.
-\renewcommand{\rmdefault}{ptm}
-\renewcommand{\ttdefault}{cmtt}
-\RequirePackage[scaled=0.92]{helvet}
+\RequirePackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \renewcommand{\rmdefault}{ptm}
+  \renewcommand{\ttdefault}{cmtt}
+  \RequirePackage[scaled=0.92]{helvet}
+\else % if luatex or xelatex
+  \RequirePackage{fontspec}
+  \setmainfont{Nimbus Roman No9 L}
+  \setsansfont[Scale=0.92]{Nimbus Sans L}
+\fi
 
 % To avoid conflicts with amssymb and Springer's svjour.
 \let\Bbbk\relax
