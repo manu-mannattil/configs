@@ -405,8 +405,8 @@ command! -nargs=0 WildToggle
 " Use brep (my GNU grep wrapper) for grepping.
 set grepprg=brep
 set grepformat=%f:%l:%m
-command! -nargs=+ Brep silent grep! <args> | silent redraw! | cwindow
-command! -nargs=+ LBrep silent lgrep! <args> | silent redraw! | lwindow
+command! -nargs=+ Grep silent grep! <args> | silent redraw! | cwindow
+command! -nargs=+ LGrep silent lgrep! <args> | silent redraw! | lwindow
 
 " Paste the range to ix.io.  Requires: curl, xclip.
 command! -range=% Pastebin <line1>,<line2>write !curl -\#kLF 'f:1=<-' ix.io | xclip -selection clipboard
