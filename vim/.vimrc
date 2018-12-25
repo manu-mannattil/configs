@@ -552,14 +552,6 @@ let g:GPGDefaultRecipients = ['0x9D5931F4']
 " Tree-like listing for netrw.
 let g:netrw_liststyle = 3
 
-if has('gui_running')
-  " Bug in XFCE causes xdg-open to fail.
-  " https://bugzilla.xfce.org/show_bug.cgi?id=12251
-  let g:netrw_browsex_viewer = 'setsid xdg-open'
-else
-  let g:netrw_browsex_viewer = 'xdg-open'
-endif
-
 " Vimtex {{{2
 " -----------
 
