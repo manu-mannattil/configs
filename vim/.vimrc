@@ -369,6 +369,12 @@ augroup cursor_line
   autocmd WinLeave * setlocal nocursorline
 augroup END
 
+" Disable spell checking when editing password entries using pass(1).
+augroup pass_entries
+  autocmd!
+  autocmd BufRead,BufNewFile /dev/shm/*.txt set nospell
+augroup END
+
 " Commands {{{1
 " -------------
 
