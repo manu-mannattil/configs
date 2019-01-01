@@ -53,3 +53,6 @@ user_pref("browser.selfsupport.url", "");
 
 // Disable "Recommended by Pocket" in Firefox Quantum.
 user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
+
+// Resolve DNS over HTTPS (DoH).
+user_pref("network.trr.mode", 2)
