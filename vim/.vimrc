@@ -484,6 +484,10 @@ inoremap <C-U> <C-G>u<C-U>
 " Emacs-like mapping to evaluate visually selected region as Vim script.
 vnoremap <C-X><C-E> <ESC>:@*<CR>
 
+" Search for visually selected text using / in visual mode.  While doing so do
+" (almost) non-regex searches.
+vnoremap / <ESC>/\V<C-R>*<CR>
+
 " File and buffer navigation tricks {{{2
 " --------------------------------------
 
