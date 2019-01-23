@@ -4,24 +4,19 @@ your profile folder will not work.
 
 To add a search plugin, go through the following steps:
 
-1. In Firefox, press F12 to open the developer toolbox.  In the settings
-   menu (the gear icon in the top-right corner), check "Enable browser
-   chrome and add-on debugging toolboxes," and close the developer
-   toolbox.
+1. Find the "global" search plugin directories.  On Ubuntu they are
 
-2. Note the location of the custom .xml file (it should begin with
-   file:///home/...)
+     /usr/lib/firefox/distribution/searchplugins/locale/en-CA
+     /usr/lib/firefox/distribution/searchplugins/locale/en-ZA
+     /usr/lib/firefox/distribution/searchplugins/locale/en-US
+     /usr/lib/firefox/distribution/searchplugins/locale/en-GB
+     /usr/lib/firefox/distribution/searchplugins/common
 
-3. Go to Settings -> Web Developer -> Browser Console.
+2. Copy the custom search engine's XML file to one of the above
+   directories (say the locale-agnostic "common" directory).
 
-4. In the Browser Console commandline, enter the following.
+3. Close all instances of Firefox and delete the "search.json.mozlz4"
+   file from your profile directory.
 
-    Services.search.addEngine("<location of .xml file>", null, null, false);
-
-   You'll probably see the value "undefined" after submitting the above.
-
-5. This would result in the creation of a search.json.mozlz4 (an LZ4
-   compressed JSON file with the details of the custom search engines)
-   inside your profile folder.  Save this file for posterity.
-
-Source: https://redd.it/7fr039
+4. Restart Firefox and save the newly created "search.json.mozlz4" for
+   posterity.
