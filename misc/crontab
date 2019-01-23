@@ -38,8 +38,8 @@
 # least a day ago.
 @hourly find "$HOME/.cache/mutt/attach" -type f -mtime +1 -delete
 
-# Clean temporary files created by ff.
-@hourly rm -f /tmp/ff*
+# Clean temporary HTML files created by browser.
+@hourly rm -f /tmp/web.*.html
 
 # Clean temporary LaTeX files in ~
 @hourly "$HOME/code/scripts/texclean" "$HOME/templates" "$HOME/documents/notes"
