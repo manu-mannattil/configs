@@ -54,6 +54,18 @@ user_pref("browser.selfsupport.url", "");
 // Disable "Recommended by Pocket" in Firefox Quantum.
 user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
 
-// Resolve DNS over HTTPS (DoH).
+// Resolve DNS over HTTPS (DoH).  Although this is a very useful
+// feature, I'm disabling it for now since I want to use a custom hosts
+// file for DNS-level filtering.
 // user_pref("network.trr.mode", 2);
 // user_pref("trr.bootstrapAddress", "1.1.1.1");
+
+// Don't cycle tabs (old behavior).
+user_pref("browser.ctrlTab.recentlyUsedOrder", false);
+
+// Don't warn on closing multiple tabs.
+user_pref("browser.tabs.warnOnClose", false);
+
+// Blank startup and newtab page.
+user_pref("browser.startup.homepage", "about:blank");
+user_pref("browser.newtabpage.enabled", false);
