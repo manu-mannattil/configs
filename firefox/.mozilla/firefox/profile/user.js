@@ -55,4 +55,5 @@ user_pref("browser.selfsupport.url", "");
 user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
 
 // Resolve DNS over HTTPS (DoH).
-user_pref("network.trr.mode", 2)
+user_pref("network.trr.mode", 2);
+user_pref("trr.bootstrapAddress", "1.1.1.1");
