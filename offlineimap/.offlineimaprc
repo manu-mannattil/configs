@@ -34,6 +34,7 @@ pythonfile = ~/.offlineimap.py
 [Account gmail]
 localrepository = gmail-local
 remoterepository = gmail-remote
+postsynchook = notmuch new
 
 [Repository gmail-local]
 localfolders = ~/mail/gmail
@@ -67,6 +68,7 @@ nametrans = lambda folder: {'INBOX': 'inbox',
 [Account yahoo]
 localrepository = yahoo-local
 remoterepository = yahoo-remote
+postsynchook = notmuch new
 
 [Repository yahoo-local]
 localfolders = ~/mail/yahoo
@@ -121,6 +123,7 @@ nametrans = lambda folder: {'Bulk Mail': 'spam',
 [Account syr]
 localrepository = syr-local
 remoterepository = syr-remote
+postsynchook = notmuch new
 
 [Repository syr-local]
 localfolders = ~/mail/syr

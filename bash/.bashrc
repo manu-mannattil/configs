@@ -220,6 +220,9 @@ alias dash='rlwrap -a -c dash'
 alias gnuplot='rlwrap -pgreen -a -c gnuplot'
 alias posh='rlwrap -a -c posh'
 
+# Use the 'basic' interface, do quick runs, and run only once.
+alias offlineimap='offlineimap -oq -u basic'
+
 # latexindent.pl with some customizations:
 #
 # option    description
