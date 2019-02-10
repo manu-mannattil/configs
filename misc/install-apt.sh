@@ -101,6 +101,7 @@ PACKAGES=(
   indent                            # C language source code formatting program
   indent-doc                        # Documentation for GNU indent
   manpages-posix                    # Manual pages about using POSIX system
+  shellcheck                        # lint tool for shell scripts
   sloccount                         # programs for counting physical source lines of code (SLOC)
 
   # Email {{{2
