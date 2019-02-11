@@ -10,11 +10,9 @@
 % Helvetica for sans serif.
 \RequirePackage{ifxetex,ifluatex}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  % \renewcommand{\rmdefault}{ptm}
-  % \renewcommand{\ttdefault}{cmtt}
-  % \RequirePackage[scaled=0.92]{helvet}
-  \usepackage{tgtermes}
-  \usepackage[scale=0.92]{tgheros}
+  \renewcommand{\rmdefault}{ptm}
+  \renewcommand{\ttdefault}{cmtt}
+  \RequirePackage[scaled=0.92]{helvet}
 \else % if luatex or xelatex
   \RequirePackage[no-math]{fontspec}
   \setmainfont{TeX Gyre Termes}
