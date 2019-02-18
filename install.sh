@@ -221,8 +221,8 @@ mkdir -vp "${HOME}/.cache/rlwrap"
 # -------------
 
 install "rtorrent/.rtorrent.rc"
-mkdir -vp "${HOME}/torrents/.rtorrent"
-mkdir -vp "${HOME}/torrents/.torrents"
+mkdir -vp "${HOME}/downloads/.rtorrent"
+mkdir -vp "${HOME}/downloads/.torrents"
 
 # XDG MIME and other miscellanea {{{1
 # -----------------------------------
