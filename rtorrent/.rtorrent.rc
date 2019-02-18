@@ -11,7 +11,7 @@ dht = auto
 dht_port = 6881
 
 # Set the default download directory. Defaults to "./".
-directory = ~/torrents/
+directory = ~/downloads/
 
 # Set the maximum global upload and and download rates (in KB).
 download_rate = 0
@@ -67,7 +67,7 @@ remove_untied = yes
 # downloads will be stored in this directory. Only one instance of
 # rtorrent can be used per session directory. An empty string will disable the
 # session directory.
-session = ~/torrents/.rtorrent/
+session = ~/downloads/.rtorrent/
 
 # After reading .torrent files, move them to another directory.
-system.method.set_key = event.download.inserted_new,move_tor,"execute=mv,-u,$d.get_loaded_file=,~/torrents/.torrents/"
+system.method.set_key = event.download.inserted_new,move_tor,"execute=mv,-u,$d.get_loaded_file=,~/downloads/.torrents/"
