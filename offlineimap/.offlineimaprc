@@ -104,8 +104,7 @@ type = Maildir
 nametrans = lambda folder: {'inbox': 'INBOX',
                             'drafts': 'Drafts',
                             'sent': 'Sent Items',
-                            'spam': 'Junk Email',
-                            'trash': 'Deleted Items'}.get(folder, folder)
+                            'spam': 'Junk Email'}.get(folder, folder)
 
 [Repository syr-remote]
 auth_mechanisms = LOGIN
@@ -117,9 +116,8 @@ remotepasseval = get_pass("email/syr")
 ssl = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 type = IMAP
-folderfilter = lambda folder: folder.split('/')[0] not in ('Archive', 'Calendar', 'Contacts', 'Conversation History', 'Journal', 'Notes', 'Outbox', 'Tasks')
+folderfilter = lambda folder: folder.split('/')[0] not in ('Archive', 'Calendar', 'Contacts', 'Conversation History', 'Deleted Items', 'Journal', 'Notes', 'Outbox', 'Tasks')
 nametrans = lambda folder: {'INBOX': 'inbox',
                             'Drafts': 'drafts',
                             'Sent Items': 'sent',
-                            'Junk Email': 'spam',
-                            'Deleted Items': 'trash'}.get(folder, folder)
+                            'Junk Email': 'spam'}.get(folder, folder)
