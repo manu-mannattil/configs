@@ -101,6 +101,7 @@ postsynchook = notmuch new
 [Repository syr-local]
 localfolders = ~/mail/syr
 type = Maildir
+folderfilter = lambda folder: folder.split('/')[0] not in ('trash')
 nametrans = lambda folder: {'inbox': 'INBOX',
                             'drafts': 'Drafts',
                             'sent': 'Sent Items',
