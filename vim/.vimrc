@@ -19,7 +19,12 @@ filetype plugin indent on
 set colorcolumn=+1
 
 " Options for insert-mode completion.
-set completeopt=longest,menuone,noinsert
+set completeopt=longest,menuone
+
+" Don't select any completions by default.
+if has("patch-7.4.755")
+  set completeopt+=noinsert
+endif
 
 " Highlight/underline the current line.  (May make things slow.)
 set cursorline
