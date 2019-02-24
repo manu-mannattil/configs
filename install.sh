@@ -10,14 +10,14 @@
 #
 # DESCRIPTION
 #
-#   install.sh is a simple shell script to copy/symlink my configuration files
-#   to $HOME.  It makes sense to symlink only those configuration files that
-#   would not get overwritten or edited by programs.  Others should be copied
-#   instead.
+#   install.sh is a simple shell script to copy/symlink my configuration
+#   files to $HOME.  It makes sense to symlink only those configuration
+#   files that would not get overwritten or edited by programs.  Others
+#   should be copied instead.
 #
-#   WARNING: This script will do everything to get the new files in the right
-#   places -- including deleting and overwriting files.  Backups of existing
-#   files will NOT be kept.  You have been warned!
+#   WARNING: This script will do everything to get the new files in the
+#   right places -- including deleting and overwriting files.  Backups
+#   of existing files will NOT be kept.  You have been warned!
 #
 # DEPENDENCIES
 #
