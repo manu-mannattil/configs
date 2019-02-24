@@ -223,6 +223,9 @@ alias posh='rlwrap -a -c posh'
 # Use the 'basic' interface, do quick runs, and run only once.
 alias offlineimap='offlineimap -oq -u basic'
 
+# Don't run vi.
+alias vi=vim
+
 # latexindent.pl with some customizations:
 #
 # option    description
@@ -269,7 +272,7 @@ alias w3m='w3m -T text/html'
 alias wdiff='wdiff --start-delete="$COLOR_BRIGHT_RED" --end-delete="$COLOR_RESET" --start-insert="$COLOR_BRIGHT_GREEN" --end-insert="$COLOR_RESET"'
 
 # What is my external IP?
-alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
+alias myip='curl -qsL http://icanhazip.com'
 
 # less configuration {{{1
 # -----------------------
