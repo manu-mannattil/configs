@@ -584,6 +584,9 @@ let g:vimtex_view_general_viewer = 'qpdfview'
 let g:vimtex_view_general_options = '--instance LaTeX --unique @pdf\#src:@tex:@line:@col'
 let g:vimtex_view_general_options_latexmk = '--instance LaTeX --unique'
 
+" Don't open quickfix on mere warnings.
+let g:vimtex_quickfix_open_on_warning = 0
+
 " Others {{{2
 " -----------
 
