@@ -1,0 +1,11 @@
+/* Item body/description */
+div.content { 
+    margin: 2em 2em auto;
+    width: 32em;
+    color: #111;
+}
+
+/* Remove "subscribe to newsletter" boxes from The Economist */
+div.newsletter-form, div.newsletter-form--inline {
+    display: none;
+}

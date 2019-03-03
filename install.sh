@@ -89,8 +89,9 @@ install                                                                      \
     "ipython/.ipython/profile_default/ipython_config.py"                     \
     "latexindent/.latexindent.yaml"                                          \
     "latexmk/.latexmkrc"                                                     \
-    "less/.lessfilter"                                                       \
     "lensfun/.local/share/lensfun"                                           \
+    "less/.lessfilter"                                                       \
+    "liferea/.config/liferea/liferea.css"                                    \
     "matplotlib/.config/matplotlib"                                          \
     "mpv/.config/mpv/mpv.conf" "mpv/.config/mpv/input.conf"                  \
     "notmuch/.notmuch-config"                                                \
