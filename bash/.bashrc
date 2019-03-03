@@ -206,9 +206,6 @@ alias fzopen='open $(fzf)'
 # Use the colordiff wrapper instead of calling diff directly.
 alias diff='colordiff'
 
-# Recursive, non-interative, verbose dtrx.
-alias dtrx='dtrx -v -n --one here'
-
 # Ask duff to recurse into directories.
 alias duff='duff -r'
 
