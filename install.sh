@@ -148,8 +148,6 @@ if [[ -f "${HOME}/.mozilla/firefox/profiles.ini" ]]
 then
     while IFS= read -r profile
     do
-        cp -vf "${REPO}/firefox/.mozilla/firefox/profile/search.json.mozlz4" \
-               "${HOME}/.mozilla/firefox/${profile}"
         ln -sf "${REPO}/firefox/.mozilla/firefox/profile/user.js"            \
                "${HOME}/.mozilla/firefox/${profile}"
     done < <(sed -n 's/^Path=//p' "${HOME}/.mozilla/firefox/profiles.ini")
