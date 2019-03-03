@@ -5,6 +5,18 @@ div.content {
     color: #111;
 }
 
+h1 {
+    font-size: 1.3em;
+}
+
+h2 {
+    font-size: 1.2em;
+}
+
+h3 {
+    font-size: 1.1em;
+}
+
 /* Remove "subscribe to newsletter" boxes from The Economist */
 div.newsletter-form, div.newsletter-form--inline {
     display: none;
