@@ -9,6 +9,15 @@ syntax enable
 " Enable the filetype plugin.
 filetype plugin indent on
 
+if !has('packages')
+  " Use pathogen to load plugins if I'm using an old version Vim.
+  execute pathogen#infect('pack/bundle/start/{}')
+  execute pathogen#infect('pack/opt-git/start/{}')
+  execute pathogen#infect('pack/opt/start/{}')
+else
+  command! -bar Helptags :call pathogen#helptags()
+endif
+
 " Settings {{{1
 " -------------
 
@@ -439,7 +448,9 @@ function! s:helptags() abort
     endif
   endfor
 endfunction
-command! -bar Helptags call s:helptags()
+
+" For now, use the version supplied by vim-pathogen.
+" command! -bar Helptags call s:helptags()
 
 " Keybindings {{{1
 " ----------------
