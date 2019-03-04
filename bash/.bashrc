@@ -338,6 +338,15 @@ _plmgr() {
 }
 complete -F _plmgr plmgr
 
+# dtrx {{{2
+# ---------
+
+_dtrx() {
+    COMPREPLY=( $(compgen -A file -X '!(*.tar.bz2|*.tar.gz|*.bz2|*.rar|*.gz|*.tar|*.tbz2|*.tgz|*.zip|*.Z|*.7z|*.exe)' -- "${COMP_WORDS[COMP_CWORD]}") )
+}
+
+complete -F _dtrx dtrx
+
 # ls {{{2
 # -------
 
