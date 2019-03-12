@@ -74,46 +74,46 @@ install() {
 # Files to symlink {{{1
 # ---------------------
 
-install                                                                      \
-    "X/.XCompose" "X/.xprofile" "X/.Xresources"                              \
-    "aria2/.aria2"                                                           \
-    "bash/.bashrc" "bash/.bash_profile"                                      \
-    "bibtool/.bibtoolrsc"                                                    \
-    "curl/.curlrc"                                                           \
-    "detox/.detoxrc" "detox/.config/detox"                                   \
-    "dircolors/.dir_colors"                                                  \
-    "emacs/.emacs"                                                           \
-    "fontconfig/.config/fontconfig"                                          \
-    "git/.gitconfig" "git/.gitattributes" "git/.git-pass"                    \
-    "ipe/.ipe/ipelets" "ipe/.ipe/styles"                                     \
-    "ipython/.ipython/profile_default/ipython_config.py"                     \
-    "latexindent/.latexindent.yaml"                                          \
-    "latexmk/.latexmkrc"                                                     \
-    "lensfun/.local/share/lensfun"                                           \
-    "less/.lessfilter"                                                       \
-    "liferea/.config/liferea/liferea.css"                                    \
-    "matplotlib/.config/matplotlib"                                          \
-    "mpv/.config/mpv/mpv.conf" "mpv/.config/mpv/input.conf"                  \
-    "notmuch/.notmuch-config"                                                \
-    "offlineimap/.offlineimaprc" "offlineimap/.offlineimap.py"               \
-    "parallel/.parallel/config"                                              \
-    "python/.pythonrc.py"                                                    \
-    "tex/.texmf"                                                             \
-    "tmux/.tmux" "tmux/.tmux.conf"                                           \
-    "urxvt/.urxvt/ext" "urxvt/.urxvt/colors"                                 \
-    "wget/.wgetrc"                                                           \
-    "xdg/.config/user-dirs.dirs"                                             \
+install                                                           \
+    "X/.XCompose" "X/.xprofile" "X/.Xresources"                   \
+    "aria2/.aria2"                                                \
+    "bash/.bashrc" "bash/.bash_profile"                           \
+    "bibtool/.bibtoolrsc"                                         \
+    "curl/.curlrc"                                                \
+    "detox/.detoxrc" "detox/.config/detox"                        \
+    "dircolors/.dir_colors"                                       \
+    "emacs/.emacs"                                                \
+    "fontconfig/.config/fontconfig"                               \
+    "git/.gitconfig" "git/.gitattributes" "git/.git-pass"         \
+    "ipe/.ipe/ipelets" "ipe/.ipe/styles"                          \
+    "ipython/.ipython/profile_default/ipython_config.py"          \
+    "latexindent/.latexindent.yaml"                               \
+    "latexmk/.latexmkrc"                                          \
+    "lensfun/.local/share/lensfun"                                \
+    "less/.lessfilter"                                            \
+    "liferea/.config/liferea/liferea.css"                         \
+    "matplotlib/.config/matplotlib"                               \
+    "mpv/.config/mpv/mpv.conf" "mpv/.config/mpv/input.conf"       \
+    "notmuch/.notmuch-config"                                     \
+    "offlineimap/.offlineimaprc" "offlineimap/.offlineimap.py"    \
+    "parallel/.parallel/config"                                   \
+    "python/.pythonrc.py"                                         \
+    "tex/.texmf"                                                  \
+    "tmux/.tmux" "tmux/.tmux.conf"                                \
+    "urxvt/.urxvt/ext" "urxvt/.urxvt/colors"                      \
+    "wget/.wgetrc"                                                \
+    "xdg/.config/user-dirs.dirs"                                  \
     "youtube-dl/.config/youtube-dl.conf"
 
 # Files to copy over {{{1
 # -----------------------
 
-install --copy                                                               \
-    "htop/.config/htop"                                                      \
-    "mathematica/.Mathematica/FrontEnd/init.m"                               \
-    "qpdfview/.config/qpdfview/qpdfview.conf"                                \
-    "xfce/.local/share/xfce4/helpers/terminal.desktop"                       \
-    "xfce/.config/xfce4/helpers.rc"                                          \
+install --copy                                                    \
+    "htop/.config/htop"                                           \
+    "mathematica/.Mathematica/FrontEnd/init.m"                    \
+    "qpdfview/.config/qpdfview/qpdfview.conf"                     \
+    "xfce/.local/share/xfce4/helpers/terminal.desktop"            \
+    "xfce/.config/xfce4/helpers.rc"                               \
     "xnview/.config/xnviewmp/xnview.ini"
 
 # cvsignore {{{1
@@ -149,7 +149,7 @@ if [[ -f "${HOME}/.mozilla/firefox/profiles.ini" ]]
 then
     while IFS= read -r profile
     do
-        ln -sf "${REPO}/firefox/.mozilla/firefox/profile/user.js"            \
+        ln -sf "${REPO}/firefox/.mozilla/firefox/profile/user.js" \
                "${HOME}/.mozilla/firefox/${profile}"
     done < <(sed -n 's/^Path=//p' "${HOME}/.mozilla/firefox/profiles.ini")
 fi
@@ -189,7 +189,12 @@ mkdir -vp "${HOME}/.cache/mutt/headers"
 
 # Execute shell scripts by clicking.
 # https://bbs.archlinux.org/viewtopic.php?id=194464
-xfconf-query --channel thunar --property /misc-exec-shell-scripts-by-default --create --type bool --set true
+command -v xfconf-query &>/dev/null && xfconf-query               \
+    --channel thunar                                              \
+    --create                                                      \
+    --property /misc-exec-shell-scripts-by-default                \
+    --type bool                                                   \
+    --set true
 
 # Vim {{{1
 # --------
@@ -202,8 +207,8 @@ mkdir -vp "${HOME}/.cache/vim/undo"
 
 # Run :mkspell on spell files.
 info "compiling vim spell files"
-find "${HOME}/.vim/spell" -type f ! -name '*.spl'                            \
-     -exec vim -e -s -u NONE -c ':mkspell! %' -c ':qall!' {}                 \;
+find "${HOME}/.vim/spell" -type f ! -name '*.spl'                 \
+     -exec vim -e -s -u NONE -c ':mkspell! %' -c ':qall!' {}      \;
 
 # Install plugins.
 "${HOME}/.vim/install-plugins"
@@ -226,7 +231,7 @@ mkdir -vp "${HOME}/downloads/.torrents"
 # XDG MIME and other miscellanea {{{1
 # -----------------------------------
 
-install "xdg/.local/share/applications"/*                                    \
+install "xdg/.local/share/applications"/*                         \
         "xdg/.local/share/mime/packages"/*
 
 update-mime-database -V "${HOME}/.local/share/mime"
