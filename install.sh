@@ -85,7 +85,6 @@ install                                                           \
     "emacs/.emacs"                                                \
     "fontconfig/.config/fontconfig"                               \
     "git/.gitconfig" "git/.gitattributes" "git/.git-pass"         \
-    "ipe/.ipe/ipelets" "ipe/.ipe/styles"                          \
     "ipython/.ipython/profile_default/ipython_config.py"          \
     "latexindent/.latexindent.yaml"                               \
     "latexmk/.latexmkrc"                                          \
