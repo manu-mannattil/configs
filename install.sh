@@ -33,7 +33,7 @@
 #
 # DEPENDENCIES
 #
-#   dirname(1), git(1), readlink(1), etc.
+#   GNU coreutils, dirname(1), git(1), readlink(1), etc.
 #
 
 set -e
@@ -86,7 +86,7 @@ install() {
 # The basic idea of targets is this -- each target gets
 # a function associated with it.  It must have a name of the
 # form __install_<target>().  The target function is called
-# to install the configuration files for the target.
+# to install the configuration files for that target.
 # Targets can be grouped into groups for convenience.
 #
 # Each target function must have an associated comment line
@@ -166,7 +166,7 @@ __install_firefox() {
     then
         while IFS= read -r profile
         do
-            ln -sf "${REPO}/firefox/.mozilla/firefox/profile/user.js" \
+            ln -v -sf "${REPO}/firefox/.mozilla/firefox/profile/user.js" \
                 "${HOME}/.mozilla/firefox/${profile}"
         done < <(sed -n 's/^Path=//p' "${HOME}/.mozilla/firefox/profiles.ini")
     fi
@@ -328,7 +328,11 @@ __install_vim() {
     mkdir -vp "${HOME}/.cache/vim/backup"
     mkdir -vp "${HOME}/.cache/vim/undo"
 
-    # Run :mkspell on spell files.
+    # Create nonstandard spell files if they don't already exist.  If
+    # this is not done, Vim will warn each time spellcheck is turned on.
+    [[ -f "${HOME}/.vim/spell/in" ]] || touch "${HOME}/.vim/spell/in"
+
+    # Now, run :mkspell on spell files.
     info "compiling vim spell files"
     find "${HOME}/.vim/spell" -type f ! -name '*.spl' \
         -exec vim -e -s -u NONE -c ':mkspell! %' -c ':qall!' {} \;
@@ -399,7 +403,7 @@ __parse_group() {
         # available groups.
         cli)
             # :group: cli - set of basic CLI programs
-            # Useful especially when install
+            # Useful especially when installing
             # on a headless server.
             targets+=(
                 bash
@@ -464,8 +468,8 @@ done
 
 # Sort array elements uniquely.
 targets=( $(IFS=$'\n'; sort <<<"${targets[*]}" | uniq) )
+info "${#targets[@]} target(s)"
 
-info "${#targets[@]} targets"
 for t in "${targets[@]}"
 do
     "__install_${t,,}"
