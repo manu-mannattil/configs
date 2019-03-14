@@ -305,6 +305,11 @@ __install_rtorrent() {
     mkdir -vp "${HOME}/downloads/.torrents"
 }
 
+# :target: terminfo - terminfo files for less-known terminals
+__install_terminfo() {
+    install "terminfo/.terminfo"
+}
+
 # :target: tex - LaTeX configuration (local texmf directory)
 __install_tex() {
     install "tex/.texmf"
@@ -350,6 +355,7 @@ __install_wget() {
 # :target: x - X11 configuration
 __install_x() {
     install "X/.XCompose" "X/.xprofile" "X/.Xresources"
+    xrdb -merge "${HOME}/.Xresources"
 }
 
 # :target: xdg - common configuration used by all X desktop environments
@@ -419,6 +425,7 @@ __parse_group() {
                 parallel
                 python
                 readline
+                terminfo
                 tmux
                 vim
                 wget
