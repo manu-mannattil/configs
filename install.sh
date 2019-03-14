@@ -40,7 +40,7 @@ set -e
 set -o pipefail
 
 REPO=$(dirname "$(readlink -f -- "$0")")
-cd "$REPO"
+pushd "$REPO"
 
 # Print an informational message.
 info() {
@@ -477,14 +477,14 @@ done
 targets=( $(IFS=$'\n'; sort <<<"${targets[*]}" | uniq) )
 info "${#targets[@]} target(s)"
 
+# Install targets.
 for t in "${targets[@]}"
 do
     "__install_${t,,}"
 done
 
 # End of script.
-cd "$OLDPWD"
-
+popd
 info "finished setting up configuration files"
 
 # vim: ft=sh fdm=marker et sts=4 sw=4
