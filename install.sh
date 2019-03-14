@@ -6,7 +6,15 @@
 #
 # SYNOPSIS
 #
-#   install.sh
+#   install.sh [--group <group>] [<target>...]
+#   install.sh --list
+#   install.sh --list-groups
+#
+# OPTIONS
+#
+#     --group <group>       install from target group
+#     --list                list all possible targets
+#     --list-groups         list all possible groups
 #
 # DESCRIPTION
 #
@@ -14,6 +22,10 @@
 #   files to $HOME.  It makes sense to symlink only those configuration
 #   files that would not get overwritten or edited by programs.  Others
 #   should be copied instead.
+#
+#   install.sh can take one or more targets as arguments.  In that case,
+#   the configuration files for only those targets will be installed.
+#   By default all targets will be installed.
 #
 #   WARNING: This script will do everything to get the new files in the
 #   right places -- including deleting and overwriting files.  Backups
@@ -24,13 +36,13 @@
 #   dirname(1), git(1), readlink(1), etc.
 #
 
-set -eu
+set -e
 set -o pipefail
 
 REPO=$(dirname "$(readlink -f -- "$0")")
 cd "$REPO"
 
-# Function for printing information messages.
+# Print an informational message.
 info() {
     echo >&2 "${0##*/}: $@"
 }
@@ -71,172 +83,393 @@ install() {
     done
 }
 
-# Files to symlink {{{1
-# ---------------------
+# The basic idea of targets is this -- each target gets
+# a function associated with it.  It must have a name of the
+# form __install_<target>().  The target function is called
+# to install the configuration files for the target.
+# Targets can be grouped into groups for convenience.
+#
+# Each target function must have an associated comment line
+# beginning with ":target:" so that it can be grepped for
+# displaying the list of possible targets.
 
-install                                                           \
-    "X/.XCompose" "X/.xprofile" "X/.Xresources"                   \
-    "aria2/.aria2"                                                \
-    "bash/.bashrc" "bash/.bash_profile"                           \
-    "bibtool/.bibtoolrsc"                                         \
-    "curl/.curlrc"                                                \
-    "detox/.detoxrc" "detox/.config/detox"                        \
-    "dircolors/.dir_colors"                                       \
-    "emacs/.emacs"                                                \
-    "fontconfig/.config/fontconfig"                               \
-    "git/.gitconfig" "git/.gitattributes" "git/.git-pass"         \
-    "ipython/.ipython/profile_default/ipython_config.py"          \
-    "latexindent/.latexindent.yaml"                               \
-    "latexmk/.latexmkrc"                                          \
-    "lensfun/.local/share/lensfun"                                \
-    "less/.lessfilter"                                            \
-    "liferea/.config/liferea/liferea.css"                         \
-    "matplotlib/.config/matplotlib"                               \
-    "mpv/.config/mpv/mpv.conf" "mpv/.config/mpv/input.conf"       \
-    "notmuch/.notmuch-config"                                     \
-    "offlineimap/.offlineimaprc" "offlineimap/.offlineimap.py"    \
-    "parallel/.parallel/config"                                   \
-    "python/.pythonrc.py"                                         \
-    "tex/.texmf"                                                  \
-    "tmux/.tmux" "tmux/.tmux.conf"                                \
-    "urxvt/.urxvt/ext" "urxvt/.urxvt/colors"                      \
-    "wget/.wgetrc"                                                \
-    "xdg/.config/user-dirs.dirs"                                  \
-    "youtube-dl/.config/youtube-dl.conf"
-
-# Files to copy over {{{1
-# -----------------------
-
-install --copy                                                    \
-    "htop/.config/htop"                                           \
-    "mathematica/.Mathematica/FrontEnd/init.m"                    \
-    "qpdfview/.config/qpdfview/qpdfview.conf"                     \
-    "xfce/.local/share/xfce4/helpers/terminal.desktop"            \
-    "xfce/.config/xfce4/helpers.rc"                               \
-    "xnview/.config/xnviewmp/xnview.ini"
-
-# cvsignore {{{1
-# --------------
-
-# Strip comments and empty lines when copying.
-grep -v '\(^$\|^#\)' "${REPO}/cvs/.cvs_ignore" | sort | uniq >"${HOME}/.cvsignore"
-
-# darktable {{{1
-# --------------
-
-install "darktable/.config/darktable/darktable.css"
-install --copy "darktable/.config/darktable/darktablerc"
-
-# DeaDBeeF {{{1
-# -------------
-
-# Preserve tabs and playlists.
-if [[ -f "${HOME}/.config/deadbeef/config" ]]
-then
-    grep "^playlist.tab" "${HOME}/.config/deadbeef/config" >"${HOME}/.config/deadbeef/tabs"
-    install --copy "deadbeef/.config/deadbeef/config"
-    cat "${HOME}/.config/deadbeef/tabs" >>"${HOME}/.config/deadbeef/config"
-else
-    install --copy "deadbeef/.config/deadbeef"
-fi
-
-# Firefox {{{1
+# Targets {{{1
 # ------------
 
-# Symlink user.js in all Firefox profiles.
-if [[ -f "${HOME}/.mozilla/firefox/profiles.ini" ]]
-then
-    while IFS= read -r profile
-    do
-        ln -sf "${REPO}/firefox/.mozilla/firefox/profile/user.js" \
-               "${HOME}/.mozilla/firefox/${profile}"
-    done < <(sed -n 's/^Path=//p' "${HOME}/.mozilla/firefox/profiles.ini")
-fi
+# :target: aria2 - aria2 download accelerator configuration
+__install_aria2() {
+    install "aria2/.aria2"
+}
 
-# Disable Flash cache.
-rm -v -rf "${HOME}/.macromedia" "${HOME}/.adobe"
-ln -v -s /dev/null "${HOME}/.macromedia"
-ln -v -s /dev/null "${HOME}/.adobe"
+# :target: bash - GNU Bash shell configuration
+__install_bash() {
+    install "bash/.bashrc" "bash/.bash_profile"
 
-# GnuPG {{{1
-# ----------
+    # No motd (message of the day) login banner.
+    touch "${HOME}/.hushlogin"
+}
 
-install "gnupg/.gnupg/gpg.conf" "gnupg/.gnupg/gpg-agent.conf"
+# :target: bibtool - bibtool configuration
+__install_bibtool() {
+    install "bibtool/.bibtoolrsc"
+}
 
-# Set the right permissions.
-chmod -v 700 "${HOME}/.gnupg"
-chmod -v 600 "${HOME}/.gnupg/gpg.conf" "${HOME}/.gnupg/gpg-agent.conf"
+# :target: curl - cURL cli configuration
+__install_curl() {
+    install "curl/.curlrc"
+}
 
-# Msmtp {{{1
-# -----------
+# :target: cvs - cvs configuration
+__install_cvs() {
+    # Strip comments and empty lines when copying.
+    grep -v '\(^$\|^#\)' "${REPO}/cvs/.cvs_ignore" | sort | uniq >"${HOME}/.cvsignore"
+}
 
-# msmtp requires ~/.msmtprc to be rw only by the user.
-chmod -v 600 "${REPO}/msmtp/.msmtprc"
-install "msmtp/.msmtprc"
+# :target: darktable - darktable configuration
+__install_darktable() {
+    install "darktable/.config/darktable/darktable.css"
+    install --copy "darktable/.config/darktable/darktablerc"
+}
 
-# Mutt {{{1
-# ---------
+# :target: deadbeef - DeaDBeeF music player configuration
+__install_deadbeef() {
+    # Preserve tabs and playlists.
+    if [[ -f "${HOME}/.config/deadbeef/config" ]]
+    then
+        grep "^playlist.tab" "${HOME}/.config/deadbeef/config" >"${HOME}/.config/deadbeef/tabs"
+        install --copy "deadbeef/.config/deadbeef/config"
+        cat "${HOME}/.config/deadbeef/tabs" >>"${HOME}/.config/deadbeef/config"
+    else
+        install --copy "deadbeef/.config/deadbeef"
+    fi
+}
 
-install "mutt/.mutt" "mutt/.mailcap" "mutt/.urlview"
+# :target: detox - detox configuration
+__install_detox() {
+    install "detox/.detoxrc" "detox/.config/detox"
+}
 
-mkdir -vp "${HOME}/.cache/mutt/attach"
-mkdir -vp "${HOME}/.cache/mutt/notmuch"
-mkdir -vp "${HOME}/.cache/mutt/headers"
+# :target: dircolors - dircolors configuration
+__install_dircolors() {
+    install "dircolors/.dir_colors"
+}
 
-# Thunar {{{1
-# -----------
+# :target: emacs - minimal Emacs configuration
+__install_emacs() {
+    install "emacs/.emacs"
+}
 
-# Execute shell scripts by clicking.
-# https://bbs.archlinux.org/viewtopic.php?id=194464
-command -v xfconf-query &>/dev/null && xfconf-query               \
-    --channel thunar                                              \
-    --create                                                      \
-    --property /misc-exec-shell-scripts-by-default                \
-    --type bool                                                   \
-    --set true
+# :target: firefox - Firefox configuration
+__install_firefox() {
+    # Symlink user.js in all Firefox profiles.
+    if [[ -f "${HOME}/.mozilla/firefox/profiles.ini" ]]
+    then
+        while IFS= read -r profile
+        do
+            ln -sf "${REPO}/firefox/.mozilla/firefox/profile/user.js" \
+                "${HOME}/.mozilla/firefox/${profile}"
+        done < <(sed -n 's/^Path=//p' "${HOME}/.mozilla/firefox/profiles.ini")
+    fi
 
-# Vim {{{1
-# --------
+    # Disable Flash cache.
+    rm -v -rf "${HOME}/.macromedia" "${HOME}/.adobe"
+    ln -v -s /dev/null "${HOME}/.macromedia"
+    ln -v -s /dev/null "${HOME}/.adobe"
+}
 
-install "vim/.vimrc" "vim/.vim" "vim/.gvimrc"
+# :target: fontconfig - fontconfig configuration
+__install_fontconfig() {
+    install "fontconfig/.config/fontconfig"
+}
 
-mkdir -vp "${HOME}/.cache/vim/swap"
-mkdir -vp "${HOME}/.cache/vim/backup"
-mkdir -vp "${HOME}/.cache/vim/undo"
+# :target: gpg - GnuPG configuration
+__install_gpg() {
+    install "gnupg/.gnupg/gpg.conf" "gnupg/.gnupg/gpg-agent.conf"
 
-# Run :mkspell on spell files.
-info "compiling vim spell files"
-find "${HOME}/.vim/spell" -type f ! -name '*.spl'                 \
-     -exec vim -e -s -u NONE -c ':mkspell! %' -c ':qall!' {}      \;
+    # Set the right permissions.
+    chmod -v 700 "${HOME}/.gnupg"
+    chmod -v 600 "${HOME}/.gnupg/gpg.conf" "${HOME}/.gnupg/gpg-agent.conf"
+}
 
-# Install plugins.
-"${HOME}/.vim/install-plugins"
+# :target: git - git configuration and helpers
+__install_git() {
+    install "git/.gitconfig" "git/.gitattributes" "git/.git-pass"
+}
 
-# Readline {{{1
-# --------------
+# :target: htop - htop configuration
+__install_htop() {
+    install --copy "htop/.config/htop"
+}
 
-install "readline/.inputrc"
+# :target: ipython - iPython configuration
+__install_ipython() {
+    install "ipython/.ipython/profile_default/ipython_config.py"
+}
 
-# Cache directory for rlwrap command history.
-mkdir -vp "${HOME}/.cache/rlwrap"
+# :target: latexindent - latexindent configuration
+__install_latexindent() {
+    install "latexindent/.latexindent.yaml"
+}
 
-# rtorrent {{{1
-# -------------
+# :target: latexmk - latexmk configuration
+__install_latexmk() {
+    install "latexmk/.latexmkrc"
+}
 
-install "rtorrent/.rtorrent.rc"
-mkdir -vp "${HOME}/downloads/.rtorrent"
-mkdir -vp "${HOME}/downloads/.torrents"
+# :target: lensfun - Lensfun misc lens files
+__install_lensfun() {
+    install "lensfun/.local/share/lensfun"
+}
 
-# XDG MIME and other miscellanea {{{1
-# -----------------------------------
+# :target: less - lessfilter for less
+__install_less() {
+    install "less/.lessfilter"
+}
 
-install "xdg/.local/share/applications"/*                         \
-        "xdg/.local/share/mime/packages"/*
+# :target: liferea - Liferea configuration
+__install_liferea() {
+    install "liferea/.config/liferea/liferea.css"
+}
 
-update-mime-database -V "${HOME}/.local/share/mime"
+# :target: mathematica - Wolfram Mathematica configuration
+__install_mathematica() {
+    install --copy "mathematica/.Mathematica/FrontEnd/init.m"
+}
 
-# No motd (message of the day) login banner.
-touch "${HOME}/.hushlogin"
+# :target: matplotlib - matplotlib configuration
+__install_matplotlib() {
+    install "matplotlib/.config/matplotlib"
+}
+
+# :target: mpv - mpv media player configuration
+__install_mpv() {
+    install "mpv/.config/mpv/mpv.conf" "mpv/.config/mpv/input.conf"
+}
+
+# :target: msmtp - msmtp configuration
+__install_msmtp() {
+    # msmtp requires ~/.msmtprc to be rw only by the user.
+    chmod -v 600 "${REPO}/msmtp/.msmtprc"
+    install "msmtp/.msmtprc"
+}
+
+# :target: mutt - Mutt configuration and profiles
+__install_mutt() {
+    install "mutt/.mutt" "mutt/.mailcap" "mutt/.urlview"
+
+    # Create cache directories.
+    mkdir -vp "${HOME}/.cache/mutt/attach"
+    mkdir -vp "${HOME}/.cache/mutt/notmuch"
+    mkdir -vp "${HOME}/.cache/mutt/headers"
+}
+
+# :target: notmuch - notmuch mail indexer configuration
+__install_notmuch() {
+    install "notmuch/.notmuch-config"
+}
+
+# :target: offlineimap - OfflineIMAP configuration
+__install_offlineimap() {
+    install "offlineimap/.offlineimaprc" "offlineimap/.offlineimap.py"
+}
+
+# :target: parallel - GNU parallel configuration
+__install_parallel() {
+    install "parallel/.parallel/config"
+}
+
+# :target: python - CPython REPL configuration
+__install_python() {
+    install "python/.pythonrc.py"
+}
+
+# :target: qpdfview - qpdfview configuration
+__install_qpdfview() {
+    install --copy "qpdfview/.config/qpdfview/qpdfview.conf"
+}
+
+# :target: readline - GNU Readline library configuration
+__install_readline() {
+    install "readline/.inputrc"
+
+    # Cache directory for rlwrap command history.
+    mkdir -vp "${HOME}/.cache/rlwrap"
+}
+
+# :target: rtorrent - rtorrent torrent client configuration
+__install_rtorrent() {
+    install "rtorrent/.rtorrent.rc"
+
+    # Directories for storing state and caching torrents.
+    mkdir -vp "${HOME}/downloads/.rtorrent"
+    mkdir -vp "${HOME}/downloads/.torrents"
+}
+
+# :target: tex - LaTeX configuration (local texmf directory)
+__install_tex() {
+    install "tex/.texmf"
+}
+
+# :target: tmux - tmux configuration
+__install_tmux() {
+    install "tmux/.tmux" "tmux/.tmux.conf"
+}
+
+# :target: urxvt - rxvt-unicode configuration
+__install_urxvt() {
+    install "urxvt/.urxvt/ext" "urxvt/.urxvt/colors"
+}
+
+# :target: vim - Vim configuration and plugins
+__install_vim() {
+    install "vim/.vimrc" "vim/.vim" "vim/.gvimrc"
+
+    mkdir -vp "${HOME}/.cache/vim/swap"
+    mkdir -vp "${HOME}/.cache/vim/backup"
+    mkdir -vp "${HOME}/.cache/vim/undo"
+
+    # Run :mkspell on spell files.
+    info "compiling vim spell files"
+    find "${HOME}/.vim/spell" -type f ! -name '*.spl' \
+        -exec vim -e -s -u NONE -c ':mkspell! %' -c ':qall!' {} \;
+
+    # Install plugins.
+    "${HOME}/.vim/install-plugins"
+}
+
+# :target: wget - wget configuration
+__install_wget() {
+    install "wget/.wgetrc"
+}
+
+# :target: x - X11 configuration
+__install_x() {
+    install "X/.XCompose" "X/.xprofile" "X/.Xresources"
+}
+
+# :target: xdg - common configuration used by all X desktop environments
+__install_xdg() {
+    install "xdg/.config/user-dirs.dirs" \
+            "xdg/.local/share/applications"/* \
+            "xdg/.local/share/mime/packages"/*
+
+    update-mime-database -V "${HOME}/.local/share/mime"
+}
+
+# :target: xfce - configuration files for the XFCE desktop environment
+__install_xfce() {
+    install --copy \
+        "xfce/.local/share/xfce4/helpers/terminal.desktop" \
+        "xfce/.config/xfce4/helpers.rc"
+
+    # Execute shell scripts in Thunar by clicking.
+    # https://bbs.archlinux.org/viewtopic.php?id=194464
+    command -v xfconf-query &>/dev/null && xfconf-query \
+        --channel thunar \
+        --create \
+        --property /misc-exec-shell-scripts-by-default \
+        --type bool \
+        --set true
+}
+
+# :target: xnview - XnView configuration
+__install_xnview() {
+    install --copy "xnview/.config/xnviewmp/xnview.ini"
+}
+
+# :target: youtube-dl - youtube-dl configuration
+__install_youtube-dl() {
+    install "youtube-dl/.config/youtube-dl.conf"
+}
+
+# }}}
+
+__fetch_possible_targets() {
+    grep -o '^__install_[^()]*()' -- "$0" \
+        | sed 's/^__install_//;s/()//' \
+        | sort
+}
+
+targets=()
+
+__parse_group() {
+    case "$1" in
+        # The first line of every group case must begin with
+        # ":group:" so that it can be grepped to list the
+        # available groups.
+        cli)
+            # :group: cli - set of basic CLI programs
+            # Useful especially when install
+            # on a headless server.
+            targets+=(
+                bash
+                curl
+                dircolors
+                emacs
+                git
+                gpg
+                htop
+                ipython
+                less
+                parallel
+                python
+                readline
+                tmux
+                urxvt
+                vim
+                wget
+            ) ;;
+        default)
+            # :group: default - install all targets
+            targets+=( $(__fetch_possible_targets) ) ;;
+        "")  info "group name required"; exit 1 ;;
+        *)   info "unknown group $1"; exit 1 ;;
+    esac
+}
+
+__parse_target() {
+    if type -t "__install_${1,,}" &>/dev/null
+    then
+        targets+=( "$1" )
+    else
+        info "unknown target $1"; exit 1
+    fi
+}
+
+[[ "$*" ]] || set -- "--group" "default"
+
+while [[ "$1" ]]
+do
+    case "$1" in
+        -l|--list)
+            grep -o '^\s*#\+\s*:target:\s*.*$' -- "$0" \
+                | sed 's/^\s*#\+\s*:target:\s*//' \
+                | sort
+            exit 0 ;;
+        --list-groups)
+            grep -o '^\s*#\+\s*:group:\s*.*$' -- "$0" \
+                | sed 's/^\s*#\+\s*:group:\s*//' \
+                | sort
+            exit 0 ;;
+        -g|--group)
+            __parse_group "$2"; shift ;;
+        -*)
+            info "unknown option $1"
+            exit 1 ;;
+        *)
+            __parse_target "$1" ;;
+    esac
+    shift
+done
+
+# Sort array elements uniquely.
+targets=( $(IFS=$'\n'; sort <<<"${targets[*]}" | uniq) )
+
+info "${#targets[@]} targets"
+for t in "${targets[@]}"
+do
+    "__install_${t,,}"
+done
 
 # End of script.
 cd "$OLDPWD"
