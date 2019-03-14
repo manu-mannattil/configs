@@ -330,6 +330,7 @@ __install_vim() {
 
     # Create nonstandard spell files if they don't already exist.  If
     # this is not done, Vim will warn each time spellcheck is turned on.
+    mkdir -p "${HOME}/.vim/spell"
     [[ -f "${HOME}/.vim/spell/in" ]] || touch "${HOME}/.vim/spell/in"
 
     # Now, run :mkspell on spell files.
@@ -419,7 +420,6 @@ __parse_group() {
                 python
                 readline
                 tmux
-                urxvt
                 vim
                 wget
             ) ;;
