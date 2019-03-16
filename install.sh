@@ -40,7 +40,7 @@ set -e
 set -o pipefail
 
 REPO=$(dirname "$(readlink -f -- "$0")")
-pushd "$REPO"
+pushd "$REPO" &>/dev/null
 
 # Print an informational message.
 info() {
@@ -484,7 +484,7 @@ do
 done
 
 # End of script.
-popd
+popd &>/dev/null
 info "finished setting up configuration files"
 
 # vim: ft=sh fdm=marker et sts=4 sw=4
