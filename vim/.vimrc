@@ -497,6 +497,9 @@ nnoremap gp '[v']
 " sequence, so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
 
+" Correct the last misspelled word using the first suggestion.
+inoremap <C-L> <C-G>u<ESC>[s1z=`]a<C-G>u
+
 " Emacs-like mapping to evaluate visually selected region as Vim script.
 vnoremap <C-X><C-E> <ESC>:@*<CR>
 
@@ -552,7 +555,7 @@ let g:sh_no_error = 1
 let g:tex_comment_nospell = 1
 
 " Disable all possible concealing.
-let g:tex_conceal = ''
+let g:tex_conceal = 'abdmg'
 
 " Assume that *.tex files are LaTeX and not vanilla TeX.
 let g:tex_flavor = 'latex'
