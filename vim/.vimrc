@@ -564,8 +564,8 @@ let g:sh_no_error = 1
 " Disable spell checking in comments.
 let g:tex_comment_nospell = 1
 
-" Disable all possible concealing.
-let g:tex_conceal = 'abdmg'
+" Enable all concealings.
+let g:tex_conceal = 'abdgm'
 
 " Assume that *.tex files are LaTeX and not vanilla TeX.
 let g:tex_flavor = 'latex'
