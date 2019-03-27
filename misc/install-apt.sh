@@ -149,6 +149,7 @@ PACKAGES=(
   gimp-help-en                      # Documentation for the GIMP (English)
   gimp-lensfun                      # Gimp plugin to correct lens distortion using the lensfun library
   gimp-plugin-registry              # repository of optional extensions for GIMP
+  gmic                              # GREYC's Magic for Image Computing
   gthumb                            # GNOME image viewer and organizer
   gv                                # PostScript and PDF viewer for X
   hugin                             # panorama photo stitcher - GUI tools
@@ -309,6 +310,7 @@ PACKAGES=(
   gpgv2                             # GNU privacy guard - signature verification tool (new v2.x)
   jq                                # lightweight and flexible command-line JSON processor
   libtext-lorem-perl                # random faux Latin text generator
+  libxml2-utils                     # XML utilities for formatting, linting, etc.
   p7zip-rar                         # non-free rar module for p7zip
   par                               # Paragraph reformatter
   parallel                          # build and execute command lines from standard input in parallel
