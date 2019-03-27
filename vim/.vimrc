@@ -383,6 +383,16 @@ augroup cursor_line
   autocmd WinLeave * setlocal nocursorline
 augroup END
 
+" Highlight TODO keywords everywhere.  Default syntax files don't always
+" contain all the TODO keywords. https://stackoverflow.com/a/30552423
+augroup hl_todo
+    autocmd!
+    autocmd Syntax *
+          \ syntax keyword generalTodo TODO FIXME XXX NOTE NOTES COMMENT COMMENTS
+          \ containedin=.*Comment,vimCommentTitle
+augroup END
+hi def link generalTodo Todo
+
 " Disable spell checking when editing password entries using pass(1).
 augroup pass_entries
   autocmd!

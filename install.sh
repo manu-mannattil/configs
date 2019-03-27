@@ -345,6 +345,9 @@ __install_vim() {
 
     # Install plugins.
     "${HOME}/.vim/install-plugins"
+
+    # Create a symlink of the snippets directory to ~ for easier access.
+    ln -v -sf "${HOME}/.vim/snippets" "${HOME}/.snippets"
 }
 
 # :target: wget - wget configuration
