@@ -85,3 +85,5 @@
 \clubpenalty10000
 
 \endinput
+
+% vim: ft=tex fdm=marker et sts=2 sw=2 nospell
