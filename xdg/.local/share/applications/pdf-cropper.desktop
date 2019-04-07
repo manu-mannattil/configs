@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=PDF Cropper
+GenericName=PDF cropping tool
+Icon=edit-cut
+Comment=Crop PDF files
+Exec=pdf-cropper %F
+TryExec=pdf-cropper
+Categories=Office;
+StartupNotify=false
+Terminal=false
+Type=Application
+MimeType=application/pdf;

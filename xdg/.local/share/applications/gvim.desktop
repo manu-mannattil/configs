@@ -2,8 +2,8 @@
 Name=GVim
 GenericName=Text Editor
 Comment=Edit text files
-TryExec=/home/manu/code/scripts/e
-Exec=/home/manu/code/scripts/e %F
+TryExec=e
+Exec=e %F
 Terminal=false
 Type=Application
 Icon=gvim
