@@ -4,9 +4,15 @@
 if has('conceal')
   syn match texStatement "\\noindent\s*" conceal
 
+  hi texBoldMathText cterm=bold gui=bold
+  syn cluster texMathZoneGroup add=texBoldMathText
+
+  hi texBoldItalMathText cterm=bold,italic gui=bold,italic
+  syn cluster texMathZoneGroup add=texBoldItalMathText
+
   " Vector commands from the physics package.
-  syn region texBoldStyle matchgroup=texTypeStyle start="\\\(vectorarrow\|vectorbold\|vectorunit\|vb\|vu\|va\)\s*{" matchgroup=texTypeStyle end="}" concealends contains=@texBoldGroup
-  syn region texBoldItalStyle matchgroup=texTypeStyle start="\\\(va\|vb\|vu\)\*\s*{" matchgroup=texTypeStyle end="}" concealends contains=@texItalGroup
+  syn region texBoldMathText matchgroup=texTypeStyle start="\\\(vectorarrow\|vectorbold\|vectorunit\|vb\|vu\|va\)\s*{" matchgroup=texTypeStyle end="}" concealends contains=@texMathZoneGroup containedin=texMathMatcher
+  syn region texBoldItalMathText matchgroup=texTypeStyle start="\\\(va\|vb\|vu\)\*\s*{" matchgroup=texTypeStyle end="}" concealends contains=@texMathZoneGroup containedin=texMathMatcher
 
   " The following syntax matcher commands have been adapted from
   " https://github.com/KeitaNakamura/tex-conceal.vim
@@ -178,11 +184,6 @@ if has('conceal')
   endif
 
   syn region texBoldMathText matchgroup=texStatement start='\\\(mathbf\|bm\|symbf\){' end='}' concealends contains=@texMathZoneGroup containedin=texMathMatcher
-  syn cluster texMathZoneGroup add=texBoldMathText
-
-  syn region texBoldItalStyle     matchgroup=texTypeStyle start="\\emph\s*{" end="}" concealends contains=@texItalGroup
-  syn region texItalStyle  matchgroup=texTypeStyle start="\\emph\s*{" end="}" concealends contains=@texItalGroup
-
-  set ambiwidth=single
-  hi texBoldMathText cterm=bold gui=bold
+  syn region texBoldItalStyle matchgroup=texTypeStyle start="\\emph\s*{" end="}" concealends contains=@texItalGroup
+  syn region texItalStyle matchgroup=texTypeStyle start="\\emph\s*{" end="}" concealends contains=@texItalGroup
 endif
