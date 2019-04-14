@@ -160,9 +160,9 @@ if has('conceal')
   syn match texDelimiter '\\}' contained conceal cchar=}
   syn match texMathSymbol '\\setminus\>' contained conceal cchar=\
   syn match texMathSymbol '\\coloneqq\>' contained conceal cchar=≔
-  syn match texMathSymbol '\\,' contained conceal cchar=
-  syn match texMathSymbol '\\ ' contained conceal cchar=
-  syn match texMathSymbol '\\quad' contained conceal cchar=
+  syn match texMathSymbol '\\,' contained conceal cchar= 
+  syn match texMathSymbol '\\ ' contained conceal cchar= 
+  syn match texMathSymbol '\\quad' contained conceal cchar= 
   syn match texMathSymbol '\\sqrt' contained conceal cchar=√
   syn match texMathSymbol '\\where\>' contained conceal cchar=|
   syn match texMathSymbol '\\\!' contained conceal
