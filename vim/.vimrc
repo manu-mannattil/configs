@@ -331,6 +331,7 @@ augroup ft_related
   autocmd BufRead,BufNewFile *.conf set filetype=conf
   autocmd BufRead,BufNewFile *.gp,*.plt set filetype=gnuplot
   autocmd BufRead,BufNewFile *.md,*.mkd set filetype=markdown
+  autocmd BufRead,BufNewFile *.pdf_tex set filetype=tex
   autocmd BufRead,BufNewFile *.rkt,*.rktl set filetype=scheme
   autocmd BufRead,BufNewFile *.vcf set filetype=vcard
   autocmd BufRead,BufNewFile COPYING,INSTALL,LICENSE,README,[Rr]eadme set filetype=text
