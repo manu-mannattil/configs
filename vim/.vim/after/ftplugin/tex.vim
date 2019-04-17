@@ -7,6 +7,7 @@ setlocal spell
 setlocal shiftwidth=2
 setlocal softtabstop=2
 setlocal keywordprg=:Sdcv
+setlocal iskeyword+=-,:
 
 " Make use of the default ftplugin's concealment feature.
 setlocal conceallevel=2
