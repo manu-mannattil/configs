@@ -296,15 +296,6 @@ __install_readline() {
     mkdir -vp "${HOME}/.cache/rlwrap"
 }
 
-# :target: rtorrent - rtorrent torrent client configuration
-__install_rtorrent() {
-    install "rtorrent/.rtorrent.rc"
-
-    # Directories for storing state and caching torrents.
-    mkdir -vp "${HOME}/downloads/.rtorrent"
-    mkdir -vp "${HOME}/downloads/.torrents"
-}
-
 # :target: terminfo - terminfo files for less-known terminals
 __install_terminfo() {
     install "terminfo/.terminfo"
@@ -347,6 +338,7 @@ __install_vim() {
     "${HOME}/.vim/install-plugins"
 
     # Create a symlink of the snippets directory to ~ for easier access.
+    rm -f "${HOME}/.snippets"
     ln -v -sf "${HOME}/.vim/snippets" "${HOME}/.snippets"
 }
 
