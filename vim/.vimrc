@@ -595,6 +595,12 @@ let g:netrw_liststyle = 3
 " Vimtex {{{2
 " -----------
 
+" Single-shot compilation using latexmk.
+let g:vimtex_compiler_latexmk = {
+      \ 'backend' : 'jobs',
+      \ 'continuous' : 0,
+      \ }
+
 " Don't show these errors/warnings in the quickfix.
 let g:vimtex_quickfix_latexlog = {
       \ 'overfull' : 0,
@@ -611,6 +617,9 @@ let g:vimtex_view_general_options_latexmk = '--instance LaTeX --unique'
 
 " Don't open quickfix on mere warnings.
 let g:vimtex_quickfix_open_on_warning = 0
+
+" Disable recursive searching of included files.
+let g:vimtex_include_search_enabled = 0
 
 " Others {{{2
 " -----------
