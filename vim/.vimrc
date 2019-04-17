@@ -3,11 +3,11 @@
 " Preamble {{{1
 " -------------
 
-" Switch on syntax highlighting.
-syntax enable
-
 " Enable the filetype plugin.
 filetype plugin indent on
+
+" Switch on syntax highlighting.
+syntax enable
 
 if !has('packages')
   " Use pathogen to load plugins if I'm using an old version Vim.
