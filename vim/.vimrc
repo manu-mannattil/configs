@@ -618,8 +618,14 @@ let g:vimtex_view_general_options_latexmk = '--instance LaTeX --unique'
 " Don't open quickfix on mere warnings.
 let g:vimtex_quickfix_open_on_warning = 0
 
-" Disable recursive searching of included files.
+" Disable recursive searching of included packages.
 let g:vimtex_include_search_enabled = 0
+
+" Disable some vimtex mappings. E.g., K in normal mode is more useful to run
+" keywordprg than texdoc.
+let g:vimtex_mappings_disable = {
+      \ 'n': ['K'],
+      \ }
 
 " Others {{{2
 " -----------
