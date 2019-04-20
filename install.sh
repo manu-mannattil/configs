@@ -149,11 +149,6 @@ __install_deadbeef() {
     fi
 }
 
-# :target: detox - detox configuration
-__install_detox() {
-    install "detox/.detoxrc" "detox/.config/detox"
-}
-
 # :target: dircolors - dircolors configuration
 __install_dircolors() {
     install "dircolors/.dir_colors"
