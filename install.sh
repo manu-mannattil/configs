@@ -125,6 +125,11 @@ __install_cvs() {
     grep -v '\(^$\|^#\)' "${REPO}/cvs/.cvs_ignore" | sort | uniq >"${HOME}/.cvsignore"
 }
 
+# :target: ctags - exuberant ctags configuration.
+__install_ctags() {
+    install "ctags/.ctags"
+}
+
 # :target: darktable - darktable configuration
 __install_darktable() {
     install "darktable/.config/darktable/darktable.css"
