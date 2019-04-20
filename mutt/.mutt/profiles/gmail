@@ -3,7 +3,7 @@
 # Mutt profile for Gmail.
 #
 
-set from      = "\m\an\u\.\m\ann\att\i\l\@\g\m\a\i\l\.c\o\m"
+set from      = "manu.mannattil@gmail.com"
 set realname  = "Manu Mannattil"
 set sendmail  = "msmtp -a gmail"
 

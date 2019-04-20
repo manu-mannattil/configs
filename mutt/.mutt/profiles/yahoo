@@ -3,7 +3,7 @@
 # Mutt profile for Yahoo! Mail.
 #
 
-set from      = "\m\an\u\.\m\ann\att\i\l\@\y\a\h\o\o\.c\o\m"
+set from      = "manu.mannattil@yahoo.com"
 set realname  = "Manu Mannattil"
 set sendmail  = "/usr/bin/msmtp -a yahoo"
 
