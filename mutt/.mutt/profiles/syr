@@ -3,7 +3,7 @@
 # Mutt profile for SU mail.
 #
 
-set from      = "\m\m\ann\att\@\s\yr.e\d\u"
+set from      = "mmannatt@syr.edu"
 set realname  = "Manu Mannattil"
 set sendmail  = "msmtp -a syr"
 
