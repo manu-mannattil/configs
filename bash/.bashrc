@@ -152,7 +152,6 @@ unalias -a &>/dev/null
 # before overwriting files, vi keybindings, etc.
 alias chmod='chmod --preserve-root'
 alias cp='cp -iv'
-alias detox='detox -v'
 alias du='du -csh'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
