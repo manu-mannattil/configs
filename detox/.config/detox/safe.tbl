@@ -1,5 +1,6 @@
+# vim: ft=conf fdm=marker noet
 #
-# Copyright (c) 2004-2006, Doug Harple.  All rights reserved.
+# Copyright (c) 2004-2006, Doug Harple. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -115,33 +116,33 @@ start
 0x20		_	# space
 0x21		_	# !
 0x22		_	# "
-0x23		_ # '#'
+0x23		_	# '#'
 0x24		_	# $
-0x25		_ # %
+0x25		_	# %
 0x27		_	# '
 0x28		_	# (
 0x29		_	# )
 0x2a		_	# *
-0x2b		_ # +
-0x2c		_ # ,
+0x2b		_	# +
+0x2c		_	# ,
 0x2f		_	# /
 0x3a		_	# :
 0x3b		_	# ;
 0x3c		_	# <
-0x3d		_ # =
+0x3d		_	# =
 0x3e		_	# >
 0x3f		_	# ?
 0x40		_	# @
 0x5b		_	# [
 0x5c		_	# \
 0x5d		_	# ]
-0x5e		_ # ^
-0x5f		_ # _
+0x5e		_	# ^
+0x5f		_	# _
 0x60		_	# `
 0x7b		_	# {
 0x7c		_	# |
 0x7d		_	# }
-0x7e		_ # ~
+0x7e		_	# ~
 
 #
 # Other
