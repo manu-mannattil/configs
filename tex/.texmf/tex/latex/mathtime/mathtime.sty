@@ -15,7 +15,10 @@
   \RequirePackage[scaled=0.92]{helvet}
 \else % if luatex or xelatex
   \RequirePackage[no-math]{fontspec}
-  \setmainfont{TeX Gyre Termes}
+  \setmainfont[
+    SlantedFont={TeX Gyre Termes},
+    SlantedFeatures={FakeSlant}
+  ]{TeX Gyre Termes}
   \setsansfont[Scale=0.92]{TeX Gyre Heros}
 \fi
 
@@ -25,7 +28,6 @@
 \let\vec\relax
 
 \RequirePackage[
-  morphedbraces,
   mtphrb,
   mtpcal,
   nofontinfo,
