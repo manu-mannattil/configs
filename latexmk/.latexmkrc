@@ -20,12 +20,12 @@ $dvi_mode = 0;
 
 # Program to run (along with additional parameters) if $pdf_mode is set to 1,
 # or -pdf is passed.
-$pdflatex = "pdflatex -file-line-error -interaction=nonstopmode -shell-escape -synctex=1 %O %S; command -v ctags && ctags -V || true";
+$pdflatex = "pdflatex -file-line-error -interaction=nonstopmode -shell-escape -synctex=1 %O %S";
 
 # XeLaTeX options when -xelatex is used.  Note that the "XeLaTeX rule" of
 # Latexmk requires XeLaTeX to produce an .xdv file first.  This file is then
 # converted to a PDF using `xdvipdfmx'.
-$xelatex = "xelatex -no-pdf -recorder -file-line-error -interaction=nonstopmode -shell-escape -synctex=1 %O %S; command -v ctags && ctags -V || true";
+$xelatex = "xelatex -no-pdf -recorder -file-line-error -interaction=nonstopmode -shell-escape -synctex=1 %O %S";
 
 # A list of extensions for files that are generated during a LaTeX run and
 # that are read in by LaTeX in later runs, either directly or indirectly.
@@ -35,4 +35,4 @@ $xelatex = "xelatex -no-pdf -recorder -file-line-error -interaction=nonstopmode 
 # push @generated_exts, "run.xml";
 
 # Additional extensions of files to be removed when latexmk -c or -C is used.
-$clean_ext = "synctex.gz synctex.gz(busy) %RNotes.bib run.xml spl tags"
+$clean_ext = "synctex.gz synctex.gz(busy) %RNotes.bib run.xml spl"

@@ -302,7 +302,6 @@ PACKAGES=(
   agrep                             # text search tool with support for approximate patterns
   android-tools-adb                 # Android debug bridge
   dateutils                         # nifty command line date and time utilities
-  detox                             # utility to replace problematic characters in filenames
   dmg2img                           # Tool for converting compress dmg files to hfsplus images
   dtrx                              # intelligently extract multiple archive types
   duff                              # Duplicate file finder

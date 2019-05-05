@@ -29,6 +29,7 @@
 
 [difftool]
   prompt = false
+  trustExitCode = true
 
 [push]
   default = matching
