@@ -6,9 +6,6 @@
 ! Do not use bold fonts.  Overrides all other settings for bold fonts.
 XTerm*allowBoldFonts: false
 
-! Do not allow programs (e.g., Vim) to modify the window title.
-XTerm*allowTitleOps: false
-
 ! Strip newlines when text is selected through a triple-click.
 XTerm*cutNewLine: true
 
@@ -54,9 +51,6 @@ XTerm*termName: xterm-256color
 
 ! Always run xterm in UTF-8 mode.
 XTerm*utf8: always
-
-! xterm window title.
-XTerm*title: xterm
 
 ! Ctrl + Shift + C for copying to CLIPBOARD.
 ! Ctrl + Shift + V for pasting from CLIPBOARD.
