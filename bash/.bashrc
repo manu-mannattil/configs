@@ -583,5 +583,21 @@ __bash_prompt() {
     PS1="\n${PS1_BRIGHT_RED}\u${PS1_WHITE}@${PS1_BRIGHT_YELLOW}\h${PS1_WHITE}:${PS1_BRIGHT_GREEN}\w${ps1_conda}${ps1_venv}${ps1_git}\
          \n${PS1_BRIGHT_WHITE}\$${PS1_RESET} "
 
+    # If no foreground process is launched, print an OSC title setting sequence
+    # to set "bash" as the window title.
+    case "$TERM" in
+        screen*) printf "\033]2;bash\033\\" ;;
+        *) printf "\033]0;bash\007" ;;
+    esac
 }
 PROMPT_COMMAND="${PROMPT_COMMAND}; __bash_prompt"
+
+# Each time a command is executed by Bash, it will print out the command name
+# surrounded in an OSC title setting string.  However, since we're using
+# a PROMPT_COMMAND function, the last command executed is technically
+# __bash_prompt.  Thus, __bash_prompt must be appropriately modified for this
+# to work (see above).
+case "$TERM" in
+    screen*) trap 'printf "\033]2;${BASH_COMMAND%% *}\033\\"' DEBUG ;;
+    *) trap 'printf "\033]0;${BASH_COMMAND%% *}\007"' DEBUG ;;
+esac
