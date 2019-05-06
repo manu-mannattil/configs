@@ -6,6 +6,7 @@
 "             4. Low-contrast cursorcolumn, cursorline, colorcolumn,
 "                nontext, etc.
 "             5. Removed all mismatches between terminal and gui colors.
+"             6. More hi links.
 
 set background=dark
 
@@ -171,14 +172,42 @@ call s:ColorDictParser({
   \ , 'diffNewFile'                 : [    242,     '',               '',      '6c6c6c',        '',               '']
 \ })
 
-hi link htmlTag            xmlTag
-hi link htmlTagName        xmlTagName
-hi link htmlEndTag         xmlEndTag
-
-hi link phpCommentTitle    vimCommentTitle
-hi link phpDocTags         vimCommentString
-hi link phpDocParam        vimCommentTitle
-
-hi link diffAdded          DiffAdd
-hi link diffChanged        DiffChange
-hi link diffRemoved        DiffDelete
+hi link asciidocQuotedEmphasized Preproc
+hi link Boolean Constant
+hi link Character Constant
+hi link Conditional Statement
+hi link Debug Special
+hi link Define PreProc
+hi link Delimiter Special
+hi link diffAdded DiffAdd
+hi link diffChanged DiffChange
+hi link diffRemoved DiffDelete
+hi link Exception Statement
+hi link Float Number
+hi link HelpCommand Statement
+hi link HelpExample Statement
+hi link htmlEndTag xmlEndTag
+hi link htmlTagName xmlTagName
+hi link htmlTag xmlTag
+hi link Include PreProc
+hi link Keyword Statement
+hi link Label Statement
+hi link Macro PreProc
+hi link markdownItalic Preproc
+hi link Number Constant
+hi link Operator Statement
+hi link phpCommentTitle vimCommentTitle
+hi link phpDocParam vimCommentTitle
+hi link phpDocTags vimCommentString
+hi link PreCondit PreProc
+hi link Repeat Statement
+hi link SpecialChar Special
+hi link SpecialComment Special
+hi link StorageClass Type
+hi link Structure Type
+hi link Tag Special
+hi link Terminal Normal
+hi link Typedef Type
+hi link xmlEndTag Statement
+hi link xmlTagName Statement
+hi link xmlTag Statement
