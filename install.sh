@@ -350,7 +350,7 @@ __install_wget() {
 # :target: x - X11 configuration
 __install_x() {
     install "X/.XCompose" "X/.xprofile" "X/.Xresources"
-    xrdb -merge "${HOME}/.Xresources"
+    [[ "$DISPLAY" ]] && xrdb -merge "${HOME}/.Xresources"
 }
 
 # :target: xdg - common configuration used by all X desktop environments
