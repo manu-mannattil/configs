@@ -341,7 +341,10 @@ complete -F _plmgr plmgr
 # ---------
 
 _dtrx() {
-    COMPREPLY=( $(compgen -A file -X '!(*.tar.bz2|*.tar.gz|*.bz2|*.rar|*.gz|*.tar|*.tbz2|*.tgz|*.zip|*.Z|*.7z|*.exe)' -- "${COMP_WORDS[COMP_CWORD]}") )
+    local xspec="!(*.tar.bz2|*.tar.gz|*.bz2|*.rar|*.gz|*.tar|*.tbz2|*.tgz|*.zip|*.Z|*.7z|*.exe)"
+    compopt -o filenames
+    COMPREPLY=( $(compgen -f -X "$xspec" -- "${COMP_WORDS[COMP_CWORD]}") \
+        $(compgen -d -- "${COMP_WORDS[COMP_CWORD]}") )
 }
 
 complete -F _dtrx dtrx
