@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+  Custom DuckDuckGo search plugin for Firefox.
+
+  Firefox search plugins are distributed as XML files containing the
+  details of the search URL, suggestion URL, favicon (encoded in
+  base64), etc.  The format is described in detail at MDN:
+
+    https://developer.mozilla.org/en-US/docs/Web/OpenSearch
+
+  However, since Firefox 57.0, Mozilla has made it cumbersome to add
+  custom search plugins to Firefox.  One particular solution is to use
+  the plugin creator at https://mycroftproject.com/submitos.html.
+  However, this has disadvantages, e.g., one cannot easily find the
+  plugins or update them.
+
+  The alternative is to use the window.external.AddSearchProvider() DOM
+  method to load the XML file.  The basic idea is to use the Web Console
+  (shortcut: Shift + Ctrl + K) and enter
+
+    window.external.AddSearchProvider("https://location/to/plugin.xml");
+
+  Note that the location must not be that of a local file (e.g.,
+  locations beginning with "file:///..." won't work).  Thus, the XML
+  file must be hosted on an online pastebin like GitHub's Gist, or one
+  can use a local webserver to load the file (e.g., python -m
+  http.server).
+
+-->
+
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/"
+                       xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+  <ShortName>DuckDuckGo (custom)</ShortName>
+  <Description>Search DuckDuckGo</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <LongName>DuckDuckGo Search</LongName>
+  <Image height="16" width="16">data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAB8lBMVEUAAADkRQzjPwPjQQXkRQ3iPwTiQQXgPQPeQgrcOwPVNgDVNQDWOgbTMwDRMgDQMwDSMwDRNwTQLgDRJgDSJwDSLgDSNwTjOgDiOADjOQDkPADhQAXzs5v+/fv////0vKbiRQvgPQHpdUr85NzuknPdKgDcIwDnZzj2w7HqeU/gPQLsimb/+PftjWn97Obpb0LdJQDeLQDtjmvsi2jgSBDnbULgOQD/39HgLQDeMgDpeFLgSBH0v670uqbaJQD2qImWvP/G1Ob5+/3u//+fvvXyp47dMwDaLwD0u6v0v6/aNQDiXi/aKQD3qozU7/8gSY2vvtg0ZK/OqLDaKQHYKgLgWTfaNADZMgDZMADZLADzqpD7//+xwdz//9H/5Bn/7Bn//ADofADYMADYMQDZOgPXLgDiZDj//97/0AD3tQDvlgHZOgbXLATXMADWMgDfXjLVLQD///z+0AD/3Rn/yRnwnQDcVjbVMQDyv67wuKTSJwDRHQD+8O/tg3/iQQDwhAHnawHWMADvtKfyva7XQxHga0bQGQD2vbH/u8LXIQCmPQzja07XQxLliGn99fPkcVHvhnGZ5VguvUU5wktBwCcAgxzydVv/8/XmiGngdlL+ysi3+I8LtCE80V6P3YmX4sDleljSNQLzr6D7sKPXNQTSIwAEAbMrAAAAF3RSTlMARqSkRvPz80PTpKRG3fPe3hio9/eoGP50jNsAAAABYktHRB5yCiArAAAAyElEQVQYGQXBvUqCYRiA4fu2V9Tn+UQddI3aCpxaOoU6iU4gcqqpoYbALXBuCuoYmttamqJDiEoh4YP+MOi6BNCh+uYKEGiOVNCXXxA2XDVV/UyfKbRCXTLQWAxbP2vt8Ue/uYDvfim91615sb2um6rqtrr/NFb1cUf1Ybd06areU6lSlYpK79jzK1SyJOkfhOl8JGEcqV5zoKrTRqO6yUzIzNu46ijdM1VV9bhuUJ/nZURExLRzUiPQm3kKXHi4BAEGOmOi78A/L1QoU/VHoTsAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTQtMDEtMTlUMjA6MDE6MTEtMDU6MDAuET6cAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE0LTAxLTE5VDIwOjAxOjExLTA1OjAwX0yGIAAAAABJRU5ErkJggg==</Image>
+  <Url type="text/html" method="get" template="https://safe.duckduckgo.com/?q={searchTerms}&amp;kp=1&amp;kae=b&amp;kaj=m&amp;kam=google-maps"/>
+  <Url type="application/x-suggestions+json" template="https://ac.duckduckgo.com/ac/?q={searchTerms}&amp;type=list"/>
+  <moz:SearchForm>https://safe.duckduckgo.com/?kp=1&amp;kae=b&amp;kaj=m&amp;kam=google-maps</moz:SearchForm>
+</OpenSearchDescription>
