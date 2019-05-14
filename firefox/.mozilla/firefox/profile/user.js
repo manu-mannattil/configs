@@ -67,3 +67,6 @@ user_pref("browser.tabs.warnOnClose", false);
 // Blank startup and newtab page.
 user_pref("browser.startup.homepage", "about:blank");
 user_pref("browser.newtabpage.enabled", false);
+
+// Stop annoying me with notifications (and asking about them).
+user_pref("dom.webnotifications.enabled", false);
