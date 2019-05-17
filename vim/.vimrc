@@ -463,8 +463,8 @@ endfunction
 " For now, use the version supplied by vim-pathogen.
 " command! -bar Helptags call s:helptags()
 
-" Keybindings {{{1
-" ----------------
+" Mappings {{{1
+" -------------
 
 " ,$ strips trailing spaces.
 function! s:rm_trailing_spaces() abort
@@ -517,6 +517,10 @@ vnoremap <C-X><C-E> <ESC>:@*<CR>
 " Search for visually selected text using / in visual mode.  While doing so do
 " (almost) non-regex searches.
 vnoremap / <ESC>/\V<C-R>*<CR>
+
+" Move around the changelist with ,d (backwards) and ,u (forwards).
+noremap ,u g,
+noremap ,d g;
 
 " File and buffer navigation tricks {{{2
 " --------------------------------------
