@@ -196,6 +196,9 @@ alias dtest='dateutils.dtest'
 alias dzone='dateutils.dzone'
 alias strptime='dateutils.strptime'
 
+# Remove useless info (e.g., compilation flags) when using ffmpeg.
+alias ffmpeg='ffmpeg -hide_banner'
+
 # Rewrap to 72 columns.
 alias fmt='fmt -w 72'
 
