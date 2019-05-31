@@ -1,0 +1,33 @@
+# vim: ft=sh fdm=marker et sts=2 sw=2
+#
+# This is /etc/default/grub.  If you change this file, run 'update-grub'
+# afterwards to update /boot/grub/grub.cfg.
+#
+# For full documentation of the options in this file, see:
+#
+#   info -f grub -n 'Simple configuration'
+#
+
+GRUB_DEFAULT=0
+GRUB_TIMEOUT_STYLE=hidden
+GRUB_TIMEOUT=10
+GRUB_DISTRIBUTOR=$(lsb_release -i -s 2> /dev/null || echo "Debian")
+
+# Kernel parameters to disable all mitigations for CPU vulnerabilities.
+# (Disabling may not be really worth it, but I do see a minor
+# improvement in multi-core performance.)  For more information
+# the kernel documentation: https://www.kernel.org/doc/Documentation/admin-guide/kernel-parameters.txt
+# Newer kernels (>= 5.2) have a all-in-one parameter called
+# "mitigations=off" for turning off CPU mitigations.
+DISABLE_CPU_MITIGATIONS="nopti nospectre_v2 spectre_v2_user=off spec_store_bypass_disable=off l1tf=off mds=off"
+
+# "Magic" parameters to fix backlight on certain laptops.
+ACPI_BACKLIGHT="acpi_osi=linux acpi_backlight=vendor"
+
+# Command-line arguments to add to menu entries for the Linux kernel in
+# default mode.  Will not be added in recovery mode.
+GRUB_CMDLINE_LINUX_DEFAULT="${DISABLE_CPU_MITIGATIONS} quiet splash"
+
+# Command-line arguments to add to menu entries for the Linux kernel.
+# Will be added even in recovery mode.
+GRUB_CMDLINE_LINUX=""
