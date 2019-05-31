@@ -13,21 +13,18 @@
 #   Dropbox               https://www.dropbox.com/install?os=lnx
 #   epub2txt              https://github.com/kevinboone/epub2txt/releases
 #   fzf                   https://github.com/junegunn/fzf-bin/releases
+#   Geekbench             https://www.geekbench.com/download/linux/
 #   Google Chrome         https://www.google.com/chrome
 #   JSMin                 https://raw.githubusercontent.com/douglascrockford/JSMin/master/jsmin.c
-#   KindleGen             http://www.amazon.com/gp/feature.html?docId=1000765211
 #   krop                  http://arminstraub.com/software/krop
-#   latexrun              https://github.com/aclements/latexrun/archive/master.zip
 #   PDF Scale             https://github.com/tavinus/pdfScale/releases
 #   pdfsizeopt            https://github.com/pts/pdfsizeopt
-#   Signal                https://www.signal.org/download/
 #
 # The following programs usually have outdated versions in the
 # Debian/Ubuntu repositories, therefore it makes sense to install them
 # manually:
 #
 #   Calibre               http://calibre-ebook.com/download_linux
-#   Ipe                   https://dl.bintray.com/otfried/generic/ipe/
 #   Latexmk               http://personal.psu.edu/jcc8/software/latexmk-jcc/versions.html
 #   Pass                  https://git.zx2c4.com/password-store/
 #   youtube-dl            http://rg3.github.io/youtube-dl/download.html
@@ -41,7 +38,7 @@
 
 PPAS=(
   ppa:dhor/myway                    # RawTherapee
-  ppa:jonathonf/vim                 # Vim
+  ppa:linrunner/tlp                 # Advanced Power Management for Linux
   ppa:micahflee/ppa                 # Onionshare, Tor browser launcher, etc.
   ppa:pmjdebruijn/darktable-release # Darktable
 )
@@ -50,11 +47,6 @@ PPAS=(
 # -------------
 
 PACKAGES=(
-  # Computer specific {{{2
-  # ----------------------
-
-  bcmwl-kernel-source               # Broadcom wireless driver for Dell laptop
-
   # Debian/Ubuntu stuff {{{2
   # ------------------------
 
@@ -278,8 +270,11 @@ PACKAGES=(
   lm-sensors                        # utilities to read temperature/voltage/fan sensors
   macchanger                        # utility for manipulating the MAC address of network interfaces
   playonlinux                       # front-end for Wine
+  powertop                          # diagnose issues with power consumption and management
   scalpel                           # fast filesystem-independent file recovery
   testdisk                          # Partition scanner and disk recovery tool, and PhotoRec file recovery tool
+  tlp                               # Save battery power on laptops
+  tlp-rdw                           # Add-on to TLP for managing Bluetooth, Wi-Fi, WWAN, etc.
   whois                             # intelligent WHOIS client
   wine-stable                       # Microsoft Windows Compatibility Layer (meta-package)
   xbacklight                        # simple utility to set the backlight level
@@ -287,14 +282,14 @@ PACKAGES=(
   # Text editors/Terminal emulators {{{2
   # ------------------------------------
 
+  emacs                             # GNU Emacs metapackage
   gnome-terminal                    # GNOME terminal emulator application
   rxvt-unicode-256color             # multi-lingual terminal emulator with Unicode support for X11
   screen                            # terminal multiplexer with VT100/ANSI terminal emulation
   tmux                              # terminal multiplexer
-  vim                               # Vi IMproved - enhanced vi editor
   vim-doc                           # Vi IMproved - HTML documentation
   vim-gnome                         # Vi IMproved - enhanced vi editor - with GTK3 GUI
-  emacs                             # GNU Emacs metapackage
+  vim                               # Vi IMproved - enhanced vi editor
 
   # Utilities {{{2
   # --------------
@@ -348,12 +343,20 @@ PACKAGES=(
   subversion-tools                  # Assorted tools related to Apache Subversion
 )
 
+# Computer specific packages {{{1
+# -------------------------------
+
+# Dell Inspiron 3442.
+[[ "$HOSTNAME" == "carbon" ]] && {
+  PACKAGES+=(bcmwl-kernel-source)   # Broadcom Wi-Fi drivers
+}
+
 # Installation {{{1
 # -----------------
 
 for ppa in "${PPAS[@]}"
 do
-    add-apt-repository --yes "$ppa"
+    add-apt-repository --yes --no-update "$ppa"
 done
 apt update
 apt upgrade --yes

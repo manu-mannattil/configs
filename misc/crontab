@@ -31,6 +31,9 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 #
 
+# By default cron uses sh(1), but we like Bash more.
+SHELL=/bin/bash
+
 # Backup some system configuration files hourly/daily.
 @hourly crontab -l >"$HOME/code/configs/misc/crontab"
 

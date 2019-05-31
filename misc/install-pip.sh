@@ -15,6 +15,7 @@ PACKAGES=(
   mutagen        # read and write audio tags for many formats
   titlecase      # module to convert a sentence to title case
   vegas          # Tools for adaptive multidimensional Monte Carlo integration
+  s-tui          # Stress Terminal UI stress test and monitoring tool
 )
 
 pip install "${PACKAGES[@]}"
