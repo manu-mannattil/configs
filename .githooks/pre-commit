@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# A Git pre-commit hook to update repository statistics in README.md.
+# This will update README.md with the number of configuration files in
+# the repository and the total number of programs for which they're
+# intended.
+#
+
+echo >&2 "updating repository statistics in README.md"
+
+FILES=$(find -path ./.git -prune -o -path ./vim/.vim/pack -prune -o -type f -print | wc -l)
+PROGRAMS=$(./install.sh --list | wc -l)
+
+sed -i \
+    -e "s|<!--FILES-->[^ ]*|<!--FILES-->$FILES|" \
+    -e "s|<!--PROGRAMS-->[^ ]*|<!--PROGRAMS-->$PROGRAMS|" README.md
+
+git add "README.md"

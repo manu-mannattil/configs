@@ -478,6 +478,9 @@ do
     "__install_${t,,}"
 done
 
+# Set up Git hooks.
+git config --local core.hooksPath .githooks
+
 # End of script.
 popd &>/dev/null
 info "finished setting up configuration files"
