@@ -60,7 +60,7 @@ set visible-stats on
 
 $if Bash
   # Ctrl + L to clear screen.  (Missing in vi-mode.)
-  "\C-l": clear-screen
+  "\C-x": clear-screen
 
   # Perform history expansion (i.e, !$, !1, !!, etc.) on the current
   # line and insert a space.
