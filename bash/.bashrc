@@ -1,10 +1,7 @@
 # vim: ft=sh fdm=marker et sts=4 sw=4
 
 # Bail out if not interactive.
-if [[ -z "$PS1" ]]
-then
-    return
-fi
+[[ -n "$PS1" ]] || return
 
 # Shell options {{{1
 # ------------------
@@ -169,6 +166,9 @@ alias vidir='vidir -v'
 alias ..='cd ..'
 alias ...="cd ../.."
 alias ....="cd ../../.."
+
+# Don't ask for confirmation.
+alias add-apt-repository='add-apt-repository --yes'
 
 # Axel with sensible defaults.
 alias axel='axel -n 4 -a -U "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36"'
@@ -523,19 +523,13 @@ then
 fi
 
 # Source local .bashrc if any.
-if [[ -f "${HOME}/.bashrc_local" ]]
-then
-    source "${HOME}/.bashrc_local"
-fi
+[[ -f "${HOME}/.bashrc_local" ]] && source "${HOME}/.bashrc_local"
 
 # Bash prompt {{{1
 # ----------------
 
 # Print a one-time message if system reboot is required.
-if [[ -f "/var/run/reboot-required" ]]
-then
-    cat "/var/run/reboot-required"
-fi
+[[ -f "/var/run/reboot-required" ]] && cat "/var/run/reboot-required"
 
 # Wrap colors in in \[ and \] for use in prompt.
 # See: http://mywiki.wooledge.org/BashFAQ/053
@@ -588,22 +582,5 @@ __bash_prompt() {
 
     PS1="\n${PS1_BRIGHT_RED}\u${PS1_WHITE}@${PS1_BRIGHT_YELLOW}\h${PS1_WHITE}:${PS1_BRIGHT_GREEN}\w${ps1_conda}${ps1_venv}${ps1_git}\
          \n${PS1_BRIGHT_WHITE}\$${PS1_RESET} "
-
-    # If no foreground process is launched, print an OSC title setting sequence
-    # to set "bash" as the window title.
-    case "$TERM" in
-        screen*) printf "\033]2;bash\033\\" ;;
-        *) printf "\033]0;bash\007" ;;
-    esac
 }
 PROMPT_COMMAND="${PROMPT_COMMAND}; __bash_prompt"
-
-# Each time a command is executed by Bash, it will print out the command name
-# surrounded in an OSC title setting string.  However, since we're using
-# a PROMPT_COMMAND function, the last command executed is technically
-# __bash_prompt.  Thus, __bash_prompt must be appropriately modified for this
-# to work (see above).
-case "$TERM" in
-    screen*) trap 'printf "\033]2;${BASH_COMMAND%% *}\033\\"' DEBUG ;;
-    *) trap 'printf "\033]0;${BASH_COMMAND%% *}\007"' DEBUG ;;
-esac
