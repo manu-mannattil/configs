@@ -6,7 +6,9 @@
 # Usage: install-conda.sh
 #
 # This script installs a bunch of common Python modules (mostly related
-# to scientific computing) using Miniconda.
+# to scientific computing) using Miniconda.  Get Miniconda from
+#
+#   https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 #
 
 PACKAGES=(
