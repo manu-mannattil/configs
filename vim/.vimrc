@@ -92,14 +92,6 @@ set shortmess+=I
 set statusline=[%n]\ %t\ [%{&ff}\|%{strlen(&fenc)?&fenc:&enc}\|%{strlen(&ft)?&ft:'none'}]\ %m%q%r%w
 set statusline+=%=%<[0x%B]\ L:%l/%L,C:%c\ (%P)
 
-" Only set window titles for gVim and don't ever attempt to change it inside a
-" terminal.
-if has('gui_running')
-  set title
-else
-  set notitle
-endif
-
 " Ignore common binary files during completion.  Alternatively, use the
 " 'suffixes' option to give these extensions a low priority while doing tab
 " completion.  To ignore directories, append a '/' to the pattern.
@@ -644,3 +636,9 @@ let g:sdcv_args = ['--utf8-input', '--utf8-output']
 " ------------
 
 let g:slime_target = 'vimterminal'
+
+" Intelligently navigate tmux panes and Vim splits using the same keys.
+" See https://sunaku.github.io/tmux-select-pane.html for documentation.
+let progname = substitute($VIM, '.*[/\\]', '', '')
+set title titlestring=%{progname}\ %f\ +%l\ #%{tabpagenr()}.%{winnr()}
+if &term =~ '^screen' && !has('nvim') | exe "set t_ts=\e]2; t_fs=\7" | endif
