@@ -326,6 +326,7 @@ augroup ft_related
   autocmd BufRead,BufNewFile *.pdf_tex set filetype=tex
   autocmd BufRead,BufNewFile *.rkt,*.rktl set filetype=scheme
   autocmd BufRead,BufNewFile *.vcf set filetype=vcard
+  autocmd BufRead,BufNewFile *.fold set filetype=json
   autocmd BufRead,BufNewFile COPYING,INSTALL,LICENSE,README,[Rr]eadme set filetype=text
 
   " .m files are Mathematica files.  Who uses Matlab these days?
@@ -549,6 +550,17 @@ augroup leftright
         \ nnoremap <buffer> <right> <right>
 augroup END
 
+" vim-tmux integration {{{1
+" -------------------------
+
+" Intelligently navigate tmux panes and Vim splits using the same keys.
+" See https://sunaku.github.io/tmux-select-pane.html for documentation.
+if !has('gui_running') && &term =~ '^screen'
+  let progname = substitute($VIM, '.*[/\\]', '', '')
+  set title titlestring=%{progname}\ %f\ +%l\ #%{tabpagenr()}.%{winnr()}
+  if !has('nvim') | exe "set t_ts=\e]2; t_fs=\7" | endif
+endif
+
 " Plugin settings {{{1
 " --------------------
 
@@ -636,9 +648,3 @@ let g:sdcv_args = ['--utf8-input', '--utf8-output']
 " ------------
 
 let g:slime_target = 'vimterminal'
-
-" Intelligently navigate tmux panes and Vim splits using the same keys.
-" See https://sunaku.github.io/tmux-select-pane.html for documentation.
-let progname = substitute($VIM, '.*[/\\]', '', '')
-set title titlestring=%{progname}\ %f\ +%l\ #%{tabpagenr()}.%{winnr()}
-if &term =~ '^screen' && !has('nvim') | exe "set t_ts=\e]2; t_fs=\7" | endif
