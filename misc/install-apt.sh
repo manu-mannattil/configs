@@ -67,7 +67,6 @@ PACKAGES=(
   groff                               # The full groff distribution including man pages
   lintian                             # Debian package checker
   pbuilder                            # personal package builder for Debian packages
-  ppa-purge                           # disables a PPA and reverts to official packages
   snapcraft                           # easily craft snaps
   synaptic                            # Graphical package manager
   ubuntu-restricted-extras            # Commonly used media codecs and fonts for Ubuntu
@@ -87,7 +86,6 @@ PACKAGES=(
   # ------------
 
   compton                             # compositor for X11, based on xcompmgr
-# gconf-editor                        # editor for the GConf configuration system
 
   # Development {{{2
   # ----------------
@@ -203,11 +201,8 @@ PACKAGES=(
   krb5-user                           # basic programs to authenticate using MIT Kerberos
   lynx                                # classic non-graphical (text-mode) web browser
   mosh                                # Mobile shell that supports roaming and intelligent local echo
-  onionshare                          # Share a file over Tor Hidden Services anonymously and securely
   openssh-client                      # secure shell (SSH) client, for secure access to remote machines
   openssh-server                      # secure shell (SSH) server, for secure access from remote machines
-  qbittorrent                         # bittorrent client based on libtorrent-rasterbar with a Qt4 GUI
-  rtorrent                            # ncurses BitTorrent client based on LibTorrent from rakshasa
   tor                                 # anonymizing overlay network for TCP
   torbrowser-launcher                 # helps download and run the Tor Browser Bundle
   w3m                                 # WWW browsable pager with excellent tables/frames support
@@ -364,7 +359,7 @@ DISABLE_UNITS=(
   apt-daily.service apt-daily-upgrade.service
   apt-daily.timer apt-daily-upgrade.timer
 
-  # Message of the day.
+  # Message of the day spam.
   motd-news.timer
 
   # Ubuntu's snap package manager.
@@ -379,9 +374,6 @@ DISABLE_UNITS=(
   # Zeroconf and mDNS/DNS-SD service discovery.
   avahi-daemon.service avahi-daemon.socket
 
-  # Ubuntu's crash reporter and report generator (annoying stuff).
-  whoopsie.service apport.service
-
   # Bluetooth support.
   bluetooth.service
 
@@ -390,6 +382,14 @@ DISABLE_UNITS=(
 
   # Disable automatic updates (even security related).
   unattended-upgrades.service
+)
+
+RM_PACKAGES=(
+  # D-Bus daemon to generate thumbnails.
+  tumbler
+
+  # Ubuntu error reporting tools.
+  whoopsie apport apport-gtk
 )
 
 # Computer specific packages {{{1
@@ -413,11 +413,14 @@ esac
 
 for ppa in "${PPAS[@]}"
 do
-    add-apt-repository --yes --no-update "$ppa" && echo >&2 "added ${ppa}"
+  add-apt-repository --yes --no-update "$ppa" && echo >&2 "added ${ppa}"
 done
 apt update
 apt upgrade --yes
 apt install --yes "${PACKAGES[@]}"
+
+# Remove packages that we don't want.
+apt purge --yes "${RM_PACKAGES[@]}"
 
 # Now, disable the systemd units that we don't use. However, use
 # `disable' instead of `mask' since the services ought to be started if
