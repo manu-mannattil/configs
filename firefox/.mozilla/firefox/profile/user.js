@@ -43,13 +43,16 @@ user_pref("browser.download.useDownloadDir", false);
 // Disable autofilling of saved addresses.
 user_pref("extensions.formautofill.addresses.enabled", false);
 
-// Minimize crash reporting.
+// Minimize crash reporting and other communications with Mozilla.
 user_pref("dom.ipc.plugins.flash.subprocess.crashreporter.enabled", false);
 user_pref("dom.ipc.plugins.reportCrashURL", false);
 user_pref("breakpad.reportURL", "");
 user_pref("browser.tabs.crashReporting.sendReport", false);
 user_pref("browser.crashReports.unsubmittedCheck.enabled", false);
 user_pref("browser.selfsupport.url", "");
+user_pref("datareporting.healthreport.uploadEnabled", false);
+user_pref("datareporting.healthreport.service.enabled", false);
+user_pref("datareporting.policy.dataSubmissionEnabled", false);
 
 // Disable "Recommended by Pocket" in Firefox Quantum.
 user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
@@ -70,3 +73,9 @@ user_pref("browser.newtabpage.enabled", false);
 
 // Stop annoying me with notifications (and asking about them).
 user_pref("dom.webnotifications.enabled", false);
+
+// Reader-view preferences.
+user_pref("reader.color_scheme", "dark");
+user_pref("reader.content_width", 4);
+user_pref("reader.font_size", 2);
+user_pref("reader.line_height", 3);
