@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 # vim: ft=sh fdm=marker et sts=2 sw=2
 #
-# install-apt.sh -- install a bunch of packages using apt
+# xubuntu-post.sh -- Xubuntu post-installation script
 #
-# Usage: install-apt.sh
+# Usage: xubuntu-post.sh
 #
-# This script is for installing a bunch of packages after a fresh
-# Xubuntu install.  However, since all packages aren't available on
-# the Ubuntu repositories, some packages need to be manually installed:
+# This is a post-installation script to install some packages and setup
+# the system the way I want it after a fresh Xubuntu install.  However,
+# since all packages aren't available on the Ubuntu repositories, some
+# packages need to be manually installed:
 #
 #   DeaDBeeF FB plugin    https://gitlab.com/zykure/deadbeef-fb/tree/release/binary
 #   Dropbox               https://www.dropbox.com/install?os=lnx
@@ -32,6 +33,12 @@
 #   youtube-dl            http://rg3.github.io/youtube-dl/download.html
 #
 
+set -eu
+set -o pipefail
+
+# Jump to the script directory.
+pushd "$(dirname "$(readlink -f -- "$0")")"
+
 # Always run as root.
 [[ $(id -u) == 0 ]] || exec sudo -- "$0" "$@"
 
@@ -55,7 +62,6 @@ PACKAGES=(
   # ------------------------
 
   apt-file                            # search for files within Debian packages (command-line interface)
-  aptitude                            # terminal-based package manager
   cdbs                                # common build system for Debian packages
   checkinstall                        # installation tracker
   debhelper                           # helper programs for debian/rules
@@ -144,7 +150,6 @@ PACKAGES=(
   gimp-lensfun                        # Gimp plugin to correct lens distortion using the lensfun library
   gimp-plugin-registry                # repository of optional extensions for GIMP
   gmic                                # GREYC's Magic for Image Computing
-  gthumb                              # GNOME image viewer and organizer
   gv                                  # PostScript and PDF viewer for X
   hugin                               # panorama photo stitcher - GUI tools
   ink-generator                       # Inkscape extension to automatically generate files from a template
@@ -260,7 +265,6 @@ PACKAGES=(
   extundelete                         # utility to recover deleted files from ext3/ext4 partition
   firejail                            # sandbox to restrict the application environment
   foremost                            # forensic program to recover lost files
-  gdebi                               # simple tool to view and install deb files - GNOME GUI
   gnome-system-monitor                # Process viewer and system resource monitor for GNOME
   gparted                             # GNOME partition editor
   gsmartcontrol                       # graphical user interface for smartctl
@@ -360,7 +364,7 @@ DISABLE_UNITS=(
   apt-daily.timer apt-daily-upgrade.timer
 
   # Message of the day spam.
-  motd-news.timer
+  motd-news.timer motd.service motd-news.service
 
   # Ubuntu's snap package manager.
   snapd.service snapd.seeded.service snapd.socket
@@ -384,28 +388,53 @@ DISABLE_UNITS=(
   unattended-upgrades.service
 )
 
+# A list of useless packages can be obtained by running (in Bash)
+#
+# comm -13 <(apt depends xubuntu-core    | sed 's/^ *//;s/^[^:]*: //' | sort ) \
+#          <(apt depends xubuntu-desktop | sed 's/^ *//;s/^[^:]*: //' | sort )
+#
 RM_PACKAGES=(
-  # D-Bus daemon to generate thumbnails.
+  apport
+  apport-gtk
+  blueman
+  gigolo
+  gnome-accessibility-themes
+  gnome-mines
+  gnome-packagekit
+  gnome-software
+  gnome-sudoku
+  language-selector-gnome
+  parole
+  pidgin
+  pidgin-otr
+  sgt-launcher
+  sgt-puzzles
+  shotwell
+  speech-dispatcher
+  system-config-printer
+  thunderbird
   tumbler
-
-  # Ubuntu error reporting tools.
-  whoopsie apport apport-gtk
+  update-manager
+  update-notifier
+  whoopsie
+  xfburn
+  xubuntu-community-wallpapers
+  xubuntu-community-wallpapers-bionic
 )
 
-# Computer specific packages {{{1
-# -------------------------------
+# Host-specific packages {{{1
+# ---------------------------
 
 case "$HOSTNAME" in
   # Dell Inspiron 3442.
   carbon)
-    DISABLE_UNITS+=(
-      # I don't print on this laptop.  Thus, disable CUPS.
-      cups.path cups-browsed.service cups.service cups.socket
-    )
-    PACKAGES+=(
-      # Broadcom Wi-Fi drivers
-      bcmwl-kernel-source
-    ) ;;
+    # I don't print on this laptop and thus disable CUPS.
+    DISABLE_UNITS+=( cups.path cups-browsed.service cups.service cups.socket )
+    RM_PACKAGES+=( system-config-printer )
+
+    # Broadcom Wi-Fi drivers.
+    PACKAGES+=( bcmwl-kernel-source )
+    ;;
 esac
 
 # Installation {{{1
@@ -419,14 +448,49 @@ apt update
 apt upgrade --yes
 apt install --yes "${PACKAGES[@]}"
 
+# Remove packages {{{1
+# --------------------
+
 # Remove packages that we don't want.
 apt purge --yes "${RM_PACKAGES[@]}"
+apt autoremove
+apt clean
 
-# Now, disable the systemd units that we don't use. However, use
+# Purge dpkg cache.
+IFS=$'\n' read -r -d '' -a pkgs < <(dpkg --list | grep '^rc' | cut -d ' ' -f 3)
+[[ ${#pkgs[@]} == 0 ]] || dpkg --purge "${pkgs[@]}"
+
+# Disable systemd units {{{1
+# --------------------------
+
+# Now, disable the systemd units that we don't use.  However, use
 # `disable' instead of `mask' since the services ought to be started if
 # they are required.
 for unit in "${DISABLE_UNITS[@]}"
 do
-  systemctl stop "$unit"
-  systemctl disable "$unit"
+  systemctl disable --now "$unit"
 done
+
+# Miscellaneous {{{1
+# ------------------
+
+# Disable message of the day spam.
+chmod -x /etc/update-motd.d/*
+
+# Fix tearing videos with integrated Intel graphics.
+mkdir -vp /etc/X11/xorg.conf.d
+cp -vf 20-intel.conf /etc/X11/xorg.conf.d
+
+# Update grub configuration.
+cp -vf grub /etc/default/grub
+update-grub
+
+# lightdm configuration.
+cp -vf lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
+
+# Comment out some global configuration files.
+[[ -f /etc/bash.bashrc ]] && sed -i 's/^/# /' /etc/bash.bashrc
+[[ -f /etc/Muttrc ]] && sed -i 's/^/# /' /etc/Muttrc
+
+popd
+echo >&2 "finished post-install script"

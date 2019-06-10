@@ -46,7 +46,3 @@ SHELL=/bin/bash
 
 # Clean temporary LaTeX files in ~
 @hourly "$HOME/code/scripts/texclean" "$HOME/templates" "$HOME/documents/notes"
-
-# Extract and store (in lbdb) addresses from the messages sent in the last
-# 7 days using lbdb-process.
-@daily find "$HOME/mail" -path '*sent/cur/*' -type f -mtime -7 -exec "$HOME/code/scripts/lbdb-process" {} +
