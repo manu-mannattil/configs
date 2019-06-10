@@ -558,9 +558,6 @@ export          PS1_RESET="\[$COLOR_RESET\]"
 # Keep at most 5 directories in PS1 paths.
 export PROMPT_DIRTRIM=5
 
-# Prevent virtualenv from modifying the prompt by default.
-# export VIRTUAL_ENV_DISABLE_PROMPT=1
-
 # Show more git info in PS1.
 # See /usr/lib/git-core/git-sh-prompt for documentation.
 export GIT_PS1_DESCRIBE_STYLE=default
@@ -574,9 +571,6 @@ export GIT_PS1_SHOWUPSTREAM=auto
 __bash_prompt() {
     local ps1_git=$(git rev-parse --is-inside-work-tree &>/dev/null &&
                     echo " ${PS1_BRIGHT_CYAN}git${PS1_BRIGHT_WHITE}:$(__git_ps1 '%s')")
-    # local ps1_venv=$([[ "$VIRTUAL_ENV" ]] &&
-    #                  echo " ${PS1_BRIGHT_MAGENTA}venv${PS1_BRIGHT_WHITE}:${VIRTUAL_ENV##*/}")
-
     local ps1_conda=$([[ "$CONDA_DEFAULT_ENV" ]] &&
                       echo " ${PS1_BRIGHT_MAGENTA}conda${PS1_BRIGHT_WHITE}:${CONDA_DEFAULT_ENV##*/}")
 
