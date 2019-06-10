@@ -1,12 +1,9 @@
-#!/usr/bin/env bash
+#!/bin/sh
 #
 # ~/.xprofile -- execute commands before starting X
 #
 
-if [[ -f "${HOME}/.Xresources" ]]
-then
-    xrdb -merge "${HOME}/.Xresources"
-fi
+[ -f "${HOME}/.Xresources" ] && xrdb -merge "${HOME}/.Xresources"
 
 # Make GTK/QT apps use X input method (Xim).
 # Without this, custom mappings in ~/.XCompose won't work.
