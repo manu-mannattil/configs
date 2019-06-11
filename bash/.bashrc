@@ -37,6 +37,11 @@ shopt -s dirspell
 # Enable extended pattern matching features.
 shopt -s extglob
 
+# Make range expressions used in pattern matching bracket expressions behave as
+# if in the traditional C locale when performing comparisons.  E.g., [A-Z] will
+# now only match uppercase characters.
+shopt -s globasciiranges
+
 # Match all files and zero or more directories and subdirectories when the
 # pattern ** is uses in a pathname expansion context.
 shopt -s globstar
