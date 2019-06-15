@@ -314,7 +314,7 @@ __install_tmux() {
 
 # :target: urxvt - rxvt-unicode configuration
 __install_urxvt() {
-    install "urxvt/.urxvt/ext" "urxvt/.urxvt/colors"
+    install "urxvt/.urxvt/ext"
 }
 
 # :target: vim - Vim configuration and plugins
