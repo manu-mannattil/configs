@@ -1,5 +1,33 @@
 ! vim: ft=xdefaults fdm=marker et sts=2 sw=2
 
+! Terminal colors {{{1
+! --------------------
+
+*background: #000000
+*foreground: #cecece
+*cursorColor: #dd4010
+*highlightColor: #dadada
+*highlightTextColor: #585858
+
+! Color palette borrowed from Apprentice.
+! https://github.com/romainl/Apprentice
+*color0: #0f0f0f
+*color1: #af5f5f
+*color2: #5f875f
+*color3: #87875f
+*color4: #5f87af
+*color5: #5f5f87
+*color6: #5f8787
+*color7: #6c6c6c
+*color8: #2c2c2c
+*color9: #ff8700
+*color10: #87af87
+*color11: #d7d787
+*color12: #8fafd7
+*color13: #8787af
+*color14: #5fafaf
+*color15: #ffffff
+
 ! xterm settings {{{1
 ! -------------------
 
@@ -66,11 +94,6 @@ XTerm*foreground: #ffffff
 
 ! urxvt settings {{{1
 ! -------------------
-
-! Colors.  We do not need to specify the full path to the "colors file" since
-! ~/.Xresources is usually sourced when ~/.xprofile is run (and it is usually
-! run from the home directory of the user).
-#include ".urxvt/colors/distinguished"
 
 ! Do not use any bold/italic fonts.
 URxvt*boldFont:
