@@ -12,15 +12,14 @@
 #
 #   DeaDBeeF FB plugin    https://gitlab.com/zykure/deadbeef-fb/tree/release/binary
 #   Dropbox               https://www.dropbox.com/install?os=lnx
-#   epub2txt              https://github.com/kevinboone/epub2txt/releases
 #   fzf                   https://github.com/junegunn/fzf-bin/releases
+#                         https://raw.githubusercontent.com/junegunn/fzf/master/man/man1/fzf.1
 #   Geekbench             https://www.geekbench.com/download/linux/
 #   Google Chrome         https://www.google.com/chrome
 #   JSMin                 https://raw.githubusercontent.com/douglascrockford/JSMin/master/jsmin.c
 #   krop                  http://arminstraub.com/software/krop
 #   PDF Scale             https://github.com/tavinus/pdfScale/releases
 #   pdfsizeopt            https://github.com/pts/pdfsizeopt
-#   Platform tools        https://dl.google.com/android/repository/platform-tools-latest-linux.zip
 #   Skype                 https://go.skype.com/skypeforlinux-64.deb
 #
 # The following programs usually have outdated versions in the
@@ -58,6 +57,12 @@ PPAS=(
 # -------------
 
 PACKAGES=(
+  # Android utilities {{{2
+  # ----------------------
+
+  android-tools-adb                   # Android debug bridge
+  android-tools-fastboot              # Android flashing/booting utility
+
   # Debian/Ubuntu stuff {{{2
   # ------------------------
 
@@ -73,8 +78,6 @@ PACKAGES=(
   groff                               # The full groff distribution including man pages
   lintian                             # Debian package checker
   pbuilder                            # personal package builder for Debian packages
-  snapcraft                           # easily craft snaps
-  synaptic                            # Graphical package manager
   ubuntu-restricted-extras            # Commonly used media codecs and fonts for Ubuntu
 
   # Developer utilities {{{2
@@ -97,11 +100,9 @@ PACKAGES=(
   # ----------------
 
   exuberant-ctags                     # build tag file indexes of source code definitions
-  flex                                # fast lexical analyzer generator
   indent                              # C language source code formatting program
   indent-doc                          # Documentation for GNU indent
   manpages-posix                      # Manual pages about using POSIX system
-  qttools5-dev-tools                  # Qt 5 development tools.
   shellcheck                          # lint tool for shell scripts
   sloccount                           # programs for counting physical source lines of code (SLOC)
 
@@ -112,7 +113,6 @@ PACKAGES=(
   mutt                                # text-based mailreader supporting MIME, GPG, PGP and threading
   notmuch                             # thread-based email index, search and tagging
   offlineimap                         # IMAP/Maildir synchronization and reader support
-  postfix                             # High-performance mail transport agent
   urlview                             # Extracts URLs from text
 
   # Fonts {{{2
@@ -137,8 +137,6 @@ PACKAGES=(
   djview-plugin                       # Browser plugin for the DjVu image format
   djview4                             # Viewer for the DjVu image format
   djvulibre-bin                       # Utilities for the DjVu image format
-  engauge-digitizer                   # interactively extracts numbers from bitmap graphs or maps
-  engauge-digitizer-doc               # engauge-digitizer user manual and tutorial
   exif                                # command-line utility to show EXIF information in JPEG files
   exiftran                            # digital camera JPEG image transformer
   figlet                              # Make large character ASCII banners out of ordinary text
@@ -159,7 +157,6 @@ PACKAGES=(
   luminance-hdr                       # graphical user interface providing a workflow for HDR imaging
   pdf2djvu                            # PDF to DjVu converter
   pdfshuffler                         # merge, split and re-arrange pages from PDF documents
-  pinta                               # Simple drawing/painting program
   pngcrush                            # optimizes PNG (Portable Network Graphics) files
   qpdfview                            # tabbed document viewer
   qrencode                            # QR Code encoder into PNG image
@@ -170,19 +167,17 @@ PACKAGES=(
   toilet                              # display large colourful characters in text mode
   wkhtmltopdf                         # Command line utilities to convert html to pdf or image using WebKit
 
-  # Miscellaneous languages/runtime environments {{{2
-  # -------------------------------------------------
+  # Misc. languages/runtime environments {{{2
+  # -----------------------------------------
 
   gawk                                # GNU awk, a pattern scanning and processing language
   mawk                                # a pattern scanning and text processing language
-  ruby-dev                            # Header files for compiling extension modules for Ruby (default version)
   tcc                                 # small ANSI C compiler
 
   # Multimedia {{{2
   # ---------------
 
   audacity                            # fast, cross-platform audio editor
-  cdparanoia                          # audio extraction tool for sampling CDs
   cuetools                            # tools for manipulating CUE/TOC files
   deadbeef                            # audio player
   ffmpeg                              # Tools for transcoding, streaming and playing of multimedia files
@@ -220,7 +215,6 @@ PACKAGES=(
   axel                                # light command line download accelerator
   curl                                # command line tool for transferring data with URL syntax
   mtr                                 # Full screen ncurses and X11 traceroute tool
-  modem-manager-gui                   # GUI front-end for ModemManager / Wader / oFono
 
   # Office {{{2
   # -----------
@@ -286,8 +280,8 @@ PACKAGES=(
   wine-stable                         # Microsoft Windows Compatibility Layer (meta-package)
   xbacklight                          # simple utility to set the backlight level
 
-  # Text editors/Terminal emulators   {{{2
-  # --------------------------------  ----
+  # Text editors/Terminal emulators {{{2
+  # ------------------------------------
 
   emacs                               # GNU Emacs metapackage
   gnome-terminal                      # GNOME terminal emulator application
@@ -386,6 +380,9 @@ DISABLE_UNITS=(
 
   # Disable automatic updates (even security related).
   unattended-upgrades.service
+
+  # S.M.A.R.T test service.
+  smartd.service
 )
 
 # A list of useless packages can be obtained by running (in Bash)
@@ -400,7 +397,6 @@ RM_PACKAGES=(
   gigolo
   gnome-accessibility-themes
   gnome-mines
-  gnome-packagekit
   gnome-software
   gnome-sudoku
   language-selector-gnome
@@ -418,6 +414,7 @@ RM_PACKAGES=(
   update-notifier
   whoopsie
   xfburn
+  xfce4-dict
   xubuntu-community-wallpapers
   xubuntu-community-wallpapers-bionic
 )
@@ -453,12 +450,8 @@ apt install --yes "${PACKAGES[@]}"
 
 # Remove packages that we don't want.
 apt purge --yes "${RM_PACKAGES[@]}"
-apt autoremove
-apt clean
-
-# Purge dpkg cache.
-IFS=$'\n' read -r -d '' -a pkgs < <(dpkg --list | grep '^rc' | cut -d ' ' -f 3)
-[[ ${#pkgs[@]} == 0 ]] || dpkg --purge "${pkgs[@]}"
+apt autoremove --yes
+apt clean --yes
 
 # Disable systemd units {{{1
 # --------------------------
