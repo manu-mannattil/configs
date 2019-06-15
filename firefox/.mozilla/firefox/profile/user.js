@@ -79,3 +79,7 @@ user_pref("reader.color_scheme", "dark");
 user_pref("reader.content_width", 4);
 user_pref("reader.font_size", 2);
 user_pref("reader.line_height", 3);
+
+// Don't record information about the current browser session and don't
+// attempt to restore it automatically.
+user_pref("browser.sessionstore.enabled", false);
