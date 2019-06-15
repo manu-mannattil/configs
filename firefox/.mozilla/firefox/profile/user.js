@@ -83,3 +83,6 @@ user_pref("reader.line_height", 3);
 // Don't record information about the current browser session and don't
 // attempt to restore it automatically.
 user_pref("browser.sessionstore.enabled", false);
+user_pref("browser.sessionstore.max_tabs_undo", 0);
+user_pref("browser.sessionstore.max_windows_undo", 0);
+user_pref("browser.sessionstore.restore_on_demand", false);
