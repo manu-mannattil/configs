@@ -1,5 +1,5 @@
-Configuration files
-===================
+configs
+=======
 
 This is a repository for managing my configuration files (aka dotfiles),
 yak shaved over the years and contains about <!--FILES-->159 configuration
