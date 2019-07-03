@@ -95,6 +95,7 @@ application/x-cbr=calibre-ebook-viewer.desktop
 application/x-cbz=calibre-ebook-viewer.desktop
 application/x-cgi=gvim.desktop
 application/x-crossmark=libreoffice-startcenter.desktop
+application/x-cue=deadbeef.desktop
 application/x-dbase=libreoffice-startcenter.desktop
 application/x-dbf=libreoffice-startcenter.desktop
 application/x-dbpl=deadbeef.desktop
