@@ -57,7 +57,7 @@ user_pref("datareporting.policy.dataSubmissionEnabled", false);
 // Disable "Recommended by Pocket" in Firefox Quantum.
 user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
 
-// Resolve DNS over HTTPS (DoH).
+// DNS over HTTPS (DoH) with CloudFlare's DNS.
 user_pref("network.trr.mode", 2);
 user_pref("trr.bootstrapAddress", "1.1.1.1");
 
@@ -86,3 +86,6 @@ user_pref("browser.sessionstore.enabled", false);
 user_pref("browser.sessionstore.max_tabs_undo", 0);
 user_pref("browser.sessionstore.max_windows_undo", 0);
 user_pref("browser.sessionstore.restore_on_demand", false);
+
+// Disable UI animations.
+user_pref("toolkit.cosmeticAnimations.enabled", false);
