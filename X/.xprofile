@@ -10,9 +10,9 @@
 export GTK_IM_MODULE="xim"
 export QT_IM_MODULE="xim"
 
-# Two finger taps = middle click
-# Not working on my Inspiron 3442.
-# synclient TapButton2=2
+# Synaptics driver settings.
+# Two finger taps = middle click and disable touchpad while typing.
+synclient TapButton2=2 PalmDetect=1
 
 # X11 keyboard layout tweaks {{{1
 # -------------------------------
