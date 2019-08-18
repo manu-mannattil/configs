@@ -89,3 +89,7 @@ user_pref("browser.sessionstore.restore_on_demand", false);
 
 // Disable UI animations.
 user_pref("toolkit.cosmeticAnimations.enabled", false);
+
+// Highlight matching search terms.
+user_pref("findbar.highlightAll", true);
+user_pref("findbar.modalHighlight", true);
