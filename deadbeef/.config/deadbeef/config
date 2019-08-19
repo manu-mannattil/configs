@@ -45,3 +45,5 @@ hotkey.key31 n 0 0 playback_random
 hotkey.key32 "Ctrl k" 0 0 toggle_stop_after_album
 hotkeys_created 1
 resume_last_session 0
+replaygain.processing_flags 1
+replaygain.source_mode 1
