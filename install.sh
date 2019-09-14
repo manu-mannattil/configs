@@ -312,11 +312,6 @@ __install_tmux() {
     install "tmux/.tmux" "tmux/.tmux.conf"
 }
 
-# :target: urxvt - rxvt-unicode configuration
-__install_urxvt() {
-    install "urxvt/.urxvt/ext"
-}
-
 # :target: vim - Vim configuration and plugins
 __install_vim() {
     install "vim/.vimrc" "vim/.vim" "vim/.gvimrc"
