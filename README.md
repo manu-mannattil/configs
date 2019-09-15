@@ -2,7 +2,7 @@ configs
 =======
 
 This is a repository for managing my configuration files (aka dotfiles),
-yak shaved over the years and contains about <!--FILES-->151 configuration
+yak shaved over the years and contains about <!--FILES-->152 configuration
 files for about <!--PROGRAMS-->44 programs.
 
 Installation
