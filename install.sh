@@ -125,7 +125,7 @@ __install_cvs() {
     grep -v '\(^$\|^#\)' "${REPO}/cvs/.cvs_ignore" | sort | uniq >"${HOME}/.cvsignore"
 }
 
-# :target: ctags - exuberant ctags configuration.
+# :target: ctags - exuberant ctags configuration
 __install_ctags() {
     install "ctags/.ctags"
 }
@@ -196,9 +196,19 @@ __install_git() {
     install "git/.gitconfig" "git/.gitattributes" "git/.git-pass"
 }
 
+# :target: gtk - GTK 2/3 configuration
+__install_gtk() {
+    install "gtk/.gtkrc-2.0" "gtk/.config/gtk-3.0/settings.ini"
+}
+
 # :target: htop - htop configuration
 __install_htop() {
     install --copy "htop/.config/htop"
+}
+
+# :target: i3 - i3 wm configuration
+__install_i3() {
+    install "i3/.config/i3/config"
 }
 
 # :target: ipython - iPython configuration

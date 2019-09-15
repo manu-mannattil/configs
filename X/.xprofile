@@ -3,6 +3,10 @@
 # ~/.xprofile -- execute commands before starting X
 #
 
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+xrandr --dpi 168
+
 [ -f "${HOME}/.Xresources" ] && xrdb -merge "${HOME}/.Xresources"
 
 # Make GTK/QT apps use X input method (Xim).
@@ -74,3 +78,16 @@ export PYTHONSTARTUP="${HOME}/.pythonrc.py"
 
 # Don't save sdcv history.
 export SDCV_HISTSIZE=0
+
+# Scale GTK3 UI elements by a factor of two.  But this scales the text, which
+# has scaled once before.
+export GDK_SCALE=2
+
+# Thus, undo scaling of text.
+export GDK_DPI_SCALE=0.5
+
+# Set DPI for Qt applications.
+export QT_FONT_DPI=168
+
+xsetroot -solid "#303030"
+exec i3
