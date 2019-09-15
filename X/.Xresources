@@ -139,15 +139,18 @@ URxvt*lineSpace: 0
 ! Miscellaneous {{{1
 ! ------------------
 
-! QT applications do not seem to respect fonts.conf(5) for some reason.
-! So we keep equivalent settings here.
+! Xft font configuration.
 Xft*antialias: true
 Xft*autohint: false
-Xft*dpi: 96
+Xft*dpi: 168
 Xft*hinting: false
 Xft*hintstyle: hintnone
 Xft*lcdfilter: lcddefault
 Xft*rgba: rgb
+
+! Bigger cursor size to accomodate HiDPI displays.
+Xcursor*size: 48
+Xcursor*theme: dmz
 
 ! Notes {{{1
 ! ----------
