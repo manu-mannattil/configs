@@ -355,7 +355,7 @@ __install_wget() {
 
 # :target: x - X11 configuration
 __install_x() {
-    install "X/.XCompose" "X/.xprofile" "X/.Xresources"
+    install "X/.XCompose" "X/.xinitrc" "X/.Xresources"
     [[ "$DISPLAY" ]] && xrdb -merge "${HOME}/.Xresources"
 }
 
