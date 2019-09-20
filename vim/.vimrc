@@ -321,12 +321,12 @@ augroup ft_related
   autocmd!
 
   autocmd BufRead,BufNewFile *.conf set filetype=conf
+  autocmd BufRead,BufNewFile *.fold set filetype=json
   autocmd BufRead,BufNewFile *.gp,*.plt set filetype=gnuplot
   autocmd BufRead,BufNewFile *.md,*.mkd set filetype=markdown
   autocmd BufRead,BufNewFile *.pdf_tex set filetype=tex
   autocmd BufRead,BufNewFile *.rkt,*.rktl set filetype=scheme
   autocmd BufRead,BufNewFile *.vcf set filetype=vcard
-  autocmd BufRead,BufNewFile *.fold set filetype=json
   autocmd BufRead,BufNewFile COPYING,INSTALL,LICENSE,README,[Rr]eadme set filetype=text
 
   " .m files are Mathematica files.  Who uses Matlab these days?
@@ -487,7 +487,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Don't use Ex mode and use Q for formatting.
-noremap Q gq
+noremap Q gw
 
 " Set 'typical' textwidths faster.
 nnoremap <silent> ,6 :set textwidth=60<CR>
@@ -514,6 +514,9 @@ vnoremap / <ESC>/\V<C-R>*<CR>
 " Move around the changelist with ,d (backwards) and ,u (forwards).
 noremap ,u g,
 noremap ,d g;
+
+" Change to the `alternate' file using backspace.
+nnoremap <BS> <C-^>
 
 " File and buffer navigation tricks {{{2
 " --------------------------------------
