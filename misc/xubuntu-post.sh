@@ -57,6 +57,9 @@ PPAS=(
 # -------------
 
 PACKAGES=(
+  libnotify-bin
+  xinput
+
   # Android utilities {{{2
   # ----------------------
 

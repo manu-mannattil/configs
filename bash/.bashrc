@@ -178,6 +178,9 @@ alias add-apt-repository='add-apt-repository --yes'
 # Axel with sensible defaults.
 alias axel='axel -n 4 -a -U "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"'
 
+# Show calendar 2 months before and 3 months after current month.
+alias cal='cal -A 3 -B 2'
+
 # Don't restrict box-width in cowsay.
 alias cowsay='cowsay -n'
 
