@@ -58,8 +58,8 @@ user_pref("datareporting.policy.dataSubmissionEnabled", false);
 user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
 
 // DNS over HTTPS (DoH) with CloudFlare's DNS.
-user_pref("network.trr.mode", 2);
-user_pref("trr.bootstrapAddress", "1.1.1.1");
+// user_pref("network.trr.mode", 2);
+// user_pref("trr.bootstrapAddress", "1.1.1.1");
 
 // Don't cycle tabs (old behavior).
 user_pref("browser.ctrlTab.recentlyUsedOrder", false);

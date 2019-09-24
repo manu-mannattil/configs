@@ -372,6 +372,7 @@ iabbrev <buffer> yuor your
 
 if &ft == "tex"
   iabbrev <buffer> Ampere Amp\`{e}re
+  iabbrev <buffer> Amperian Amp\`{e}rian
   iabbrev <buffer> Benard B\'{e}nard
   iabbrev <buffer> Erdos Erd\H{o}s
   iabbrev <buffer> Godel G\"{o}del
@@ -382,6 +383,7 @@ if &ft == "tex"
   iabbrev <buffer> Sierpinski Sierpi\'{n}ski
 else
   iabbrev <buffer> Ampere Ampère
+  iabbrev <buffer> Amperian Ampèrian
   iabbrev <buffer> Benard Bénard
   iabbrev <buffer> Erdos Erdős
   iabbrev <buffer> Godel Gödel

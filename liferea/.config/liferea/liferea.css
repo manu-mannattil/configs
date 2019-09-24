@@ -1,3 +1,8 @@
+/* Beautiful Helvetica throughout. */
+* {
+    font-family: "Nimbus Sans L", FreeSans, Helvetica, Arial, sans-serif;
+}
+
 /* Item body/description */
 div.content { 
     margin: 2em 2em auto;

@@ -116,7 +116,7 @@ remotepasseval = get_pass("email/syr")
 ssl = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 type = IMAP
-folderfilter = lambda folder: folder.split('/')[0] not in ('Archive', 'Calendar', 'Contacts', 'Conversation History', 'Deleted Items', 'Journal', 'Junk Email', 'Notes', 'Outbox', 'Tasks')
+folderfilter = lambda folder: folder.split('/')[0] in ('INBOX', 'Drafts', 'Sent Items')
 nametrans = lambda folder: {'INBOX': 'inbox',
                             'Drafts': 'drafts',
                             'Sent Items': 'sent',

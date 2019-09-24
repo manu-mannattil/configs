@@ -13,12 +13,12 @@ snippet cl
 			${6}
 
 snippet def
-	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
+	def ${1:fname}(${2:`indent(".") ? "self" : ""`}):
 		"""${3:docstring for $1}"""
 		${4:pass}
 
 snippet deff
-	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
+	def ${1:fname}(${2:`indent(".") ? "self" : ""`}):
 		${3}
 
 snippet defs
@@ -26,18 +26,18 @@ snippet defs
 		${3:pass}
 
 snippet docs
-	'''
-	File: ${1:`Filename('$1.py', 'foo.py')`}
+	"""
+	File: ${1:`Filename("$1.py", "foo.py")`}
 	Author: ${2:`g:snips_author`}
 	Description: ${3}
-	'''
+	"""
 
 snippet for
 	for ${1:needle} in ${2:haystack}:
 		${3:# code...}
 
 snippet ifmain
-	if __name__ == '__main__':
+	if __name__ == "__main__":
 		${1:main()}
 
 snippet imp
