@@ -89,5 +89,9 @@ export GDK_DPI_SCALE=0.5
 # Set DPI for Qt applications.
 export QT_FONT_DPI=168
 
+xinput set-prop 12 357 0 1
+xinput set-prop 12 354 1.0
+
 xsetroot -solid "#303030"
+dunst &
 exec i3

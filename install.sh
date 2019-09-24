@@ -368,22 +368,6 @@ __install_xdg() {
     update-mime-database -V "${HOME}/.local/share/mime"
 }
 
-# :target: xfce - configuration files for the XFCE desktop environment
-__install_xfce() {
-    install --copy \
-        "xfce/.local/share/xfce4/helpers/terminal.desktop" \
-        "xfce/.config/xfce4/helpers.rc"
-
-    # Execute shell scripts in Thunar by clicking.
-    # https://bbs.archlinux.org/viewtopic.php?id=194464
-    command -v xfconf-query &>/dev/null && xfconf-query \
-        --channel thunar \
-        --create \
-        --property /misc-exec-shell-scripts-by-default \
-        --type bool \
-        --set true
-}
-
 # :target: xnview - XnView configuration
 __install_xnview() {
     install --copy "xnview/.config/xnviewmp/xnview.ini"

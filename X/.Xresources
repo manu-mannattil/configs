@@ -149,8 +149,9 @@ Xft*lcdfilter: lcddefault
 Xft*rgba: rgb
 
 ! Bigger cursor size to accomodate HiDPI displays.
-Xcursor*size: 48
-Xcursor*theme: dmz
+! Using asterisks, like in "Xcursor*size: 48" will not work.
+Xcursor.size: 48
+Xcursor.theme: DMZ-Black
 
 ! Notes {{{1
 ! ----------
