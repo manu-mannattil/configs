@@ -89,6 +89,10 @@ export GDK_DPI_SCALE=0.5
 # Set DPI for Qt applications.
 export QT_FONT_DPI=168
 
+# Xubuntu sets this to gtk2.  But without setting this to gtk3, Qt
+# applications don't seem to respect font settings.
+export QT_QPA_PLATFORMTHEME=gtk3
+
 xinput set-prop 12 357 0 1
 xinput set-prop 12 354 1.0
 

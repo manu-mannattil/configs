@@ -501,10 +501,10 @@ complete -F _mux mux
 
 # usage: open <file>...
 #
-# Open a file using exo-open and background it properly.
+# Open a file using xdg-open and background it properly.
 
 open() {
-    nohup exo-open "$@" </dev/null &>/dev/null
+    nohup xdg-open "$@" </dev/null &>/dev/null
 }
 
 # permid {{{2
