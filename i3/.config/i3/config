@@ -32,11 +32,6 @@ bindsym $mod+d exec dmenu_run -fn 'Source Code Pro Semibold:size=9'
 
 bindsym $mod+p exec passmenu
 
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -121,6 +116,15 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Enter the resize mode.
 bindsym $mod+r mode "resize"
 
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 10%+
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 1 toggle
+bindsym XF86Display exec --no-startup-id arandr
+
 # Resize windows (you can also use the mouse for that).  These bindings
 # trigger as soon as you enter the resize mode.
 mode "resize" {
@@ -152,9 +156,15 @@ bar {
   separator_symbol "/"
 
   colors {
-    separator "#ff8800"
+    separator "#285577"
     statusline "#aaaaaa"
   }
 
-  status_command i3status --config ~/.config/i3/i3status.conf
+  status_command i3status -c ~/.config/i3/i3status.conf
 }
+
+# Application modes {{{1
+# ----------------------
+
+# Use floating modes for the following applications.
+for_window [class="Arandr"] floating enable

@@ -1,0 +1,11 @@
+# Keyboard configuration file for the Linux console.
+# Consult the keyboard(5) manual page for more.
+
+XKBMODEL="pc105"
+XKBLAYOUT="us"
+XKBVARIANT=""
+
+# Swap capslock and escape keys.
+XKBOPTIONS="caps:swapescape"
+
+BACKSPACE="guess"
