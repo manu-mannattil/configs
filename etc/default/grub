@@ -7,6 +7,8 @@
 #
 #   info -f grub -n 'Simple configuration'
 #
+# NOTE: Remove "quiet splash" from GRUB options to provide more verbose
+# output during startup.
 
 GRUB_DEFAULT=0
 GRUB_TIMEOUT_STYLE=hidden
@@ -23,7 +25,7 @@ DISABLE_CPU_MITIGATIONS="nopti nospectre_v2 spectre_v2_user=off spec_store_bypas
 
 # Command-line arguments to add to menu entries for the Linux kernel in
 # default mode.  Will not be added in recovery mode.
-GRUB_CMDLINE_LINUX_DEFAULT="${DISABLE_CPU_MITIGATIONS} quiet splash"
+GRUB_CMDLINE_LINUX_DEFAULT="${DISABLE_CPU_MITIGATIONS}"
 
 # Command-line arguments to add to menu entries for the Linux kernel.
 # Will be added even in recovery mode.
