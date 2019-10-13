@@ -1,12 +1,19 @@
 gtk-icon-theme-name = "Humanity"
+gtk-theme-name = "Radiance"
 gtk-font-name = "Nimbus Sans L 10"
 
 # HiDPI hacks {{{1
 # ----------------
 
 # Fixes small icons in Inkscape, DeaDBeeF and countless other GTK2
-# applications.
-gtk-icon-sizes = "gtk-large-toolbar=48,48:gtk-small-toolbar=32,32:gtk-menu=32,32:gtk-dialog=48,48:gtk-button=32,32:gtk-dnd=32,32"
+# applications.  This doesn't seem to work if the gtk-icon-sizes property has
+# been set in the gtkrc file of the chosen theme (gtk-theme-name), e.g., I had
+# to comment out the lines that set gtk-icon-sizes in the gtkrc files of
+# Ambiance and Radiance themes:
+#
+#   sed -i 's/^\s*gtk-icon-sizes/# gtk-icon-sizes/' gtkrc
+#
+gtk-icon-sizes = "gtk-large-toolbar=48,48:gtk-small-toolbar=32,32:gtk-menu=32,32:gtk-dialog=48,48:gtk-button=32,32:gtk-dnd=32,32:panel-menu=48,48"
 
 # Increase scroll bar width.
 style "scroll" {
