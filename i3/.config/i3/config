@@ -22,7 +22,7 @@ focus_follows_mouse no
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -106,6 +106,9 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+bindsym $mod+b workspace back_and_forth
+bindsym $mod+Shift+b move container to workspace back_and_forth
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -116,6 +119,15 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Enter the resize mode.
 bindsym $mod+r mode "resize"
 
+# Media keys {{{2
+# ---------------
+
+# For using the brightness keys, install the brightnessctl package and add the
+# user to the video group:
+#
+#   apt install brightnessctl
+#   usermod -a -G video <user>
+#
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 10%+
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
 
@@ -123,7 +135,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 1 toggle
+
 bindsym XF86Display exec --no-startup-id arandr
+
+# }}}
 
 # Resize windows (you can also use the mouse for that).  These bindings
 # trigger as soon as you enter the resize mode.
@@ -153,7 +168,7 @@ mode "resize" {
 bar {
   # Put the bar at the top of the screen.
   position top
-  separator_symbol "/"
+  separator_symbol "／"
 
   colors {
     separator "#285577"
@@ -163,8 +178,50 @@ bar {
   status_command i3status -c ~/.config/i3/i3status.conf
 }
 
-# Application modes {{{1
-# ----------------------
+# Application settings {{{1
+# -------------------------
 
-# Use floating modes for the following applications.
+# Floating mode {{{2
+# ------------------
+
 for_window [class="Arandr"] floating enable
+
+# Browsers (workspace 2) {{{2
+# ---------------------------
+
+for_window [class="Firefox"] move container to workspace 2
+for_window [class="Firefox"] focus
+
+# Media (workspace 3) {{{2
+# ------------------------
+
+for_window [class="Deadbeef"] move container to workspace 3
+for_window [class="Deadbeef"] focus
+
+for_window [class="mpv"] move container to workspace 3
+for_window [class="mpv"] focus
+
+for_window [class="vlc"] move container to workspace 3
+for_window [class="vlc"] focus
+
+# Misc. Internet (workspace 2) {{{2
+# ---------------------------------
+
+for_window [class="Filezilla"] move container to workspace 4
+for_window [class="Filezilla"] focus
+
+for_window [class="Liferea"] move container to workspace 4
+for_window [class="Liferea"] focus
+
+
+# Large GUIs (workspace 9) {{{2
+# -----------------------------
+
+for_window [class="libreoffice"] move container to workspace 9
+for_window [class="libreoffice"] focus
+
+for_window [class="lyx"] move container to workspace 9
+for_window [class="lyx"] focus
+
+for_window [class="Mathematica"] move container to workspace 9
+for_window [class="Mathematica"] focus

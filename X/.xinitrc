@@ -1,9 +1,13 @@
 #!/bin/sh
 #
-# ~/.xprofile -- execute commands before starting X
+# ~/.xinitrc -- execute commands before starting X
 #
 
-xrandr --setprovideroutputsource modesetting NVIDIA-0
+[ "$HOSTNAME" = "boron" ] && HIDPI=1
+
+dgpu=$(cat /etc/prime-discrete)
+[ "$dgpu" = "on" ] && xrandr --setprovideroutputsource modesetting NVIDIA-0
+
 xrandr --auto
 xrandr --dpi 168
 
@@ -29,7 +33,6 @@ synclient TapButton2=2 PalmDetect=1
 # terminate:ctrl_alt_bkspc = ctrl + alt + bkspc terminates X
 
 setxkbmap -variant altgr-intl              \
-          -option                          \
           -option compose:rctrl            \
           -option caps:swapescape          \
           -option lv3:ralt_switch          \
@@ -39,45 +42,14 @@ setxkbmap -variant altgr-intl              \
 # Environment {{{1
 # ----------------
 
-# Set the PATH.
-export PATH="${HOME}/code/bin:${PATH}"
-
 # Preferred web browser.
 export BROWSER="/usr/bin/firefox"
-
-# Note that fc(1) in vi-mode uses $VISUAL instead of $FCEDIT.
-export EDITOR="/usr/bin/vim"
-export FCEDIT="$EDITOR" VISUAL="$EDITOR"
-
-# Set locale properly.  Ubuntu sets LANG to en_IN if IST is selected as the
-# time zone.  But many programs (e.g., tmux) don't understand en_IN.
-export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
-
-# Default Mutt profile.
-export MUTT_PROFILE="syr"
-
-# 3 minutes to clear the clipboard after copying a password.
-export PASSWORD_STORE_CLIP_TIME=180
-
-# Location of password store git repo.
-export PASSWORD_STORE_DIR="${HOME}/documents/.password-store"
 
 # Local TEXMF directory.
 export TEXMFHOME="${HOME}/.texmf"
 
 # Preferred terminal emulator.
 export TERMINAL="${HOME}/code/scripts/terminal"
-
-# Default pager.
-export PAGER="less"
-export MANPAGER="less"
-
-# File that's imported when the CPython interpreter is called interactively.
-export PYTHONSTARTUP="${HOME}/.pythonrc.py"
-
-# Don't save sdcv history.
-export SDCV_HISTSIZE=0
 
 # Scale GTK3 UI elements by a factor of two.  But this scales the text, which
 # has scaled once before.
@@ -86,16 +58,24 @@ export GDK_SCALE=2
 # Thus, undo scaling of text.
 export GDK_DPI_SCALE=0.5
 
-# Set DPI for Qt applications.
+# HiDPI Qt settings.
 export QT_FONT_DPI=168
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
 
 # Xubuntu sets this to gtk2.  But without setting this to gtk3, Qt
 # applications don't seem to respect font settings.
 export QT_QPA_PLATFORMTHEME=gtk3
 
-xinput set-prop 12 357 0 1
-xinput set-prop 12 354 1.0
+xinput set-prop 12 304 0 1
+xinput set-prop 12 295 1.0
 
+# Background color.
 xsetroot -solid "#303030"
+
+# Use dunst for notifications.
 dunst &
+
+# Start screen locker with a waiting time of 10 minutes.
+xautolock -time 10 -locker 'i3lock --color=303030' &
+
 exec i3

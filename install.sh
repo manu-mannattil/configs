@@ -114,6 +114,11 @@ __install_bibtool() {
     install "bibtool/.bibtoolrsc"
 }
 
+# :target: bin - custom launch scripts
+__install_bin() {
+    install "bin/.local/bin"
+}
+
 # :target: curl - cURL cli configuration
 __install_curl() {
     install "curl/.curlrc"
@@ -152,6 +157,11 @@ __install_deadbeef() {
 # :target: dircolors - dircolors configuration
 __install_dircolors() {
     install "dircolors/.dir_colors"
+}
+
+# :target: dunst - dunst configuration
+__install_dunst() {
+    install "dunst/.config/dunst"
 }
 
 # :target: emacs - minimal Emacs configuration
