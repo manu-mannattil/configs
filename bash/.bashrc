@@ -56,33 +56,6 @@ shopt -s histreedit
 # Disable annoying XON/XOFF flow control.
 stty -ixon
 
-# Exports {{{1
-# ------------
-
-# Recognize emulators that support 256 colors, but don't set $TERM properly.
-if [[ "$TERM" = "xterm" ]]
-then
-    if [[ "$COLORTERM" = "gnome-terminal" ||
-          "$COLORTERM" = "xfce4-terminal" ||
-          "$VTE_VERSION" ]]
-    then
-        export TERM="xterm-256color"
-    fi
-fi
-
-export SDCV_PAGER="sdcv-prettify --color | less"
-
-# Length of line in man(1).
-export MANWIDTH=80
-
-# Set up $LS_COLORS.
-if [[ -f "${HOME}/.dir_colors" ]]
-then
-    eval $(dircolors "${HOME}/.dir_colors")
-else
-    eval $(dircolors)
-fi
-
 # Bash history {{{2
 # -----------------
 
@@ -517,6 +490,65 @@ open() {
 permid() {
     head /dev/urandom | md5sum | cut -d ' ' -f 1 | tee /dev/stderr | pbcopy
 }
+
+# Exports {{{1
+# ------------
+
+# Recognize emulators that support 256 colors, but don't set $TERM properly.
+if [[ "$TERM" = "xterm" ]]
+then
+    if [[ "$COLORTERM" = "gnome-terminal" ||
+          "$COLORTERM" = "xfce4-terminal" ||
+          "$VTE_VERSION" ]]
+    then
+        export TERM="xterm-256color"
+    fi
+fi
+
+export SDCV_PAGER="sdcv-prettify --color | less"
+
+# Length of line in man(1).
+export MANWIDTH=80
+
+# Set up $LS_COLORS.
+if [[ -f "${HOME}/.dir_colors" ]]
+then
+    eval $(dircolors "${HOME}/.dir_colors")
+else
+    eval $(dircolors)
+fi
+
+# Set the PATH.
+mergepath "${HOME}/code/bin" "${HOME}/.local/bin"
+
+# Note that fc(1) in vi-mode uses $VISUAL instead of $FCEDIT.
+export EDITOR="/usr/bin/vim"
+export FCEDIT="$EDITOR" VISUAL="$EDITOR"
+
+# Set locale properly.  Ubuntu sets LANG to en_IN if IST is selected as the
+# time zone.  But many programs (e.g., tmux) don't understand en_IN.
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
+# Default Mutt profile.
+export MUTT_PROFILE="syr"
+
+# 3 minutes to clear the clipboard after copying a password.
+export PASSWORD_STORE_CLIP_TIME=180
+
+# Location of password store git repo.
+export PASSWORD_STORE_DIR="${HOME}/documents/.password-store"
+
+# Default pager.
+export PAGER="less"
+export MANPAGER="less"
+
+# File that's imported when the CPython interpreter is called interactively.
+export PYTHONSTARTUP="${HOME}/.pythonrc.py"
+
+# Don't save sdcv history.
+export SDCV_HISTSIZE=0
+
 
 # Sourced files {{{1
 # ------------------

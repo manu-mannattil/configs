@@ -109,7 +109,7 @@ URxvt*scrollBar: off
 
 ! Perl extensions.
 URxvt*perl-ext-common: matcher,font-size
-URxvt*url-launcher: /usr/bin/firefox
+URxvt*url-launcher: firefox
 URxvt*matcher.button: 1
 URxvt*keysym.C-0: font-size:reset
 URxvt*keysym.C-equal: font-size:increase
