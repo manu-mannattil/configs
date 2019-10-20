@@ -30,7 +30,9 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run -fn 'Source Code Pro Semibold:size=9'
 
-bindsym $mod+p exec passmenu
+# Run passmenu --  a script to choose pass-managed password store
+# entries using dmenu.
+bindsym $mod+p exec passmenu -fn 'Source Code Pro Semibold:size=9'
 
 # change focus
 bindsym $mod+h focus left
@@ -200,6 +202,7 @@ for_window [class="Deadbeef"] focus
 
 for_window [class="mpv"] move container to workspace 3
 for_window [class="mpv"] focus
+for_window [class="mpv"] floating enable
 
 for_window [class="vlc"] move container to workspace 3
 for_window [class="vlc"] focus
