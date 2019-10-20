@@ -9,7 +9,6 @@ dgpu=$(cat /etc/prime-discrete)
 [ "$dgpu" = "on" ] && xrandr --setprovideroutputsource modesetting NVIDIA-0
 
 xrandr --auto
-xrandr --dpi 168
 
 [ -f "${HOME}/.Xresources" ] && xrdb -merge "${HOME}/.Xresources"
 
@@ -17,10 +16,6 @@ xrandr --dpi 168
 # Without this, custom mappings in ~/.XCompose won't work.
 export GTK_IM_MODULE="xim"
 export QT_IM_MODULE="xim"
-
-# Synaptics driver settings.
-# Two finger taps = middle click and disable touchpad while typing.
-synclient TapButton2=2 PalmDetect=1
 
 # X11 keyboard layout tweaks {{{1
 # -------------------------------
@@ -65,9 +60,6 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=1
 # Xubuntu sets this to gtk2.  But without setting this to gtk3, Qt
 # applications don't seem to respect font settings.
 export QT_QPA_PLATFORMTHEME=gtk3
-
-xinput set-prop 12 304 0 1
-xinput set-prop 12 295 1.0
 
 # Background color.
 xsetroot -solid "#303030"
