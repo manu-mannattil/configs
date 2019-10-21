@@ -1,6 +1,8 @@
 gtk-icon-theme-name = "Humanity"
-gtk-theme-name = "Ambiance"
+gtk-theme-name = "Radiance"
 gtk-font-name = "Nimbus Sans L 10"
+gtk-enable-event-sounds=0
+gtk-enable-input-feedback-sounds=0
 
 # HiDPI hacks {{{1
 # ----------------
