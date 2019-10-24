@@ -218,7 +218,7 @@ __install_htop() {
 
 # :target: i3 - i3 wm configuration
 __install_i3() {
-    install "i3/.config/i3/config"
+    install "i3/.config/i3/config" "i3/.config/i3/i3status.conf"
 }
 
 # :target: ipython - iPython configuration
