@@ -170,7 +170,7 @@ mode "resize" {
 bar {
   # Put the bar at the top of the screen.
   position top
-  separator_symbol "／"
+  separator_symbol "/"
 
   colors {
     separator "#285577"
@@ -201,7 +201,6 @@ for_window [class="Deadbeef"] move container to workspace 3
 for_window [class="Deadbeef"] focus
 
 for_window [class="mpv"] move container to workspace 3
-for_window [class="mpv"] focus
 for_window [class="mpv"] floating enable
 
 for_window [class="vlc"] move container to workspace 3
