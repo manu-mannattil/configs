@@ -121,6 +121,16 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Enter the resize mode.
 bindsym $mod+r mode "resize"
 
+# The middle button over a titlebar kills the window
+bindsym --release button2 kill
+
+# The middle button and a modifer over any part of the window kills the window
+bindsym --whole-window $mod+button2 kill
+
+# The right button toggles floating
+bindsym button3 floating toggle
+bindsym $mod+button3 floating toggle
+
 # Media keys {{{2
 # ---------------
 
