@@ -1,16 +1,21 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #
 # ~/.xinitrc -- execute commands before starting X
 #
 
-[ "$HOSTNAME" = "boron" ] && HIDPI=1
+[[ "$HOSTNAME" = "boron" ]] && export HIDPI=1
 
-dgpu=$(cat /etc/prime-discrete)
-[ "$dgpu" = "on" ] && xrandr --setprovideroutputsource modesetting NVIDIA-0
+dgpu=$(</etc/prime-discrete)
+[[ "$dgpu" == "on" ]] && xrandr --setprovideroutputsource modesetting NVIDIA-0
 
 xrandr --auto
 
-[ -f "${HOME}/.Xresources" ] && xrdb -merge "${HOME}/.Xresources"
+if [[ "$HIDPI" == 1 ]]
+then
+    xrdb -DHIDPI=1 -merge "${HOME}/.Xresources"
+else
+    xrdb -merge "${HOME}/.Xresources"
+fi
 
 # Make GTK/QT apps use X input method (Xim).
 # Without this, custom mappings in ~/.XCompose won't work.
@@ -62,12 +67,12 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export QT_QPA_PLATFORMTHEME=gtk3
 
 # Background color.
-xsetroot -solid "#303030"
+xsetroot -solid "#333333"
 
 # Use dunst for notifications.
 dunst &
 
 # Start screen locker with a waiting time of 10 minutes.
-xautolock -time 10 -locker 'i3lock --color=303030' &
+xautolock -time 10 -locker 'i3lock --ignore-empty-password --color=333333' &
 
 exec i3
