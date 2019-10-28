@@ -142,16 +142,17 @@ URxvt*lineSpace: 0
 ! Xft font configuration.
 Xft*antialias: true
 Xft*autohint: false
-Xft*dpi: 168
 Xft*hinting: false
 Xft*hintstyle: hintnone
 Xft*lcdfilter: lcddefault
 Xft*rgba: rgb
 
-! Bigger cursor size to accomodate HiDPI displays.
-! Using asterisks, like in "Xcursor*size: 48" will not work.
-Xcursor.size: 48
 Xcursor.theme: DMZ-Black
+
+#ifdef HIDPI
+  Xft*dpi: 168
+  Xcursor.size: 48
+#endif
 
 ! Notes {{{1
 ! ----------
