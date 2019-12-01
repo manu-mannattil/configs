@@ -469,17 +469,6 @@ _mux() {
 }
 complete -F _mux mux
 
-# open {{{2
-# ---------
-
-# usage: open <file>...
-#
-# Open a file using xdg-open and background it properly.
-
-open() {
-    nohup xdg-open "$@" </dev/null &>/dev/null
-}
-
 # permid {{{2
 # -----------
 
