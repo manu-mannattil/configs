@@ -151,7 +151,7 @@ Xcursor.theme: DMZ-Black
 
 #ifdef HIDPI
   Xft*dpi: 168
-  Xcursor.size: 48
+  Xcursor.size: 40
 #endif
 
 ! Notes {{{1

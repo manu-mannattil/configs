@@ -13,6 +13,17 @@ xrandr --auto
 if [[ "$HIDPI" == 1 ]]
 then
     xrdb -DHIDPI=1 -merge "${HOME}/.Xresources"
+
+    # Scale GTK3 UI elements by a factor of two.  But this
+    # scales the text, which has scaled once before.
+    export GDK_SCALE=2
+
+    # Thus, undo scaling of text.
+    export GDK_DPI_SCALE=0.5
+
+    # HiDPI Qt settings.
+    export QT_FONT_DPI=168
+    export QT_AUTO_SCREEN_SCALE_FACTOR=1
 else
     xrdb -merge "${HOME}/.Xresources"
 fi
@@ -22,9 +33,13 @@ fi
 export GTK_IM_MODULE="xim"
 export QT_IM_MODULE="xim"
 
-# X11 keyboard layout tweaks {{{1
-# -------------------------------
+# Will reduce the time it takes for xdg-open to figure out that the DE is
+# a generic one.
+export XDG_CURRENT_DESKTOP="X-Generic"
 
+# X11 keyboard layout tweaks
+# --------------------------
+#
 # altgr-intl = international version of altgr (which has more symbols)
 # caps:swapescape = swap caps lock and escape
 # compose:rctrl = right ctrl is the compose key
@@ -39,9 +54,6 @@ setxkbmap -variant altgr-intl              \
           -option rupeesign:4              \
           -option terminate:ctrl_alt_bkspc
 
-# Environment {{{1
-# ----------------
-
 # Preferred web browser.
 export BROWSER="/usr/bin/firefox"
 
@@ -51,19 +63,9 @@ export TEXMFHOME="${HOME}/.texmf"
 # Preferred terminal emulator.
 export TERMINAL="${HOME}/code/scripts/terminal"
 
-# Scale GTK3 UI elements by a factor of two.  But this scales the text, which
-# has scaled once before.
-export GDK_SCALE=2
-
-# Thus, undo scaling of text.
-export GDK_DPI_SCALE=0.5
-
-# HiDPI Qt settings.
-export QT_FONT_DPI=168
-export QT_AUTO_SCREEN_SCALE_FACTOR=1
-
 # Xubuntu sets this to gtk2.  But without setting this to gtk3, Qt
-# applications don't seem to respect font settings.
+# applications don't seem to respect font settings.  I don't know how it works
+# on Xubuntu.
 export QT_QPA_PLATFORMTHEME=gtk3
 
 # Background color.
@@ -73,6 +75,6 @@ xsetroot -solid "#333333"
 dunst &
 
 # Start screen locker with a waiting time of 10 minutes.
-xautolock -time 10 -locker 'i3lock --ignore-empty-password --color=333333' &
+xautolock -time 10 -locker 'i3lock --ignore-empty-password --show-failed-attempts --color=333333' &
 
 exec i3
