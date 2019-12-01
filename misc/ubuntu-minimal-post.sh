@@ -335,12 +335,9 @@ DISABLE_UNITS=(
 case "$HOSTNAME" in
   # Dell Inspiron 3442.
   carbon)
-    # I don't print on this laptop and thus disable CUPS.
-    DISABLE_UNITS+=( cups.path cups-browsed.service cups.service cups.socket )
-    RM_PACKAGES+=( system-config-printer )
-
-    # Broadcom Wi-Fi drivers.
-    PACKAGES+=( bcmwl-kernel-source )
+    PACKAGES+=(
+      bcmwl-kernel-source # Broadcom Wi-Fi drivers.
+    )
     ;;
   # ThinkPad P43s.
   boron)

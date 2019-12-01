@@ -603,6 +603,8 @@ let g:GPGDefaultRecipients = ['0x9D5931F4']
 " Tree-like listing for netrw.
 let g:netrw_liststyle = 3
 
+let g:netrw_browsex_viewer = "open"
+
 " Vimtex {{{2
 " -----------
 
