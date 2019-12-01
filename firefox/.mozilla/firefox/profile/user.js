@@ -92,3 +92,7 @@ user_pref("toolkit.cosmeticAnimations.enabled", false);
 
 // Highlight matching search terms.
 user_pref("findbar.highlightAll", true);
+
+// Allow extensions in private windows by default.
+// (I only install extensions I trust.)
+user_pref("extensions.allowPrivateBrowsingByDefault", true);
