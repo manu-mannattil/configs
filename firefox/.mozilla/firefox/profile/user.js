@@ -105,3 +105,6 @@ user_pref("extensions.allowPrivateBrowsingByDefault", true);
 // This is like the $GDK_SCALE environment variable that GTK+ uses for
 // HiDPI scaling, but allows fractional scaling.
 user_pref("layout.css.devPixelsPerPx", 1.75);
+
+// Enable loading of userChrome.css if available.
+toolkit.legacyUserProfileCustomizations.stylesheets;false
