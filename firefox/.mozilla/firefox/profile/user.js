@@ -107,4 +107,4 @@ user_pref("extensions.allowPrivateBrowsingByDefault", true);
 user_pref("layout.css.devPixelsPerPx", 1.75);
 
 // Enable loading of userChrome.css if available.
-toolkit.legacyUserProfileCustomizations.stylesheets;false
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
