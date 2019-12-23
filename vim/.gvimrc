@@ -43,9 +43,6 @@ set lines=42 columns=95
 " Enable mouse.
 set mouse=a
 
-" Follow the mouse to focus on a window.
-set mousefocus
-
 " Hide cursor when typing.
 set mousehide
 
