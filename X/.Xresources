@@ -147,11 +147,14 @@ Xft*hintstyle: hintnone
 Xft*lcdfilter: lcddefault
 Xft*rgba: rgb
 
-Xcursor.theme: DMZ-Black
+Xcursor.theme: Adwaita
 
 #ifdef HIDPI
   Xft*dpi: 168
-  Xcursor.size: 40
+  Xcursor.size: 42
+#else
+  Xft*dpi: 96
+  Xcursor.size: 24
 #endif
 
 ! Notes {{{1
