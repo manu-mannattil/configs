@@ -93,8 +93,8 @@ PACKAGES=(
   dh-make                  # tool that converts source archives into Debian package source
   diction                  # Utilities to help with style and diction (English and German)
   diffutils                # File comparison utilities
-  djview-plugin            # Browser plugin for the DjVu image format
   djview4                  # Viewer for the DjVu image format
+  djview-plugin            # Browser plugin for the DjVu image format
   djvulibre-bin            # Utilities for the DjVu image format
   dmg2img                  # Tool for converting compressed dmg files to hfsplus images
   dmz-cursor-theme         # Style neutral, scalable cursor theme
@@ -120,18 +120,19 @@ PACKAGES=(
   fortune-mod              # provides fortune cookies on demand
   fortunes                 # Data files containing fortune cookies
   fortunes-off             # Data files containing offensive fortune cookies
+  fuseiso                  # FUSE module to mount ISO filesystem images
   fwupd                    # Firmware update daemon
   gawk                     # GNU awk, a pattern scanning and processing language
   geogebra                 # Dynamic mathematics software for education
-  gimp                     # GNU Image Manipulation Program
   gimp-data-extras         # Extra brushes and patterns for GIMP
   gimp-gap                 # animation package for the GIMP
+  gimp                     # GNU Image Manipulation Program
   gimp-help-en             # Documentation for the GIMP (English)
   gimp-lensfun             # Gimp plugin to correct lens distortion using the lensfun library
   gimp-plugin-registry     # repository of optional extensions for GIMP
-  git                      # fast, scalable, distributed revision control system
   git-cvs                  # fast, scalable, distributed revision control system (cvs interoperability)
   git-email                # fast, scalable, distributed revision control system (email add-on)
+  git                      # fast, scalable, distributed revision control system
   git-gui                  # fast, scalable, distributed revision control system (GUI)
   git-svn                  # fast, scalable, distributed revision control system (svn interoperability)
   gmic                     # GREYC's Magic for Image Computing
@@ -145,8 +146,8 @@ PACKAGES=(
   gpgv2                    # GNU privacy guard - signature verification tool (dummy transitional package)
   groff                    # GNU troff text-formatting system
   gsmartcontrol            # graphical user interface for smartctl
-  gv                       # PostScript and PDF viewer for X
   gvfs-backends            # userspace virtual filesystem - backends
+  gv                       # PostScript and PDF viewer for X
   hardinfo                 # Displays system information
   hexchat                  # IRC client for X based on X-Chat 2
   htop                     # interactive processes viewer
@@ -169,8 +170,8 @@ PACKAGES=(
   lame                     # MP3 encoding library (frontend)
   libimage-exiftool-perl   # library and program to read and write meta information in multimedia files
   libnotify-bin            # sends desktop notifications to a notification daemon (Utilities)
-  libreoffice              # office productivity suite
   libreoffice-gtk3         # office productivity suite -- GTK+ 3 integration
+  libreoffice              # office productivity suite
   libsox-fmt-mp3           # SoX MP2 and MP3 format library
   libtext-lorem-perl       # random faux Latin text generator
   libxml2-utils            # XML utilities
@@ -193,16 +194,16 @@ PACKAGES=(
   mtr                      # Full screen ncurses and X11 traceroute tool
   mutt                     # text-based mailreader supporting MIME, GPG, PGP and threading
   nautilus                 # file manager and graphical shell for GNOME
-  notmuch                  # thread-based email index, search and tagging
   notmuch-mutt             # thread-based email index, search and tagging (Mutt interface)
+  notmuch                  # thread-based email index, search and tagging
   offlineimap              # IMAP/Maildir synchronization and reader support
   openssh-client           # secure shell (SSH) client, for secure access to remote machines
   openssh-server           # secure shell (SSH) server, for secure access from remote machines
   p7zip-rar                # non-free rar module for p7zip
-  pandoc                   # general markup converter
   pandoc-citeproc          # Pandoc support for Citation Style Language - tools
-  par                      # Paragraph reformatter
+  pandoc                   # general markup converter
   parallel                 # build and execute command lines from standard input in parallel
+  par                      # Paragraph reformatter
   patch                    # Apply a diff file to an original
   pavucontrol              # PulseAudio Volume Control
   pbuilder                 # personal package builder for Debian packages
@@ -246,13 +247,13 @@ PACKAGES=(
   subversion               # Advanced version control system
   subversion-tools         # Assorted tools related to Apache Subversion
   tcc                      # small ANSI C compiler
-  tesseract-ocr            # Tesseract command line OCR tool
   tesseract-ocr-eng        # tesseract-ocr language files for English
+  tesseract-ocr            # Tesseract command line OCR tool
   testdisk                 # Partition scanner and disk recovery tool, and PhotoRec file recovery tool
   texlive-full             # TeX Live:  pulling in all components of TeX Live
   thinkfan                 # simple and lightweight fan control program
-  tlp                      # Save bhottery power on laptops
   tlp-rdw                  # Radio device wizard
+  tlp                      # Save bhottery power on laptops
   tmux                     # terminal multiplexer
   toilet                   # display large colourful characters in text mode
   tor                      # anonymizing overlay network for TCP
@@ -263,19 +264,21 @@ PACKAGES=(
   ubuntu-drivers-common    # Detect and install additional Ubuntu driver packages
   ubuntu-restricted-extras # Commonly used media codecs and fonts for Ubuntu
   uchardet                 # universal charset detection library - cli utility
+  udevil                   # Alternative storage media interface
   units                    # converts between different systems of units
   unzip                    # De-archiver for .zip files
   urlview                  # Extracts URLs from text
-  vim                      # Vi IMproved - enhanced vi editor
   vim-doc                  # Vi IMproved - HTML documentation
   vim-gnome                # Vi IMproved - enhanced vi editor (dummy package)
+  vim                      # Vi IMproved - enhanced vi editor
   vlc                      # multimedia player and streamer
-  w3m                      # WWW browsable pager with excellent tables/frames support
   w3m-img                  # inline image extension support utilities for w3m
+  w3m                      # WWW browsable pager with excellent tables/frames support
   whois                    # intelligent WHOIS client
   wine-stable              # Windows API implementation - standard suite
   wkhtmltopdf              # Command line utilities to convert html to pdf or image using WebKit
   wmctrl                   # control an EWMH/NetWM compatible X Window Manager
+  x11-apps                 # X11 applications, e.g., xcursorgen
   x11-xserver-utils        # X server utilities
   xautolock                # Program launcher for idle X sessions
   xbacklight               # simple utility to set the backlight level
@@ -283,8 +286,8 @@ PACKAGES=(
   xdotool                  # simulate (generate) X11 keyboard/mouse input events
   xinput                   # Runtime configuration and test of XInput devices
   xsel                     # command-line tool to access X clipboard and selection buffers
-  xserver-xorg             # X.Org X server
   xserver-xorg-video-intel # X.Org X server -- Intel i8xx, i9xx display driver
+  xserver-xorg             # X.Org X server
   zeal                     # Simple offline API documentation browser
   zip                      # Archiver for .zip files
   zsh                      # shell with lots of features
