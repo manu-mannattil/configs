@@ -46,6 +46,10 @@ set mouse=a
 " Hide cursor when typing.
 set mousehide
 
+" Ask longlines to not remap keys in the GUI.  We need this for +/- increase of
+" font size.
+let g:longlines_keep_maps = 1
+
 " Functions {{{1
 " --------------
 
