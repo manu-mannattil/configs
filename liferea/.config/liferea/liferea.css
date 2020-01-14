@@ -4,8 +4,8 @@
     font-size: 10px;
 }
 
-/* Item body/description */
-div.content { 
+/* Item body and description. */
+div.content {
     margin: 2em 2em auto;
     width: 32em;
     color: #111;
@@ -23,7 +23,15 @@ h3 {
     font-size: 1.1em;
 }
 
-/* Remove "subscribe to newsletter" boxes from The Economist */
-div.newsletter-form, div.newsletter-form--inline {
+/* The Economist subscription crap. */
+.newsletter-form,
+.newsletter-form--inline {
+    display: none;
+}
+
+/* The Hindu subscription crap. */
+.know-txt,
+.subscriptiontext,
+.subarticlepay {
     display: none;
 }
