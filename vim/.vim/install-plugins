@@ -32,6 +32,7 @@ plugin_urls=(
   ['asymptote']='https://github.com/hura/vim-asymptote.git'
   ['commentary']='https://github.com/tpope/vim-commentary.git'
   ['eunuch']='https://github.com/tpope/vim-eunuch.git'
+  ['fugitive']='https://github.com/tpope/vim-fugitive.git'
   ['gnupg']='https://github.com/jamessan/vim-gnupg.git'
   ['mma']='https://github.com/rsmenon/vim-mathematica.git'
   ['rsi']='https://github.com/tpope/vim-rsi.git'
