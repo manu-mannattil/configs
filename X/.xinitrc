@@ -3,8 +3,6 @@
 # ~/.xinitrc -- execute commands before starting X
 #
 
-[[ -z "$HIDPI" ]] && [[ "$HOSTNAME" = "boron" ]] && export HIDPI=1
-
 dgpu=$(</etc/prime-discrete)
 [[ "$dgpu" == "on" ]] && xrandr --setprovideroutputsource modesetting NVIDIA-0
 
@@ -18,7 +16,7 @@ xrandr --auto
 # monitor as the __only__ display and keep my laptop lid closed.  The HiDPI
 # settings are set by .xinitrc depending on the value of the environment
 # variable $HIDPI.  By default, if $HIDPI is not set, .xinitrc initializes it
-# by looking at the hostname.  If $HIDPI has already been initialized .xinitrc
+# by looking at the hostname.  If $HIDPI has already been initialized, .xinitrc
 # does nothing.  Now, after I connect the monitor, I run startx as
 #
 #   $ HIDPI=0 startx
@@ -26,12 +24,14 @@ xrandr --auto
 # This way I tell .xinitrc that I don't want a HiDPI session.  All of this
 # might seem to be convoluted yak shaving, but it really is very simple!
 
+[[ -z "$HIDPI" ]] && [[ "$HOSTNAME" = "boron" ]] && export HIDPI=1
+
 if [[ "$HIDPI" == 1 ]]
 then
     xrdb -DHIDPI=1 -merge "${HOME}/.Xresources"
 
     # Scale GTK3 UI elements by a factor of two.  But this
-    # scales the text, which has scaled once before.
+    # scales the text, which has been scaled once before.
     export GDK_SCALE=2
 
     # Thus, undo scaling of text.
@@ -48,13 +48,19 @@ else
     # The display names keep changing depending on the order they were
     # recognized.  Thus, we have to grep the monitor names to find the eDP,
     # i.e., the embedded display port (aka laptop screen) and the first one
-    # that isn't.
-    ext=$(xrandr --listmonitors | cut -d ' ' -f 6 | grep -v eDP | head -n 1)
+    # that isn't an eDP.
     edp=$(xrandr --listmonitors | cut -d ' ' -f 6 | grep eDP)
+    ext=$(xrandr --listmonitors | cut -d ' ' -f 6 | grep -v eDP | head -n 1)
 
     # Set the eDP and the external monitor to 1920x1080, but make the external
     # monitor the primary display.
     xrandr --output $ext --primary --mode 1920x1080 --output $edp --mode 1920x1080
+
+    # My USB-C to HDMI travel dock has trouble waking up the monitor when the
+    # system goes to standby or the screen blanks.  Thus, don't allow screen
+    # blanking and disable DPMS.
+    xset s off -dpms
+
     xrdb -merge "${HOME}/.Xresources"
 fi
 
@@ -69,7 +75,7 @@ export XDG_CURRENT_DESKTOP="X-Generic"
 
 # X11 keyboard layout tweaks
 # --------------------------
-#
+
 # altgr-intl = international version of altgr (which has more symbols)
 # caps:swapescape = swap caps lock and escape
 # compose:rctrl = right ctrl is the compose key
@@ -98,7 +104,7 @@ export TERMINAL="${HOME}/code/scripts/terminal"
 # on Xubuntu.
 export QT_QPA_PLATFORMTHEME=gtk3
 
-# Background color.
+# Set the background color to a no-nonsense gray.
 xsetroot -solid "#333333"
 
 # Use dunst for notifications.
