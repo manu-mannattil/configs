@@ -38,14 +38,14 @@
 SHELL=/bin/bash
 
 # Backup some system configuration files hourly/daily.
-@hourly crontab -l >"$HOME/code/configs/misc/crontab"
+@hourly crontab -l >~/code/configs/etc/crontab
 
 # Delete cached mutt attachments hourly.  But only delete files created at
 # least a day ago.
-@hourly find "$HOME/.cache/mutt/attach" -type f -mtime +1 -delete
+@hourly find ~/.cache/mutt/attach -type f -mtime +1 -delete
 
 # Clean temporary HTML files created by browser.
 @hourly rm -f /tmp/web.*.html
 
 # Clean temporary LaTeX files in ~
-@hourly "$HOME/code/scripts/texclean" "$HOME/templates" "$HOME/documents/notes"
+@hourly ~/code/scripts/texclean ~/templates ~/documents/notes
