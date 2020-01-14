@@ -3,12 +3,28 @@
 # ~/.xinitrc -- execute commands before starting X
 #
 
-[[ "$HOSTNAME" = "boron" ]] && export HIDPI=1
+[[ -z "$HIDPI" ]] && [[ "$HOSTNAME" = "boron" ]] && export HIDPI=1
 
 dgpu=$(</etc/prime-discrete)
 [[ "$dgpu" == "on" ]] && xrandr --setprovideroutputsource modesetting NVIDIA-0
 
 xrandr --auto
+
+# Notes on my HiDPI display configuration
+# ---------------------------------------
+
+# My laptop has a 2560x1440 HiDPI display that I sometimes connect to
+# a 1920x1080 monitor.  In such a situation, I generally use the external
+# monitor as the __only__ display and keep my laptop lid closed.  The HiDPI
+# settings are set by .xinitrc depending on the value of the environment
+# variable $HIDPI.  By default, if $HIDPI is not set, .xinitrc initializes it
+# by looking at the hostname.  If $HIDPI has already been initialized .xinitrc
+# does nothing.  Now, after I connect the monitor, I run startx as
+#
+#   $ HIDPI=0 startx
+#
+# This way I tell .xinitrc that I don't want a HiDPI session.  All of this
+# might seem to be convoluted yak shaving, but it really is very simple!
 
 if [[ "$HIDPI" == 1 ]]
 then
@@ -24,7 +40,21 @@ then
     # HiDPI Qt settings.
     export QT_FONT_DPI=168
     export QT_AUTO_SCREEN_SCALE_FACTOR=1
+
+    # We need this since GTK 2.0 needs to have a different configuration for
+    # low-DPI screens.
+    export GTK2_RC_FILES="${HOME}/.gtkrc-hidpi-2.0"
 else
+    # The display names keep changing depending on the order they were
+    # recognized.  Thus, we have to grep the monitor names to find the eDP,
+    # i.e., the embedded display port (aka laptop screen) and the first one
+    # that isn't.
+    ext=$(xrandr --listmonitors | cut -d ' ' -f 6 | grep -v eDP | head -n 1)
+    edp=$(xrandr --listmonitors | cut -d ' ' -f 6 | grep eDP)
+
+    # Set the eDP and the external monitor to 1920x1080, but make the external
+    # monitor the primary display.
+    xrandr --output $ext --primary --mode 1920x1080 --output $edp --mode 1920x1080
     xrdb -merge "${HOME}/.Xresources"
 fi
 
@@ -75,6 +105,6 @@ xsetroot -solid "#333333"
 dunst &
 
 # Start screen locker with a waiting time of 10 minutes.
-xautolock -time 10 -locker 'i3lock --ignore-empty-password --show-failed-attempts --color=333333' &
+xautolock -time 30 -locker 'i3lock --ignore-empty-password --show-failed-attempts --color=333333' &
 
 exec i3
