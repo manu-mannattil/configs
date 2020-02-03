@@ -1,9 +1,9 @@
-% Default GUI backend.
+# Default GUI backend.
 backend : Qt5Agg
 
-% Default font family and font choices.
+# Default font family and font choices.
 font.family         : sans-serif
 font.sans-serif     : Helvetica, Nimbus Sans L, FreeSans, Arial, Liberation Sans, sans-serif
 
-% Use STIX fonts for math.
+# Use STIX fonts for math.
 mathtext.fontset : stixsans
