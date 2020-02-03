@@ -13,6 +13,11 @@ set record    = +sent
 set spoolfile = +inbox
 set trash     = +trash
 
+# Yahoo automatically puts a copy of every sent mail in the "Sent" folder.  If
+# you set $copy, Mutt will also put a copy, leading to duplicate copies.
+# Either way, you'll waste some bandwidth, so let Yahoo do this.
+set copy = no
+
 mailboxes `echo ~/mail/yahoo/*`
 
 # Groups are defined in the $alias_file.
