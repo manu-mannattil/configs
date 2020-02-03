@@ -1,0 +1,4 @@
+#!/bin/sh
+
+rm -rf ~/.cache/mozilla/firefox/*.clean
+exec /usr/bin/firefox -P clean "$@"
