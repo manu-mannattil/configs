@@ -59,12 +59,12 @@ user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
 
 // DNS over HTTPS (DoH) with CloudFlare's DNS.
 // List of DNS servers: https://github.com/curl/curl/wiki/DNS-over-HTTPS
-user_pref("network.trr.mode", 2);
-user_pref("trr.bootstrapAddress", "1.1.1.1");
+// user_pref("network.trr.mode", 2);
+// user_pref("trr.bootstrapAddress", "1.1.1.1");
 
 // Enable encrypted server name indication (SNI), which conceals the hostname
 // during TLS connections: https://www.cloudflare.com/ssl/encrypted-sni/
-user_pref("network.security.esni.enabled", true);
+// user_pref("network.security.esni.enabled", true);
 
 // Don't cycle tabs (old behavior).
 user_pref("browser.ctrlTab.recentlyUsedOrder", false);
@@ -104,7 +104,7 @@ user_pref("extensions.allowPrivateBrowsingByDefault", true);
 
 // This is like the $GDK_SCALE environment variable that GTK+ uses for
 // HiDPI scaling, but allows fractional scaling.
-user_pref("layout.css.devPixelsPerPx", 1.75);
+// user_pref("layout.css.devPixelsPerPx", 1.75);
 
 // Enable loading of userChrome.css if available.
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
