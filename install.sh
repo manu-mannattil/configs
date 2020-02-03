@@ -208,7 +208,7 @@ __install_git() {
 
 # :target: gtk - GTK 2/3 configuration
 __install_gtk() {
-    install "gtk/.gtkrc-2.0" "gtk/.config/gtk-3.0/settings.ini"
+    install "gtk/.gtkrc-2.0" "gtk/.gtkrc-hidpi-2.0" "gtk/.config/gtk-3.0/settings.ini"
 }
 
 # :target: htop - htop configuration
@@ -307,6 +307,7 @@ __install_python() {
 # :target: qpdfview - qpdfview configuration
 __install_qpdfview() {
     install --copy "qpdfview/.config/qpdfview/qpdfview.conf"
+    install "qpdfview/.config/qpdfview/shortcuts.conf"
 }
 
 # :target: readline - GNU Readline library configuration
