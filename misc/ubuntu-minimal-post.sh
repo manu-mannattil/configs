@@ -20,6 +20,8 @@
 #   krop                  http://arminstraub.com/software/krop
 #   PDF Scale             https://github.com/tavinus/pdfScale/releases
 #   pdfsizeopt            https://github.com/pts/pdfsizeopt
+#   restic                https://github.com/restic/restic/releases
+#                         https://github.com/restic/rest-server/releases
 #   Skype                 https://go.skype.com/skypeforlinux-64.deb
 #
 # The following programs usually have outdated versions in the
