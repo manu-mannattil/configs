@@ -2,8 +2,10 @@
 
 # Lines of code to run at IPython startup.
 c.InteractiveShellApp.exec_lines = """\
-    import numpy as np
+    import cmath
+    import math
     import matplotlib.pyplot as plt
+    import numpy as np
 """.split('\n')
 
 # Set the color scheme (NoColor, Neutral, Linux, or LightBG).
