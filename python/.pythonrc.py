@@ -3,6 +3,7 @@
 # Default libraries {{{1
 # ----------------------
 
+import cmath
 import math
 
 # Readline/history support {{{1
