@@ -110,7 +110,7 @@ xsetroot -solid "#333333"
 # Use dunst for notifications.
 dunst &
 
-# Start screen locker with a waiting time of 10 minutes.
+# Start screen locker with a waiting time of 30 minutes.
 xautolock -time 30 -locker 'i3lock --ignore-empty-password --show-failed-attempts --color=333333' &
 
 exec i3
