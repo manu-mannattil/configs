@@ -101,7 +101,6 @@ URxvt*boldItalicFont:
 URxvt*italicFont:
 
 URxvt*geometry: 95x42+0+0
-URxvt*iconFile: /usr/share/icons/elementary-xfce/apps/64/terminal.png
 URxvt*internalBorder: 6
 URxvt*iso14755: False
 URxvt*saveLines: 30000
