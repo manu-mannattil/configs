@@ -11,7 +11,6 @@
 # the Ubuntu repositories, some packages need to be manually installed:
 #
 #   DeaDBeeF FB plugin    https://gitlab.com/zykure/deadbeef-fb/tree/release/binary
-#   Dropbox               https://www.dropbox.com/install?os=lnx
 #   fzf                   https://github.com/junegunn/fzf-bin/releases
 #                         https://raw.githubusercontent.com/junegunn/fzf/master/man/man1/fzf.1
 #   Geekbench             https://www.geekbench.com/download/linux/
@@ -20,6 +19,7 @@
 #   krop                  http://arminstraub.com/software/krop
 #   PDF Scale             https://github.com/tavinus/pdfScale/releases
 #   pdfsizeopt            https://github.com/pts/pdfsizeopt
+#   rclone                https://rclone.org/downloads
 #   restic                https://github.com/restic/restic/releases
 #                         https://github.com/restic/rest-server/releases
 #   Skype                 https://go.skype.com/skypeforlinux-64.deb
