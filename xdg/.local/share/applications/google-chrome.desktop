@@ -4,7 +4,7 @@ Version=1.0
 Name=Google Chrome
 GenericName=Web Browser
 Comment=Access the Internet
-Exec=firejail --whitelist=~/.config/fontconfig --whitelist=~/downloads google-chrome --password-store=basic --incognito %U
+Exec=google-chrome %U
 Terminal=false
 Icon=google-chrome
 Type=Application
