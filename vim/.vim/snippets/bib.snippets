@@ -88,17 +88,17 @@ snippet unpublished
 		title = {${3:title}},
 		note = {${4:note}},
 	}
-snippet web w/o explicit URL
-	@misc{${1:id},
-		author = {${2:authors separated by "and"}},
-		title = {${3:title}},
-		url    = {${4:url}},
-		year   = {accessed `strftime("%Y-%m-%d")`}
-	}
 snippet web w/ explicit URL
 	@misc{${1:id},
 		author = {${2:authors separated by "and"}},
 		title = {${3:title}},
 		note    = {\url{${4:url}}},
+		year   = {accessed `strftime("%Y-%m-%d")`}
+	}
+snippet web w/o explicit URL
+	@misc{${1:id},
+		author = {${2:authors separated by "and"}},
+		title = {${3:title}},
+		url    = {${4:url}},
 		year   = {accessed `strftime("%Y-%m-%d")`}
 	}

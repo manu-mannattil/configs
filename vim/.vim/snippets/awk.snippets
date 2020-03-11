@@ -1,5 +1,9 @@
 snippet #!
 	#!/usr/bin/awk -f
+snippet fun
+	function ${1:name}(${2:args}) {
+		${3:# commands}
+	}
 snippet gsub
 	gsub(${1:pattern}, ${2:string}, ${3:target})
 snippet index
@@ -12,7 +16,3 @@ snippet sub
 	sub(${1:pattern}, ${2:string}, ${3:target})
 snippet	substr
 	substr(${1:string}, ${2:index}, ${3:length})
-snippet fun
-	function ${1:name}(${2:args}) {
-		${3:# commands}
-	}
