@@ -1,0 +1,11 @@
+snippet com
+	/* com: asy {} -o {.}
+	 */
+
+snippet pdf
+	settings.outformat = "pdf";
+	settings.render = 0;
+snippet svg
+	settings.libgs=""; // https://github.com/vectorgraphics/asymptote/issues/33
+	settings.outformat = "svg";
+	settings.render = 0;

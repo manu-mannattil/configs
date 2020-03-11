@@ -1,19 +1,27 @@
+snippet #if
+	#if ${1:FOO}
+		${2}
+	#endif
+
+snippet .
+	[${1}]${2}
+
+snippet Def
+	#ifndef $1
+	#define ${1:SYMBOL} ${2:value}
+	#endif${3}
+
+snippet Inc
+	#include "${1:`Filename("$1.h")`}"${2}
+
 snippet com
 	/* com: : ${TMPDIR:=/tmp/} ${CC=gcc}
 	 * com: \{ ${CC} {} -o ${TMPDIR}{/.}; \} && ${TMPDIR}{/.} {@}
 	 */
 
 
-snippet .
-	[${1}]${2}
-
 snippet def
 	#define ${1:NAME} ${2:replacement}
-
-snippet Def
-	#ifndef $1
-	#define ${1:SYMBOL} ${2:value}
-	#endif${3}
 
 snippet do
 	do {
@@ -48,11 +56,6 @@ snippet if
 		${2:/* code */}
 	}
 
-snippet #if
-	#if ${1:FOO}
-		${2}
-	#endif
-
 snippet ifdef
 	#ifdef ${1:FOO}
 		${2:#define }
@@ -60,9 +63,6 @@ snippet ifdef
 
 snippet inc
 	#include <${1:stdio}.h>${2}
-snippet Inc
-	#include "${1:`Filename("$1.h")`}"${2}
-
 snippet main
 	int main(int argc, const char *argv[])
 	{
