@@ -1,15 +1,11 @@
 artwork.filemask album.jpg
 close_send_to_tray 1
+gtkui.columns.playlist [{"title":"♫","id":"1","format":"","size":"35","align":"0","color_override":"0","color":"#ff000000"},{"title":"Track","id":"-1","format":"%tracknumber%","size":"45","align":"1","color_override":"0","color":"#ff000000"},{"title":"Title","id":"-1","format":"%title%","size":"320","align":"0","color_override":"0","color":"#ff000000"},{"title":"Artist","id":"-1","format":"%artist%","size":"300","align":"0","color_override":"0","color":"#ff000000"},{"title":"Album","id":"-1","format":"%album%","size":"282","align":"0","color_override":"0","color":"#ff000000"},{"title":"Bitrate","id":"-1","format":"%bitrate%","size":"50","align":"0","color_override":"0","color":"#ff000000"},{"title":"Duration","id":"-1","format":"%length%","size":"65","align":"0","color_override":"0","color":"#ff000000"},{"title":"Year","id":"-1","format":"%date%","size":"50","align":"0","color_override":"0","color":"#ff000000"}]
 gtkui.embolden_current_track 1
 gtkui.hide_remove_from_disk 1
 gtkui.titlebar_playing %a — %t
 gtkui.titlebar_stopped DeaDBeeF
-notify.albumart 1
-notify.albumart_size 128
-notify.enable 1
-notify.format %t
-notify.format_content %a — %b
-gtkui.columns.playlist [{"title":"♫","id":"1","format":"","size":"35","align":"0","color_override":"0","color":"#ff000000"},{"title":"Track","id":"-1","format":"%tracknumber%","size":"45","align":"1","color_override":"0","color":"#ff000000"},{"title":"Title","id":"-1","format":"%title%","size":"320","align":"0","color_override":"0","color":"#ff000000"},{"title":"Artist","id":"-1","format":"%artist%","size":"300","align":"0","color_override":"0","color":"#ff000000"},{"title":"Album","id":"-1","format":"%album%","size":"282","align":"0","color_override":"0","color":"#ff000000"},{"title":"Bitrate","id":"-1","format":"%bitrate%","size":"50","align":"0","color_override":"0","color":"#ff000000"},{"title":"Duration","id":"-1","format":"%length%","size":"65","align":"0","color_override":"0","color":"#ff000000"},{"title":"Year","id":"-1","format":"%date%","size":"50","align":"0","color_override":"0","color":"#ff000000"}]
+gui_plugin GTK3
 hotkey.key01 "Ctrl f" 0 0 find
 hotkey.key02 "Ctrl o" 0 0 open_files
 hotkey.key03 "Ctrl q" 0 0 quit
@@ -41,6 +37,11 @@ hotkey.key30 b 0 0 next
 hotkey.key31 n 0 0 playback_random
 hotkey.key32 "Ctrl k" 0 0 toggle_stop_after_album
 hotkeys_created 1
-resume_last_session 0
+notify.albumart 1
+notify.albumart_size 128
+notify.enable 1
+notify.format_content %a — %b
+notify.format %t
 replaygain.processing_flags 3
 replaygain.source_mode 1
+resume_last_session 0
