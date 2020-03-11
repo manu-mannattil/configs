@@ -245,6 +245,15 @@ for_window [class="Arandr"] floating enable
 for_window [class="matplotlib"] floating enable
 for_window [class="Anki"] floating enable
 
+# Default floating mode for windows (e.g., pop-up) that one wouldn't use for
+# more than a few seconds.
+for_window [window_role="Preferences"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+
 # Terminals and file browser (workspace 1) {{{2
 # ---------------------------------------------
 
