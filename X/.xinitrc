@@ -45,6 +45,10 @@ then
     # low-DPI screens.
     export GTK2_RC_FILES="${HOME}/.gtkrc-hidpi-2.0"
 else
+    # When on the NVIDIA dGPU Qt has to be told that we need 96 DPI when not
+    # using HiDPI; I don't know why.
+    export QT_FONT_DPI=96
+
     # The display names keep changing depending on the order they were
     # recognized.  Thus, we have to grep the monitor names to find the eDP,
     # i.e., the embedded display port (aka laptop screen) and the first one
