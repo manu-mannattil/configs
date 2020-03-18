@@ -192,6 +192,9 @@ alias diff='colordiff'
 # Ask duff to recurse into directories.
 alias duff='duff -r'
 
+# Always run docker as root.
+alias docker='sudo docker'
+
 # HTML to PDF using wkhtmltopdf
 alias html2pdf='wkhtmltopdf'
 
