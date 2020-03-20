@@ -1,9 +1,15 @@
+# https://raw.githubusercontent.com/matplotlib/matplotlib/master/matplotlibrc.template
+
 # Default GUI backend.
-backend : Qt5Agg
+backend: Qt5Agg
 
 # Default font family and font choices.
-font.family         : sans-serif
-font.sans-serif     : Helvetica, Nimbus Sans L, FreeSans, Arial, Liberation Sans, sans-serif
+font.family: sans-serif
+font.sans-serif: Helvetica, Nimbus Sans L, FreeSans, Arial, Liberation Sans, sans-serif
 
 # Use STIX fonts for math.
-mathtext.fontset : stixsans
+mathtext.fontset: stixsans
+
+# Use a larger DPI when saving figures since a lot of people use HiDPI displays
+# these days.
+savefig.dpi: 300
