@@ -2,4 +2,4 @@
 
 # GTK3 themes (e.g., Radiance and Ambiance) sometimes cause
 # issues with SpaceFM.  Adwaita seems to work fine though.
-GTK_THEME=Adwaita exec /usr/bin/spacefm "$@"
+GTK_THEME=Adwaita exec /usr/bin/spacefm --reuse-tab "$@"

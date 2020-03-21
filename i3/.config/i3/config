@@ -195,7 +195,7 @@ bindsym $mod+o mode "$mode_open"
 
 mode "$mode_open" {
     bindsym b exec firefox; mode "default"
-    bindsym f exec spacefm --no-saved-tabs $HOME; mode "default"
+    bindsym f exec spacefm $HOME; mode "default"
     bindsym m exec deadbeef; mode "default"
     bindsym p exec ff-private; mode "default"
 
