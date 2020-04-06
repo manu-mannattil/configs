@@ -54,7 +54,7 @@ else
     # i.e., the embedded display port (aka laptop screen) and the first one
     # that isn't an eDP.
     edp=$(xrandr --listmonitors | cut -d ' ' -f 6 | grep eDP)
-    ext=$(xrandr --listmonitors | cut -d ' ' -f 6 | grep -v eDP | head -n 1)
+    ext=$(xrandr --listmonitors | cut -d ' ' -f 6 | grep -v eDP | sort -r | head -n 1)
 
     # Set the eDP and the external monitor to 1920x1080, but make the external
     # monitor the primary display.
