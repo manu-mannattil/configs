@@ -323,11 +323,6 @@ __install_terminfo() {
     install "terminfo/.terminfo"
 }
 
-# :target: tex - LaTeX configuration (local texmf directory)
-__install_tex() {
-    install "tex/.texmf"
-}
-
 # :target: tmux - tmux configuration
 __install_tmux() {
     install "tmux/.tmux" "tmux/.tmux.conf"
