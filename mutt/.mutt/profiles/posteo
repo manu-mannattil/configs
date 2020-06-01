@@ -1,0 +1,16 @@
+# vim: ft=muttrc fdm=marker et sts=2 sw=2
+#
+# Mutt profile for Posteo.
+#
+
+set from      = "manu.mannattil@posteo.net"
+set realname  = "Manu Mannattil"
+set sendmail  = "msmtp -a posteo"
+
+set folder    = ~/mail/posteo
+set postponed = +drafts
+set spoolfile = +inbox
+set trash     = +trash
+set record    = +sent
+
+mailboxes `echo ~/mail/posteo/*`
