@@ -4,7 +4,7 @@
 # ---------------------
 
 [general]
-accounts = gmail, syr, yahoo
+accounts = gmail, posteo, syr, yahoo
 ui = ttyui
 socktimeout = 90
 pythonfile = ~/.offlineimap.py
@@ -61,6 +61,37 @@ nametrans = lambda folder: {'INBOX': 'inbox',
                             '[Gmail]/Sent Mail': 'sent',
                             '[Gmail]/Spam': 'spam',
                             '[Gmail]/Trash': 'trash'}.get(folder, folder)
+
+# Posteo {{{1
+# -----------
+
+[Account posteo]
+localrepository = posteo-local
+remoterepository = posteo-remote
+postsynchook = notmuch new
+
+[Repository posteo-local]
+localfolders = ~/mail/posteo
+type = Maildir
+nametrans = lambda folder: {'inbox': 'INBOX',
+                            'drafts': 'Drafts',
+                            'sent': 'Sent',
+                            'trash': 'Trash'}.get(folder, folder)
+
+[Repository posteo-remote]
+auth_mechanisms = LOGIN
+maxconnections = 1
+remotehost = posteo.de
+remoteport = 993
+remoteuser = manu.mannattil@posteo.net
+remotepasseval = get_pass("email/posteo")
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+type = IMAP
+nametrans = lambda folder: {'INBOX': 'inbox',
+                            'Drafts': 'drafts',
+                            'Sent': 'sent',
+                            'Trash': 'trash'}.get(folder, folder)
 
 # Yahoo! Mail {{{1
 # ----------------
