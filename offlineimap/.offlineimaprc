@@ -4,7 +4,7 @@
 # ---------------------
 
 [general]
-accounts = gmail, syr, yahoo
+accounts = gmail, posteo, syr, yahoo
 ui = ttyui
 socktimeout = 90
 pythonfile = ~/.offlineimap.py
