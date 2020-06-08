@@ -157,6 +157,10 @@ alias cal='cal -A 3 -B 2'
 # Don't restrict box-width in cowsay.
 alias cowsay='cowsay -n'
 
+# Write to the physical medium before exiting.  Important when making bootable
+# Linux USB sticks.
+alias dd='dd conv=fdatasync'
+
 # dos2unix and unix2dos using sed.
 alias dos2unix='sed -r "s/\r*$//"'
 alias unix2dos='sed -r "s/\r*$/\r/"'
@@ -528,7 +532,6 @@ export PYTHONSTARTUP="${HOME}/.pythonrc.py"
 
 # Don't save sdcv history.
 export SDCV_HISTSIZE=0
-
 
 # Sourced files {{{1
 # ------------------

@@ -59,7 +59,7 @@ set visible-stats on
 "\e[B": history-search-forward
 
 $if Bash
-  # Ctrl + L to clear screen.  (Missing in vi-mode.)
+  # Ctrl + X to clear screen.  (Missing in vi-mode.)
   "\C-x": clear-screen
 
   # Perform history expansion (i.e, !$, !1, !!, etc.) on the current
