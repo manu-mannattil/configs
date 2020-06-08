@@ -1,4 +1,13 @@
 snippet com
-	/* com: \{ g++ {} -o {.}; \} && {.}
-	 */
-
+	// com: : ${TMPDIR:=/tmp/} ${CXX=c++}
+	// com: \{ ${CXX} {} -o ${TMPDIR}{/.}; \} && ${TMPDIR}{/.} {@}
+snippet inc
+	#include <${1:iostream}>
+snippet main
+	int main()
+	{
+		${1}
+		return 0;
+	}
+snippet std
+	using namespace std;

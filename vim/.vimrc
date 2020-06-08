@@ -31,9 +31,7 @@ set colorcolumn=+1
 set completeopt=longest,menuone
 
 " Don't select any completions by default.
-if has("patch-7.4.755")
-  set completeopt+=noinsert
-endif
+set completeopt+=noinsert
 
 " Highlight/underline the current line.  (May make things slow.)
 set cursorline
@@ -600,6 +598,7 @@ let g:GPGDefaultRecipients = ['0x9D5931F4']
 " Tree-like listing for netrw.
 let g:netrw_liststyle = 3
 
+" open is my basic wrapper script around xdg-open.
 let g:netrw_browsex_viewer = "open"
 
 " Vimtex {{{2

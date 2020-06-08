@@ -113,6 +113,7 @@ iabbrev <buffer> firts first
 iabbrev <buffer> flase false
 iabbrev <buffer> fo of
 iabbrev <buffer> fomr form
+iabbrev <buffer> foonote footnote
 iabbrev <buffer> fora for a
 iabbrev <buffer> forthe for the
 iabbrev <buffer> foudn found
@@ -376,6 +377,7 @@ if &ft == "tex"
   iabbrev <buffer> Benard B\'{e}nard
   iabbrev <buffer> Erdos Erd\H{o}s
   iabbrev <buffer> Godel G\"{o}del
+  iabbrev <buffer> Kieslowski Kie\'{s}lowski
   iabbrev <buffer> Mobius M\"{o}bius
   iabbrev <buffer> Poincare Poincar\'{e}
   iabbrev <buffer> Polya P\'{o}lya
@@ -387,6 +389,7 @@ else
   iabbrev <buffer> Benard Bénard
   iabbrev <buffer> Erdos Erdős
   iabbrev <buffer> Godel Gödel
+  iabbrev <buffer> Kieslowski Kieślowski
   iabbrev <buffer> Mobius Möbius
   iabbrev <buffer> Poincare Poincaré
   iabbrev <buffer> Polya Pólya

@@ -6,6 +6,8 @@ snippet align
 	\begin{align${1:ed}}
 		${2}
 	\end{align$1}
+snippet beamer
+	\documentclass[${1:noamssymb,noamsmath,aspectratio=169,10pt}]{beamer}
 snippet begin
 	\begin{${1:env}}
 		${2}
@@ -21,8 +23,22 @@ snippet chapter
 	\chapter{${1:chapter name}}
 	\label{cha:${2:$1}}
 	${3}
+snippet charter
+	% Bitstream Charter (serif) + Bitsteram Vera (sans) fonts.
+	% Sans should be loaded first for \mathsf to work.
+	\usepackage{berasans}
+	\usepackage[charter,expert]{mathdesign}
 snippet cite
 	\cite{$1}
+snippet column
+	\begin{columns}[T]
+		\begin{column}{0.50\textwidth}
+			${1:column contents}
+		\end{column}
+		\begin{column}{0.50\textwidth}
+			${2:column contents}
+		\end{column}
+	\end{columns}
 snippet dc
 	\documentclass${2:[options]}{${1:article}}
 snippet desc
@@ -92,6 +108,9 @@ snippet itemize
 	\end{itemize}
 snippet listing
 	${1:Listing}~\ref{${2:list}}${3}
+snippet	magic
+	%! TEX program = ${1:XeLaTeX}
+	%! TEX root = ${2:root}
 snippet makeat
 	\makeatletter
 		${1}
