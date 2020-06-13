@@ -7,6 +7,9 @@ setlocal spell
 " Allows reformatting quoted paragraphs starting with `|'.
 setlocal comments+=n:\\|
 
+" Use vim-commentary to "unquote" quoted text.
+setlocal commentstring=>\ %s
+
 function! s:clean()
   let winview = winsaveview()
 
