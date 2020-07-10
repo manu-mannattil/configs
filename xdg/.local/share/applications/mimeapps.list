@@ -84,6 +84,7 @@ application/vnd.sun.xml.writer.template=libreoffice-startcenter.desktop
 application/vnd.sun.xml.writer=libreoffice-startcenter.desktop
 application/vnd.visio=libreoffice-startcenter.desktop
 application/vnd.wolfram.nb=mathematica.desktop
+application/vnd.wolfram.wls=mathematica.desktop
 application/vnd.wordperfect=libreoffice-startcenter.desktop
 application/wordperfect5.1=libreoffice-startcenter.desktop
 application/wordperfect6=libreoffice-startcenter.desktop
