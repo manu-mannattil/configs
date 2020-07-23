@@ -4,10 +4,35 @@
 # ---------------------
 
 [general]
-accounts = gmail, posteo, syr, yahoo
+accounts = gmail, gandi, posteo, syr, yahoo
 ui = ttyui
 socktimeout = 90
 pythonfile = ~/.offlineimap.py
+
+# Gandi {{{1
+# -----------
+
+[Account gandi]
+localrepository = gandi-local
+remoterepository = gandi-remote
+postsynchook = notmuch new
+
+[Repository gandi-local]
+localfolders = ~/mail/gandi
+type = Maildir
+nametrans = lambda folder: {'inbox': 'INBOX'}.get(folder, folder.title())
+
+[Repository gandi-remote]
+auth_mechanisms = LOGIN
+maxconnections = 1
+remotehost = mail.gandi.net
+remoteport = 993
+remoteuser = manu@polhode.org
+remotepasseval = get_pass("email/gandi")
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+type = IMAP
+nametrans = lambda folder: {'INBOX': 'inbox'}.get(folder, folder.lower())
 
 # Gmail {{{1
 # ----------
@@ -73,10 +98,7 @@ postsynchook = notmuch new
 [Repository posteo-local]
 localfolders = ~/mail/posteo
 type = Maildir
-nametrans = lambda folder: {'inbox': 'INBOX',
-                            'drafts': 'Drafts',
-                            'sent': 'Sent',
-                            'trash': 'Trash'}.get(folder, folder)
+nametrans = lambda folder: {'inbox': 'INBOX'}.get(folder, folder.title())
 
 [Repository posteo-remote]
 auth_mechanisms = LOGIN
@@ -88,10 +110,7 @@ remotepasseval = get_pass("email/posteo")
 ssl = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 type = IMAP
-nametrans = lambda folder: {'INBOX': 'inbox',
-                            'Drafts': 'drafts',
-                            'Sent': 'sent',
-                            'Trash': 'trash'}.get(folder, folder)
+nametrans = lambda folder: {'INBOX': 'inbox'}.get(folder, folder.lower())
 
 # Yahoo! Mail {{{1
 # ----------------
