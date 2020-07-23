@@ -3,8 +3,6 @@
 
 setlocal complete+=kspell
 setlocal formatoptions+=n,t
-setlocal shiftwidth=2
-setlocal softtabstop=2
 setlocal spell
 setlocal textwidth=72
 
