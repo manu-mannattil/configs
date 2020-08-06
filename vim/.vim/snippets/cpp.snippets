@@ -1,13 +1,31 @@
+snippet cin
+	${1:std::}cin >> ${2};
 snippet com
-	// com: : ${TMPDIR:=/tmp/} ${CXX=c++}
-	// com: \{ ${CXX} {} -o ${TMPDIR}{/.}; \} && ${TMPDIR}{/.} {@}
+	// com: : ${TMPDIR:=/tmp/}
+	// com: : ${CXX:=c++}
+	// com: : ${CXXFLAGS:=-Wall}
+	// com: \{ ${CXX} {} ${CXXFLAGS} -o ${TMPDIR}{/.}; \} && ${TMPDIR}{/.} {@}
+
+snippet cout
+	${1:std::}cout << ${2} << $1endl;
+snippet for
+	for (int ${1:i} = 0; $1 < ${2:count}; $1${3:++}) {
+		${4}
+	}
+snippet fore
+	for (${1:auto} ${2:i} : ${3:container}) {
+		${4}
+	}
 snippet inc
 	#include <${1:iostream}>
 snippet main
-	int main()
-	{
+	int main() {
 		${1}
 		return 0;
 	}
-snippet std
-	using namespace std;
+snippet ns
+	using namespace ${1:std};
+snippet struct
+	struct ${1:Name} {
+		${2:// code}
+	};
