@@ -44,3 +44,6 @@
   helper = !~/.git-pass $@
   # Supply the full path of the repository to the helper program.
   useHttpPath = true
+
+[rebase]
+  autoStash = true
