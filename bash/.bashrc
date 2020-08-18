@@ -210,6 +210,9 @@ alias posh='rlwrap -a -c posh'
 # Use the 'basic' interface, do quick runs, and run only once.
 alias offlineimap='offlineimap -oq -u basic'
 
+# Toggle redshift.
+alias redtoggle='pkill -USR1 redshift'
+
 # Don't run vi.
 alias vi=vim
 
@@ -246,8 +249,8 @@ alias pdf2txt='pdftotext -layout'
 # Overwrite 5 times, fill up with zeroes, and then delete.
 alias shred='shred -vzfun 5'
 
-# Hack to 'sudo' aliases.
-alias sudo='sudo '
+# Hack to 'sudo' aliases; also preserve environment.
+alias sudo='sudo -E '
 
 # HTML -> Text using elinks.
 alias html2txt='elinks -force-html -dump'
