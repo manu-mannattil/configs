@@ -3,8 +3,8 @@
 # ~/.xinitrc -- execute commands before starting X
 #
 
-dgpu=$(</etc/prime-discrete)
-[[ "$dgpu" == "on" ]] && xrandr --setprovideroutputsource modesetting NVIDIA-0
+dgpu=$(cut -d ' ' -f 2 /proc/acpi/bbswitch)
+[[ "$dgpu" == "ON" ]] && xrandr --setprovideroutputsource modesetting NVIDIA-0
 
 xrandr --auto
 
@@ -56,9 +56,15 @@ else
     edp=$(xrandr --listmonitors | cut -d ' ' -f 6 | grep eDP)
     ext=$(xrandr --listmonitors | cut -d ' ' -f 6 | grep -v eDP | sort -r | head -n 1)
 
-    # Set the eDP and the external monitor to 1920x1080, but make the external
-    # monitor the primary display.
-    xrandr --output $ext --primary --mode 1920x1080 --output $edp --mode 1920x1080
+    if [[ ${EDP:=1} == 1 ]]
+    then
+        # Set the eDP and the external monitor to 1920x1080, but make the
+        # external monitor the primary display.
+        xrandr --output $ext --primary --mode 1920x1080 --pos 0x0 --output $edp --mode 1920x1080 --pos 0x0
+    else
+        # Turn of the eDP if EDP is set to something other than 1.
+        xrandr --output $ext --primary --mode 1920x1080 --output $edp --off
+    fi
 
     # My USB-C to HDMI travel dock has trouble waking up the monitor when the
     # system goes to standby or the screen blanks.  Thus, don't allow screen
@@ -116,5 +122,8 @@ dunst &
 
 # Start screen locker with a waiting time of 30 minutes.
 xautolock -time 30 -locker 'i3lock --ignore-empty-password --show-failed-attempts --color=333333' &
+
+# Start redshift to adjust screen temperature.
+redshift -l geoclue2 &
 
 exec i3
