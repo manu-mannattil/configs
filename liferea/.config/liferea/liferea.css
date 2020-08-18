@@ -2,13 +2,22 @@
 * {
     font-family: "Nimbus Sans L", FreeSans, Helvetica, Arial, sans-serif;
     font-size: 10px;
+    color: #eee !important;
+    background-color: #333 !important;
+    border-color: #666 !important;
 }
 
 /* Item body and description. */
 div.content {
     margin: 2em 2em auto;
-    width: 28em;
+    width: 32em;
     color: #111;
+    line-height: 14px;
+}
+
+img{
+    width: 100%;
+    max-width: 32em !important;
 }
 
 h1 {
@@ -34,4 +43,13 @@ h3 {
 .subscriptiontext,
 .subarticlepay {
     display: none;
+}
+
+a {
+    color: #00dead !important;
+    text-decoration: none !important;
+}
+
+a:hover {
+    text-decoration: underline !important;
 }
