@@ -168,19 +168,6 @@ alias unix2dos='sed -r "s/\r*$/\r/"'
 # CLI Emacs.
 alias emacs='emacs -nw'
 
-# Dateutils: the executables in the official Debian package have `dateutils'
-# prefixed in their names, which makes them cumbersome to type.
-alias dadd='dateutils.dadd'
-alias dconv='dateutils.dconv'
-alias ddiff='dateutils.ddiff'
-alias dgrep='dateutils.dgrep'
-alias dround='dateutils.dround'
-alias dseq='dateutils.dseq'
-alias dsort='dateutils.dsort'
-alias dtest='dateutils.dtest'
-alias dzone='dateutils.dzone'
-alias strptime='dateutils.strptime'
-
 # Remove useless info (e.g., compilation flags) when using ffmpeg.
 alias ffmpeg='ffmpeg -hide_banner'
 
