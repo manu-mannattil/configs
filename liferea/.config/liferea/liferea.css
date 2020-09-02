@@ -1,55 +1,55 @@
-/* Beautiful Helvetica throughout. */
 * {
-    font-family: "Nimbus Sans L", FreeSans, Helvetica, Arial, sans-serif;
-    font-size: 10px;
-    color: #eee !important;
-    background-color: #333 !important;
-    border-color: #666 !important;
+  font-family: "Nimbus Sans L", FreeSans, Helvetica, Arial, sans-serif;
+  color: #eee !important;
+  background-color: #333 !important;
+  border-color: #666 !important;
 }
 
 /* Item body and description. */
 div.content {
-    margin: 2em 2em auto;
-    width: 32em;
-    color: #111;
-    line-height: 14px;
+  margin: 2em 2em auto;
+  width: 36em;
 }
 
-img{
-    width: 100%;
-    max-width: 32em !important;
+code, pre {
+  font-family: monospace;
+}
+
+img {
+  width: 100%;
+  max-width: 32em !important;
 }
 
 h1 {
-    font-size: 1.3em;
+  font-size: 1.3em;
 }
 
 h2 {
-    font-size: 1.2em;
+  font-size: 1.2em;
 }
 
 h3 {
-    font-size: 1.1em;
+  font-size: 1.0em;
+}
+
+a {
+  color: #00dead !important;
+  text-decoration: none !important;
+}
+
+a:hover {
+  text-decoration: underline !important;
 }
 
 /* The Economist subscription crap. */
 .newsletter-form,
 .newsletter-form--inline {
-    display: none;
+  display: none;
 }
 
 /* The Hindu subscription crap. */
 .know-txt,
 .subscriptiontext,
 .subarticlepay {
-    display: none;
-}
-
-a {
-    color: #00dead !important;
-    text-decoration: none !important;
-}
-
-a:hover {
-    text-decoration: underline !important;
+  display: none;
 }
