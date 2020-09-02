@@ -19,7 +19,7 @@
   method to load the XML file.  The basic idea is to use the Web Console
   (shortcut: Shift + Ctrl + K) and enter
 
-    window.external.AddSearchProvider("https://location/to/plugin.xml");
+    window.external.AddSearchProvider("https://location/of/plugin.xml");
 
   Note that the location must not be that of a local file (e.g.,
   locations beginning with "file:///..." won't work).  Thus, the XML
