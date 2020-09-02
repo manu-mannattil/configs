@@ -1,19 +1,12 @@
-# /etc/apt/sources.list
+# Debian Buster repositories.
+deb http://deb.debian.org/debian/ buster main non-free contrib
+deb-src http://deb.debian.org/debian/ buster main non-free contrib
 
-# Ubuntu Main Repos
-deb http://us.archive.ubuntu.com/ubuntu/ bionic main restricted universe multiverse
-deb-src http://us.archive.ubuntu.com/ubuntu/ bionic main restricted universe multiverse
+deb http://security.debian.org/debian-security buster/updates main contrib non-free
+deb-src http://security.debian.org/debian-security buster/updates main contrib non-free
 
-# Ubuntu Update Repos
-deb http://us.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
-deb-src http://us.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
-deb http://us.archive.ubuntu.com/ubuntu/ bionic-proposed main restricted universe multiverse
-deb-src http://us.archive.ubuntu.com/ubuntu/ bionic-proposed main restricted universe multiverse
-deb http://us.archive.ubuntu.com/ubuntu/ bionic-security main restricted universe multiverse
-deb-src http://us.archive.ubuntu.com/ubuntu/ bionic-security main restricted universe multiverse
-deb http://us.archive.ubuntu.com/ubuntu/ bionic-updates main restricted universe multiverse
-deb-src http://us.archive.ubuntu.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb http://deb.debian.org/debian/ buster-updates main contrib non-free
+deb-src http://deb.debian.org/debian/ buster-updates main contrib non-free
 
-# Ubuntu Partner Repo
-deb http://archive.canonical.com/ubuntu bionic partner
-deb-src http://archive.canonical.com/ubuntu bionic partner
+deb http://deb.debian.org/debian buster-backports main contrib non-free
+deb-src http://deb.debian.org/debian/ buster-backports main contrib non-free

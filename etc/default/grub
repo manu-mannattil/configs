@@ -11,8 +11,9 @@
 # output during startup.
 
 GRUB_DEFAULT=0
+GRUB_HIDDEN_TIMEOUT=0
+GRUB_TIMEOUT=0
 GRUB_TIMEOUT_STYLE=hidden
-GRUB_TIMEOUT=10
 GRUB_DISTRIBUTOR=$(lsb_release -i -s 2> /dev/null || echo "Debian")
 
 # Kernel parameters to disable all mitigations for CPU vulnerabilities.
