@@ -611,7 +611,7 @@ let g:vimtex_compiler_latexmk = {
       \ }
 
 " Don't show these errors/warnings in the quickfix.
-let g:vimtex_quickfix_latexlog = {
+let g:vimtex_quickfix_ignore_filters = {
       \ 'overfull' : 0,
       \ 'underfull' : 0,
       \ 'specifier changed to' : 0,
