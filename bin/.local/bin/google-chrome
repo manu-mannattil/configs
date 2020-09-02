@@ -1,12 +1,8 @@
-#!/usr/bin/env bash
-
-flags=( --password-store=basic --incognito )
-
-# Disable GPU acceleration if on Intel's integrated graphics.
-dgpu=$(</etc/prime-discrete)
-[[ "$dgpu" == "off" ]] && flags+=( --disable-gpu )
+#!/bin/sh
 
 exec firejail                        \
     --whitelist=~/.config/fontconfig \
     --whitelist=~/downloads          \
-    /usr/bin/google-chrome "${flags[@]}" "$@"
+    /usr/bin/google-chrome           \
+    --password-store=basic           \
+    --incognito "$@"
