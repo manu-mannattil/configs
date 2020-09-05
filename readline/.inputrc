@@ -62,7 +62,7 @@ $if Bash
   # Ctrl + X to clear screen.  (Missing in vi-mode.)
   "\C-x": clear-screen
 
-  # Perform history expansion (i.e, !$, !1, !!, etc.) on the current
+  # Perform history expansion (i.e., !$, !1, !!, etc.) on the current
   # line and insert a space.
   Space: magic-space
 $endif
