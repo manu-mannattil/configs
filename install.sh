@@ -379,6 +379,11 @@ __install_xnview() {
     install --copy "xnview/.config/xnviewmp/xnview.ini"
 }
 
+# :target: xournalpp - Xournal++ configuration
+__install_xournalpp() {
+    install "xournalpp/.xournalpp/settings.xml" "xournalpp/.xournalpp/toolbar.ini"
+}
+
 # :target: youtube-dl - youtube-dl configuration
 __install_youtube-dl() {
     install "youtube-dl/.config/youtube-dl.conf"
@@ -424,6 +429,9 @@ __parse_group() {
         default)
             # :group: default - install all targets
             targets+=( $(__fetch_possible_targets) ) ;;
+        mail)
+            # :group: mail - mutt, OfflineIMAP, msmtp, notmuch
+            targets+=( mutt offlineimap msmtp notmuch ) ;;
         "")  info "group name required"; exit 1 ;;
         *)   info "unknown group $1"; exit 1 ;;
     esac
