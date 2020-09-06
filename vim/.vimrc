@@ -551,17 +551,6 @@ augroup leftright
         \ nnoremap <buffer> <right> <right>
 augroup END
 
-" vim-tmux integration {{{1
-" -------------------------
-
-" Intelligently navigate tmux panes and Vim splits using the same keys.
-" See https://sunaku.github.io/tmux-select-pane.html for documentation.
-if !has('gui_running') && &term =~ '^screen'
-  let progname = substitute($VIM, '.*[/\\]', '', '')
-  set title titlestring=%{progname}\ %f\ +%l\ #%{tabpagenr()}.%{winnr()}
-  if !has('nvim') | exe "set t_ts=\e]2; t_fs=\7" | endif
-endif
-
 " Plugin settings {{{1
 " --------------------
 
