@@ -1,22 +1,11 @@
 # vim: ft=muttrc fdm=marker et sts=2 sw=2
 #
-# Mutt profile for local Postfix
-#
-# To use this profile you must have an MTA like Postfix running in your
-# system.  I use this exclusively for managing local mail -- meaning you
-# can send and receive email within the same computer.  This might seem
-# useless, but I find it useful for sending myself system notifications
-# or logs of cron jobs.
+# Mutt profile for local /var/mail/$USER (cron logs and such).
 #
 
-set from      = "manu@localhost"
-set realname  = "Manu Mannattil"
-set sendmail  = "/usr/sbin/sendmail -oem -oi"
-
-set folder    = ~/mail/local
-set postponed = +drafts
-set record    = +sent
-set spoolfile = +inbox
-set trash     = +trash
-
-mailboxes `echo ~/mail/local/*`
+set folder    = /var/mail
+set spoolfile = +$USER
+set from      = ""
+set postponed = ""
+set record    = ""
+set trash     = ""
