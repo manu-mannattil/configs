@@ -221,6 +221,11 @@ __install_i3() {
     install "i3/.config/i3/config" "i3/.config/i3/i3status.conf"
 }
 
+# :target: inkscape - inkscape configuration
+__install_inkscape() {
+    install "inkscape/.config/inkscape/templates"
+}
+
 # :target: ipython - iPython configuration
 __install_ipython() {
     install "ipython/.ipython/profile_default/ipython_config.py"
