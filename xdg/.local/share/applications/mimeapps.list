@@ -216,6 +216,7 @@ image/svg+xml-compressed=XnView.desktop
 image/svg+xml=XnView.desktop
 image/tiff=XnView.desktop
 image/vnd.djvu=qpdfview.desktop
+image/vnd.djvu+multipage=qpdfview.desktop
 image/vnd.rn-realpix=mpv.desktop
 image/vnd.wap.wbmp=XnView.desktop
 image/x-bmp=XnView.desktop
