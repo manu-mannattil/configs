@@ -3,8 +3,8 @@
 # ~/.xinitrc -- execute commands before starting X
 #
 
-dgpu=$(cut -d ' ' -f 2 /proc/acpi/bbswitch)
-[[ "$dgpu" == "ON" ]] && xrandr --setprovideroutputsource modesetting NVIDIA-0
+gpu=$(cut -d ' ' -f 2 /proc/acpi/bbswitch)
+[[ "$gpu" == "ON" ]] && xrandr --setprovideroutputsource modesetting NVIDIA-0
 
 xrandr --auto
 
