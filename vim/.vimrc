@@ -599,15 +599,6 @@ let g:vimtex_compiler_latexmk = {
       \ 'continuous' : 0,
       \ }
 
-" Don't show these errors/warnings in the quickfix.
-let g:vimtex_quickfix_ignore_filters = {
-      \ 'overfull' : 0,
-      \ 'underfull' : 0,
-      \ 'specifier changed to' : 0,
-      \ 'pdfpagelabels' : 0,
-      \ 'PDFDocEncoding' : 0
-      \ }
-
 " Use qpdfview (with instance name `LaTeX') as the PDF viewer.
 let g:vimtex_view_general_viewer = 'qpdfview'
 let g:vimtex_view_general_options = '--instance LaTeX --unique @pdf\#src:@tex:@line:@col'
