@@ -386,7 +386,7 @@ __install_xnview() {
 
 # :target: xournalpp - Xournal++ configuration
 __install_xournalpp() {
-    install "xournalpp/.xournalpp/settings.xml" "xournalpp/.xournalpp/toolbar.ini"
+    install --copy "xournalpp/.xournalpp/settings.xml" "xournalpp/.xournalpp/toolbar.ini"
 }
 
 # :target: youtube-dl - youtube-dl configuration
