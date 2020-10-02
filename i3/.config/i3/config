@@ -301,5 +301,8 @@ for_window [class="libreoffice"] focus
 for_window [class="lyx"] move container to workspace 9
 for_window [class="lyx"] focus
 
+for_window [class="Inkscape"] move container to workspace 9
+for_window [class="Inkscape"] focus
+
 for_window [class="Mathematica"] move container to workspace 9
 for_window [class="Mathematica"] focus
