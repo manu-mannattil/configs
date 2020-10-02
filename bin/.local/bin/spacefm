@@ -1,3 +1,5 @@
 #!/bin/sh
 
-exec /usr/bin/spacefm --new-tab "$@"
+# Always have just one window open.  We can always split that window
+# within SpaceFM if needed.
+exec /usr/bin/spacefm --reuse-tab --no-saved-tabs "$@"
