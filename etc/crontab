@@ -49,3 +49,6 @@ SHELL=/bin/bash
 
 # Clean temporary LaTeX files in ~
 @hourly ~/code/scripts/texclean ~/templates ~/documents/notes
+
+# Clean *.torrents from ~/ and ~/downloads.
+@hourly rm -f ~/*.torrents ~/downloads/*.torrents
