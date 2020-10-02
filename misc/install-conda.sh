@@ -19,6 +19,7 @@ PACKAGES=(
   ipython
   jupyter
   matplotlib
+  numba
   numpy
   scipy
 
@@ -32,6 +33,10 @@ PACKAGES=(
   # Docutils (includes a bunch of reStructuredText manipulation
   # utilities)
   docutils
+
+  # Library for real and complex floating-point arithmetic with
+  # arbitrary precision.
+  mpmath
 )
 
 conda update --all
