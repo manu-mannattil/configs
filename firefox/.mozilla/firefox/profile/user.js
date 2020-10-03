@@ -15,8 +15,12 @@
 // domains.
 user_pref("privacy.firstparty.isolate", true);
 
-// Make Firefox more resistant to browser fingerprinting.
-user_pref("privacy.resistFingerprinting", true);
+// Make Firefox more resistant to browser fingerprinting.  This breaks
+// quite a few websites by setting unique window resolutions, which is
+// also the dumbest way to make your browser less unique.
+// user_pref("privacy.resistFingerprinting", true);
+
+// Limit fingerprinting.
 user_pref("privacy.trackingprotection.fingerprinting.enabled", true);
 
 // Block cryptomining.

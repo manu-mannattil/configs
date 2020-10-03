@@ -1,3 +1,5 @@
 #!/bin/sh
 
+# Spoof time zone.
+export TZ=UTC
 exec /usr/bin/firefox -P default "$@"
