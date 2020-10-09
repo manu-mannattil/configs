@@ -51,4 +51,4 @@ SHELL=/bin/bash
 @hourly ~/code/scripts/texclean ~/templates ~/documents/notes
 
 # Clean *.torrents from ~/ and ~/downloads.
-@hourly rm -f ~/*.torrents ~/downloads/*.torrents
+@hourly rm -f ~/*.torrent ~/downloads/*.torrent
