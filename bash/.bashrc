@@ -274,6 +274,16 @@ export LESS_TERMCAP_so=$'\E[38;5;0m\E[48;5;11m' # begin highlight
 export LESS_TERMCAP_ue=$'\E[0m'                 # end underline
 export LESS_TERMCAP_us=$'\E[4;38;5;13m'         # begin underline
 
+# fasd {{{1
+# ---------
+
+if command -v fasd &>/dev/null
+then
+    eval "$(fasd --init auto)"
+fi
+
+alias o='fasd -e open'
+
 # Functions {{{1
 # --------------
 
