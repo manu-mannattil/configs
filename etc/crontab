@@ -47,8 +47,8 @@ SHELL=/bin/bash
 # Clean temporary HTML files created by browser.
 @hourly rm -f /tmp/web.*.html
 
-# Clean temporary LaTeX files in ~
+# Clean temporary LaTeX files in ~/.
 @hourly ~/code/scripts/texclean ~/templates ~/documents/notes
 
-# Clean *.torrents from ~/ and ~/downloads.
+# Clean *.torrent files from ~/ and ~/downloads.
 @hourly rm -f ~/*.torrent ~/downloads/*.torrent
