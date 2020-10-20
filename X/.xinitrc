@@ -3,8 +3,12 @@
 # ~/.xinitrc -- execute commands before starting X
 #
 
-gpu=$(cut -d ' ' -f 2 /proc/acpi/bbswitch)
-[[ "$gpu" == "ON" ]] && xrandr --setprovideroutputsource modesetting NVIDIA-0
+# On my P43s, run X on NVIDIA if required.
+# See https://github.com/manu-mannattil/gpu-select for details.
+[[ -f /etc/gpu-select/state ]] && {
+    gpu=$(</etc/gpu-select/state)
+    [[ "$gpu" == "nvidia" ]] && xrandr --setprovideroutputsource modesetting NVIDIA-0
+}
 
 xrandr --auto
 
