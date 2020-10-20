@@ -624,8 +624,3 @@ let g:sdcv_filter = 'sdcv-prettify'
 
 " Custom arguments to be passed to sdcv.
 let g:sdcv_args = ['--utf8-input', '--utf8-output']
-
-" Testing {{{1
-" ------------
-
-let g:slime_target = 'vimterminal'
