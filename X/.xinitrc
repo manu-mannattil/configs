@@ -3,8 +3,8 @@
 # ~/.xinitrc -- execute commands before starting X
 #
 
-# On my P43s, run X on NVIDIA if required.
-# See https://github.com/manu-mannattil/gpu-select for details.
+# On my P43s, run X on NVIDIA if required.  Requires gpu-select.
+# https://github.com/manu-mannattil/gpu-select
 [[ -f /etc/gpu-select/state ]] && {
     gpu=$(</etc/gpu-select/state)
     [[ "$gpu" == "nvidia" ]] && xrandr --setprovideroutputsource modesetting NVIDIA-0
