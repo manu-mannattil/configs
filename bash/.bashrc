@@ -372,15 +372,32 @@ lyrics() {
 # mergepath {{{2
 # --------------
 
-# usage: mergepath <dir>...
+# usage: mergepath [-v <var>] [-s <sep>] <arg>...
 #
-# mergeparth simply adds <dir> to $PATH, but also makes sure
-# that it's only added once, e.g., mergepath ~/.local/bin
+# mergepath simply adds <arg> to the contents of the variable <var>
+# (by default PATH) after separating it with separator <sep> (by default :),
+# but also makes sure that it's only added once.  Some examples:
+#
+#   mergepath ~/.local/bin
+#   mergepath -v MANPATH ~/conda/share/man/
 
 mergepath() {
-    for dir
+    local var="PATH" sep=":"
+    declare OPTARG OPTIND
+    while getopts ":v:s:" opt
     do
-        [[ ":${PATH}:" == *":${dir%/}:"* ]] || export PATH="${dir%/}:$PATH"
+        case "$opt" in
+            v)  var="$OPTARG" ;;
+            s)  sep="$OPTARG" ;;
+        esac
+    done
+    shift $(( OPTIND - 1 ))
+
+    for arg
+    do
+        [[ "${sep}${!var}${sep}" == *"${sep}${arg%/}${sep}"* ]] || {
+            export $var="${arg%/}${sep}${!var}"
+        }
     done
 }
 
@@ -504,6 +521,15 @@ fi
 
 # Set the PATH.
 mergepath "${HOME}/code/bin" "${HOME}/.local/bin"
+
+# Activate miniconda (installed to ~/conda) only for non-login shells.
+shopt -q login_shell || {
+    mergepath "${HOME}/conda/bin" "${HOME}/conda/condabin"
+    mergepath -v MANPATH "${HOME}/conda/share/man"
+    export CONDA_EXE="${HOME}/conda/bin/conda"
+    export CONDA_PREFIX="${HOME}/conda"
+    export CONDA_PYTHON_EXE="${HOME}/conda/bin/python"
+}
 
 # Note that fc(1) in vi-mode uses $VISUAL instead of $FCEDIT.
 export EDITOR="/usr/bin/vim"
