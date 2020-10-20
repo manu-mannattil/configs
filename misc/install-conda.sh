@@ -5,17 +5,15 @@
 #
 # Usage: install-conda.sh
 #
-# This script installs a bunch of common Python modules (mostly related
-# to scientific computing) using Miniconda.  Get Miniconda from
-#
-#   https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+# This script installs a bunch of common Python modules using Miniconda.
+# https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 #
 
 PACKAGES=(
-  # Better Python linting.
+  # Python linter.
   flake8
 
-  # Scientific Python.
+  # Scientific Python stack.
   ipython
   jupyter
   matplotlib
@@ -27,8 +25,9 @@ PACKAGES=(
   future
 
   # Testing.
-  nose
   coveralls
+  nose
+  pytest
 
   # Docutils (includes a bunch of reStructuredText manipulation
   # utilities)
@@ -37,6 +36,19 @@ PACKAGES=(
   # Library for real and complex floating-point arithmetic with
   # arbitrary precision.
   mpmath
+
+  # Python code formatter.
+  black
+
+  # Python library designed for screen-scraping.
+  beautifulsoup4
+
+  # Cssselect parses CSS3 Selectors and translates them to XPath 1.0.
+  cssselect
+
+  # Powerful and Pythonic XML processing library combining
+  # libxml2/libxslt with the ElementTree API.
+  lxml
 )
 
 conda update --all
