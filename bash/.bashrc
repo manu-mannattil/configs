@@ -218,9 +218,6 @@ alias latexindent='latexindent -m -g /dev/null -l="$HOME/.latexindent.yaml"'
 # Markdown using Pandoc.
 alias markdown='pandoc -S -f markdown+superscript+subscript -t html'
 
-# Clean Markdown and polish punctuation.
-alias clean-markdown='pandoc -f markdown -t markdown -S'
-
 # Threaded pdf2djvu.
 alias pdf2djvu='pdf2djvu -j0'
 
@@ -286,17 +283,6 @@ alias o='fasd -e open'
 
 # Functions {{{1
 # --------------
-
-# cd-gvfs-dir {{{2
-# ----------------
-
-# Change directory to the "top-level directory" under which all GVfs
-# mountpoints are found.  Devices connected through the Media Transfer
-# Protocol (MTP) are usually found in this directory.
-
-cd-gvfs-dir() {
-    cd "/run/user/${UID}/gvfs"
-}
 
 # plmgr {{{2
 # ----------
@@ -481,17 +467,6 @@ _mux() {
 }
 complete -F _mux mux
 
-# permid {{{2
-# -----------
-
-# usage: permid
-#
-# Create a permanent ID for a document: https://cr.yp.to/bib/documentid.html
-
-permid() {
-    head /dev/urandom | md5sum | cut -d ' ' -f 1 | tee /dev/stderr | pbcopy
-}
-
 # Exports {{{1
 # ------------
 
@@ -524,11 +499,8 @@ mergepath "${HOME}/code/bin" "${HOME}/.local/bin"
 
 # Activate miniconda (installed to ~/conda) only for non-login shells.
 shopt -q login_shell || {
+    [[ -f "HOME/conda/etc/profile.d/conda.sh" ]] && source "$HOME/conda/etc/profile.d/conda.sh"
     mergepath "${HOME}/conda/bin" "${HOME}/conda/condabin"
-    mergepath -v MANPATH "${HOME}/conda/share/man"
-    export CONDA_EXE="${HOME}/conda/bin/conda"
-    export CONDA_PREFIX="${HOME}/conda"
-    export CONDA_PYTHON_EXE="${HOME}/conda/bin/python"
 }
 
 # Note that fc(1) in vi-mode uses $VISUAL instead of $FCEDIT.
