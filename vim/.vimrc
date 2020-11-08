@@ -173,6 +173,10 @@ set formatoptions-=t
 " of the typed text when ignorecase is also set.
 set infercase
 
+" Do not recognize octal numbers for Ctrl-A and Ctrl-X.  Without this using
+" CTRL-A on '007' results in '010'.
+set nrformats-=octal
+
 " Always report the number of lines changed when using ':' commands,
 " irrespective of the actual number of lines changed.
 set report=0
@@ -336,15 +340,15 @@ augroup ft_related
 
   " Detect files starting with #!/bin/dash, #!/bin/posh files as sh.
   autocmd BufRead,BufNewFile *
-        \ if getline(1) =~ '#!.*\/\(da\|po\)sh$'                           |
-        \   set filetype=sh                                                |
+        \ if getline(1) =~ '#!.*\/\(da\|po\)sh$'                              |
+        \   set filetype=sh                                                   |
         \ endif
 
   " Detect files starting with MathematicaScript, WolframScript, etc. as
   " Mathematica files.
   autocmd BufRead,BufNewFile *
-        \ if getline(1) =~ '#!.*\/\(MathematicaScript\|WolframScript\).*$' |
-        \   set filetype=mma                                               |
+        \ if getline(1) =~ '#!.*\/\(MathematicaScript\|WolframScript\).*$'    |
+        \   set filetype=mma                                                  |
         \ endif
 
   autocmd BufRead,BufNewFile \*sdcv\* set filetype=sdcv
@@ -358,10 +362,10 @@ augroup END
 augroup misc
   autocmd!
 
-  " After opening files move to the last position.
+  " After opening files move to the last position; adapted from defaults.vim.
   autocmd BufReadPost *
-        \ if line('''"') > 0 && line('''"') <= line('$')                   |
-        \   execute 'normal g`"'                                           |
+        \ if line('''"') >= 1 && line('''"') <= line("$") && &ft !~# 'commit' |
+        \   execute 'normal g`"'                                              |
         \ endif
 
   " Resize windows (i.e., splits) when the main Vim window is resized.
@@ -399,29 +403,29 @@ augroup END
 " useful when using vidir(1).
 " Adapted from: https://www.reddit.com/r/vim/comments/4ouh89/d4fx3iq
 command! -nargs=0 DiffOrig
-      \ vertical new                                                       |
-      \ setlocal buftype=nofile                                            |
-      \ setlocal bufhidden=wipe                                            |
-      \ setlocal noswapfile                                                |
-      \ read #                                                             |
-      \ 0delete _                                                          |
-      \ let &filetype = getbufvar('#', '&filetype')                        |
-      \ execute 'autocmd BufWipeout <buffer> diffoff!'                     |
-      \ diffthis                                                           |
-      \ wincmd p                                                           |
+      \ vertical new                                                          |
+      \ setlocal buftype=nofile                                               |
+      \ setlocal bufhidden=wipe                                               |
+      \ setlocal noswapfile                                                   |
+      \ read #                                                                |
+      \ 0delete _                                                             |
+      \ let &filetype = getbufvar('#', '&filetype')                           |
+      \ execute 'autocmd BufWipeout <buffer> diffoff!'                        |
+      \ diffthis                                                              |
+      \ wincmd p                                                              |
       \ diffthis
 
 " WildToggle is a command to toggle the 'wildignore' option.  This is
 " especially useful to complete filenames in insert mode (using CRTL-X_CTRL-F).
 command! -nargs=0 WildToggle
-      \ if exists('b:wildignore')                                          |
-      \   let &l:wildignore = b:wildignore                                 |
-      \   unlet b:wildignore                                               |
-      \   echo "wildignore on"                                             |
-      \ else                                                               |
-      \   let b:wildignore = &l:wildignore                                 |
-      \   setlocal wildignore&                                             |
-      \   echo "wildignore off"                                            |
+      \ if exists('b:wildignore')                                             |
+      \   let &l:wildignore = b:wildignore                                    |
+      \   unlet b:wildignore                                                  |
+      \   echo "wildignore on"                                                |
+      \ else                                                                  |
+      \   let b:wildignore = &l:wildignore                                    |
+      \   setlocal wildignore&                                                |
+      \   echo "wildignore off"                                               |
       \ endif
 
 " Use brep (my GNU grep wrapper) for grepping.
@@ -547,7 +551,7 @@ augroup leftright
   " The above mapping isn't useful in many filetypes, but since there's no way
   " to unmap a mapping on a per-buffer basis, we re-remap it here.
   autocmd FileType help,qf,sdcv
-        \ nnoremap <buffer> <left> <left>                                  |
+        \ nnoremap <buffer> <left> <left>                                     |
         \ nnoremap <buffer> <right> <right>
 augroup END
 
