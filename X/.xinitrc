@@ -128,6 +128,6 @@ dunst &
 xautolock -time 30 -locker 'i3lock --ignore-empty-password --show-failed-attempts --color=333333' &
 
 # Start redshift to adjust screen temperature.
-redshift -l geoclue2 &
+redshift -l '43.088947:-76.154480' &
 
 exec i3
