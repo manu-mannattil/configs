@@ -342,3 +342,4 @@ x-scheme-handler/chrome=firefox-esr.desktop
 x-scheme-handler/ftp=firefox-esr.desktop
 x-scheme-handler/http=firefox-esr.desktop
 x-scheme-handler/https=firefox-esr.desktop
+x-scheme-handler/mailto=mutt.desktop

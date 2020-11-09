@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# When Mutt is called with the stdin set to /dev/null, Mutt
+# sends the message without asking for confirmation, e.g.,
+#
+#   mutt 'mailto:mail@mail.zz?subject=test&body=hello' </dev/null
+#
+# This is annoying because some lousily written programs like
+# Mathematica send feedback using xdg-open this way, and if Mutt is
+# configured to handle the x-scheme-handler/mailto MIME-type, then
+# messages are sent in the background without notifying the user.
+# I managed to send some 20 messages to Wolfram this way.  The purpose
+# of this wrapper script is to first check if the stdin is attached to
+# a TTY and quit otherwise.
+
+if [ -t 0 ]
+then
+    exec /usr/bin/mutt "$@"
+else
+    echo >&2 "${0##*/}: stdin not a TTY; mutt wrapper exiting"
+    echo >&2 "${0##*/}: run as /usr/bin/mutt if required"
+    exit 1
+fi
