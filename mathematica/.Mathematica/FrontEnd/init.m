@@ -1,12 +1,11 @@
-SetOptions[$FrontEnd, 
-Default2DTool->"Select",
-Default3DTool->"RotateView",
+SetOptions[$FrontEnd,
 VersionsLaunched->{"12.1.0"},
 PrivateFrontEndOptions->{"DialogSettings"->{
- "Login" -> {"RememberMe" -> True}, 
-  "WelcomeScreen" -> {"ShowRecentFilesContextMenu" -> False}},
+  "Login"->{"RememberMe"->True},
+  "WelcomeScreen"->{"ShowRecentFilesContextMenu"->False}},
 "LastRegistrationReminderDate"->None,
 "ShowAtStartup"->"NewDocument",
-"WolframAlphaSettings"->{"Autoload" -> True}},
-PrivateNotebookOptions->{"FinalWindowPrompt"->False}
+"WolframAlphaSettings"->{"Autoload"->False}},
+PrivateNotebookOptions->{"FinalWindowPrompt"->False},
+ShowPredictiveInterface->False
 ]
