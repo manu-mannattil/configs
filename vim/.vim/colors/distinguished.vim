@@ -43,6 +43,7 @@ call s:ColorDictParser({
   \   'Normal'                      : [    231,     16,               '',      'ffffff',  '000000',               '']
   \ , 'Visual'                      : [    240,    253,               '',      '585858',  'dadada',               '']
   \
+  \ , 'Conceal'                     : [    231,    237,               '',      'ffffff',  '3a3a3a',               '']
   \ , 'Cursor'                      : [     '',     '',               '',      'ffffff',  'dd4010',               '']
   \ , 'lCursor'                     : [     '',     '',               '',      'ffffff',  '89b6e2',               '']
   \

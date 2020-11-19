@@ -17,6 +17,7 @@ set background=light
 
 " General Colors
 hi Normal guifg=#454545 guibg=#f7f7f7 gui=none
+hi Conceal guifg=#454545 guibg=#e0e0e0 gui=none
 hi Comment guifg=#878787 guibg=NONE gui=none
 hi Constant guifg=#b95942 guibg=NONE gui=none
 hi Identifier guifg=#308444 guibg=NONE gui=none

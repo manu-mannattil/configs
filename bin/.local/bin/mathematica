@@ -1,8 +1,0 @@
-#!/bin/sh
-
-# Low-DPI Qt settings.
-[ -z "$GDK_SCALE" ] && {
-    export QT_FONT_DPI=102
-    export QT_AUTO_SCREEN_SCALE_FACTOR=1
-}
-exec /opt/Mathematica/Executables/Mathematica "$@"
