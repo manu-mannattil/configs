@@ -332,7 +332,7 @@ augroup ft_related
   autocmd BufRead,BufNewFile COPYING,INSTALL,LICENSE,README,[Rr]eadme set filetype=text
 
   " .m files are Mathematica files.  Who uses Matlab these days?
-  autocmd BufRead,BufNewFile *.m,*.wl,*.wls set filetype=mma
+  autocmd BufRead,BufNewFile *.m,*.wl,*.wls set filetype=wl
 
   " Detect files edited with fc(1) (e.g., the file that you edit after pressing
   " <esc>v in Bash's Vi mode).
