@@ -4,8 +4,8 @@
 //   * https://github.com/ghacksuserjs/ghacks-user.js/
 //
 // A much better way to be safe from your browser is to browse the web
-// less.  It also has the side effect of making you more productive and
-// happier.
+// less.  It also has the (positive) side effect of making you more
+// productive, healthier, and happier.
 //
 
 // ------------- Privacy -------------
@@ -16,8 +16,9 @@
 user_pref("privacy.firstparty.isolate", true);
 
 // Make Firefox more resistant to browser fingerprinting.  This breaks
-// quite a few websites by setting unique window resolutions, which is
-// also the dumbest way to make your browser less unique.
+// quite a few websites by setting unique nonstandard window resolutions
+// such as 1916x933, which is also the dumbest way to make your browser
+// less unique.
 // user_pref("privacy.resistFingerprinting", true);
 
 // Limit fingerprinting.
@@ -26,8 +27,8 @@ user_pref("privacy.trackingprotection.fingerprinting.enabled", true);
 // Block cryptomining.
 user_pref("privacy.trackingprotection.cryptomining.enabled", true);
 
-// Firefox's default tracking protection.
-user_pref("privacy.trackingprotection.enabled", true);
+// Block social media tracking.
+user_pref("privacy.trackingprotection.socialtracking.enabled", true);
 
 // Disables sending additional analytics to web servers.
 // https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon
@@ -36,6 +37,10 @@ user_pref("beacon.enabled", false);
 // Don't allow websites to control system clipboard.  Useful to paste
 // long passwords (you might have to use CUA shortcuts though).
 user_pref("dom.event.clipboardevents.enabled", false);
+
+// Don't allow websites to prevent use of right-click, or otherwise
+// messing with the context menu.
+user_pref("dom.event.contextmenu.enabled", false);
 
 // Perform DNS lookups through the SOCKS proxy itself.
 user_pref("network.proxy.socks_remote_dns", true);
@@ -79,10 +84,16 @@ user_pref("datareporting.policy.dataSubmissionEnabled", false);
 // Disable "Recommended by Pocket" in Firefox Quantum.
 user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
 
-// DNS over HTTPS (DoH) with CloudFlare's DNS.
-// List of DNS servers: https://github.com/curl/curl/wiki/DNS-over-HTTPS
+// All DNS queries over HTTPS (DoH).  If a query fails, fall back to
+// conventional resolution.
 user_pref("network.trr.mode", 2);
-user_pref("trr.bootstrapAddress", "1.1.1.1");
+
+// DNS server used for resolving the address in network.trr.uri.
+user_pref("network.trr.bootstrapAddress", "1.1.1.1");
+
+// DNS over HTTPS (DoH) with CloudFlare's DNS.
+// Alternative DoH servers: https://github.com/curl/curl/wiki/DNS-over-HTTPS
+user_pref("network.trr.uri", "https://mozilla.cloudflare-dns.com/dns-query");
 
 // Enable encrypted server name indication (SNI), which conceals the
 // hostname during TLS connections: https://www.cloudflare.com/ssl/encrypted-sni/
