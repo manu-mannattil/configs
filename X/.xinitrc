@@ -125,7 +125,7 @@ xsetroot -solid "#333333"
 dunst &
 
 # Start screen locker with a waiting time of 30 minutes.
-xautolock -time 30 -locker 'i3lock --ignore-empty-password --show-failed-attempts --color=333333' &
+# xautolock -time 30 -locker 'i3lock --ignore-empty-password --show-failed-attempts --color=333333' &
 
 # Start redshift to adjust screen temperature.
 redshift -l '43.088947:-76.154480' &
