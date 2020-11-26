@@ -283,7 +283,7 @@ fi
 unalias a d f s sd sf z zz
 
 alias d='fasd_cd -d'
-alias dd='fasd_cd -d -i'
+alias di='fasd_cd -d -i'
 alias o='fasd -e open'
 alias v='fasd -f -e vim'
 
