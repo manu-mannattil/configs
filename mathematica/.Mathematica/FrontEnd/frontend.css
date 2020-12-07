@@ -1,0 +1,11 @@
+/* See https://doc.qt.io/qt-5/widget-classes.html for stylable widget names. */
+
+/* Global font size. */
+* {
+  font-size: 12pt;
+}
+
+/* Menu bar and contents. */
+QMenuBar, QMenu {
+  font-size: 10.5pt;
+}
