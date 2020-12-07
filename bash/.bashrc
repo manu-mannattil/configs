@@ -87,7 +87,8 @@ export HISTCONTROL=ignoreboth:erasedups
 export HISTTIMEFORMAT="%Y-%m-%d %H:%M %Z "
 
 # Ignore commands matched by the following colon-separated patterns.
-export HISTIGNORE="bg:clear:fg:history:ls"
+# Patterns are extended patterns if extglob is set.
+export HISTIGNORE="bg:clear:fg:history:ls:rm *:aria2c *:find *-delete*"
 
 # Store history files for commands wrapped with rl-wrap in separate directory.
 export RLWRAP_HOME="${HOME}/.cache/rlwrap"
@@ -199,6 +200,9 @@ alias offlineimap='offlineimap -oq -u basic'
 
 # Toggle redshift.
 alias redtoggle='pkill -USR1 redshift'
+
+# Use compression when using scp.
+alias scp='scp -C'
 
 # Don't run vi.
 alias vi=vim
