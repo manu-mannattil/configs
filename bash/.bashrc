@@ -137,7 +137,7 @@ alias mkdir='mkdir -pv'
 alias mv='mv -iv'
 alias rgrep='rgrep --color=auto'
 alias rm='rm -dvI --one-file-system'
-alias rsync='rsync --compress --human-readable --info=progress2 --itemize-changes --progress --protect-args --verbose --stats'
+alias rsync='rsync --human-readable --info=progress2 --itemize-changes --progress --protect-args --verbose --stats'
 alias tree='tree -C'
 alias vidir='vidir -v'
 
