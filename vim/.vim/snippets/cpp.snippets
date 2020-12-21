@@ -29,3 +29,12 @@ snippet struct
 	struct ${1:Name} {
 		${2:// code}
 	};
+snippet cl
+	class ${1:name}
+	{
+		${2:type} ${3:name};
+	public:
+		$1($2 $3) $3($3) {
+			${4:// contents}
+		}
+	};

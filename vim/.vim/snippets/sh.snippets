@@ -25,15 +25,17 @@ snippet fun
 		${2:#statements}
 	}
 snippet getopts
-	while getopts ":${2:hv}" ${1:var}
+	while getopts ":${2:v}" ${1:var}
 	do
 		case "$$1" in
-			h)  grep '^#:' <"$${0:0}" | cut >&2 -c 4-
-			    exit 0 ;;
 			v)  set -x ;;
 			:)  printf >&2 "%s: -%s requires an argument\n" "${${0:0}##*/}" "$OPTARG"
 			    exit 1 ;;
 			\?) printf >&2 "%s: -%s is not a valid option\n" "${${0:0}##*/}" "$OPTARG"
+			    exit 1 ;;
+			:)  echo >&2 "${${0:0}##*/}: -$OPTARG requires an argument"
+			    exit 1 ;;
+			\?) echo >&2 "${${0:0}##*/}: -$OPTARG is not a valid option"
 			    exit 1 ;;
 		esac
 	done

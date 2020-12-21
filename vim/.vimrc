@@ -116,13 +116,14 @@ set linebreak
 " -----------
 
 " Set colorscheme.
-if has('gui_running')
-  set background=light
-  colorscheme cake16
-else
-  set background=dark
-  colorscheme distinguished
-endif
+colorscheme distinguished
+" if has('gui_running')
+"   set background=light
+"   colorscheme cake16
+" else
+"   set background=dark
+"   colorscheme distinguished
+" endif
 
 " Highlight `bad' words so that they *always* stand out boldly.
 if has('gui_running') || &t_Co >= 256
