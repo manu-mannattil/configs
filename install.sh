@@ -260,6 +260,7 @@ __install_liferea() {
 __install_mathematica() {
     install --copy "mathematica/.Mathematica/FrontEnd/init.m"
     install "mathematica/.Mathematica/Kernel/init.m"
+    install "mathematica/.Mathematica/FrontEnd/frontend.css"
 }
 
 # :target: matplotlib - matplotlib configuration
