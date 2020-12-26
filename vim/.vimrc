@@ -341,7 +341,7 @@ augroup ft_related
   " Detect files starting with MathematicaScript, WolframScript, etc. as
   " Mathematica files.
   autocmd BufRead,BufNewFile *
-        \ if getline(1) =~ '#!.*\/\(MathematicaScript\|WolframScript\).*$'    |
+        \ if getline(1) =~? '#!.*\(MathematicaScript\|WolframScript\).*$'     |
         \   set filetype=mma                                                  |
         \ endif
 
