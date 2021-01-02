@@ -5,7 +5,7 @@ PrivateFrontEndOptions->{"DialogSettings"->{
   "WelcomeScreen"->{"ShowRecentFilesContextMenu"->False}},
 "LastRegistrationReminderDate"->None,
 "ShowAtStartup"->"NewDocument",
-"WolframAlphaSettings"->{"Autoload"->False}},
+"WolframAlphaSettings"->{"Autoload"->False, "SendMathematicaSessionInfo" -> False}},
 PrivateNotebookOptions->{"FinalWindowPrompt"->False},
 ShowPredictiveInterface->False
 ]
