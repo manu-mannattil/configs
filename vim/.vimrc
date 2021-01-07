@@ -614,6 +614,14 @@ let g:vimtex_mappings_disable = {
       \ 'n': ['K'],
       \ }
 
+" Don't show these errors/warnings in the quickfix.
+let g:vimtex_quickfix_ignore_filters = [
+      \ 'Overfull',
+      \ 'Underfull',
+      \ 'pdfpagelabels',
+      \ 'PDFDocEncoding'
+      \ ]
+
 " Others {{{2
 " -----------
 

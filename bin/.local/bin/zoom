@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# https://polhode.org/notes/zoom/
-mkdir -p ~/.zoom.d
-exec firejail --private=~/.zoom.d \
-              --profile=/etc/firejail/zoom.profile \
-              /opt/zoom/ZoomLauncher "$@"
