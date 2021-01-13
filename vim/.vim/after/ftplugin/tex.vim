@@ -3,9 +3,10 @@
 
 runtime! abbrev.vim
 
-setlocal spell
-setlocal keywordprg=:Sdcv
+setlocal autochdir
 setlocal iskeyword+=-,:
+setlocal keywordprg=:Sdcv
+setlocal spell
 
 " Make use of the default ftplugin's concealment feature.
 setlocal conceallevel=2

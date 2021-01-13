@@ -35,4 +35,4 @@ $xelatex = "xelatex -no-pdf -recorder -file-line-error -interaction=nonstopmode 
 # push @generated_exts, "run.xml";
 
 # Additional extensions of files to be removed when latexmk -c or -C is used.
-$clean_ext = "synctex.gz synctex.gz(busy) %RNotes.bib run.xml spl pre xdv"
+$clean_ext = "synctex.gz synctex.gz(busy) %RNotes.bib run.xml spl pre xdv bbl";
