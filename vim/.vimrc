@@ -558,18 +558,6 @@ augroup END
 " Disable syntax error checking in POSIX sh, bash, etc.
 let g:sh_no_error = 1
 
-" Enable all concealings.
-let g:tex_conceal = 'abdgm'
-
-" Assume that *.tex files are LaTeX and not vanilla TeX.
-let g:tex_flavor = 'latex'
-
-" Disable syntax based folding.
-let g:tex_fold_enabled = 0
-
-" Don't attempt any error checking in TeX files.
-let g:tex_no_error = 1
-
 " gnupg.vim {{{2
 " --------------
 
@@ -591,12 +579,6 @@ let g:netrw_browsex_viewer = "open"
 " Vimtex {{{2
 " -----------
 
-" Single-shot compilation using latexmk.
-let g:vimtex_compiler_latexmk = {
-      \ 'backend' : 'jobs',
-      \ 'continuous' : 0,
-      \ }
-
 " Use qpdfview (with instance name `LaTeX') as the PDF viewer.
 let g:vimtex_view_general_viewer = 'qpdfview'
 let g:vimtex_view_general_options = '--instance LaTeX --unique @pdf\#src:@tex:@line:@col'
@@ -607,6 +589,19 @@ let g:vimtex_quickfix_open_on_warning = 0
 
 " Disable recursive searching of included packages.
 let g:vimtex_include_search_enabled = 0
+
+" Enable folding using Vimtex's foldexpr function.
+let g:vimtex_fold_enabled = 1
+
+" But only compute fold levels on demand, i.e., use fdm=manual.  To force
+" update the fold level, reload the file or use 'zx'.
+let g:vimtex_fold_manual = 1
+
+" Disable folding for certain parts of the document.
+let  g:vimtex_fold_types = {
+      \ 'cmd_single': {'enabled': 0},
+      \ 'envs': {'enabled': 0},
+      \}
 
 " Disable some vimtex mappings. E.g., K in normal mode is more useful to run
 " keywordprg than texdoc.
@@ -619,6 +614,7 @@ let g:vimtex_quickfix_ignore_filters = [
       \ 'Overfull',
       \ 'Underfull',
       \ 'pdfpagelabels',
+      \ 'float specifier',
       \ 'PDFDocEncoding'
       \ ]
 
