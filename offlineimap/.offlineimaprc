@@ -4,31 +4,31 @@
 # ---------------------
 
 [general]
-accounts = gmail, gandi, posteo, syr, yahoo
+accounts = gmail, polhode, posteo, yahoo
 ui = ttyui
 socktimeout = 90
 pythonfile = ~/.offlineimap.py
 
-# Gandi {{{1
-# -----------
+# polhode {{{1
+# ------------
 
-[Account gandi]
-localrepository = gandi-local
-remoterepository = gandi-remote
+[Account polhode]
+localrepository = polhode-local
+remoterepository = polhode-remote
 postsynchook = notmuch new
 
-[Repository gandi-local]
-localfolders = ~/mail/gandi
+[Repository polhode-local]
+localfolders = ~/mail/polhode
 type = Maildir
 nametrans = lambda folder: {'inbox': 'INBOX'}.get(folder, folder.title())
 
-[Repository gandi-remote]
+[Repository polhode-remote]
 auth_mechanisms = LOGIN
 maxconnections = 1
 remotehost = mail.gandi.net
 remoteport = 993
 remoteuser = manu@polhode.org
-remotepasseval = get_pass("email/gandi")
+remotepasseval = get_pass("email/polhode")
 ssl = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 type = IMAP

@@ -5,12 +5,12 @@
 
 set from      = "manu@polhode.org"
 set realname  = "Manu Mannattil"
-set sendmail  = "msmtp -a gandi"
+set sendmail  = "msmtp -a polhode"
 
-set folder    = ~/mail/gandi
+set folder    = ~/mail/polhode
 set postponed = +drafts
 set spoolfile = +inbox
 set trash     = +trash
 set record    = +sent
 
-mailboxes `echo ~/mail/gandi/*`
+mailboxes `echo ~/mail/polhode/*`
