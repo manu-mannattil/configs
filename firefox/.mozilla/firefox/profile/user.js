@@ -38,10 +38,6 @@ user_pref("beacon.enabled", false);
 // long passwords (you might have to use CUA shortcuts though).
 user_pref("dom.event.clipboardevents.enabled", false);
 
-// Don't allow websites to prevent use of right-click, or otherwise
-// messing with the context menu.
-user_pref("dom.event.contextmenu.enabled", false);
-
 // Perform DNS lookups through the SOCKS proxy itself.
 user_pref("network.proxy.socks_remote_dns", true);
 
