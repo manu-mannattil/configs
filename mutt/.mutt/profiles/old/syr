@@ -2,6 +2,14 @@
 #
 # Mutt profile for SU mail.
 #
+# Update (2021-02-05):  Sometime in early 2021 Outlook transitioned to
+# its own custom OAuth protocol for IMAP authentication, thus completing
+# total vendor lock-in.  And Syracuse ITS grunts are completly oblivious
+# to such things.  There are ways to get Outlook's OAuth2 to work with
+# OfflineIMAP/msmtp, but they're too convoluted for my liking, so I no
+# longer use Outlook with Mutt, and forward my Outlook messages to
+# another account with saner protocols instead.
+#
 
 set from      = "mmannatt@syr.edu"
 set realname  = "Manu Mannattil"

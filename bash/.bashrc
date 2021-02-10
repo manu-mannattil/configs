@@ -88,7 +88,7 @@ export HISTTIMEFORMAT="%Y-%m-%d %H:%M %Z "
 
 # Ignore commands matched by the following colon-separated patterns.
 # Patterns are extended patterns if extglob is set.
-export HISTIGNORE="bg:clear:fg:history:ls:rm *:aria2c *:find *-delete*"
+export HISTIGNORE="bg:clear:fg:history:ls:rm *:aria2c *:find *-delete*:"
 
 # Store history files for commands wrapped with rl-wrap in separate directory.
 export RLWRAP_HOME="${HOME}/.cache/rlwrap"
@@ -523,7 +523,7 @@ export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
 # Default Mutt profile.
-export MUTT_PROFILE="syr"
+export MUTT_PROFILE="posteo"
 
 # 3 minutes to clear the clipboard after copying a password.
 export PASSWORD_STORE_CLIP_TIME=180
