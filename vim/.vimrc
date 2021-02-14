@@ -428,9 +428,6 @@ set grepformat=%f:%l:%m
 command! -nargs=+ Grep silent grep! <args> | silent redraw! | cwindow
 command! -nargs=+ LGrep silent lgrep! <args> | silent redraw! | lwindow
 
-" Paste the range to ix.io.  Requires: curl, xclip.
-command! -range=% Pastebin <line1>,<line2>write !curl -\#kLF 'f:1=<-' ix.io | xclip -selection clipboard
-
 " Run mkprg and open the QuickFix window.
 command! -nargs=* Make silent make! <args> | silent redraw! | cwindow
 command! -nargs=* LMake silent lmake! <args> | silent redraw! | lwindow
@@ -615,7 +612,8 @@ let g:vimtex_quickfix_ignore_filters = [
       \ 'Underfull',
       \ 'pdfpagelabels',
       \ 'float specifier',
-      \ 'PDFDocEncoding'
+      \ 'hyperref Warning',
+      \ 'float is stuck'
       \ ]
 
 " Others {{{2
