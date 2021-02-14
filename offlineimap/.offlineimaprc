@@ -38,7 +38,7 @@ nametrans = lambda folder: {'INBOX': 'inbox'}.get(folder, folder.lower())
 # ----------
 
 # To make Gmail work with OfflineIMAP better, I have set the following
-# through the web interface (Settings -> Forwading POP/IMAP).
+# through the web interface (Settings -> Forwarding POP/IMAP).
 #
 #  o  Keep "auto expunge" off and ask Gmail to wait for the client to
 #     update the server.  If this is not set, Gmail does not delete the

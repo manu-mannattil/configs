@@ -365,6 +365,14 @@ lyrics() {
     fi
 }
 
+# mbsync {{{2
+# -----------
+
+# Run notmuch after mbsync.
+mbsync() {
+    command mbsync "$@" && notmuch new
+}
+
 # mergepath {{{2
 # --------------
 

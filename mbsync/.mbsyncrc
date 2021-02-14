@@ -1,0 +1,223 @@
+# vim: ft=conf fdm=marker et sts=2 sw=2
+#
+# Notes
+# -----
+#
+# 1. The trailing "/" is important in path.
+#
+# 2. A glob of * in patterns will synchronize INBOX and hence there's no
+#    need to add a separate channel for INBOX.
+#
+# 3. Suppose a channel (e.g., account-sent) has been configured to
+#    synchronize and map the name of a particular folder on the far side
+#    with a folder on the near side (say "Sent Mail" <-> "sent").  In
+#    addition to this, suppose a channel (e.g., account-all) has been
+#    configured to fetch messages from all other folders.  Clearly, one
+#    wouldn't want to synchronize the "Sent Mail" folder twice.
+#    To do this the patterns !"Sent Mail" and !"sent" have to be added
+#    to the patterns list in the account-all folder.  If either of these
+#    patterns are missing, mbsync will complain about not being able to
+#    find that folder on the far/near side.
+#
+
+# Global options.
+Create Both
+Expunge Both
+SyncState *
+
+# Gmail {{{1
+# ----------
+
+# To make Gmail work with mbsync better, I have set the following
+# through the web interface (Settings -> Forwading POP/IMAP).
+#
+#  o  Keep "auto expunge" off and ask Gmail to wait for the client to
+#     update the server.  If this is not set, Gmail does not delete the
+#     message properly and it would still be accessible from the "All
+#     Mail" folder.  I don't want that.
+#
+#  o  When a message is marked as deleted and expunged from the last
+#     visible IMAP folder, delete the message immediately.
+#
+# It's also useful to disable syncing of the "All Mail" and "Starred"
+# folders (and all internal Gmail folders beginning with [Gmail]).  The
+# reason is that starring a message is equivalent to toggling its
+# "important" flag (you do this by pressing "F" in Mutt).  But if you do
+# that, Gmail will put a copy of the same message in the "Starred"
+# folder as well.  This means that you'll have two copies of the same
+# message.  Enabling "All Mail" in IMAP also does the same thing (i.e.,
+# if you don't make use of Gmail's archival "features").
+
+IMAPAccount gmail
+Host imap.gmail.com
+User manu.mannattil@gmail.com
+AuthMechs LOGIN
+PassCmd "pass email/gmail"
+SSLType IMAPS
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+Path ~/mail/gmail/
+Inbox ~/mail/gmail/inbox
+
+# Sync all folders (including the inbox) except the Gmail internal
+# folders, drafts, sent, and trash.
+Channel gmail-all
+Far :gmail-remote:
+Near :gmail-local:
+Patterns * ![Gmail]* !drafts !sent !spam !trash
+
+Channel gmail-drafts
+Far :gmail-remote:[Gmail]/Drafts
+Near :gmail-local:drafts
+
+Channel gmail-sent
+Far :gmail-remote:"[Gmail]/Sent Mail"
+Near :gmail-local:sent
+
+Channel gmail-spam
+Far :gmail-remote:[Gmail]/Spam
+Near :gmail-local:spam
+
+Channel gmail-trash
+Far :gmail-remote:[Gmail]/Trash
+Near :gmail-local:trash
+
+Group gmail
+Channel gmail-all
+Channel gmail-drafts
+Channel gmail-sent
+Channel gmail-spam
+Channel gmail-trash
+
+# Polhode {{{1
+# ------------
+
+IMAPAccount polhode
+Host mail.gandi.net
+User manu@polhode.org
+AuthMechs LOGIN
+PassCmd "pass email/polhode"
+SSLType IMAPS
+
+IMAPStore polhode-remote
+Account polhode
+
+MaildirStore polhode-local
+Path ~/mail/polhode/
+Inbox ~/mail/polhode/inbox
+
+Channel polhode-all
+Far :polhode-remote:
+Near :polhode-local:
+Patterns * !Drafts !drafts !Junk !spam !Sent !sent !Trash !trash
+
+Channel polhode-drafts
+Far :polhode-remote:Drafts
+Near :polhode-local:drafts
+
+Channel polhode-sent
+Far :polhode-remote:Sent
+Near :polhode-local:sent
+
+Channel polhode-spam
+Far :polhode-remote:Junk
+Near :polhode-local:spam
+
+Channel polhode-trash
+Far :polhode-remote:Trash
+Near :polhode-local:trash
+
+Group polhode
+Channel polhode-all
+Channel polhode-drafts
+Channel polhode-sent
+Channel polhode-spam
+Channel polhode-trash
+
+# Posteo {{{1
+# -----------
+
+IMAPAccount posteo
+Host posteo.de
+User manu.mannattil@posteo.net
+AuthMechs LOGIN
+PassCmd "pass email/posteo"
+SSLType IMAPS
+
+IMAPStore posteo-remote
+Account posteo
+
+MaildirStore posteo-local
+Path ~/mail/posteo/
+Inbox ~/mail/posteo/inbox
+
+Channel posteo-all
+Far :posteo-remote:
+Near :posteo-local:
+Patterns * !Drafts !drafts !Sent !sent !Trash !trash
+
+Channel posteo-drafts
+Far :posteo-remote:Drafts
+Near :posteo-local:drafts
+
+Channel posteo-sent
+Far :posteo-remote:Sent
+Near :posteo-local:sent
+
+Channel posteo-trash
+Far :posteo-remote:Trash
+Near :posteo-local:trash
+
+Group posteo
+Channel posteo-all
+Channel posteo-sent
+Channel posteo-trash
+Channel posteo-drafts
+
+# Yahoo! {{{1
+# -----------
+
+IMAPAccount yahoo
+Host imap.mail.yahoo.com
+User manu.mannattil@yahoo.com
+AuthMechs LOGIN
+PassCmd "pass email/yahoo"
+SSLType IMAPS
+
+IMAPStore yahoo-remote
+Account yahoo
+
+MaildirStore yahoo-local
+Path ~/mail/yahoo/
+Inbox ~/mail/yahoo/inbox
+
+Channel yahoo-all
+Far :yahoo-remote:
+Near :yahoo-local:
+Patterns * !Archive !Draft !drafts !Sent !sent !Trash !trash !"Bulk Mail" !spam
+
+Channel yahoo-drafts
+Far :yahoo-remote:Draft
+Near :yahoo-local:drafts
+
+Channel yahoo-sent
+Far :yahoo-remote:Sent
+Near :yahoo-local:sent
+
+Channel yahoo-spam
+Far :yahoo-remote:"Bulk Mail"
+Near :yahoo-local:spam
+
+Channel yahoo-trash
+Far :yahoo-remote:Trash
+Near :yahoo-local:trash
+
+Group yahoo
+Channel yahoo-all
+Channel yahoo-drafts
+Channel yahoo-sent
+Channel yahoo-spam
+Channel yahoo-trash

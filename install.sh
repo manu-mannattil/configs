@@ -268,6 +268,11 @@ __install_matplotlib() {
     install "matplotlib/.config/matplotlib"
 }
 
+# :target: mbsync - mbsync configuration
+__install_mbsync() {
+    install "mbsync/.mbsyncrc"
+}
+
 # :target: mpv - mpv media player configuration
 __install_mpv() {
     install "mpv/.config/mpv/mpv.conf" "mpv/.config/mpv/input.conf"
