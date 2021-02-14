@@ -195,9 +195,6 @@ alias dash='rlwrap -a -c dash'
 alias gnuplot='rlwrap -pgreen -a -c gnuplot'
 alias posh='rlwrap -a -c posh'
 
-# Use the 'basic' interface, do quick runs, and run only once.
-alias offlineimap='offlineimap -oq -u basic'
-
 # Toggle redshift.
 alias redtoggle='pkill -USR1 redshift'
 
@@ -368,9 +365,29 @@ lyrics() {
 # mbsync {{{2
 # -----------
 
-# Run notmuch after mbsync.
+# usage: mbsync [<arg>...]
+#
+# An mbsync wrapper that adds some trimmings like running notmuch right
+# after synchronization and printing the number of new messages.
+
 mbsync() {
-    command mbsync "$@" && notmuch new
+    command mbsync "$@" && notmuch new && {
+        # Print number of new messages in each folder.  Unlike OfflineIMAP,
+        # mbsync's output is somewhat cryptic and it's not always clear
+        # which folders have new messages.
+        cd ~/mail
+        find -type f -path '*/new/*' | awk -F / '
+            /^\./ {
+                count[$2 "/" $3] += 1
+            }
+
+            END {
+                for (folder in count)
+                    printf("%s: %s\n", folder, count[folder])
+            }
+        '
+        cd "$OLDPWD"
+    }
 }
 
 # mergepath {{{2
