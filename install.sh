@@ -478,7 +478,7 @@ do
             info "unknown option $1"
             exit 1 ;;
         *)
-            __parse_target "$1" ;;
+            __parse_target "${1%/}" ;;
     esac
     shift
 done
