@@ -85,11 +85,11 @@ user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
 user_pref("network.trr.mode", 2);
 
 // DNS server used for resolving the address in network.trr.uri.
-user_pref("network.trr.bootstrapAddress", "1.1.1.1");
+user_pref("network.trr.bootstrapAddress", "9.9.9.9");
 
-// DNS over HTTPS (DoH) with CloudFlare's DNS.
+// DNS over HTTPS (DoH) with Quad9's DNS.
 // Alternative DoH servers: https://github.com/curl/curl/wiki/DNS-over-HTTPS
-user_pref("network.trr.uri", "https://mozilla.cloudflare-dns.com/dns-query");
+user_pref("network.trr.uri", "https://dns.quad9.net/dns-query");
 
 // Enable encrypted server name indication (SNI), which conceals the
 // hostname during TLS connections: https://www.cloudflare.com/ssl/encrypted-sni/
