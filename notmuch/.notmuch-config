@@ -50,7 +50,7 @@ path=/home/manu/mail
 #
 [new]
 tags=unread
-ignore=local;spam;trash;yahoo;.mbsyncstate;.uidvalidity;
+ignore=local;spam;trash;yahoo;.mbsyncstate;.uidvalidity;.lock
 
 
 # Search configuration {{{1
