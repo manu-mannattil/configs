@@ -119,7 +119,14 @@ export TERMINAL="${HOME}/code/scripts/terminal"
 export QT_QPA_PLATFORMTHEME=gtk3
 
 # Set the background color to a no-nonsense gray.
-xsetroot -solid "#333333"
+if command -v hsetroot &>/dev/null
+then
+    # Compton doesn't work with xsetroot.
+    # https://github.com/chjj/compton/issues/162
+    hsetroot -solid "#333333"
+else
+    xsetroot -solid "#333333"
+fi
 
 # Use dunst for notifications.
 dunst &
@@ -129,5 +136,10 @@ dunst &
 
 # Start redshift to adjust screen temperature.
 redshift -l '43.088947:-76.154480' &
+
+# I really don't want the overhead of a compositor, but Zoom's screen sharing
+# requires a compositor -- otherwise black squares will replace Zoom's window.
+# https://support.zoom.us/hc/en-us/articles/202082128-Black-screen-during-screen-sharing
+compton -b -c -l0 -t0 -r0 -o.00
 
 exec i3
