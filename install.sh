@@ -300,11 +300,6 @@ __install_notmuch() {
     install "notmuch/.notmuch-config"
 }
 
-# :target: offlineimap - OfflineIMAP configuration
-__install_offlineimap() {
-    install "offlineimap/.offlineimaprc" "offlineimap/.offlineimap.py"
-}
-
 # :target: parallel - GNU parallel configuration
 __install_parallel() {
     install "parallel/.parallel/config"
@@ -441,8 +436,8 @@ __parse_group() {
             # :group: default - install all targets
             targets+=( $(__fetch_possible_targets) ) ;;
         mail)
-            # :group: mail - mutt, OfflineIMAP, msmtp, notmuch
-            targets+=( mutt offlineimap msmtp notmuch ) ;;
+            # :group: mail - mutt, mbsync, msmtp, notmuch
+            targets+=( mutt mbsync msmtp notmuch ) ;;
         "")  info "group name required"; exit 1 ;;
         *)   info "unknown group $1"; exit 1 ;;
     esac
