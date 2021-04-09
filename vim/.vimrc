@@ -18,6 +18,13 @@ else
   command! -bar Helptags :call pathogen#helptags()
 endif
 
+" Character encoding of text used *inside* Vim (e.g., the text in buffers).
+" Tweak this according your terminal emulator's needs.  We're setting this
+" right in the preamble because sometimes Vim fails to understand the encoding
+" of 'listchars' and 'fillchars' if the encoding is not seen before those
+" options.  I first noticed this issue with a version of Vim from Nix.
+set encoding=utf-8
+
 " Settings {{{1
 " -------------
 
@@ -145,10 +152,6 @@ set backspace=indent,eol,start
 " terms of flags.  Note that *only* CTRL-P and CTRL-N follow these rules.  In
 " particular, i_CTRL-X_CTRL-N and i_CTRL-X_CTRL-P don't follow these rules.
 set complete=.,w,b,u,t,i,kspell
-
-" Character encoding of text used *inside* Vim (e.g., the text in buffers).
-" Tweak this according your terminal emulator's needs.
-set encoding=utf-8
 
 " Encoding of file *on disk*.  When 'fileencoding' is different from
 " 'encoding', conversion will be done when writing the file.
