@@ -334,6 +334,11 @@ __install_tmux() {
     install "tmux/.tmux" "tmux/.tmux.conf"
 }
 
+# :target: tridactyl - tridactyl configuration
+__install_tridactyl() {
+    install "tridactyl/.tridactylrc" "tridactyl/.tridactylrc"
+}
+
 # :target: vim - Vim configuration and plugins
 __install_vim() {
     install "vim/.vimrc" "vim/.vim" "vim/.gvimrc"
