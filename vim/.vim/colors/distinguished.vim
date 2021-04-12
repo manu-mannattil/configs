@@ -6,6 +6,7 @@
 "             4. Low-contrast cursorcolumn, cursorline, colorcolumn,
 "                nontext, etc.
 "             5. Removed all mismatches between terminal and gui colors.
+"             6. Added more hi links.
 
 set background=dark
 
@@ -172,14 +173,40 @@ call s:ColorDictParser({
   \ , 'diffNewFile'                 : [    242,     '',               '',      '6c6c6c',        '',               '']
 \ })
 
-hi link htmlTag            xmlTag
-hi link htmlTagName        xmlTagName
-hi link htmlEndTag         xmlEndTag
+hi link htmlArg                  htmlTagName
+hi link htmlBold                 Normal
+hi link htmlEndTag               xmlEndTag
+hi link htmlItalic               Normal
+hi link htmlLink                 Function
+hi link htmlSpecialTagName       htmlTagName
+hi link htmlTag                  xmlTag
+hi link htmlTagName              xmlTagName
 
-hi link phpCommentTitle    vimCommentTitle
-hi link phpDocTags         vimCommentString
-hi link phpDocParam        vimCommentTitle
+hi link diffAdded                DiffAdd
+hi link diffBDiffer              WarningMsg
+hi link diffChanged              DiffChange
+hi link diffCommon               WarningMsg
+hi link diffDiffer               WarningMsg
+hi link diffIdentical            WarningMsg
+hi link diffIsA                  WarningMsg
+hi link diffNoEOL                WarningMsg
+hi link diffOnly                 WarningMsg
+hi link diffRemoved              DiffDelete
 
-hi link diffAdded          DiffAdd
-hi link diffChanged        DiffChange
-hi link diffRemoved        DiffDelete
+hi link asciidocQuotedEmphasized Preproc
+hi link Boolean                  Constant
+hi link Character                Constant
+hi link Conditional              Statement
+hi link Debug                    Special
+hi link Exception                Statement
+hi link Float                    Number
+hi link HelpCommand              Statement
+hi link HelpExample              Statement
+hi link Label                    Statement
+hi link Macro                    PreProc
+hi link markdownItalic           Preproc
+hi link QuickFixLine             Search
+hi link Repeat                   Statement
+hi link Structure                Type
+hi link Tag                      Special
+hi link Terminal                 Normal
