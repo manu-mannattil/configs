@@ -533,9 +533,10 @@ fi
 # Set the PATH.
 mergepath "${HOME}/code/bin" "${HOME}/.local/bin"
 
-# Activate miniconda (installed to ~/conda) only for non-login shells.
-shopt -q login_shell || {
-    [[ -f "HOME/conda/etc/profile.d/conda.sh" ]] && source "$HOME/conda/etc/profile.d/conda.sh"
+# Activate miniconda (installed to ~/conda) only for non-login shells or when
+# SSHed in to the system.
+! shopt -q login_shell || [[ "$SSH_CLIENT" ]] && {
+    [[ -f "$HOME/conda/etc/profile.d/conda.sh" ]] && source "$HOME/conda/etc/profile.d/conda.sh"
     mergepath "${HOME}/conda/bin" "${HOME}/conda/condabin"
 }
 
