@@ -4,6 +4,10 @@ configs
 This is a repository for managing my configuration files (aka dotfiles), meticulously yak shaved over the years and contains about <!--FILES-->172 configuration files for about <!--PROGRAMS-->47
 programs.
 
+<a href="https://xkcd.com/1806/">
+  <img align="right" src="https://imgs.xkcd.com/comics/borrow_your_laptop.png"/>
+</a>
+
 Installation
 ------------
 
