@@ -278,15 +278,15 @@ export LESS_TERMCAP_us=$'\E[4;38;5;13m'         # begin underline
 if command -v fasd &>/dev/null
 then
     eval "$(fasd --init auto)"
+
+    # Get rid of default fasd aliases.
+    unalias a d f s sd sf z zz
+
+    alias d='fasd_cd -d'
+    alias di='fasd_cd -d -i'
+    alias o='fasd -e open'
+    alias v='fasd -f -e vim'
 fi
-
-# Get rid of default fasd aliases.
-unalias a d f s sd sf z zz
-
-alias d='fasd_cd -d'
-alias di='fasd_cd -d -i'
-alias o='fasd -e open'
-alias v='fasd -f -e vim'
 
 # Functions {{{1
 # --------------
