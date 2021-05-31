@@ -324,6 +324,11 @@ __install_readline() {
     mkdir -vp "${HOME}/.cache/rlwrap"
 }
 
+# :target: ssh - SSH config
+__install_ssh() {
+    install "ssh/.ssh/config"
+}
+
 # :target: terminfo - terminfo files for less-known terminals
 __install_terminfo() {
     install "terminfo/.terminfo"
@@ -432,6 +437,7 @@ __parse_group() {
                 parallel
                 python
                 readline
+                ssh
                 terminfo
                 tmux
                 vim
