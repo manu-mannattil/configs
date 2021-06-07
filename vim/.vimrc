@@ -367,6 +367,12 @@ augroup misc
 
   " Resize windows (i.e., splits) when the main Vim window is resized.
   autocmd VimResized * wincmd =
+
+  " If the only window open contains the quickfix list, delete that buffer.
+  autocmd WinEnter *
+        \ if winnr('$') == 1 && &buftype == "quickfix"                        |
+        \   bdelete!                                                          |
+        \ endif
 augroup END
 
 " Show the current line only in the active window.
