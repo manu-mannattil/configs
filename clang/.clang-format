@@ -1,0 +1,13 @@
+# vim: ft=yaml fdm=marker et sts=2 sw=2
+---
+BasedOnStyle: LLVM
+UseTab: Never
+IndentWidth: 4
+ColumnLimit: 100
+---
+Language: Cpp
+
+# Force pointers to the type for C++.
+DerivePointerAlignment: false
+PointerAlignment: Left
+---
