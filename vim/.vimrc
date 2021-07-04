@@ -345,7 +345,7 @@ augroup ft_related
   " Mathematica files.
   autocmd BufRead,BufNewFile *
         \ if getline(1) =~? '#!.*\(MathematicaScript\|WolframScript\).*$'     |
-        \   set filetype=mma                                                  |
+        \   set filetype=wl                                                   |
         \ endif
 
   autocmd BufRead,BufNewFile \*sdcv\* set filetype=sdcv
@@ -617,13 +617,16 @@ let g:vimtex_mappings_disable = {
 
 " Don't show these errors/warnings in the quickfix.
 let g:vimtex_quickfix_ignore_filters = [
-      \ 'Overfull',
-      \ 'Underfull',
-      \ 'pdfpagelabels',
+      \ 'float is stuck',
       \ 'float specifier',
       \ 'hyperref Warning',
-      \ 'float is stuck'
+      \ 'LastBibItem',
+      \ 'Overfull',
+      \ 'pdfpagelabels',
+      \ 'Underfull',
       \ ]
+
+let g:vimtex_bibliography_commands = ['%(default|no)?bibliography', 'add%(bibresource|globalbib|sectionbib)']
 
 " Others {{{2
 " -----------
