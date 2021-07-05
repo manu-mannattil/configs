@@ -1,0 +1,52 @@
+GIMP Palette
+Name: emem
+
+# Some default colors.
+0   0   0    Black
+255 255 255  White
+
+128   0   0  Maroon (#800000)
+255   0   0  Red (#FF0000)
+128 128   0  Olive (#808000)
+255 255   0  Yellow (#FFFF00)
+  0 128   0  Green (#008000)
+  0 255   0  Lime (#00FF00)
+  0 128 128  Teal (#008080)
+  0 255 255  Aqua (#00FFFF)
+  0   0 128  Navy (#000080)
+  0   0 255  Blue (#0000FF)
+128   0 128  Purple (#800080)
+255   0 255  Fuchsia (#FF00FF)
+
+# Generated with Inkscape Generate Palette:
+# https://inkscape.org/~olibia/%E2%98%85generate-palette-extension
+
+204 221 238  #CCDDEE
+224 234 245  #E0EAF5
+244 247 251  #F4F7FB
+167 195 226  #A7C3E2
+187 206 231  #BBCEE7
+148 182 220  #94B6DC
+128 168 214  #80A8D6
+108 155 208  #6C9BD0
+ 89 142 202  #598ECA
+ 69 129 196  #4581C4
+ 58 116 182  #3A74B6
+ 52 104 162  #3468A2
+ 46  92 143  #2E5C8F
+ 40  79 123  #284F7B
+
+187 170 238  #BBAAEE
+204 191 242  #CCBFF2
+221 213 246  #DDD5F6
+238 234 251  #EEEAFB
+170 149 234  #AA95EA
+153 127 230  #997FE6
+136 106 226  #886AE2
+119  84 222  #7754DE
+102  63 218  #663FDA
+ 85  41 214  #5529D6
+ 77  37 193  #4D25C1
+ 68  33 171  #4421AB
+ 59  29 150  #3B1D96
+ 50  25 128  #321980
