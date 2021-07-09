@@ -619,14 +619,16 @@ let g:vimtex_mappings_disable = {
 let g:vimtex_quickfix_ignore_filters = [
       \ 'float is stuck',
       \ 'float specifier',
-      \ 'hyperref Warning',
       \ 'LastBibItem',
       \ 'Overfull',
-      \ 'pdfpagelabels',
       \ 'Underfull',
       \ ]
 
+" The bibunits package uses \defaultbibliograph{...} to include .bib files.
 let g:vimtex_bibliography_commands = ['%(default|no)?bibliography', 'add%(bibresource|globalbib|sectionbib)']
+
+" Disable folding of BiBTeX entries.
+let g:vimtex_fold_bib_enabled = 0
 
 " Others {{{2
 " -----------
