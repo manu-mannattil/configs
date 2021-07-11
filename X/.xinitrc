@@ -78,6 +78,9 @@ else
     xrdb -merge "${HOME}/.Xresources"
 fi
 
+# Turn off the system bell.
+xset b off
+
 # Make GTK/QT apps use X input method (Xim).
 # Without this, custom mappings in ~/.XCompose won't work.
 export GTK_IM_MODULE="xim"
