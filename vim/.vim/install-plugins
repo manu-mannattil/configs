@@ -62,7 +62,7 @@ do
     fi
   else
     echo >&2 "${0##*/}: installing '$plugin'"
-    git -C "$plugin_dir" clone "${plugin_urls[$plugin]}" "$plugin"
+    git -C "$plugin_dir" clone --depth=1 "${plugin_urls[$plugin]}" "$plugin"
   fi
 done
 
