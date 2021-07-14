@@ -145,4 +145,8 @@ redshift -l '43.088947:-76.154480' &
 # https://support.zoom.us/hc/en-us/articles/202082128-Black-screen-during-screen-sharing
 compton -b -c -l0 -t0 -r0 -o.00
 
-exec i3
+# Since updating to Debian 10.10, this seems to be required to have a nonempty
+# $DBUS_SESSION_BUS_ADDRESS.  Without this, several applications (evince,
+# inkscape, etc.) wait 25 seconds (some harcoded time related to D-Bus) before
+# showing their GUI.
+exec dbus-launch --exit-with-session --sh-syntax i3
