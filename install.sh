@@ -119,6 +119,11 @@ __install_bin() {
     install "bin/.local/bin"
 }
 
+# :target: clang - clang configuration files
+__install_clang() {
+    install "clang/.clang-format"
+}
+
 # :target: curl - cURL cli configuration
 __install_curl() {
     install "curl/.curlrc"
@@ -224,6 +229,7 @@ __install_i3() {
 # :target: inkscape - inkscape configuration
 __install_inkscape() {
     install "inkscape/.config/inkscape/templates"
+    install "inkscape/.config/inkscape/palettes"
 }
 
 # :target: ipython - iPython configuration
