@@ -2,7 +2,8 @@ configs
 =======
 
 This is a repository for managing my configuration files (aka dotfiles), meticulously yak shaved over the years and contains about <!--FILES-->175 configuration files for about <!--PROGRAMS-->49
-programs.
+programs.  There are [many like it][others], but this one is
+mine.
 
 <a href="https://xkcd.com/1806/">
   <img align="right" src="https://imgs.xkcd.com/comics/borrow_your_laptop.png"/>
@@ -26,7 +27,7 @@ and groups, run
     install.sh --list
     install.sh --list-groups
 
-One can also use a symlink farm manager like [GNU Stow][1] to install
+One can also use a symlink farm manager like [GNU Stow][stow] to install
 the configuration files on a per-target basis.  For instance, to install
 the configuration files for Vim and Mutt, from the cloned repository,
 one could issue the command
@@ -41,4 +42,5 @@ Public domain.  See the file UNLICENSE for more details.
 (Quite obviously this only applies to stuff I've written, i.e., things
 without an explicit attribution.)
 
-[1]: https://www.gnu.org/software/stow/stow.html
+[others]: https://github.com/search?q=dotfiles+OR+configs
+[stow]: https://www.gnu.org/software/stow/stow.html
