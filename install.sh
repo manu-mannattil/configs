@@ -228,8 +228,7 @@ __install_i3() {
 
 # :target: inkscape - inkscape configuration
 __install_inkscape() {
-    install "inkscape/.config/inkscape/templates"
-    install "inkscape/.config/inkscape/palettes"
+    install "inkscape/.config/inkscape/templates" "inkscape/.config/inkscape/palettes"
 }
 
 # :target: ipython - iPython configuration
@@ -265,8 +264,7 @@ __install_liferea() {
 # :target: mathematica - Wolfram Mathematica configuration
 __install_mathematica() {
     install --copy "mathematica/.Mathematica/FrontEnd/init.m"
-    install "mathematica/.Mathematica/Kernel/init.m"
-    install "mathematica/.Mathematica/FrontEnd/frontend.css"
+    install "mathematica/.Mathematica/Kernel/init.m" "mathematica/.Mathematica/FrontEnd/frontend.css"
 }
 
 # :target: matplotlib - matplotlib configuration
