@@ -65,25 +65,25 @@ Inbox ~/mail/gmail/inbox
 # Sync all folders (including the inbox) except the Gmail internal
 # folders, drafts, sent, and trash.
 Channel gmail-all
-Far :gmail-remote:
-Near :gmail-local:
+Master :gmail-remote:
+Slave :gmail-local:
 Patterns * ![Gmail]* !drafts !sent !spam !trash
 
 Channel gmail-drafts
-Far :gmail-remote:[Gmail]/Drafts
-Near :gmail-local:drafts
+Master :gmail-remote:[Gmail]/Drafts
+Slave :gmail-local:drafts
 
 Channel gmail-sent
-Far :gmail-remote:"[Gmail]/Sent Mail"
-Near :gmail-local:sent
+Master :gmail-remote:"[Gmail]/Sent Mail"
+Slave :gmail-local:sent
 
 Channel gmail-spam
-Far :gmail-remote:[Gmail]/Spam
-Near :gmail-local:spam
+Master :gmail-remote:[Gmail]/Spam
+Slave :gmail-local:spam
 
 Channel gmail-trash
-Far :gmail-remote:[Gmail]/Trash
-Near :gmail-local:trash
+Master :gmail-remote:[Gmail]/Trash
+Slave :gmail-local:trash
 
 Group gmail
 Channel gmail-all
@@ -110,25 +110,25 @@ Path ~/mail/polhode/
 Inbox ~/mail/polhode/inbox
 
 Channel polhode-all
-Far :polhode-remote:
-Near :polhode-local:
+Master :polhode-remote:
+Slave :polhode-local:
 Patterns * !Drafts !drafts !Junk !spam !Sent !sent !Trash !trash
 
 Channel polhode-drafts
-Far :polhode-remote:Drafts
-Near :polhode-local:drafts
+Master :polhode-remote:Drafts
+Slave :polhode-local:drafts
 
 Channel polhode-sent
-Far :polhode-remote:Sent
-Near :polhode-local:sent
+Master :polhode-remote:Sent
+Slave :polhode-local:sent
 
 Channel polhode-spam
-Far :polhode-remote:Junk
-Near :polhode-local:spam
+Master :polhode-remote:Junk
+Slave :polhode-local:spam
 
 Channel polhode-trash
-Far :polhode-remote:Trash
-Near :polhode-local:trash
+Master :polhode-remote:Trash
+Slave :polhode-local:trash
 
 Group polhode
 Channel polhode-all
@@ -155,21 +155,21 @@ Path ~/mail/posteo/
 Inbox ~/mail/posteo/inbox
 
 Channel posteo-all
-Far :posteo-remote:
-Near :posteo-local:
+Master :posteo-remote:
+Slave :posteo-local:
 Patterns * !Drafts !drafts !Sent !sent !Trash !trash
 
 Channel posteo-drafts
-Far :posteo-remote:Drafts
-Near :posteo-local:drafts
+Master :posteo-remote:Drafts
+Slave :posteo-local:drafts
 
 Channel posteo-sent
-Far :posteo-remote:Sent
-Near :posteo-local:sent
+Master :posteo-remote:Sent
+Slave :posteo-local:sent
 
 Channel posteo-trash
-Far :posteo-remote:Trash
-Near :posteo-local:trash
+Master :posteo-remote:Trash
+Slave :posteo-local:trash
 
 Group posteo
 Channel posteo-all
@@ -195,25 +195,25 @@ Path ~/mail/yahoo/
 Inbox ~/mail/yahoo/inbox
 
 Channel yahoo-all
-Far :yahoo-remote:
-Near :yahoo-local:
+Master :yahoo-remote:
+Slave :yahoo-local:
 Patterns * !Archive !Draft !drafts !Sent !sent !Trash !trash !"Bulk Mail" !spam
 
 Channel yahoo-drafts
-Far :yahoo-remote:Draft
-Near :yahoo-local:drafts
+Master :yahoo-remote:Draft
+Slave :yahoo-local:drafts
 
 Channel yahoo-sent
-Far :yahoo-remote:Sent
-Near :yahoo-local:sent
+Master :yahoo-remote:Sent
+Slave :yahoo-local:sent
 
 Channel yahoo-spam
-Far :yahoo-remote:"Bulk Mail"
-Near :yahoo-local:spam
+Master :yahoo-remote:"Bulk Mail"
+Slave :yahoo-local:spam
 
 Channel yahoo-trash
-Far :yahoo-remote:Trash
-Near :yahoo-local:trash
+Master :yahoo-remote:Trash
+Slave :yahoo-local:trash
 
 Group yahoo
 Channel yahoo-all

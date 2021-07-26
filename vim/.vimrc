@@ -187,7 +187,7 @@ set smarttab
 set spelllang=en_us,in
 
 " Text wrapping width in columns.
-set textwidth=79
+set textwidth=100
 
 " The time in milliseconds that is waited for a key code or mapped key sequence
 " to complete.  Normally only 'timeoutlen' is used and 'ttimeoutlen' is -1.
@@ -495,6 +495,7 @@ noremap Q gw
 nnoremap <silent> ,6 :set textwidth=60<CR>
 nnoremap <silent> ,7 :set textwidth=72<CR>
 nnoremap <silent> ,8 :set textwidth=79<CR>
+nnoremap <silent> ,0 :set textwidth=100<CR>
 
 " Select last pasted/yanked/changed text.
 nnoremap gp '[v']

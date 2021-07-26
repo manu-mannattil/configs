@@ -4,7 +4,7 @@
 runtime! abbrev.vim
 
 setlocal autochdir
-setlocal iskeyword+=-,:
+"setlocal iskeyword+=-
 setlocal keywordprg=:Sdcv
 setlocal spell
 

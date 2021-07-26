@@ -376,6 +376,7 @@ if &ft == "tex"
   iabbrev <buffer> Amperian Amp\`{e}rian
   iabbrev <buffer> Benard B\'{e}nard
   iabbrev <buffer> Erdos Erd\H{o}s
+  iabbrev <buffer> Francois Fran\c{c}ois
   iabbrev <buffer> Godel G\"{o}del
   iabbrev <buffer> Kieslowski Kie\'{s}lowski
   iabbrev <buffer> Mobius M\"{o}bius
@@ -388,6 +389,7 @@ else
   iabbrev <buffer> Amperian Ampèrian
   iabbrev <buffer> Benard Bénard
   iabbrev <buffer> Erdos Erdős
+  iabbrev <buffer> Francois François
   iabbrev <buffer> Godel Gödel
   iabbrev <buffer> Kieslowski Kieślowski
   iabbrev <buffer> Mobius Möbius

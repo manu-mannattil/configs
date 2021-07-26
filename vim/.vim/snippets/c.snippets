@@ -15,10 +15,11 @@ snippet Inc
 	#include "${1:`Filename("$1.h")`}"${2}
 
 snippet com
-	/* com: : ${TMPDIR:=/tmp/} ${CC=gcc}
-	 * com: \{ ${CC} {} -o ${TMPDIR}{/.}; \} && ${TMPDIR}{/.} {@}
+	/* com: : ${TMPDIR:=/tmp/}
+	 * com: : ${CC:=cc}
+	 * com: : ${CFLAGS:=-Wall}
+	 * com: \{ ${CC} {} ${CFLAGS} -o ${TMPDIR}{!}; \} && ${TMPDIR}{!} {@}
 	 */
-
 
 snippet def
 	#define ${1:NAME} ${2:replacement}

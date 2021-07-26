@@ -37,8 +37,9 @@ PACKAGES=(
   # arbitrary precision.
   mpmath
 
-  # Python code formatter.
+  # Python code formatters.
   black
+  yapf
 
   # Python library designed for screen-scraping.
   beautifulsoup4

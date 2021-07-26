@@ -48,6 +48,9 @@ then
     # We need this since GTK 2.0 needs to have a different configuration for
     # low-DPI screens.
     export GTK2_RC_FILES="${HOME}/.gtkrc-hidpi-2.0"
+
+    # Start screen locker with a waiting time of 30 minutes.
+    xautolock -time 30 -locker 'i3lock --ignore-empty-password --show-failed-attempts --color=333333' &
 else
     # When on the NVIDIA dGPU Qt has to be told that we need 96 DPI when not
     # using HiDPI; I don't know why.
@@ -133,9 +136,6 @@ fi
 
 # Use dunst for notifications.
 dunst &
-
-# Start screen locker with a waiting time of 30 minutes.
-# xautolock -time 30 -locker 'i3lock --ignore-empty-password --show-failed-attempts --color=333333' &
 
 # Start redshift to adjust screen temperature.
 redshift -l '43.088947:-76.154480' &
