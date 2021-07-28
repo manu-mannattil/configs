@@ -3,6 +3,8 @@
 # ~/.xinitrc -- execute commands before starting X
 #
 
+echo "$@" >~/foo
+
 # On my P43s, run X on NVIDIA if required.  Requires gpu-select.
 # https://github.com/manu-mannattil/gpu-select
 [[ -f /etc/gpu-select/state ]] && {
@@ -124,29 +126,58 @@ export TERMINAL="${HOME}/code/scripts/terminal"
 # on Xubuntu.
 export QT_QPA_PLATFORMTHEME=gtk3
 
-# Set the background color to a no-nonsense gray.
-if command -v hsetroot &>/dev/null
-then
-    # Compton doesn't work with xsetroot.
-    # https://github.com/chjj/compton/issues/162
-    hsetroot -solid "#333333"
-else
-    xsetroot -solid "#333333"
-fi
-
-# Use dunst for notifications.
-dunst &
-
 # Start redshift to adjust screen temperature.
 redshift -l '43.088947:-76.154480' &
 
-# I really don't want the overhead of a compositor, but Zoom's screen sharing
-# requires a compositor -- otherwise black squares will replace Zoom's window.
-# https://support.zoom.us/hc/en-us/articles/202082128-Black-screen-during-screen-sharing
-compton -b -c -l0 -t0 -r0 -o.00
+# Guess the DE based on hostname.
+[[ "$DE" ]] || {
+    case "$HOSTNAME" in
+        lithium)    DE=xfce ;;
+        boron|*)    DE=i3   ;;
+    esac
+}
 
-# Since updating to Debian 10.10, this seems to be required to have a nonempty
-# $DBUS_SESSION_BUS_ADDRESS.  Without this, several applications (evince,
-# inkscape, etc.) wait 25 seconds (some harcoded time related to D-Bus) before
-# showing their GUI.
-exec dbus-launch --exit-with-session --sh-syntax i3
+case "$DE" in
+    xfce)
+        exec startxfce4
+        ;;
+    i3)
+        # Set the background color to a no-nonsense gray.
+        if command -v hsetroot &>/dev/null
+        then
+            # Compton doesn't work with xsetroot.
+            # https://github.com/chjj/compton/issues/162
+            hsetroot -solid "#333333"
+        else
+            xsetroot -solid "#333333"
+        fi
+
+        # Use dunst for notifications.
+        dunst &
+
+        # I really don't want the overhead of a compositor, but Zoom's screen sharing
+        # requires a compositor -- otherwise black squares will replace Zoom's window.
+        # https://support.zoom.us/hc/en-us/articles/202082128-Black-screen-during-screen-sharing
+        compton -b -c -l0 -t0 -r0 -o.00
+
+        # Start screen locker with a waiting time of 30 minutes.
+        xautolock -time 30 -locker 'i3lock --ignore-empty-password --show-failed-attempts --color=333333' &
+
+        # Enhance webcam feed.
+        v4l2-ctl -d /dev/video0      \
+            --set-ctrl=gamma=250     \
+            --set-ctrl=contrast=13   \
+            --set-ctrl=saturation=70 \
+            --set-ctrl=sharpness=5
+
+        # Since updating to Debian 10.10, this seems to be required to have a nonempty
+        # $DBUS_SESSION_BUS_ADDRESS.  Without this, several applications (evince,
+        # inkscape, etc.) wait 25 seconds (some harcoded time related to D-Bus) before
+        # showing their GUI.
+        exec dbus-launch --exit-with-session --sh-syntax i3
+        ;;
+    *)
+        echo >&2 "${0##*/}: DE must be either i3 or xfce"
+        exit 1
+        ;;
+esac

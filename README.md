@@ -1,7 +1,7 @@
 configs
 =======
 
-This is a repository for managing my configuration files (aka dotfiles), meticulously yak shaved over the years and contains about <!--FILES-->174 configuration files for about <!--PROGRAMS-->49
+This is a repository for managing my configuration files (aka dotfiles), meticulously yak shaved over the years and contains about <!--FILES-->171 configuration files for about <!--PROGRAMS-->49
 programs.  There are [many like it][others], but this one is
 mine.
 
