@@ -107,6 +107,14 @@ __install_bash() {
 
     # No motd (message of the day) login banner.
     touch "${HOME}/.hushlogin"
+
+    # NOTE (2018-05-26): For reasons I don't fully understand, readline
+    # screws up the history-search-forward/backward functions (set in
+    # ~/.inputrc) when the first line of $HISTFILE is _not_ a blank
+    # line.  Basically, a two word command like `echo a' gets completed
+    # twice if the first line of $HISTFILE isn't a blank line.
+    : ${HISTFILE:=$HOME/.cache/bash_history}
+    echo "" >$HISTFILE
 }
 
 # :target: bibtool - bibtool configuration
