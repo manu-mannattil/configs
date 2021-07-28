@@ -1,0 +1,2 @@
+# Prevent Mathematica from calling home.
+0.0.0.0 pacletserver6.wolfram.com
