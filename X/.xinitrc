@@ -3,8 +3,6 @@
 # ~/.xinitrc -- execute commands before starting X
 #
 
-echo "$@" >~/foo
-
 # On my P43s, run X on NVIDIA if required.  Requires gpu-select.
 # https://github.com/manu-mannattil/gpu-select
 [[ -f /etc/gpu-select/state ]] && {
@@ -13,6 +11,23 @@ echo "$@" >~/foo
 }
 
 xrandr --auto
+
+case "$HOSTNAME" in
+    # ThinkPad P43s.
+    boron)
+        [[ "$DE" ]] || export DE=i3
+        [[ "$HIDPI" ]] || export HIDPI=1
+        ;;
+    # ThinkPad X230t.
+    lithium)
+        [[ "$DE" ]] || export DE=xfce
+        v4l2-ctl --device /dev/video0     \
+                 --set-ctrl=gamma=250     \
+                 --set-ctrl=contrast=13   \
+                 --set-ctrl=saturation=70 \
+                 --set-ctrl=sharpness=5
+        ;;
+esac
 
 # Notes on my HiDPI display configuration
 # ---------------------------------------
@@ -29,8 +44,6 @@ xrandr --auto
 #
 # This way I tell .xinitrc that I don't want a HiDPI session.  All of this
 # might seem to be convoluted yak shaving, but it really is very simple!
-
-[[ -z "$HIDPI" ]] && [[ "$HOSTNAME" = "boron" ]] && export HIDPI=1
 
 if [[ "$HIDPI" == 1 ]]
 then
@@ -51,8 +64,6 @@ then
     # low-DPI screens.
     export GTK2_RC_FILES="${HOME}/.gtkrc-hidpi-2.0"
 
-    # Start screen locker with a waiting time of 30 minutes.
-    xautolock -time 30 -locker 'i3lock --ignore-empty-password --show-failed-attempts --color=333333' &
 else
     # When on the NVIDIA dGPU Qt has to be told that we need 96 DPI when not
     # using HiDPI; I don't know why.
@@ -65,20 +76,25 @@ else
     edp=$(xrandr --listmonitors | cut -d ' ' -f 6 | grep eDP)
     ext=$(xrandr --listmonitors | cut -d ' ' -f 6 | grep -v eDP | sort -r | head -n 1)
 
-    if [[ ${EDP:=1} == 1 ]]
+    if [[ "$ext" ]]
     then
-        # Set the eDP and the external monitor to 1920x1080, but make the
-        # external monitor the primary display.
-        xrandr --output $ext --primary --mode 1920x1080 --pos 0x0 --output $edp --mode 1920x1080 --pos 0x0
+        # My USB-C to HDMI travel dock has trouble waking up the monitor when
+        # the system goes to standby or the screen blanks.  Thus, don't allow
+        # screen blanking and disable DPMS.
+        xset s off -dpms
+        if [[ ${EDP:=1} == 1 ]]
+        then
+            # Set the eDP and the external monitor to 1920x1080, but make the
+            # external monitor the primary display.
+            xrandr --output $ext --primary --mode 1920x1080 --pos 0x0 --output $edp --mode 1920x1080 --pos 0x0
+        else
+            # Turn of the eDP if EDP is set to something other than 1.
+            xrandr --output $ext --primary --mode 1920x1080 --output $edp --off
+        fi
     else
-        # Turn of the eDP if EDP is set to something other than 1.
-        xrandr --output $ext --primary --mode 1920x1080 --output $edp --off
+        # Start screen locker with a waiting time of 30 minutes.
+        xautolock -time 30 -locker 'i3lock --ignore-empty-password --show-failed-attempts --color=333333' &
     fi
-
-    # My USB-C to HDMI travel dock has trouble waking up the monitor when the
-    # system goes to standby or the screen blanks.  Thus, don't allow screen
-    # blanking and disable DPMS.
-    xset s off -dpms
 
     xrdb -merge "${HOME}/.Xresources"
 fi
@@ -90,10 +106,6 @@ xset b off
 # Without this, custom mappings in ~/.XCompose won't work.
 export GTK_IM_MODULE="xim"
 export QT_IM_MODULE="xim"
-
-# Will reduce the time it takes for xdg-open to figure out that the DE is
-# a generic one.
-export XDG_CURRENT_DESKTOP="X-Generic"
 
 # X11 keyboard layout tweaks
 # --------------------------
@@ -121,21 +133,8 @@ export TEXMFHOME="${HOME}/.texmf"
 # Preferred terminal emulator.
 export TERMINAL="${HOME}/code/scripts/terminal"
 
-# Xubuntu sets this to gtk2.  But without setting this to gtk3, Qt
-# applications don't seem to respect font settings.  I don't know how it works
-# on Xubuntu.
-export QT_QPA_PLATFORMTHEME=gtk3
-
 # Start redshift to adjust screen temperature.
 redshift -l '43.088947:-76.154480' &
-
-# Guess the DE based on hostname.
-[[ "$DE" ]] || {
-    case "$HOSTNAME" in
-        lithium)    DE=xfce ;;
-        boron|*)    DE=i3   ;;
-    esac
-}
 
 case "$DE" in
     xfce)
@@ -155,25 +154,25 @@ case "$DE" in
         # Use dunst for notifications.
         dunst &
 
-        # I really don't want the overhead of a compositor, but Zoom's screen sharing
-        # requires a compositor -- otherwise black squares will replace Zoom's window.
+        # I really don't want the overhead of a compositor, but Zoom's screen
+        # sharing requires a compositor -- otherwise black squares will replace
+        # Zoom's window.
         # https://support.zoom.us/hc/en-us/articles/202082128-Black-screen-during-screen-sharing
-        compton -b -c -l0 -t0 -r0 -o.00
+        compton --backend glx -b -c -l0 -t0 -r0 -o.00
 
-        # Start screen locker with a waiting time of 30 minutes.
-        xautolock -time 30 -locker 'i3lock --ignore-empty-password --show-failed-attempts --color=333333' &
+        # Will reduce the time it takes for xdg-open to figure out that the DE
+        # is a generic one.
+        export XDG_CURRENT_DESKTOP="X-Generic"
 
-        # Enhance webcam feed.
-        v4l2-ctl -d /dev/video0      \
-            --set-ctrl=gamma=250     \
-            --set-ctrl=contrast=13   \
-            --set-ctrl=saturation=70 \
-            --set-ctrl=sharpness=5
+        # Xubuntu sets this to gtk2.  But without setting this to gtk3, Qt
+        # applications don't seem to respect font settings.  I don't know how
+        # it works on Xubuntu.
+        export QT_QPA_PLATFORMTHEME=gtk3
 
-        # Since updating to Debian 10.10, this seems to be required to have a nonempty
-        # $DBUS_SESSION_BUS_ADDRESS.  Without this, several applications (evince,
-        # inkscape, etc.) wait 25 seconds (some harcoded time related to D-Bus) before
-        # showing their GUI.
+        # Since updating to Debian 10.10, this seems to be required to have
+        # a nonempty $DBUS_SESSION_BUS_ADDRESS.  Without this, several
+        # applications (evince, inkscape, etc.) wait 25 seconds (some harcoded
+        # time related to D-Bus) before showing their GUI.
         exec dbus-launch --exit-with-session --sh-syntax i3
         ;;
     *)
