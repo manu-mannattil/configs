@@ -48,16 +48,19 @@ pushd "$(dirname "$(readlink -f -- "$0")")"
 # -------------
 
 PACKAGES=(
+  # Download managers.
+  aria2
+  axel
+  filezilla
+
   agrep
   android-tools-adb
   android-tools-fastboot
   apt-file
   apt-transport-https
   arandr
-  aria2
   atril
   audacity
-  axel
   bc
   biber
   bibtool
@@ -102,7 +105,6 @@ PACKAGES=(
   fakeroot
   ffmpeg
   figlet
-  filezilla
   firefox-esr
   firejail
   fonts-font-awesome
@@ -183,8 +185,6 @@ PACKAGES=(
   mediainfo
   mercurial
   mesa-utils
-  mosh
-  mpv
   msmtp
   mtr
   mutt
@@ -263,7 +263,6 @@ PACKAGES=(
   unrar
   unzip
   urlview
-  vlc
   w3m
   w3m-img
   whois
@@ -300,6 +299,11 @@ PACKAGES=(
   xdotool
   xinput
   xsel
+
+  # Multimedia
+  v4l-utils
+  mpv
+  vlc
 )
 
 REMOVE_PACKAGES=(

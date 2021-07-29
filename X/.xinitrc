@@ -3,8 +3,6 @@
 # ~/.xinitrc -- execute commands before starting X
 #
 
-echo "$@" >~/foo
-
 # On my P43s, run X on NVIDIA if required.  Requires gpu-select.
 # https://github.com/manu-mannattil/gpu-select
 [[ -f /etc/gpu-select/state ]] && {
@@ -129,7 +127,7 @@ export QT_QPA_PLATFORMTHEME=gtk3
 # Start redshift to adjust screen temperature.
 redshift -l '43.088947:-76.154480' &
 
-# Guess the DE based on hostname.
+# Guess the DE based on the hostname.
 [[ "$DE" ]] || {
     case "$HOSTNAME" in
         lithium)    DE=xfce ;;
@@ -155,8 +153,9 @@ case "$DE" in
         # Use dunst for notifications.
         dunst &
 
-        # I really don't want the overhead of a compositor, but Zoom's screen sharing
-        # requires a compositor -- otherwise black squares will replace Zoom's window.
+        # I really don't want the overhead of a compositor, but Zoom's screen
+        # sharing requires a compositor -- otherwise black squares will replace
+        # Zoom's window.
         # https://support.zoom.us/hc/en-us/articles/202082128-Black-screen-during-screen-sharing
         compton -b -c -l0 -t0 -r0 -o.00
 
@@ -170,10 +169,10 @@ case "$DE" in
             --set-ctrl=saturation=70 \
             --set-ctrl=sharpness=5
 
-        # Since updating to Debian 10.10, this seems to be required to have a nonempty
-        # $DBUS_SESSION_BUS_ADDRESS.  Without this, several applications (evince,
-        # inkscape, etc.) wait 25 seconds (some harcoded time related to D-Bus) before
-        # showing their GUI.
+        # Since updating to Debian 10.10, this seems to be required to have
+        # a nonempty $DBUS_SESSION_BUS_ADDRESS.  Without this, several
+        # applications (evince, inkscape, etc.) wait 25 seconds (some harcoded
+        # time related to D-Bus) before showing their GUI.
         exec dbus-launch --exit-with-session --sh-syntax i3
         ;;
     *)
