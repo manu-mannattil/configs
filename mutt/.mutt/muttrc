@@ -183,6 +183,13 @@ set fast_reply
 # Thunderbird, etc.) do it.
 set forward_format = "Fwd: %s"
 
+# Ask if a message to be forwarded is to be attached as a separate
+# message/rfc822 MIME part instead of included in the main body of the message.
+# This is useful for forwarding MIME messages so the receiver can properly view
+# the message as it was delivered to you.  But assume that the user wants
+# forwarded messages to be included in the main body in most cases.
+set mime_forward = ask-no
+
 # The size (in number of strings remembered) of the string history buffer per
 # category.
 set history = 100
@@ -478,3 +485,4 @@ set crypt_replysignencrypted = yes
 
 # Attempt to verify email signatures automatically.
 set crypt_verify_sig = yes
+
