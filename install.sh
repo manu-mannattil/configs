@@ -194,11 +194,6 @@ __install_firefox() {
                 "${HOME}/.mozilla/firefox/${profile}"
         done < <(sed -n 's/^Path=//p' "${HOME}/.mozilla/firefox/profiles.ini")
     fi
-
-    # Disable Flash cache.
-    rm -v -rf "${HOME}/.macromedia" "${HOME}/.adobe"
-    ln -v -s /dev/null "${HOME}/.macromedia"
-    ln -v -s /dev/null "${HOME}/.adobe"
 }
 
 # :target: fontconfig - fontconfig configuration
