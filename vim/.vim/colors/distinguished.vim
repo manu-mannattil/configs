@@ -17,11 +17,9 @@ endif
 
 let g:colors_name = 'distinguished'
 
-if ! has('gui_running')
-  if &t_Co != 256
-    echoe 'The ' . g:colors_name . ' colorscheme requires gVim or a 256-color terminal.'
-    finish
-  endif
+" Bail out if we cannot have all colors.
+if !has('gui_running') && &t_Co != 256
+  finish
 endif
 
 " Color dictionary parser.
