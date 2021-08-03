@@ -15,12 +15,11 @@ xrandr --auto
 case "$HOSTNAME" in
     # ThinkPad P43s.
     boron)
-        [[ "$DE" ]] || export DE=i3
-        [[ "$HIDPI" ]] || export HIDPI=1
+        : ${DE:=i3} ${HIDPI:=1}
         ;;
     # ThinkPad X230t.
     lithium)
-        [[ "$DE" ]] || export DE=xfce
+        : ${DE:=openbox}
         v4l2-ctl --device /dev/video0     \
                  --set-ctrl=gamma=250     \
                  --set-ctrl=contrast=13   \
@@ -63,7 +62,6 @@ then
     # We need this since GTK 2.0 needs to have a different configuration for
     # low-DPI screens.
     export GTK2_RC_FILES="${HOME}/.gtkrc-hidpi-2.0"
-
 else
     # When on the NVIDIA dGPU Qt has to be told that we need 96 DPI when not
     # using HiDPI; I don't know why.
@@ -136,47 +134,50 @@ export TERMINAL="${HOME}/code/scripts/terminal"
 # Start redshift to adjust screen temperature.
 redshift -l '43.088947:-76.154480' &
 
+# Set the background color to a no-nonsense gray.
+if command -v hsetroot &>/dev/null
+then
+    # Compton doesn't work with xsetroot.
+    # https://github.com/chjj/compton/issues/162
+    hsetroot -solid "#333333"
+else
+    xsetroot -solid "#333333"
+fi
+
+# Use dunst for notifications.
+dunst &
+
+# I really don't want the overhead of a compositor, but Zoom's screen
+# sharing requires a compositor -- otherwise black squares will replace
+# Zoom's window.
+# https://support.zoom.us/hc/en-us/articles/202082128-Black-screen-during-screen-sharing
+compton --backend glx -b -c -l0 -t0 -r0 -o.00
+
+# Will reduce the time it takes for xdg-open to figure out that the DE
+# is a generic one.
+export XDG_CURRENT_DESKTOP="X-Generic"
+
+# Xubuntu sets this to gtk2.  But without setting this to gtk3, Qt
+# applications don't seem to respect font settings.  I don't know how
+# it works on Xubuntu.
+export QT_QPA_PLATFORMTHEME=gtk3
+
+# Since updating to Debian 10.10, launching the WM using dbus-launch
+# seems to be required to have a nonempty $DBUS_SESSION_BUS_ADDRESS.
+# Without this, several applications (evince, inkscape, etc.) wait 25
+# seconds (some haw coded time related to D-Bus) before showing their
+# GUI.
 case "$DE" in
-    xfce)
-        exec startxfce4
-        ;;
     i3)
-        # Set the background color to a no-nonsense gray.
-        if command -v hsetroot &>/dev/null
-        then
-            # Compton doesn't work with xsetroot.
-            # https://github.com/chjj/compton/issues/162
-            hsetroot -solid "#333333"
-        else
-            xsetroot -solid "#333333"
-        fi
-
-        # Use dunst for notifications.
-        dunst &
-
-        # I really don't want the overhead of a compositor, but Zoom's screen
-        # sharing requires a compositor -- otherwise black squares will replace
-        # Zoom's window.
-        # https://support.zoom.us/hc/en-us/articles/202082128-Black-screen-during-screen-sharing
-        compton --backend glx -b -c -l0 -t0 -r0 -o.00
-
-        # Will reduce the time it takes for xdg-open to figure out that the DE
-        # is a generic one.
-        export XDG_CURRENT_DESKTOP="X-Generic"
-
-        # Xubuntu sets this to gtk2.  But without setting this to gtk3, Qt
-        # applications don't seem to respect font settings.  I don't know how
-        # it works on Xubuntu.
-        export QT_QPA_PLATFORMTHEME=gtk3
-
-        # Since updating to Debian 10.10, this seems to be required to have
-        # a nonempty $DBUS_SESSION_BUS_ADDRESS.  Without this, several
-        # applications (evince, inkscape, etc.) wait 25 seconds (some harcoded
-        # time related to D-Bus) before showing their GUI.
         exec dbus-launch --exit-with-session --sh-syntax i3
         ;;
+    openbox)
+        # Use tint2 for the taskbar, systray, etc.
+        tint2 &
+        exec dbus-launch --exit-with-session --sh-syntax openbox-session
+        ;;
     *)
-        echo >&2 "${0##*/}: DE must be either i3 or xfce"
+        echo >&2 "${0##*/}: DE must be either 'i3' or 'openbox'"
         exit 1
         ;;
 esac

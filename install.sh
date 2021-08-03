@@ -308,6 +308,11 @@ __install_notmuch() {
     install "notmuch/.notmuch-config"
 }
 
+# :target: openbox - openbox stacking window manager
+__install_openbox() {
+    install "openbox/.config/openbox"
+}
+
 # :target: parallel - GNU parallel configuration
 __install_parallel() {
     install "parallel/.parallel/config"
@@ -340,6 +345,11 @@ __install_ssh() {
 # :target: terminfo - terminfo files for less-known terminals
 __install_terminfo() {
     install "terminfo/.terminfo"
+}
+
+# :target: tint2 - tint2 panel configuration
+__install_tint2() {
+    install "tint2/.config/tint2"
 }
 
 # :target: tmux - tmux configuration

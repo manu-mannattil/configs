@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openbox_menu xmlns="http://openbox.org/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://openbox.org/
+                file:///usr/share/openbox/menu.xsd">
+
+<menu id="root-menu" label="Openbox 3">
+  <item label="Terminal">
+    <action name="Execute"><execute>terminal</execute></action>
+  </item>
+  <item label="Xournal++">
+    <action name="Execute"><execute>xournalpp</execute></action>
+  </item>
+  <item label="Firefox (default)">
+    <action name="Execute"><execute>firefox</execute></action>
+  </item>
+  <item label="Firefox (private)">
+    <action name="Execute"><execute>ff-private</execute></action>
+  </item>
+  <!-- This requires the presence of the 'openbox-menu' package to work -->
+  <menu id="/Debian" />
+  <separator />
+  <menu id="applications-menu" label="Applications" execute="/usr/bin/obamenu"/>
+  <separator />
+  <item label="ObConf">
+    <action name="Execute"><execute>obconf</execute></action>
+  </item>
+  <item label="Reconfigure">
+    <action name="Reconfigure" />
+  </item>
+  <item label="Restart">
+    <action name="Restart" />
+  </item>
+  <separator />
+  <item label="Logout">
+    <action name="Exit" />
+  </item>
+  <item label="Poweroff">
+    <action name="Execute">
+      <command>poweroff</command>
+    </action>
+  </item>
+</menu>
+
+</openbox_menu>
