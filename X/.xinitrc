@@ -174,8 +174,8 @@ case "$DE" in
     openbox)
         # Use tint2 for the taskbar, systray, etc.
         tint2 &
-        exec dbus-launch --exit-with-session --sh-syntax openbox-session
-        ;;
+        exec dbus-launch --exit-with-session --sh-syntax openbox
+    ;;
     *)
         echo >&2 "${0##*/}: DE must be either 'i3' or 'openbox'"
         exit 1

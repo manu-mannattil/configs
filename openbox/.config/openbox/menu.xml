@@ -33,7 +33,7 @@
     <action name="Restart" />
   </item>
   <separator />
-  <item label="Logout">
+  <item label="Exit">
     <action name="Exit" />
   </item>
   <item label="Poweroff">
