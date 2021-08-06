@@ -514,6 +514,10 @@ vnoremap <C-X><C-E> <ESC>:@*<CR>
 " (almost) non-regex searches.
 vnoremap / <ESC>/\V<C-R>*<CR>
 
+" Bring the search results to the middle of the screen.
+nnoremap n nzz
+nnoremap N Nzz
+
 " Move around the changelist with ,d (backwards) and ,u (forwards).
 noremap ,u g,
 noremap ,d g;
