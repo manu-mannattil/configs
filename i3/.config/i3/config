@@ -69,7 +69,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # Focus the child container.
-# bindsym $mod+d focus child
+bindsym $mod+Shift+a focus child
 
 # Switch to workspace.
 bindsym $mod+1 workspace 1
@@ -116,7 +116,7 @@ bindsym $mod+Shift+r restart
 # Start dmenu.
 bindsym $mod+d exec dmenu_run -fn 'Source Code Pro Semibold:size=9'
 
-# Run passmenu --  a script to choose pass-managed password store
+# Run passmenu -- a script to choose pass-managed password store
 # entries using dmenu.
 bindsym $mod+p exec passmenu -fn 'Source Code Pro Semibold:size=9'
 
@@ -135,6 +135,10 @@ bindsym --whole-window $mod+button2 kill
 # The right button toggles floating.
 bindsym button3 floating toggle
 bindsym --whole-window $mod+button3 floating toggle
+
+# Disable window switching using mouse scroll.
+bindsym button4 nop
+bindsym button5 nop
 
 # Media keys {{{2
 # ---------------
@@ -179,7 +183,7 @@ mode "resize" {
   bindsym Up resize shrink height 10 px or 10 ppt
 
   # Pressing right will grow the window's width.
-  bindsym l     resize grow width 10 px or 10 ppt
+  bindsym l resize grow width 10 px or 10 ppt
   bindsym Right resize grow width 10 px or 10 ppt
 
   # Back to normal: Enter or Escape.
@@ -194,13 +198,13 @@ set $mode_open [b]rowser [f]iles [m]usic [p]rivate-browser
 bindsym $mod+o mode "$mode_open"
 
 mode "$mode_open" {
-    bindsym b exec firefox; mode "default"
-    bindsym f exec spacefm $HOME; mode "default"
-    bindsym m exec deadbeef; mode "default"
-    bindsym p exec ff-private; mode "default"
+  bindsym b exec firefox; mode "default"
+  bindsym f exec spacefm $HOME; mode "default"
+  bindsym m exec deadbeef; mode "default"
+  bindsym p exec ff-private; mode "default"
 
-    bindsym Escape mode "default"
-    bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym Return mode "default"
 }
 
 # Binding mode for exiting {{{2
@@ -210,12 +214,12 @@ set $mode_exit [e]xit [p]oweroff [r]eebot
 bindsym $mod+shift+e mode "$mode_exit"
 
 mode "$mode_exit" {
-    bindsym e exec i3-msg exit
-    bindsym p exec poweroff
-    bindsym r exec reboot
+  bindsym e exec i3-msg exit
+  bindsym p exec poweroff
+  bindsym r exec reboot
 
-    bindsym Escape mode "default"
-    bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym Return mode "default"
 }
 
 # i3bar configuration {{{1
@@ -233,6 +237,10 @@ bar {
   }
 
   status_command i3status -c ~/.config/i3/i3status.conf
+
+  # Disable workspace switching using mouse scroll.
+  bindsym button4 nop
+  bindsym button5 nop
 }
 
 # Application settings {{{1
@@ -283,8 +291,8 @@ for_window [class="mpv"] focus
 for_window [class="vlc"] move container to workspace 3
 for_window [class="vlc"] focus
 
-# Misc. Internet (workspace 2) {{{2
-# ---------------------------------
+# Other Internet/network (workspace 2) {{{2
+# -----------------------------------------
 
 for_window [class="Filezilla"] move container to workspace 4
 for_window [class="Filezilla"] focus

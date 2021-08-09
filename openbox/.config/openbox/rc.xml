@@ -260,6 +260,12 @@
         <menu>client-menu</menu>
       </action>
     </keybind>
+    <!-- Take a screenshot of the current window with scrot when Alt+Print are pressed -->
+    <keybind key="A-Print">
+      <action name="Execute">
+        <command>scrot -s</command>
+      </action>
+    </keybind>
     <!-- Keybindings for window switching -->
     <keybind key="A-Tab">
       <action name="NextWindow">
@@ -371,7 +377,7 @@
       </action>
     </keybind>
 
-    <!-- X230t rotation -->
+    <!-- X230t rotation. -->
     <keybind key="XF86RotateWindows">
       <action name="Execute">
         <command>~/code/scripts/x230t-rotate sideways</command>

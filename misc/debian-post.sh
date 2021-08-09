@@ -188,7 +188,6 @@ PACKAGES=(
   msmtp
   mtr
   mutt
-  nautilus
   notmuch
   notmuch-mutt
   offlineimap
@@ -209,7 +208,6 @@ PACKAGES=(
   pdftk
   pinentry-curses
   pinentry-gtk2
-  playonlinux
   pngcrush
   poppler-utils
   powertop
