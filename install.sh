@@ -160,9 +160,9 @@ __install_deadbeef() {
     if [[ -f "${HOME}/.config/deadbeef/config" ]] &&
         grep -q "^playlist.tab" "${HOME}/.config/deadbeef/config"
     then
-            grep "^playlist.tab" "${HOME}/.config/deadbeef/config" >"${HOME}/.config/deadbeef/tabs"
-            install --copy "deadbeef/.config/deadbeef/config"
-            cat "${HOME}/.config/deadbeef/tabs" >>"${HOME}/.config/deadbeef/config"
+        grep "^playlist.tab" "${HOME}/.config/deadbeef/config" >"${HOME}/.config/deadbeef/tabs"
+        install --copy "deadbeef/.config/deadbeef/config"
+        cat "${HOME}/.config/deadbeef/tabs" >>"${HOME}/.config/deadbeef/config"
     else
         install --copy "deadbeef/.config/deadbeef"
     fi

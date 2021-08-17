@@ -7,9 +7,6 @@
 # is used in the bar {} block below.
 font pango:Source Code Pro Semibold 9
 
-# Don't change focused window based on the location of the mouse pointer.
-focus_follows_mouse no
-
 # By default windows ought to be tabbed, not tiled.
 workspace_layout tabbed
 
@@ -122,6 +119,9 @@ bindsym $mod+p exec passmenu -fn 'Source Code Pro Semibold:size=9'
 
 # Mouse bindings {{{2
 # -------------------
+
+# Don't change focused window based on the location of the mouse pointer.
+focus_follows_mouse no
 
 # Use mouse+$mod to drag floating windows to their wanted position.
 floating_modifier $mod
@@ -300,11 +300,14 @@ for_window [class="Filezilla"] focus
 for_window [class="Liferea"] move container to workspace 4
 for_window [class="Liferea"] focus
 
-# Large GUIs (workspace 9) {{{2
-# -----------------------------
+# Large/bloated GUIs (workspace 9) {{{2
+# -------------------------------------
 
 for_window [class="libreoffice"] move container to workspace 9
 for_window [class="libreoffice"] focus
+
+for_window [class="zoom"] move container to workspace 9
+for_window [class="zoom"] focus
 
 for_window [class="lyx"] move container to workspace 9
 for_window [class="lyx"] focus

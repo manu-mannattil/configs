@@ -165,7 +165,7 @@ export QT_QPA_PLATFORMTHEME=gtk3
 # Since updating to Debian 10.10, launching the WM using dbus-launch
 # seems to be required to have a nonempty $DBUS_SESSION_BUS_ADDRESS.
 # Without this, several applications (evince, inkscape, etc.) wait 25
-# seconds (some haw coded time related to D-Bus) before showing their
+# seconds (some hard-coded time related to D-Bus) before showing their
 # GUI.
 case "$DE" in
     i3)
