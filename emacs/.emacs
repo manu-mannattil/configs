@@ -57,3 +57,6 @@
 
 ;; Follow symlinks in version controlled directories.
 (setq vc-follow-symlinks t)
+
+;; Theme.
+(load-theme 'wombat)

@@ -201,8 +201,8 @@ __install_fontconfig() {
     install "fontconfig/.config/fontconfig"
 }
 
-# :target: gpg - GnuPG configuration
-__install_gpg() {
+# :target: gnupg - GnuPG configuration
+__install_gnupg() {
     install "gnupg/.gnupg/gpg.conf" "gnupg/.gnupg/gpg-agent.conf"
 
     # Set the right permissions.
@@ -448,7 +448,7 @@ __parse_group() {
                 dircolors
                 emacs
                 git
-                gpg
+                gnupg
                 htop
                 ipython
                 less

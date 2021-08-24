@@ -74,7 +74,7 @@ PACKAGES=(
   colordiff
   compton
   cowsay
-  cryptsetup
+
   cuetools
   curl
   curl
@@ -270,15 +270,24 @@ PACKAGES=(
   zeal
   zip
 
-  # Shells
-  ksh
-  posh
-  zsh
-
   # Docker.
   containerd.io
   docker-ce
   docker-ce-cli
+
+  # Linux-specific untilities
+  cryptsetup
+  inotify-tools
+
+  # Multimedia
+  v4l-utils
+  mpv
+  vlc
+
+  # Shells
+  ksh
+  posh
+  zsh
 
   # Vim
   vim
@@ -297,11 +306,6 @@ PACKAGES=(
   xdotool
   xinput
   xsel
-
-  # Multimedia
-  v4l-utils
-  mpv
-  vlc
 )
 
 REMOVE_PACKAGES=(
