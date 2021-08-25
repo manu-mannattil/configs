@@ -1,4 +1,13 @@
-Personal fork of the original snipmate [1] plugin with minor
-modifications.
+Personal fork of the original snipmate [1] plugin with some changes in
+function:
+
+1. New commands :ResetSnippets, :ResetAllSnippets, :ReloadSnippets, and
+   :ReloadAllSnippets to conveniently access functions of the same name.
+
+2. C and C++ snippets are now treated differently.
+
+3. New function QuickSnippet() to define snippets on the fly, e.g.,
+
+    inoremap <silent> `/ <ESC>:call QuickSnippet('\frac{${1}}{${2}}${3}')<CR>i
 
 [1]: https://github.com/msanders/snipMate.vim

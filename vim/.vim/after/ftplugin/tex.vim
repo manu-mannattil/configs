@@ -13,3 +13,9 @@ setlocal wildignore+=*.Notes.bib,*.acn,*.acr,*.alg,*.aux,*.bcf,*.blg,*.dvi,*.fdb
 setlocal suffixes+=*.bbl,*.sty,*.bst,*.cls
 
 let b:longlines_keep_maps = 1
+
+" Quick snippets using my fork of snipmate.
+inoremap <silent> `/ <ESC>:call QuickSnippet('\frac{${1}}{${2}}${3}')<CR>i
+inoremap <silent> `2 <ESC>:call QuickSnippet('\sqrt{${1}}${2}')<CR>i
+inoremap <silent> `~ <ESC>:call QuickSnippet('\tilde{${1}}${2}')<CR>i
+inoremap <silent> `^ <ESC>:call QuickSnippet('\hat{${1}}${2}')<CR>i
