@@ -631,6 +631,11 @@ let g:vimtex_bibliography_commands = ['%(default|no)?bibliography', 'add%(bibres
 " Disable folding of BiBTeX entries.
 let g:vimtex_fold_bib_enabled = 0
 
+" Remove all default imaps.  (Note that this is different from setting
+" g:vimtex_imaps_enabled = 0, in which case the imaps functionality will be
+" completely disabled.)
+let g:vimtex_imaps_list = []
+
 " Others {{{2
 " -----------
 

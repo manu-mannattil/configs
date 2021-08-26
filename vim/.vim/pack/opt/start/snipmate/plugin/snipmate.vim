@@ -204,7 +204,7 @@ endf
 
 " Function to define quick (aka anonymous snippets) on the fly.
 fun! QuickSnippet(snippet)
-  return snipmate#expandSnip(a:snippet, col('.') == 1 ? 1 : col('.') + 1)
+  return snipmate#expandSnip(a:snippet, getline('.') =~ '^$' ? 1 : col('.') + 1)
 endf
 
 fun! BackwardsSnippet()
