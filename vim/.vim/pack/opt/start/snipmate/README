@@ -6,8 +6,12 @@ function:
 
 2. C and C++ snippets are now treated differently.
 
-3. New function QuickSnippet() to define snippets on the fly, e.g.,
+3. New function QuickSnippet() to define snippets that don't require tab
+   activation, e.g.,
 
-    inoremap <silent> `/ <ESC>:call QuickSnippet('\frac{${1}}{${2}}${3}')<CR>i
+      :call QuickSnippet('`/', '\frac{${1}}{${2}}${3}')
+
+   This way, typing `/ in insert mode will trigger the snippet without
+   needing to press <tab>.
 
 [1]: https://github.com/msanders/snipMate.vim
