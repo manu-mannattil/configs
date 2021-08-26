@@ -1,17 +1,26 @@
 " Vim filetype plugin file
-" Language: LaTeX
+" Language: TeX
+
+" Bail out if we're not editing a *.tex file (*.sty and *.cls files
+" have TeX filetypes).
+if expand('%:e') !=? 'tex'
+  finish
+endif
 
 runtime! abbrev.vim
 
 setlocal autochdir
 setlocal keywordprg=:Sdcv
+setlocal norelativenumber
 setlocal spell
 
 " Files to ignore and give less priority.
 setlocal wildignore+=*.Notes.bib,*.acn,*.acr,*.alg,*.aux,*.bcf,*.blg,*.dvi,*.fdb_latexmk,*.fls,*.glg,*.glo,*.gls,*.idx,*.ilg,*.ind,*.ist,*.lof,*.log,*.lot,*.maf,*.mtc,*.mtc0,*.nav,*.nlo,*.out,*.pdfsync,*.ps,*.run.xml,*.snm,*.synctex.gz,*.synctex.gz(busy),*.tdo,*.toc,*.vrb,*.xdy
 setlocal suffixes+=*.bbl,*.sty,*.bst,*.cls
 
+" Enable longline mode.
 let b:longlines_keep_maps = 1
+LongLines
 
 " Adapted from vimtex's default imaps.
 let b:vimtex_imaps_list = [

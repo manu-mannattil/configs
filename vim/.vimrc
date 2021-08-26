@@ -352,7 +352,6 @@ augroup ft_related
 
   " Enable the longlines plugin for TeX and MediaWiki files.
   autocmd FileType mail,mediawiki  LongLines | setlocal norelativenumber
-  autocmd BufRead,BufNewFile *.tex LongLines | setlocal norelativenumber
 augroup END
 
 " Miscellaneous.
