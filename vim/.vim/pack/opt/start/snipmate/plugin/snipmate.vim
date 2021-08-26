@@ -203,8 +203,9 @@ fun! TriggerSnippet()
 endf
 
 " Function to define quick (aka anonymous snippets) on the fly.
-fun! QuickSnippet(snippet)
-  return snipmate#expandSnip(a:snippet, getline('.') =~ '^$' ? 1 : col('.') + 1)
+fun! QuickSnippet(trigger, snippet)
+  sil exe 'inoremap <silent><buffer>' a:trigger
+        \ '<esc>:call snipmate#expandQuickSnip("' . escape(a:snippet, '\') . '")<cr>i'
 endf
 
 fun! BackwardsSnippet()

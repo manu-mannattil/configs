@@ -72,6 +72,11 @@ fun snipmate#expandSnip(snip, col)
   return ''
 endf
 
+" Expand a 'quick' snippet.
+fun! snipmate#expandQuickSnip(snippet)
+  return snipmate#expandSnip(a:snippet, getline('.') =~ '^$' ? 1 : col('.') + 1)
+endf
+
 " Prepare snippet to be processed by s:BuildTabStops
 fun s:ProcessSnippet(snip)
   let snippet = a:snip

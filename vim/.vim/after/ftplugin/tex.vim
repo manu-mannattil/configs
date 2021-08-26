@@ -81,19 +81,25 @@ let b:vimtex_imaps_list = [
       \   'wrapper' : 'vimtex#imaps#wrap_trivial'},
       \]
 
-for item in b:vimtex_imaps_list
-  call vimtex#imaps#add_map(item)
+for dict in b:vimtex_imaps_list
+  call vimtex#imaps#add_map(dict)
 endfor
 
 " Quick snippets using my fork of snipmate.
-inoremap <buffer> <silent> #b <ESC>:call QuickSnippet('\mathbb{${1}}${2}')<CR>i
-inoremap <buffer> <silent> #c <ESC>:call QuickSnippet('\mathcal{${1}}${2}')<CR>i
-inoremap <buffer> <silent> ^ <ESC>:call QuickSnippet('^{${1}}${2}')<CR>i
-inoremap <buffer> <silent> _ <ESC>:call QuickSnippet('_{${1}}${2}')<CR>i
-inoremap <buffer> <silent> `( <ESC>:call QuickSnippet('\left(${1}\right)${2}')<CR>i
-inoremap <buffer> <silent> `/ <ESC>:call QuickSnippet('\frac{${1}}{${2}}${3}')<CR>i
-inoremap <buffer> <silent> `2 <ESC>:call QuickSnippet('\sqrt{${1}}${2}')<CR>i
-inoremap <buffer> <silent> `[ <ESC>:call QuickSnippet('\left[${1}\right]${2}')<CR>i
-inoremap <buffer> <silent> `^ <ESC>:call QuickSnippet('\hat{${1}}${2}')<CR>i
-inoremap <buffer> <silent> `{ <ESC>:call QuickSnippet('\left\{${1}\right\}${2}')<CR>i
-inoremap <buffer> <silent> `~ <ESC>:call QuickSnippet('\tilde{${1}}${2}')<CR>i
+let b:snipmate_quick_snippets = [
+      \ ['#b', '\mathbb{${1}}${2}'],
+      \ ['#c', '\mathcal{${1}}${2}'],
+      \ ['^' , '^{${1}}${2}'],
+      \ ['_' , '_{${1}}${2}'],
+      \ ['`(', '\left(${1}\right],'],
+      \ ['`/', '\frac{${1}}{${2}}${3}'],
+      \ ['`2', '\sqrt{${1}}${2}'],
+      \ ['`[', '\left[${1}\right]${2}'],
+      \ ['`^', '\hat{${1}}${2}'],
+      \ ['`{', '\left\{${1}\right\}${2}'],
+      \ ['`~', '\tilde{${1}}${2}'],
+      \]
+
+for snippet in b:snipmate_quick_snippets
+  call call('QuickSnippet', snippet)
+endfor
