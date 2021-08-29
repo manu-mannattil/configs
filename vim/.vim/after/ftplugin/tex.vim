@@ -1,6 +1,10 @@
 " Vim filetype plugin file
 " Language: TeX
 
+" Files to ignore and give less priority.
+setlocal wildignore+=*.Notes.bib,*.acn,*.acr,*.alg,*.aux,*.bcf,*.blg,*.dvi,*.fdb_latexmk,*.fls,*.glg,*.glo,*.gls,*.idx,*.ilg,*.ind,*.ist,*.lof,*.log,*.lot,*.maf,*.mtc,*.mtc0,*.nav,*.nlo,*.out,*.pdfsync,*.ps,*.run.xml,*.snm,*.synctex.gz,*.synctex.gz(busy),*.tdo,*.toc,*.vrb,*.xdy
+setlocal suffixes+=*.bbl,*.sty,*.bst,*.cls
+
 " Bail out if we're not editing a *.tex file (*.sty and *.cls files
 " have TeX filetypes).
 if expand('%:e') !=? 'tex'
@@ -13,10 +17,6 @@ setlocal autochdir
 setlocal keywordprg=:Sdcv
 setlocal norelativenumber
 setlocal spell
-
-" Files to ignore and give less priority.
-setlocal wildignore+=*.Notes.bib,*.acn,*.acr,*.alg,*.aux,*.bcf,*.blg,*.dvi,*.fdb_latexmk,*.fls,*.glg,*.glo,*.gls,*.idx,*.ilg,*.ind,*.ist,*.lof,*.log,*.lot,*.maf,*.mtc,*.mtc0,*.nav,*.nlo,*.out,*.pdfsync,*.ps,*.run.xml,*.snm,*.synctex.gz,*.synctex.gz(busy),*.tdo,*.toc,*.vrb,*.xdy
-setlocal suffixes+=*.bbl,*.sty,*.bst,*.cls
 
 " Enable longline mode.
 let b:longlines_keep_maps = 1
@@ -72,6 +72,7 @@ let b:vimtex_imaps_list = [
       \ { 'lhs' : 'F',  'rhs' : '\Phi' },
       \ { 'lhs' : 'G',  'rhs' : '\Gamma' },
       \ { 'lhs' : 'L',  'rhs' : '\Lambda' },
+      \ { 'lhs' : 'N',  'rhs' : '\nabla' },
       \ { 'lhs' : 'P',  'rhs' : '\Pi' },
       \ { 'lhs' : 'Q',  'rhs' : '\Theta' },
       \ { 'lhs' : 'S',  'rhs' : '\Sigma' },
@@ -82,6 +83,7 @@ let b:vimtex_imaps_list = [
       \ { 'lhs' : 've', 'rhs' : '\varepsilon' },
       \ { 'lhs' : 'vf', 'rhs' : '\varphi' },
       \ { 'lhs' : 'vk', 'rhs' : '\varkappa' },
+      \ { 'lhs' : 'vl', 'rhs' : '\ell' },
       \ { 'lhs' : 'vq', 'rhs' : '\vartheta' },
       \ { 'lhs' : 'vr', 'rhs' : '\varrho' },
       \ { 'lhs' : g:vimtex_imaps_leader,
@@ -97,6 +99,9 @@ endfor
 let b:snipmate_quick_snippets = [
       \ ['#b', '\mathbb{${1}}${2}'],
       \ ['#c', '\mathcal{${1}}${2}'],
+      \ ['#C', '\mathscr{${1}}${2}'],
+      \ ['#e', '\emph{${1}}${2}'],
+      \ ['#f', '\mathfrak{${1}}${2}'],
       \ ['#s', '\mathsf{${1}}${2}'],
       \ ['^' , '^{${1}}${2}'],
       \ ['_' , '_{${1}}${2}'],

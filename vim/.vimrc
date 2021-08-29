@@ -604,7 +604,7 @@ let g:vimtex_fold_enabled = 1
 let g:vimtex_fold_manual = 1
 
 " Disable folding for certain parts of the document.
-let  g:vimtex_fold_types = {
+let g:vimtex_fold_types = {
       \ 'cmd_single': {'enabled': 0},
       \ 'envs': {'enabled': 0},
       \}
