@@ -1,15 +1,17 @@
 " Vim filetype plugin file
 " Language: TeX
 
-" Files to ignore and give less priority.
+" Files to ignore.
 setlocal wildignore+=*.Notes.bib,*.acn,*.acr,*.alg,*.aux,*.bcf,*.blg,*.dvi,*.fdb_latexmk,*.fls,*.glg,*.glo,*.gls,*.idx,*.ilg,*.ind,*.ist,*.lof,*.log,*.lot,*.maf,*.mtc,*.mtc0,*.nav,*.nlo,*.out,*.pdfsync,*.ps,*.run.xml,*.snm,*.synctex.gz,*.synctex.gz(busy),*.tdo,*.toc,*.vrb,*.xdy
-setlocal suffixes+=*.bbl,*.sty,*.bst,*.cls
 
 " Bail out if we're not editing a *.tex file (*.sty and *.cls files
 " have TeX filetypes).
 if expand('%:e') !=? 'tex'
   finish
 endif
+
+" Files to give less priority if editing a *.tex file.
+setlocal suffixes+=*.bbl,*.sty,*.bst,*.cls
 
 runtime! abbrev.vim
 
@@ -97,7 +99,7 @@ endfor
 
 " Quick snippets using my fork of snipmate.
 let b:snipmate_quick_snippets = [
-      \ ['#b', '\mathbb{${1}}${2}'],
+      \ ['#b', '\mathbb{${1:R}}${2}'],
       \ ['#c', '\mathcal{${1}}${2}'],
       \ ['#C', '\mathscr{${1}}${2}'],
       \ ['#e', '\emph{${1}}${2}'],

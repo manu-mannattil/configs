@@ -403,7 +403,6 @@ macro index,pager,attach,compose gy                                             
 # and remove them appropriately.  E.g.,
 #
 #   $ notmuch search --output=files tag:delete | xargs rm
-#
 
 # Search mail using Notmuch.
 macro index,pager \\                                                                                              \
