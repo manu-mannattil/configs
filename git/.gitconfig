@@ -19,6 +19,7 @@
   dt = difftool
   empty-commit = commit --allow-empty-message -m ''
   lg = log --branches --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)[%an]%Creset' --abbrev-commit --date-order
+  root = rev-parse --show-toplevel
   st = status -s
   wd = diff --word-diff
 
