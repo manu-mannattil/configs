@@ -99,11 +99,13 @@ endfor
 
 " Quick snippets using my fork of snipmate.
 let b:snipmate_quick_snippets = [
-      \ ['#b', '\mathbb{${1:R}}${2}'],
-      \ ['#c', '\mathcal{${1}}${2}'],
+      \ ['#B', '\mathbb{${1:R}}${2}'],
       \ ['#C', '\mathscr{${1}}${2}'],
+      \ ['#b', '\mathbf{${1}}${2}'],
+      \ ['#c', '\mathcal{${1}}${2}'],
       \ ['#e', '\emph{${1}}${2}'],
       \ ['#f', '\mathfrak{${1}}${2}'],
+      \ ['#m', '\bm{${1}}${2}'],
       \ ['#s', '\mathsf{${1}}${2}'],
       \ ['^' , '^{${1}}${2}'],
       \ ['_' , '_{${1}}${2}'],

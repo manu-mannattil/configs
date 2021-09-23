@@ -50,6 +50,9 @@ PACKAGES=(
   # Powerful and Pythonic XML processing library combining
   # libxml2/libxslt with the ElementTree API.
   lxml
+
+  # Semi-analytical tricks.
+  theano
 )
 
 conda update --all

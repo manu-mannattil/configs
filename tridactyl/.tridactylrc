@@ -103,6 +103,7 @@ set searchurls.rat https://duckduckgo.com/?q=\+site:rationalwiki.org+%s
 
 " Search
 set searchurls.d https://duckduckgo.com/?q=%s&kt=n&kaj=m&kae=b
+set searchurls.b https://www.bing.com/search?q=%s&safeSearch=off
 set searchurls.dict https://www.dictionary.com/browse/%s
 set searchurls.g https://www.google.com/search?q=%s
 set searchurls.t http://www.thesaurus.com/browse/%s?s=t
