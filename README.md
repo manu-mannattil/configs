@@ -6,7 +6,7 @@ programs.  There are [many like it][others], but this one is
 mine.
 
 <a href="https://xkcd.com/1806/">
-  <img align="right" src="https://imgs.xkcd.com/comics/borrow_your_laptop.png"/>
+  <img align="right" src="https://raw.githubusercontent.com/manu-mannattil/assets/master/configs/xkcd.png"/>
 </a>
 
 Installation

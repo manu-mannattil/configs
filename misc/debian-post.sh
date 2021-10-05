@@ -16,6 +16,7 @@
 #   fzf                   https://github.com/junegunn/fzf-bin/releases
 #                         https://raw.githubusercontent.com/junegunn/fzf/master/man/man1/fzf.1
 #   Geekbench             https://www.geekbench.com/download/linux/
+#   git-latexdiff         https://gitlab.com/git-latexdiff/git-latexdiff
 #   Google Chrome         https://www.google.com/chrome
 #   JSMin                 https://raw.githubusercontent.com/douglascrockford/JSMin/master/jsmin.c
 #   PDF Scale             https://github.com/tavinus/pdfScale/releases
