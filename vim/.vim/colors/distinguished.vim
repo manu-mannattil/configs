@@ -208,3 +208,22 @@ hi link Repeat                   Statement
 hi link Structure                Type
 hi link Tag                      Special
 hi link Terminal                 Normal
+
+let g:terminal_ansi_colors = [
+      \ '#0f0f0f',
+      \ '#af5f5f',
+      \ '#5f875f',
+      \ '#87875f',
+      \ '#5f87af',
+      \ '#5f5f87',
+      \ '#5f8787',
+      \ '#6c6c6c',
+      \ '#2c2c2c',
+      \ '#ff8700',
+      \ '#87af87',
+      \ '#d7d787',
+      \ '#8fafd7',
+      \ '#8787af',
+      \ '#5fafaf',
+      \ '#ffffff',
+      \ ]
