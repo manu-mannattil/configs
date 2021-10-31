@@ -21,7 +21,7 @@
   lg = log --branches --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)[%an]%Creset' --abbrev-commit --date-order
   root = rev-parse --show-toplevel
   st = status -s
-  texdiff = git-latexdiff --latexmk --ln-untracked --quiet --latexpand --makeatletter
+  texdiff = !git-latexdiff --latexmk --ln-untracked --quiet --latexpand --makeatletter
   wd = diff --word-diff
 
 [color]
