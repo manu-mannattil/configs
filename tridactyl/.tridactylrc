@@ -88,13 +88,13 @@ set searchurls.yt https://www.youtube.com/results?search_query=%s&filters=video&
 
 " Journals
 set searchurls.ajp https://aapt.scitation.org/action/doSearch?SeriesKey=ajp&AllField=%s
-set searchurls.pr https://www.google.com/search?q=site:link.aps.org+-inurl:pdf+%s
-set searchurls.pra https://www.google.com/search?q=site:link.aps.org+inurl:PhysRevA+-inurl:pdf+%s
-set searchurls.prb https://www.google.com/search?q=site:link.aps.org+inurl:PhysRevB+-inurl:pdf+%s
-set searchurls.prc https://www.google.com/search?q=site:link.aps.org+inurl:PhysRevC+-inurl:pdf+%s
-set searchurls.prd https://www.google.com/search?q=site:link.aps.org+inurl:PhysRevD+-inurl:pdf+%s
-set searchurls.pre https://www.google.com/search?q=site:link.aps.org+inurl:PhysRevE+-inurl:pdf+%s
-set searchurls.prl https://www.google.com/search?q=site:link.aps.org+inurl:PhysRevLett+-inurl:pdf+%s
+set searchurls.pr https://www.google.com/search?q=site:link.aps.org+%s
+set searchurls.pra https://www.google.com/search?q=site:link.aps.org+inurl:PhysRevA+%s
+set searchurls.prb https://www.google.com/search?q=site:link.aps.org+inurl:PhysRevB+%s
+set searchurls.prc https://www.google.com/search?q=site:link.aps.org+inurl:PhysRevC+%s
+set searchurls.prd https://www.google.com/search?q=site:link.aps.org+inurl:PhysRevD+%s
+set searchurls.pre https://www.google.com/search?q=site:link.aps.org+inurl:PhysRevE+%s
+set searchurls.prl https://www.google.com/search?q=site:link.aps.org+inurl:PhysRevLett+%s
 
 " Knowledge bases
 set searchurls.mayo https://www.google.com/search?q=site:mayoclinic.org+%s
