@@ -7,14 +7,6 @@
 
 // ------------- Privacy -------------
 
-// Isolate all browser identifier sources (e.g. cookies) to the first
-// party domain, with the goal of preventing tracking across different
-// domains.
-user_pref("privacy.firstparty.isolate", true);
-
-// Limit fingerprinting.
-user_pref("privacy.trackingprotection.fingerprinting.enabled", true);
-
 // Block cryptomining.
 user_pref("privacy.trackingprotection.cryptomining.enabled", true);
 
