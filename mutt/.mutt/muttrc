@@ -233,6 +233,10 @@ set sleep_time = 0
 # messages before every update.  See FAQ: http://dev.mutt.org/trac/wiki/MuttFaq
 set timeout = 60
 
+# Humblebrag about using Mutt by adding a "User-Agent:" header with the version
+# of Mutt used to compose the message.
+set user_agent = yes
+
 # Don't wait for a keypress to return back to Mutt after interacting with an
 # external command through <pipe-message>, <print-message>, etc.
 set wait_key = no
