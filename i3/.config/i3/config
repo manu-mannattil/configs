@@ -249,10 +249,11 @@ bar {
 # Floating mode {{{2
 # ------------------
 
+for_window [class="Anki"] floating enable
 for_window [class="Arandr"] floating enable
 for_window [class="matplotlib"] floating enable
-for_window [class="Anki"] floating enable
 for_window [class="Pavucontrol"] floating enable
+for_window [class="Steam"] floating enable
 
 # Default floating mode for windows (e.g., pop-up) that one wouldn't use for
 # more than a few seconds.
