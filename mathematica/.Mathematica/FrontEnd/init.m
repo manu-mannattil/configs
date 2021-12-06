@@ -1,5 +1,5 @@
 SetOptions[$FrontEnd,
-VersionsLaunched->{"12.3.0"},
+VersionsLaunched->{"12.3.1"},
 PrivateFrontEndOptions->{"DialogSettings"->{
   "Login"->{"RememberMe"->True},
   "WelcomeScreen"->{"ShowRecentFilesContextMenu"->False}},
