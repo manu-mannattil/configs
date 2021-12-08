@@ -190,7 +190,6 @@ PACKAGES=(
   # Internet
   elinks # advanced text-mode WWW browser
   elinks-doc # advanced text-mode WWW browser - documentation
-  firefox-esr # Mozilla Firefox web browser - Extended Support Release (ESR)
   lynx # classic non-graphical (text-mode) web browser
   w3m # WWW browsable pager with excellent tables/frames support
   w3m-img # inline image extension support utilities for w3m
@@ -282,6 +281,7 @@ PACKAGES=(
   # Utilities (assorted)
   dateutils # nifty command line date and time utilities
   libtext-lorem-perl # random faux Latin text generator
+  ncal # CLI calender program
   parallel # build and execute command lines from standard input in parallel
   pv # Shell pipeline element to meter data passing through
   rename # Perl extension for renaming multiple files

@@ -7,9 +7,6 @@
 
 // ------------- Privacy -------------
 
-// Block cryptomining.
-user_pref("privacy.trackingprotection.cryptomining.enabled", true);
-
 // Block social media tracking.
 user_pref("privacy.trackingprotection.socialtracking.enabled", true);
 
@@ -33,6 +30,30 @@ user_pref("browser.sessionstore.restore_on_demand", false);
 // Allow extensions in private windows by default.
 // (I only install extensions I trust.)
 user_pref("extensions.allowPrivateBrowsingByDefault", true);
+
+// Minimize communications with Mozilla.
+user_pref("app.normandy.api_url", "");
+user_pref("app.normandy.enabled", false);
+user_pref("app.shield.optoutstudies.enabled", false);
+user_pref("breakpad.reportURL", "");
+user_pref("browser.crashReports.unsubmittedCheck.autoSubmit2", false);
+user_pref("browser.crashReports.unsubmittedCheck.enabled", false);
+user_pref("browser.ping-centre.telemetry", false);
+user_pref("browser.tabs.crashReporting.sendReport", false);
+user_pref("datareporting.healthreport.uploadEnabled", false);
+user_pref("datareporting.policy.dataSubmissionEnabled", false);
+user_pref("toolkit.coverage.endpoint.base", "");
+user_pref("toolkit.coverage.opt-out", true);
+user_pref("toolkit.telemetry.archive.enabled", false);
+user_pref("toolkit.telemetry.bhrPing.enabled", false);
+user_pref("toolkit.telemetry.coverage.opt-out", true);
+user_pref("toolkit.telemetry.enabled", false);
+user_pref("toolkit.telemetry.firstShutdownPing.enabled", false);
+user_pref("toolkit.telemetry.newProfilePing.enabled", false);
+user_pref("toolkit.telemetry.server", "data:,");
+user_pref("toolkit.telemetry.shutdownPingSender.enabled", false);
+user_pref("toolkit.telemetry.unified", false);
+user_pref("toolkit.telemetry.updatePing.enabled", false);
 
 // ------------- DNS -------------
 

@@ -123,7 +123,7 @@ setxkbmap -variant altgr-intl              \
           -option terminate:ctrl_alt_bkspc
 
 # Preferred web browser.
-export BROWSER="/usr/bin/firefox"
+export BROWSER="firefox"
 
 # Local TEXMF directory.
 export TEXMFHOME="${HOME}/.texmf"

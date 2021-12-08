@@ -7,7 +7,7 @@ sanitise tridactyllocal tridactylsync
 " ------------
 
 " Drop-down command window.
-set theme quakelight
+set theme quake
 
 " Don't show the Tridactyl tutorial.
 set newtab about:blank

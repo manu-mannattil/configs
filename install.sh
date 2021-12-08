@@ -194,6 +194,14 @@ __install_firefox() {
                 "${HOME}/.mozilla/firefox/${profile}"
         done < <(sed -n 's/^Path=//p' "${HOME}/.mozilla/firefox/profiles.ini")
     fi
+
+    # Symlink `chrome' directory to default profile.
+    default=$(echo "${HOME}/.mozilla/firefox/"*.default)
+    if [[ -d "$default" ]]
+    then
+        rm -rf "$default/chrome"
+        ln -v -sf "${REPO}/firefox/.mozilla/firefox/profile/chrome" "$default"
+    fi
 }
 
 # :target: fontconfig - fontconfig configuration

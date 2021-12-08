@@ -1,0 +1,5 @@
+/* Invert colors in PDF viewer. */
+
+#outerContainer > #mainContainer > #viewerContainer > #viewer > .page {
+  filter: invert(100%);
+}
