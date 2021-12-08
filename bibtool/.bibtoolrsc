@@ -152,10 +152,11 @@ sort.order {* = author #
   # archive
   # archiveprefix
   # archivePrefix
+  # primaryClass
+  # eprint
   # bookaddress
   # collaboration
   # eid
-  # eprint
   # howpublished
   # isbn
   # issn
@@ -165,7 +166,6 @@ sort.order {* = author #
   # note
   # number
   # organization
-  # primaryClass
   # school
   # series
   # SLACcitation
