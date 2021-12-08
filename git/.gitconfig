@@ -1,5 +1,8 @@
 # vim: ft=gitconfig fdm=marker et sts=2 sw=2
 
+[init]
+  defaultBranch = master
+
 [user]
   name  = Manu Mannattil
   email = manu.mannattil@posteo.net
