@@ -162,11 +162,13 @@ PACKAGES=(
   # Hardware
   fwupd # Firmware update daemon
   hardinfo # Displays system information
-  lm-sensors # utilities to read temperature/voltage/fan sensors
   i965-va-driver-shaders # VAAPI driver for Intel G45 & HD Graphics family
+  intel-gpu-tools # tools for debugging the Intel graphics driver
   intel-media-va-driver-non-free # VAAPI driver for the Intel GEN8+ Graphics family
+  lm-sensors # utilities to read temperature/voltage/fan sensors
   tlp # Save battery power on laptops
   tlp-rdw # Radio device wizard
+  vainfo # Video Acceleration (VA) API for Linux -- info program
 
   # Image manipulation
   darktable # virtual lighttable and darkroom for photographers
