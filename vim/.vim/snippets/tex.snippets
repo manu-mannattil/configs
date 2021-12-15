@@ -191,3 +191,18 @@ snippet tikz
 	\begin{tikzpicture}
 		${1}
 	\end{tikzpicture}
+snippet fourier
+	\usepackage[widespace]{fourier}
+	\usepackage[scale=0.92]{tgheros}
+	\usepackage{bm}
+	\DeclareMathAlphabet{\mathsf}{\encodingdefault}{\sfdefault}{\mddefault}{n}
+	\SetMathAlphabet{\mathsf}{bold}{\encodingdefault}{\sfdefault}{\bfdefault}{n}
+	\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+	\SetMathAlphabet{\mathcal}{bold}{OMS}{cmsy}{b}{n}
+	% https://narkive.com/eANktZj3.5
+	\makeatletter
+	\def\big{\bBigg@{1}}
+	\def\Big{\bBigg@{1.5}}
+	\def\bigg{\bBigg@{2.4}}
+	\def\Bigg{\bBigg@{3.2}}
+	\makeatother
