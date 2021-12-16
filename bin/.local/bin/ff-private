@@ -1,4 +1,4 @@
 #!/bin/sh
 
 rm -rf ~/.cache/mozilla/firefox/*.private
-exec /usr/local/bin/firefox -P private "$@"
+exec /usr/bin/firefox -P private "$@"
