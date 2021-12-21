@@ -5,6 +5,13 @@
 // productive, healthier, and happier.
 //
 
+// ------------- Updates -------------
+
+// Disable auto updates and notifications.
+user_pref("app.update.checkInstallTime", false);
+user_pref("app.update.enabled", false);
+user_pref("app.update.auto", false);
+
 // ------------- Privacy -------------
 
 // Block social media tracking.
