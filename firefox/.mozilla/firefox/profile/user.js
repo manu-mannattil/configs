@@ -7,10 +7,17 @@
 
 // ------------- Updates -------------
 
-// Disable auto updates and notifications.
-user_pref("app.update.checkInstallTime", false);
-user_pref("app.update.enabled", false);
+// Disable auto updates and notifications.  Doesn't work since FF 88;
+// create policies file instead:
+// https://linuxreviews.org/HOWTO_Make_Mozilla_Firefox_Stop_Nagging_You_About_Updates_And_Other_Annoying_Idiocy
 user_pref("app.update.auto", false);
+user_pref("app.update.autoInstallEnabled", false);
+user_pref("app.update.background.scheduling.enabled", false);
+user_pref("app.update.checkInstallTime", false);
+user_pref("app.update.doorhanger", false);
+user_pref("app.update.enabled", false);
+user_pref("app.update.lastUpdateTime.background-update-timer", 0);
+user_pref("app.update.silent", true);
 
 // ------------- Privacy -------------
 
