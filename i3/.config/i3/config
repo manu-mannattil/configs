@@ -110,12 +110,13 @@ bindsym $mod+Shift+r restart
 # Application launchers {{{2
 # --------------------------
 
-# Start dmenu.
-bindsym $mod+d exec dmenu_run -fn 'Source Code Pro Semibold:size=9'
+# Start dmenu/rofi.
+# bindsym $mod+d exec dmenu_run -fn 'Source Code Pro Semibold:size=9'
+bindsym $mod+d exec rofi -show-icons -show drun
 
 # Run passmenu -- a script to choose pass-managed password store
-# entries using dmenu.
-bindsym $mod+p exec passmenu -fn 'Source Code Pro Semibold:size=9'
+# entries using dmenu/rofi.
+bindsym $mod+p exec passmenu
 
 # Mouse bindings {{{2
 # -------------------

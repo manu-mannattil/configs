@@ -86,7 +86,9 @@ PACKAGES=(
   i3 # metapackage (i3 window manager, screen locker, menu, statusbar)
   libnotify-bin # sends desktop notifications to a notification daemon
   openbox # standards-compliant, fast, light-weight and extensible window manager
+  rofi # window switcher, run dialog and dmenu replacement
   spacefm-gtk3 # Multi-panel tabbed file manager - GTK3 version
+  suckless-tools # simple commands for minimalistic window managers
   wmctrl # control an EWMH/NetWM compatible X Window Manager
 
   # Development

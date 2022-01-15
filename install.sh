@@ -345,6 +345,11 @@ __install_readline() {
     mkdir -vp "${HOME}/.cache/rlwrap"
 }
 
+# :target: rofi - rofi configuration
+__install_rofi() {
+    install "rofi/.config/rofi"
+}
+
 # :target: ssh - SSH config
 __install_ssh() {
     install "ssh/.ssh/config"
