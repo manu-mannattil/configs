@@ -45,6 +45,9 @@ user_pref("browser.sessionstore.restore_on_demand", false);
 // (I only install extensions I trust.)
 user_pref("extensions.allowPrivateBrowsingByDefault", true);
 
+// Allow "risky" downloads.
+user_pref("dom.block_download_insecure", false);
+
 // Minimize communications with Mozilla.
 user_pref("app.normandy.api_url", "");
 user_pref("app.normandy.enabled", false);

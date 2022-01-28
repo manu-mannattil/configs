@@ -1,5 +1,5 @@
 /**
- * ROFI Color theme (adapted from DarkBlue by Dave Davenport)
+ * Rofi color theme (adapted from DarkBlue by Dave Davenport)
  */
 
 * {
@@ -12,7 +12,7 @@
     alternate-urgent-background: rgba ( 0, 0, 0, 0 % );
     alternate-urgent-foreground: rgba ( 255, 129, 127, 100 % );
     background-color:            rgba ( 0, 0, 0, 0 % );
-    background:                  rgba ( 40, 85, 119, 85 % );
+    background:                  rgba ( 40, 85, 119, 100 % );
     blue:                        rgba ( 38, 139, 210, 100 % );
     border-color:                rgba ( 255, 255, 255, 100 % );
     bordercolor:                 rgba ( 219, 223, 188, 100 % );
@@ -24,7 +24,7 @@
     red:                         rgba ( 220, 50, 47, 100 % );
     selected-active-background:  rgba ( 138, 196, 255, 100 % );
     selected-active-foreground:  rgba ( 2, 20, 63, 100 % );
-    selected-normal-background:  rgba ( 255, 255, 255, 85 % );
+    selected-normal-background:  rgba ( 255, 255, 255, 100 % );
     selected-normal-foreground:  rgba ( 40, 85, 119, 100 % );
     selected-urgent-background:  rgba ( 255, 129, 127, 100 % );
     selected-urgent-foreground:  rgba ( 2, 20, 63, 100 % );
@@ -52,8 +52,6 @@
 }
 #listview {
     fixed-height: 0;
-    border:       2px 0px 0px ;
-    border-color: @separatorcolor;
     spacing:      2px ;
     scrollbar:    false;
     padding:      2px 0px 0px ;

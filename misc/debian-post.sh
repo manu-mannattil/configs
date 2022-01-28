@@ -75,7 +75,7 @@ PACKAGES=(
   gnupg-agent # GNU privacy guard - cryptographic agent (dummy transitional package)
   cryptsetup # disk encryption support - startup scripts
   gpgv2 # GNU privacy guard - signature verification tool (dummy transitional package)
-  pinentry-qt # Qt-based PIN or pass-phrase entry dialog for GnuPG
+  pinentry-gnome3 # GNOME 3 PIN or pass-phrase entry dialog for GnuPG
 
   # Debian
   apt-file # search for files within Debian packages (command-line interface)
