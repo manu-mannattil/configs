@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+# zoom - run zoom with proper HiDPI setting
+#
+# Note that the .desktop entry in
+# /usr/share/applications might need to be edited to run
+# this script instead of /usr/bin/zoom.
+#
+
+conf="$HOME/.config/zoomus.conf"
+
+if [ "$conf" ]
+then
+    if [ "$GDK_SCALE" ]
+    then
+        sed -i "s/^scaleFactor.*/scaleFactor=$GDK_SCALE/" "$conf"
+    else
+        sed -i "s/^scaleFactor.*/scaleFactor=1/" "$conf"
+    fi
+fi
+
+exec nohup /usr/bin/zoom "$@" >/dev/null 2>&1 &
