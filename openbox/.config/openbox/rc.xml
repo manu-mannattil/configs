@@ -325,12 +325,12 @@
     </keybind>
     <keybind key="W-d">
       <action name="Execute">
-        <command>dmenu_run -b -fn 'Source Code Pro Semibold:size=9'</command>
+        <command>rofi -show-icons -show drun</command>
       </action>
     </keybind>
     <keybind key="W-p">
       <action name="Execute">
-        <command>passmenu -b -fn 'Source Code Pro Semibold:size=9'</command>
+        <command>passmenu</command>
       </action> </keybind>
     <keybind key="W-S-r">
       <action name="Execute">
