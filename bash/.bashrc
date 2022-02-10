@@ -371,6 +371,7 @@ lyrics() {
 # after synchronization and printing the number of new messages.
 
 mbsync() {
+    [[ "$*" ]] || set -- "$MUTT_PROFILE"
     command mbsync "$@" && notmuch new && {
         # Print number of new messages in each folder.  Unlike OfflineIMAP,
         # mbsync's output is somewhat cryptic and it's not always clear
@@ -437,7 +438,6 @@ mergepath() {
 # /etc/environment so as to make it the default profile when mutt is
 # called outside this function.
 
-: ${MUTT_PROFILE:=gmail}
 : ${MUTT_PROFILE_DIR:="${HOME}/.mutt/profiles"}
 
 mutt() {

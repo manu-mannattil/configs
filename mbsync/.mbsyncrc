@@ -92,51 +92,6 @@ Channel gmail-sent
 Channel gmail-spam
 Channel gmail-trash
 
-# Polhode {{{1
-# ------------
-
-IMAPAccount polhode
-Host mail.gandi.net
-User manu@polhode.org
-AuthMechs LOGIN
-PassCmd "pass email/polhode"
-SSLType IMAPS
-
-IMAPStore polhode-remote
-Account polhode
-
-MaildirStore polhode-local
-Path ~/mail/polhode/
-Inbox ~/mail/polhode/inbox
-
-Channel polhode-all
-Master :polhode-remote:
-Slave :polhode-local:
-Patterns * !Drafts !drafts !Junk !spam !Sent !sent !Trash !trash
-
-Channel polhode-drafts
-Master :polhode-remote:Drafts
-Slave :polhode-local:drafts
-
-Channel polhode-sent
-Master :polhode-remote:Sent
-Slave :polhode-local:sent
-
-Channel polhode-spam
-Master :polhode-remote:Junk
-Slave :polhode-local:spam
-
-Channel polhode-trash
-Master :polhode-remote:Trash
-Slave :polhode-local:trash
-
-Group polhode
-Channel polhode-all
-Channel polhode-drafts
-Channel polhode-sent
-Channel polhode-spam
-Channel polhode-trash
-
 # Posteo {{{1
 # -----------
 
