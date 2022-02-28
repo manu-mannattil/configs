@@ -263,6 +263,7 @@ PACKAGES=(
   lyx # document processor
   sdcv # StarDict Console Version
   texlive-full # TeX Live: metapackage pulling in all components of TeX Live
+  wdiff # compare two files word by word
 
   # Text processing
   gawk # GNU awk, a pattern scanning and processing language
