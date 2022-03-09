@@ -78,6 +78,7 @@ let b:vimtex_imaps_list = [
       \ { 'lhs' : 'P',  'rhs' : '\Pi' },
       \ { 'lhs' : 'Q',  'rhs' : '\Theta' },
       \ { 'lhs' : 'S',  'rhs' : '\Sigma' },
+      \ { 'lhs' : 'T',  'rhs' : '^\mathsf{T}' },
       \ { 'lhs' : 'U',  'rhs' : '\Upsilon' },
       \ { 'lhs' : 'W',  'rhs' : '\Omega' },
       \ { 'lhs' : 'X',  'rhs' : '\Xi' },
@@ -99,10 +100,11 @@ endfor
 
 " Quick snippets using my fork of snipmate.
 let b:snipmate_quick_snippets = [
-      \ ['#B', '\mathbb{${1:R}}${2}'],
-      \ ['#C', '\mathscr{${1}}${2}'],
-      \ ['#b', '\mathbf{${1}}${2}'],
+      \ ['#b', '\mathbb{${1}}${2}'],
+      \ ['#B', '\mathbf{${1}}${2}'],
       \ ['#c', '\mathcal{${1}}${2}'],
+      \ ['#C', '\mathscr{${1}}${2}'],
+      \ ['#d', '\dd{${1}}\,${2}'],
       \ ['#e', '\emph{${1}}${2}'],
       \ ['#f', '\mathfrak{${1}}${2}'],
       \ ['#m', '\bm{${1}}${2}'],
