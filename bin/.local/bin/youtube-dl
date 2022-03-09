@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec yt-dlp "$@"
+exec yt-dlp "$@" --config-location ~/.config/youtube-dl.conf
