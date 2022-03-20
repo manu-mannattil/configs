@@ -56,7 +56,7 @@ do
     then
       echo >&2 "${0##*/}: plugin '$plugin' is already installed."
       echo >&2 "${0##*/}: updating '$plugin' ..."
-      git -C "$repodir" pull
+      git -C "$repodir" pull --ff
     else
       echo >&2 "${0##*/}: error installing plugin to '$repodir'; file exists."
     fi

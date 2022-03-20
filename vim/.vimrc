@@ -153,6 +153,10 @@ set backspace=indent,eol,start
 " particular, i_CTRL-X_CTRL-N and i_CTRL-X_CTRL-P don't follow these rules.
 set complete=.,w,b,u,t,i,kspell
 
+" Optimize diffs for readability rather than speed.
+" https://vimways.org/2018/the-power-of-diff/
+set diffopt+=internal,algorithm:patience,indent-heuristic
+
 " Encoding of file *on disk*.  When 'fileencoding' is different from
 " 'encoding', conversion will be done when writing the file.
 set fileencoding=utf-8
@@ -588,7 +592,6 @@ let g:netrw_browsex_viewer = "open"
 " Use qpdfview (with instance name `LaTeX') as the PDF viewer.
 let g:vimtex_view_general_viewer = 'qpdfview'
 let g:vimtex_view_general_options = '--instance LaTeX --unique @pdf\#src:@tex:@line:@col'
-let g:vimtex_view_general_options_latexmk = '--instance LaTeX --unique'
 
 " Don't open quickfix on mere warnings.
 let g:vimtex_quickfix_open_on_warning = 0

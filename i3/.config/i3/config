@@ -280,8 +280,8 @@ for_window [class="URxvt"] focus
 # Browsers (workspace 2) {{{2
 # ---------------------------
 
-for_window [class="Firefox"] move container to workspace 2
-for_window [class="Firefox"] focus
+for_window [class="firefox"] move container to workspace 2
+for_window [class="firefox"] focus
 
 # Media (workspace 3) {{{2
 # ------------------------

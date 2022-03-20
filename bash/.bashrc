@@ -195,6 +195,9 @@ alias dash='rlwrap -a -c dash'
 alias gnuplot='rlwrap -pgreen -a -c gnuplot'
 alias posh='rlwrap -a -c posh'
 
+# Don't compress raster images embedded in PDFs.
+alias pdfsizeopt='pdfsizeopt --do-optimize-images=no'
+
 # Toggle redshift.
 alias redtoggle='pkill -USR1 redshift'
 
