@@ -524,6 +524,28 @@ noremap ,d g;
 " Change to the `alternate' file using backspace.
 nnoremap <BS> <C-^>
 
+" Fix broken 'gx' in netrw.
+" https://github.com/felipec/vim-sanegx
+function! s:gxbrowse(url)
+  let redir = '>&/dev/null'
+  if exists('g:netrw_browsex_viewer')
+   let viewer = g:netrw_browsex_viewer
+  elseif has('unix') && executable('xdg-open')
+   let viewer = 'xdg-open'
+  elseif has('macunix') && executable('open')
+   let viewer = 'open'
+  elseif has('win64') || has('win32')
+   let viewer = 'start'
+   redir = '>null'
+  else
+   return
+  endif
+
+  execute 'silent! !' . viewer . ' ' . shellescape(a:url, 1) . redir
+  redraw!
+endfunction
+nnoremap <silent> gx :call <SID>gxbrowse(expand('<cWORD>'))<CR>
+
 " File and buffer navigation tricks {{{2
 " --------------------------------------
 
@@ -584,7 +606,8 @@ let g:GPGDefaultRecipients = ['0x9D5931F4']
 let g:netrw_liststyle = 3
 
 " open is my basic wrapper script around xdg-open.
-let g:netrw_browsex_viewer = "open"
+let g:netrw_browsex_viewer = 'open'
+let g:netrw_http_cmd = 'open'
 
 " Vimtex {{{2
 " -----------
