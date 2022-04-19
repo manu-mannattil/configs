@@ -1,8 +1,8 @@
 // Resource for user.js hardening: https://github.com/arkenfox/user.js
 //
-// A much better way to be safe from your browser is to browse the web
-// less.  It also has the (positive) side effect of making you more
-// productive, healthier, and happier.
+// A much better way to be safe from your browser is to browse the web less.
+// It also has the (positive) side effect of making you more fitter, happier,
+// more productive, comfortable, not drinking too much ...
 //
 
 // ------------- Updates -------------
