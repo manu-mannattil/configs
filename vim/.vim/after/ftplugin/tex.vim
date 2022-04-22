@@ -126,3 +126,29 @@ let b:snipmate_quick_snippets = [
 for snippet in b:snipmate_quick_snippets
   call call('QuickSnippet', snippet)
 endfor
+
+" Function to strip a TeX command.  Consider the following situation
+" where you want to just remove the outer \hl{ ... } highlighting.
+"
+"   \hl{This is \emph{emphasized} and highlighted}.
+"
+" Regexes won't help here, or you need clunky recursive regexes, e.g.,
+" see https://tex.stackexchange.com/q/298019.  Using the TeXStrip
+" command defined below, \hl{ ... } can be removed via :TeXStrip hl
+function! s:texstrip(cmd)
+  let winview = winsaveview()
+  let i = 1 " to prevent infinite loops
+  while search('\\' . a:cmd . '{', 'w') && i <= 1000
+    let m = getpos('.')
+    " Move to open brace, find matching brace, and then cut
+    " to black hole register.
+    normal! f{%"_x
+    " Move back and delete to open brace.
+    call cursor(m[1], m[2])
+    normal! "_df{
+    let i = i + 1
+  endwhile
+  call winrestview(winview)
+endfunction
+
+command! -nargs=1 TeXStrip silent call s:texstrip(<f-args>)
