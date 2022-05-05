@@ -101,8 +101,8 @@ bindsym $mod+Shift+b move container to workspace back_and_forth
 # Lock screen using Mod + Shift + X running i3lock.
 bindsym $mod+Shift+x exec --no-startup-id i3lock --ignore-empty-password --show-failed-attempts --color=333333
 
-# Reload the configuration file.
-bindsym $mod+Shift+c reload
+# Use editinvim to edit the contents of a text box using Vim.
+bindsym $mod+Shift+v exec editinvim
 
 # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3).
 bindsym $mod+Shift+r restart
@@ -258,6 +258,7 @@ for_window [class="Arandr"] floating enable
 for_window [class="matplotlib"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Steam"] floating enable
+for_window [title="editinvim"] floating enable
 
 # Default floating mode for windows (e.g., pop-up) that one wouldn't use for
 # more than a few seconds.
