@@ -2,8 +2,9 @@ configs
 =======
 
 This is a repository for managing my configuration files (aka dotfiles), meticulously yak shaved over the years and contains about <!--FILES-->176 configuration files for about <!--PROGRAMS-->52
-programs.  There are [many like it][others], but this one is
-mine.
+programs.  There are [many like it][others], but this one is mine.  My
+aim here has been to sculpt a lean setup that emphasizes functionality
+over form.  In other words, there is almost zero ricing here.
 
 <a href="https://xkcd.com/1806/">
   <img align="right" src="https://raw.githubusercontent.com/manu-mannattil/assets/master/configs/xkcd.png"/>

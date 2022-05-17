@@ -249,7 +249,8 @@ alias w3m='w3m -T text/html'
 # Colored wdiff.
 alias wdiff='wdiff --start-delete="$COLOR_BRIGHT_RED" --end-delete="$COLOR_RESET" --start-insert="$COLOR_BRIGHT_GREEN" --end-insert="$COLOR_RESET"'
 
-# What is my external IP?
+# Online tools.
+alias wttr='curl -qsL https://wttr.in/?m'
 alias myip='curl -qsL http://icanhazip.com'
 
 # less configuration {{{1
@@ -289,6 +290,7 @@ then
     alias di='fasd_cd -d -i'
     alias o='fasd -e open'
     alias v='fasd -f -e vim'
+    alias vv='fasd -f -e e'
 fi
 
 # Functions {{{1

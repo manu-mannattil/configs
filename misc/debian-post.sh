@@ -97,6 +97,7 @@ PACKAGES=(
   colordiff # tool to colorize 'diff' output
   diffutils # File comparison utilities
   exuberant-ctags # build tag file indexes of source code definitions
+  gcc-doc # documentation for gcc, g++, gobjc, etc.
   indent # C language source code formatting program
   indent-doc # Documentation for GNU indent
   input-utils # utilities for the input layer of the Linux kernel

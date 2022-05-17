@@ -3,7 +3,6 @@
 " Capitalizations {{{1
 " --------------------
 
-iabbrev <buffer> asoiaf ASoIaF
 iabbrev <buffer> biblatex BiBLaTeX
 iabbrev <buffer> bibtex BiBTeX
 iabbrev <buffer> ebay eBay
@@ -11,7 +10,6 @@ iabbrev <buffer> fbm fBm
 iabbrev <buffer> Github GitHub
 iabbrev <buffer> Gitlab GitLab
 iabbrev <buffer> latex LaTeX
-iabbrev <buffer> lotr LotR
 iabbrev <buffer> nolitsa NoLiTSA
 iabbrev <buffer> numpy NumPy
 iabbrev <buffer> Ok OK

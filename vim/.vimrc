@@ -529,16 +529,16 @@ nnoremap <BS> <C-^>
 function! s:gxbrowse(url)
   let redir = '>&/dev/null'
   if exists('g:netrw_browsex_viewer')
-   let viewer = g:netrw_browsex_viewer
+    let viewer = g:netrw_browsex_viewer
   elseif has('unix') && executable('xdg-open')
-   let viewer = 'xdg-open'
+    let viewer = 'xdg-open'
   elseif has('macunix') && executable('open')
-   let viewer = 'open'
+    let viewer = 'open'
   elseif has('win64') || has('win32')
-   let viewer = 'start'
-   redir = '>null'
+    let viewer = 'start'
+    redir = '>null'
   else
-   return
+    return
   endif
 
   execute 'silent! !' . viewer . ' ' . shellescape(a:url, 1) . redir

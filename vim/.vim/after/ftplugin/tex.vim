@@ -16,6 +16,7 @@ setlocal suffixes+=*.bbl,*.sty,*.bst,*.cls
 runtime! abbrev.vim
 
 setlocal autochdir
+setlocal complete+=kspell
 setlocal keywordprg=:Sdcv
 setlocal norelativenumber
 setlocal spell
@@ -42,9 +43,9 @@ let b:vimtex_imaps_list = [
       \ { 'lhs' : 'jJ', 'rhs' : '\Downarrow' },
       \ { 'lhs' : 'jk', 'rhs' : '\uparrow' },
       \ { 'lhs' : 'jK', 'rhs' : '\Uparrow' },
-      \ { 'lhs' : 'jh', 'rhs' : '\leftarrow' },
+      \ { 'lhs' : 'jh', 'rhs' : '\gets' },
       \ { 'lhs' : 'jH', 'rhs' : '\Leftarrow' },
-      \ { 'lhs' : 'jl', 'rhs' : '\rightarrow' },
+      \ { 'lhs' : 'jl', 'rhs' : '\to' },
       \ { 'lhs' : 'jL', 'rhs' : '\Rightarrow' },
       \ { 'lhs' : 'a',  'rhs' : '\alpha' },
       \ { 'lhs' : 'b',  'rhs' : '\beta' },
@@ -138,7 +139,7 @@ endfor
 function! s:texstrip(cmd)
   let winview = winsaveview()
   let i = 1 " to prevent infinite loops
-  while search('\\' . a:cmd . '{', 'w') && i <= 1000
+  while search('\V\\' . a:cmd . '{', 'w') && i <= 1000
     let m = getpos('.')
     " Move to open brace, find matching brace, and then cut
     " to black hole register.

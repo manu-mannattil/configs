@@ -1,5 +1,9 @@
 #!/bin/sh
 
+case "$1" in
+    -*) exec /usr/bin/google-chrome "$@" ;;
+esac
+
 exec firejail                        \
     --whitelist=~/.config/fontconfig \
     --whitelist=~/downloads          \
