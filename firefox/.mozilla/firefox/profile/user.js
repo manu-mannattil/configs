@@ -15,7 +15,6 @@ user_pref("app.update.autoInstallEnabled", false);
 user_pref("app.update.background.scheduling.enabled", false);
 user_pref("app.update.checkInstallTime", false);
 user_pref("app.update.doorhanger", false);
-user_pref("app.update.enabled", false);
 user_pref("app.update.lastUpdateTime.background-update-timer", 0);
 user_pref("app.update.silent", true);
 
@@ -40,6 +39,11 @@ user_pref("browser.sessionstore.enabled", false);
 user_pref("browser.sessionstore.max_tabs_undo", 0);
 user_pref("browser.sessionstore.max_windows_undo", 0);
 user_pref("browser.sessionstore.restore_on_demand", false);
+
+// Quieter fox.
+user_pref("extensions.getAddons.showPane", false);
+user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
+user_pref("browser.discovery.enabled", false);
 
 // Allow extensions in private windows by default.
 // (I only install extensions I trust.)
@@ -90,6 +94,9 @@ user_pref("network.trr.uri", "https://dns.quad9.net/dns-query");
 user_pref("network.security.esni.enabled", true);
 
 // ------------- Usability -------------
+
+// Ask what to do when downloading a file (old behavior).
+user_pref("browser.download.improvements_to_download_panel", false);
 
 // Blank startup and newtab page.
 user_pref("browser.startup.homepage", "about:blank");

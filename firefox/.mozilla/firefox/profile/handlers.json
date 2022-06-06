@@ -1,0 +1,34 @@
+{
+  "defaultHandlersVersion": {},
+  "mimeTypes": {
+    "text/plain": {
+      "action": 2
+    },
+    "application/x-bibtex": {
+      "action": 2,
+      "extensions": [
+        "bibtex", "bib"
+      ]
+    },
+    "application/pdf": {
+      "action": 3,
+      "extensions": [
+        "pdf"
+      ]
+    },
+    "image/webp": {
+      "action": 3,
+      "extensions": [
+        "webp"
+      ]
+    },
+    "image/avif": {
+      "action": 3,
+      "extensions": [
+        "avif"
+      ]
+    }
+  },
+  "isDownloadsImprovementsAlreadyMigrated": true,
+  "isSVGXMLAlreadyMigrated": true
+}

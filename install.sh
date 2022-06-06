@@ -185,12 +185,14 @@ __install_emacs() {
 
 # :target: firefox - Firefox configuration
 __install_firefox() {
-    # Symlink user.js in all Firefox profiles.
+    # Symlink/copy some files in all Firefox profiles.
     if [[ -f "${HOME}/.mozilla/firefox/profiles.ini" ]]
     then
         while IFS= read -r profile
         do
             ln -v -sf "${REPO}/firefox/.mozilla/firefox/profile/user.js" \
+                "${HOME}/.mozilla/firefox/${profile}"
+            cp -v -f "${REPO}/firefox/.mozilla/firefox/profile/handlers.json" \
                 "${HOME}/.mozilla/firefox/${profile}"
         done < <(sed -n 's/^Path=//p' "${HOME}/.mozilla/firefox/profiles.ini")
     fi
