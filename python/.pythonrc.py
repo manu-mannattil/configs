@@ -5,6 +5,7 @@
 
 import cmath
 import math
+import re
 
 # Readline/history support {{{1
 # -----------------------------

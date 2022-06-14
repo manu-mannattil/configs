@@ -140,7 +140,7 @@ __install_curl() {
 # :target: cvs - cvs configuration
 __install_cvs() {
     # Strip comments and empty lines when copying.
-    grep -v '\(^$\|^#\)' "${REPO}/cvs/.cvs_ignore" | sort | uniq >"${HOME}/.cvsignore"
+    grep -v '\(^$\|^#\)' "${REPO}/cvs/.cvsignore" | sort | uniq >"${HOME}/.cvsignore"
 }
 
 # :target: ctags - exuberant ctags configuration

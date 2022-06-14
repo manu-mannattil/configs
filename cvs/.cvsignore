@@ -3,11 +3,7 @@
 # Note that ~/.cvsignore doesn't allow comments (at least rsync doesn't
 # allow it).  Therefore, rather than use this file directly, use:
 #
-#   grep -v '\(^#\|^$\)' .cvs_ignore | sort | uniq > ~/.cvsignore
-#
-# NOTE: This file is named .cvs_ignore instead of .cvsignore because
-# rsync ignores files named .cvsignore by default, and I like to use
-# rsync to make backups of my configuration files.
+#   grep -v '\(^#\|^$\)' .cvsignore | sort | uniq > ~/.cvsignore
 #
 
 # LaTeX temporary files.
