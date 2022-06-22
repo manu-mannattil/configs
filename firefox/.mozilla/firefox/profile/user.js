@@ -1,8 +1,9 @@
 // Resource for user.js hardening: https://github.com/arkenfox/user.js
 //
-// A much better way to be safe from your browser is to browse the web less.
-// It also has the (positive) side effect of making you more fitter, happier,
-// more productive, comfortable, not drinking too much ...
+// A much better way to be safe from your browser is to
+// browse the web less.  It also has the (positive) side
+// effect of making you fitter, happier, more productive,
+// comfortable, not drinking too much ...
 //
 
 // ------------- Updates -------------
@@ -18,7 +19,7 @@ user_pref("app.update.doorhanger", false);
 user_pref("app.update.lastUpdateTime.background-update-timer", 0);
 user_pref("app.update.silent", true);
 
-// ------------- Privacy -------------
+// ------------- Privacy and Security -------------
 
 // Block social media tracking.
 user_pref("privacy.trackingprotection.socialtracking.enabled", true);
@@ -76,6 +77,12 @@ user_pref("toolkit.telemetry.shutdownPingSender.enabled", false);
 user_pref("toolkit.telemetry.unified", false);
 user_pref("toolkit.telemetry.updatePing.enabled", false);
 
+// Disable "upload" feature on screenshots.
+user_pref("extensions.screenshots.upload-disabled", true);
+
+// Disable Firefox accounts.
+user_pref("identity.fxaccounts.enabled", false);
+
 // ------------- DNS -------------
 
 // All DNS queries over HTTPS (DoH).  If a query fails, fall back to
@@ -95,12 +102,21 @@ user_pref("network.security.esni.enabled", true);
 
 // ------------- Usability -------------
 
+// Disable Ctrl+Q quit shortcut.
+user_pref("browser.quitShortcut.disabled", true);
+
 // Ask what to do when downloading a file (old behavior).
 user_pref("browser.download.improvements_to_download_panel", false);
 
+// Always ask for where to store downloaded files.
+user_pref("browser.download.useDownloadDir", false);
+
 // Blank startup and newtab page.
-user_pref("browser.startup.homepage", "about:blank");
+user_pref("browser.newtab.preload", false);
 user_pref("browser.newtabpage.enabled", false);
+user_pref("browser.onboarding.enabled", false);
+user_pref("browser.startup.homepage", "about:blank");
+user_pref("browser.startup.page", 0);
 
 // Enable spell checking for all (i.e., for both multi-line and
 // single-line) text boxes.
@@ -122,6 +138,9 @@ user_pref("reader.content_width", 4);
 user_pref("reader.font_size", 2);
 user_pref("reader.line_height", 3);
 
+// Disable narration in Reader.
+user_pref("narrate.enabled", false);
+
 // Don't cycle tabs (old behavior).
 user_pref("browser.ctrlTab.recentlyUsedOrder", false);
 
@@ -136,9 +155,23 @@ user_pref("font.default.x-western", "sans-serif");
 user_pref("font.name.sans-serif.x-western", "Nimbus Sans L");
 user_pref("font.name.serif.x-western", "Nimbus Roman No9 L");
 
-// Always ask for where to store downloaded files.
-user_pref("browser.download.useDownloadDir", false);
-
 // Don't use the mailcap file to look up file/program associations.
 user_pref("helpers.global_mailcap_file", "");
 user_pref("helpers.private_mailcap_file", "");
+
+// Printer settings (no headers/footers).
+user_pref("print.print_footerleft", "");
+user_pref("print.print_footerright", "");
+user_pref("print.print_headerleft", "");
+user_pref("print.print_headerright", "");
+
+// Disable picture-in-picture and the Ctrl+Shift+] shortcut that toggles it.
+user_pref("media.videocontrols.picture-in-picture.enabled", false);
+user_pref("media.videocontrols.picture-in-picture.video-toggle.enabled", false);
+
+// Don't trim HTTP/HTTPS off of URLs in the address bar.
+user_pref("browser.urlbar.trimURLs", false);
+
+// Display "Not Secure" icon and text on HTTP websites.
+user_pref("security.insecure_connection_icon.enabled", true);
+user_pref("security.insecure_connection_text.enabled", true);
