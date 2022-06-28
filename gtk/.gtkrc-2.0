@@ -2,6 +2,4 @@
 
 gtk-icon-theme-name = "Adwaita"
 gtk-theme-name = "Adwaita-dark"
-gtk-font-name = "Nimbus Sans L 10"
-gtk-enable-event-sounds=0
-gtk-enable-input-feedback-sounds=0
+gtk-font-name = "Inter 10"
