@@ -13,7 +13,6 @@ PACKAGES=(
   mutagen           # read and write audio tags for many formats
   readability-lxml  # fast html to text parser (article readability tool) with python 3 support
   s-tui             # Stress Terminal UI stress test and monitoring tool
-  titlecase         # module to convert a sentence to title case
 )
 
 pip install --upgrade "${PACKAGES[@]}"

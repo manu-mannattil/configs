@@ -21,9 +21,6 @@ PACKAGES=(
   numpy
   scipy
 
-  # Python 2 to 3 porting.
-  future
-
   # Testing.
   coveralls
   nose
@@ -53,6 +50,9 @@ PACKAGES=(
 
   # Semi-analytical tricks.
   theano
+
+  # Module to convert a sentence to title case.
+  titlecase
 )
 
 conda update --all

@@ -44,11 +44,9 @@ SHELL=/bin/bash
 # least a day ago.
 @hourly find ~/.cache/mutt/attach -type f -mtime +1 -delete
 
-# Clean temporary HTML files created by browser.
+# Clean temporary files created by my scripts "web" and "editinvim".
 @hourly rm -f /tmp/web.*.html
-
-# Clean temporary LaTeX files in ~/.
-@hourly ~/code/scripts/texclean ~/templates
+@hourly rm -f /tmp/editinvim.*
 
 # Clean *.torrent files from ~/ and ~/downloads.
 @hourly rm -f ~/*.torrent ~/downloads/*.torrent

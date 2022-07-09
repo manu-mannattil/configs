@@ -132,6 +132,11 @@ __install_clang() {
     install "clang/.clang-format"
 }
 
+# :target: conda - Conda configuration
+__install_conda() {
+    install "conda/.condarc"
+}
+
 # :target: curl - cURL cli configuration
 __install_curl() {
     install "curl/.curlrc"

@@ -1,5 +1,5 @@
 # General (i.e., both low and high DPI) GTK 2.0 settings
 
 gtk-icon-theme-name = "Adwaita"
-gtk-theme-name = "Adwaita-dark"
+gtk-theme-name = "Adwaita"
 gtk-font-name = "Inter 10"
