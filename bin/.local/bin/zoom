@@ -19,4 +19,13 @@ then
     fi
 fi
 
-exec nohup /usr/bin/zoom "$@" >/dev/null 2>&1 &
+# Parse Zoom links and create zoommtg:// links.
+case "$*" in
+    http:*|https:*)
+        set -- $(echo "$@" | sed 's|.*/j/\([0-9]*\).*pwd=\([a-zA-Z0-9]*\).*|\1 \2|')
+        set -- --url="zoommtg://zoom.us/join?action=join&confno=$1&pwd=$2"
+        ;;
+esac
+
+# Zoom writes logs to ~/.zoom/logs/zoom_stdout_stderr.log
+exec /usr/bin/zoom "$@" >/dev/null 2>&1 &
