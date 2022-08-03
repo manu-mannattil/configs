@@ -114,6 +114,7 @@ __install_bash() {
     # line.  Basically, a two word command like `echo a' gets completed
     # twice if the first line of $HISTFILE isn't a blank line.
     : ${HISTFILE:=$HOME/.cache/bash_history}
+    mkdir -p ~/.cache
     echo "" >$HISTFILE
 }
 
