@@ -578,6 +578,11 @@ then
     source /etc/bash_completion
 fi
 
+# Prevent Bash completion from using /etc/hosts entries as SSH
+# hostnames.  See /usr/share/bash-completion/bash_completion
+export COMP_KNOWN_HOSTS_WITH_HOSTFILE=
+export BASH_COMPLETION_KNOWN_HOSTS_WITH_HOSTFILE=
+
 # Source local .bashrc if any.
 [[ -f "${HOME}/.bashrc_local" ]] && source "${HOME}/.bashrc_local"
 
