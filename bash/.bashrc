@@ -296,6 +296,20 @@ fi
 # Functions {{{1
 # --------------
 
+# cd {{{2
+# -------
+
+# cd with automatic sourcing of .env files.
+cd() {
+    if builtin cd "$@"
+    then
+        [[ -f ".env" ]] && source ".env"
+        return 0
+    else
+        return $?
+    fi
+}
+
 # plmgr {{{2
 # ----------
 
@@ -585,6 +599,9 @@ export BASH_COMPLETION_KNOWN_HOSTS_WITH_HOSTFILE=
 
 # Source local .bashrc if any.
 [[ -f "${HOME}/.bashrc_local" ]] && source "${HOME}/.bashrc_local"
+
+# Source .env file if any.  This is a security risk!
+[[ -f ".env" ]] && source ".env"
 
 # Bash prompt {{{1
 # ----------------
