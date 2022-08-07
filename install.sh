@@ -439,6 +439,10 @@ __install_xournalpp() {
     install --copy "xournalpp/.xournalpp/settings.xml" "xournalpp/.xournalpp/toolbar.ini"
 }
 
+# :target: yapf - yapf Python formatter
+__install_yapf() {
+    install "yapf/.config/yapf"
+}
 # :target: youtube-dl - youtube-dl configuration
 __install_youtube-dl() {
     install "youtube-dl/.config/youtube-dl.conf"
