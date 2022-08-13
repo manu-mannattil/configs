@@ -41,6 +41,15 @@ user_pref("browser.sessionstore.max_tabs_undo", 0);
 user_pref("browser.sessionstore.max_windows_undo", 0);
 user_pref("browser.sessionstore.restore_on_demand", false);
 
+// Disable all sponsored crap.
+user_pref("browser.newtabpage.activity-stream.showSponsored", false);
+user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
+user_pref("browser.urlbar.suggest.quicksuggest.nonsponsored", false);
+user_pref("browser.urlbar.suggest.quicksuggest.sponsored", false);
+user_pref("browser.urlbar.suggest.topsites", false);
+user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsored", false);
+user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSites", false);
+
 // Quieter fox.
 user_pref("extensions.getAddons.showPane", false);
 user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
@@ -85,6 +94,8 @@ user_pref("identity.fxaccounts.enabled", false);
 
 // ------------- DNS -------------
 
+// Cloudflare test page for DOH: https://1.1.1.1/help
+
 // All DNS queries over HTTPS (DoH).  If a query fails, fall back to
 // conventional resolution.
 user_pref("network.trr.mode", 2);
@@ -127,7 +138,7 @@ user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 
 // This is like the $GDK_SCALE environment variable that GTK+ uses for
 // HiDPI scaling, but allows fractional scaling.
-// user_pref("layout.css.devPixelsPerPx", 1.75);
+// user_pref("layout.css.devPixelsPerPx", "1.75");
 
 // Highlight matching search terms.
 user_pref("findbar.highlightAll", true);
@@ -175,3 +186,4 @@ user_pref("browser.urlbar.trimURLs", false);
 // Display "Not Secure" icon and text on HTTP websites.
 user_pref("security.insecure_connection_icon.enabled", true);
 user_pref("security.insecure_connection_text.enabled", true);
+
