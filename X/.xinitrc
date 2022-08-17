@@ -56,8 +56,10 @@ then
     export GDK_DPI_SCALE=0.5
 
     # HiDPI Qt settings.
+    # Set QT_AUTO_SCREEN_SCALE_FACTOR to 0 since we're
+    # setting the DPI exactly.
     export QT_FONT_DPI=168
-    export QT_AUTO_SCREEN_SCALE_FACTOR=1
+    export QT_AUTO_SCREEN_SCALE_FACTOR=0
 
     # We need this since GTK 2.0 needs to have a different configuration for
     # low-DPI screens.
@@ -132,7 +134,8 @@ export TEXMFHOME="${HOME}/.texmf"
 export TERMINAL="${HOME}/code/scripts/terminal"
 
 # Start redshift to adjust screen temperature.
-redshift -l '43.088947:-76.154480' &
+redshift -l '43.088947:-76.154480' & # Syracuse
+# redshift -l '10.530345:76.214729' & # Thrissur
 
 # Set the background color to a no-nonsense gray.
 if command -v hsetroot &>/dev/null

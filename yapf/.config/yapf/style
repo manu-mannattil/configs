@@ -1,6 +1,6 @@
 [style]
 based_on_style = pep8
-spaces_before_comment = 4
+spaces_before_comment = 1
 split_before_logical_operator = true
 column_limit = 100
 no_spaces_around_selected_binary_operators = true
