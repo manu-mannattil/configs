@@ -1,0 +1,18 @@
+extends: existence
+message: "avoid '%s'"
+ignorecase: true
+level: warning
+tokens:
+  - "cent.?percent"
+  - "cousin.?(?:brother|sister)"
+  - dear respected
+  - do one thing
+  - gentle reminder
+  - goes on going
+  - humbly request
+  - "non.?veg(etarian)?"
+  - single sitting
+  - the needful
+  - "time.?pass"
+  - topper
+  - single sitting

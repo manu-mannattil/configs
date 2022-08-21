@@ -1,0 +1,49 @@
+extends: substitution
+message: "use %s instead of '%s'?"
+ignorecase: true
+level: warning
+action:
+  name: replace
+swap:
+  batchmate: classmate
+  "bio.?data": resumé
+  clearing: passing exams
+  closet: toilet
+  "concerns?": question
+  curd: yogurt
+  "(?:dear|respected) (?:sir|mam|madam)": dear ms./mrs./dr./prof. ...
+  "discuss(?:ed)? about": discuss
+  "doubts?": question
+  dustbin: wastebasket
+  "eve.?teasing": harass
+  expired: died
+  geyser: water heater
+  good name: name
+  "hall.?room": living room or drawing room
+  i beg to state: i wish to state
+  is no more: died
+  is paining: hurts
+  level best: best
+  "loose.?motion": diarrhea
+  make out: understand
+  mixie: blender
+  "order(?:ed)? for": order
+  out of station: out of town
+  parcel: take-out, take-away, etc.
+  "pass(?:ed)?.?out": graduate
+  "petrol.?(?:bunk|pump)": filling/petrol/gas station
+  "prepone(?:d)": advance
+  revert: reply
+  salient feature: feature
+  studied about: studied
+  study about: study
+  thanking you: thank you, regards, etc.
+  thumb rule: rule of thumb
+  till date: still, yet, so far, etc.
+  "time.?waste": waste of time
+  today morning: this morning
+  "tube.?light": fluorescent lamp or fluorescent tube
+  vessels: utensils
+  "visiting.?card": business card
+  years back: years ago
+  yesterday night: last night

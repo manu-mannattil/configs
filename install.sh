@@ -383,6 +383,12 @@ __install_tridactyl() {
     install "tridactyl/.tridactylrc" "tridactyl/.tridactylrc"
 }
 
+# :target: vale - vale linter configuration
+__install_vale() {
+    install "vale/.vale"
+    vale --config "${HOME}/.vale/vale.ini" sync
+}
+
 # :target: vim - Vim configuration and plugins
 __install_vim() {
     install "vim/.vimrc" "vim/.vim" "vim/.gvimrc"
