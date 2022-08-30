@@ -1,2 +1,7 @@
-Small wrappers (e.g., to set environment variables) around several
-applications and commands.
+Small wrappers (e.g., to set environment variables) around
+several applications and commands.
+
+It's important to make sure that .desktop entries in
+/usr/share/applications have the correct Exec, TryExec
+fields.  Some offenders (e.g., Zoom) hard code the full path
+to the executables in the Exec fields.

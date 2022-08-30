@@ -107,6 +107,8 @@ xset b off
 export GTK_IM_MODULE="xim"
 export QT_IM_MODULE="xim"
 
+export QT_STYLE_OVERRIDE="adwaita-dark"
+
 # X11 keyboard layout tweaks
 # --------------------------
 
@@ -149,6 +151,9 @@ fi
 
 # Use dunst for notifications.
 dunst &
+
+# Control computer usage.
+xwrits top clock breakclock mouse=5 breaktime=10 typetime=60 &
 
 # I really don't want the overhead of a compositor, but Zoom's screen
 # sharing requires a compositor -- otherwise black squares will replace

@@ -16,7 +16,7 @@
     <action name="Execute"><execute>firefox</execute></action>
   </item>
   <item label="Firefox (private)">
-    <action name="Execute"><execute>ff-private</execute></action>
+    <action name="Execute"><execute>firefox-private</execute></action>
   </item>
   <!-- This requires the presence of the 'openbox-menu' package to work -->
   <menu id="/Debian" />

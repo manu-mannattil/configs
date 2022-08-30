@@ -12,7 +12,6 @@
 # installed:
 #
 #   DeaDBeeF              https://deadbeef.sourceforge.io/download.html
-#   fasd                  https://github.com/clvv/fasd/tarball/1.0.1
 #   fzf                   https://github.com/junegunn/fzf-bin/releases
 #                         https://raw.githubusercontent.com/junegunn/fzf/master/man/man1/fzf.1
 #   Geekbench             https://www.geekbench.com/download/linux/
@@ -81,6 +80,7 @@ PACKAGES=(
   apt-file # search for files within Debian packages (command-line interface)
 
   # Desktop and window managers
+  adwaita-qt # Adwaita light/dark theme for Qt
   gnome-icon-theme # GNOME Desktop icon theme
   gnome-themes-extra # Adwaita GTK+ 2 theme — engine
   i3 # metapackage (i3 window manager, screen locker, menu, statusbar)
@@ -119,6 +119,7 @@ PACKAGES=(
   xinput # Runtime configuration and test of XInput devices
   xsel # command-line tool to access X clipboard and selection buffers
   xserver-xorg-video-intel # X.Org X server -- Intel i8xx, i9xx display driver
+  xwrits # remind you to take regular breaks from the computer
 
   # Download managers
   aria2 # High speed download utility
@@ -177,10 +178,10 @@ PACKAGES=(
   darktable # virtual lighttable and darkroom for photographers
   exif # command-line utility to show EXIF information in JPEG files
   exiftran # digital camera JPEG image transformer
-  libimage-exiftool-perl # library and program to read and write meta information in multimedia files
-  gimp # GNU Image Manipulation Program
+  gifsicle # GIF compressor
   gimp-data-extras # Extra brushes and patterns for GIMP
   gimp-gap # animation package for the GIMP
+  gimp # GNU Image Manipulation Program
   gimp-help-en # Documentation for the GIMP (English)
   gimp-lensfun # Gimp plugin to correct lens distortion using the lensfun library
   gimp-plugin-registry # repository of optional extensions for GIMP
@@ -188,6 +189,7 @@ PACKAGES=(
   hugin # panorama photo stitcher - GUI tools
   ink-generator # Inkscape extension to automatically generate files from a template
   inkscape # vector-based drawing program
+  libimage-exiftool-perl # library and program to read and write meta information in multimedia files
   optipng # advanced PNG (Portable Network Graphics) optimizer
   pngcrush # optimizes PNG (Portable Network Graphics) files
   rawtherapee # raw image converter and digital photo processor
@@ -286,6 +288,7 @@ PACKAGES=(
 
   # Utilities (assorted)
   dateutils # nifty command line date and time utilities
+  fasd # jump to directories and files quickly
   libtext-lorem-perl # random faux Latin text generator
   ncal # CLI calender program
   parallel # build and execute command lines from standard input in parallel

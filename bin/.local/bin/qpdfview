@@ -3,4 +3,10 @@
 # Setting QT_AUTO_SCREEN_SCALE_FACTOR pixelizes PDFs in qpdfview.
 # But almost all other Qt applications require it for HiDPI screens.
 unset QT_AUTO_SCREEN_SCALE_FACTOR
-exec /usr/bin/qpdfview "$@"
+
+# If there's evidence that we're opening a PDF that was compiled using
+# SyncTeX, use the LaTeX instance of qpdfview.  This way, a new window
+# will not be opened when compiling the file again (in VimTeX that is).
+[ $# -eq 1 ] && [ -f "${1%.*}.synctex.gz" ] && set -- --instance LaTeX "$1"
+
+exec /usr/bin/qpdfview --unique "$@"
