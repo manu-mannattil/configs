@@ -1,5 +1,17 @@
 #!/bin/sh
 
+# I want to limit the number of SpaceFM windows that are spawned, and
+# when using i3 I want them on workspace 4.  The thing is that, if I'm
+# not in workspace 4, on calling SpaceFM, for reasons I don't fully
+# understand, a new window is created irrespective of the options, e.g.,
+# --reuse-tabs, I supply.  To prevent this from happening, we check if
+# both i3 and SpaceFM are running and if yes, we first switch to
+# workspace 4 before launching SpaceFM.
+if { pgrep -x i3 && pgrep -x spacefm; } >/dev/null 2>&1
+then
+    i3-msg workspace 4
+fi
+
 # Always have just one window open.  We can always split that window
 # within SpaceFM if needed.
 exec /usr/bin/spacefm --reuse-tab --no-saved-tabs "$@"

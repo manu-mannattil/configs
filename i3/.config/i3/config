@@ -272,9 +272,6 @@ for_window [window_type="menu"] floating enable
 # Terminals and file browser (workspace 1) {{{2
 # ---------------------------------------------
 
-for_window [class="Spacefm"] move container to workspace 1
-for_window [class="Spacefm"] focus
-
 for_window [class="URxvt"] move container to workspace 1
 for_window [class="URxvt"] focus
 
@@ -283,6 +280,9 @@ for_window [class="URxvt"] focus
 
 for_window [class="firefox"] move container to workspace 2
 for_window [class="firefox"] focus
+
+for_window [class="Liferea"] move container to workspace 2
+for_window [class="Liferea"] focus
 
 # Media (workspace 3) {{{2
 # ------------------------
@@ -297,14 +297,14 @@ for_window [class="mpv"] focus
 for_window [class="vlc"] move container to workspace 3
 for_window [class="vlc"] focus
 
-# Other Internet/network (workspace 2) {{{2
-# -----------------------------------------
+# File management (workspace 4) {{{2
+# ----------------------------------
 
 for_window [class="Filezilla"] move container to workspace 4
 for_window [class="Filezilla"] focus
 
-for_window [class="Liferea"] move container to workspace 4
-for_window [class="Liferea"] focus
+for_window [class="Spacefm"] move container to workspace 4
+for_window [class="Spacefm"] focus
 
 # Large/bloated GUIs (workspace 9) {{{2
 # -------------------------------------
@@ -320,6 +320,9 @@ for_window [class="lyx"] focus
 
 for_window [class="Inkscape"] move container to workspace 9
 for_window [class="Inkscape"] focus
+
+for_window [class="Gimp"] move container to workspace 9
+for_window [class="Gimp"] focus
 
 for_window [class="Mathematica"] move container to workspace 9
 for_window [class="Mathematica"] focus
