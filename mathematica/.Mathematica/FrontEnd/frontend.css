@@ -2,10 +2,6 @@
 
 /* Global font size. */
 * {
-  font-size: 12pt;
-}
-
-/* Menu bar and contents. */
-QMenuBar, QMenu {
-  font-size: 10.5pt;
+  font-size: 10pt;
+  zoom: 10;
 }

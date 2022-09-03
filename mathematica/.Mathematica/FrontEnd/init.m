@@ -1,5 +1,6 @@
 SetOptions[$FrontEnd,
-VersionsLaunched->{"12.3.1"},
+VersionsLaunched->{"13.1.0"},
+DefaultStyleDefinitions->"ReverseColor.nb",
 PrivateFrontEndOptions->{"DialogSettings"->{
   "Login"->{"RememberMe"->True},
   "WelcomeScreen"->{"ShowRecentFilesContextMenu"->False}},
