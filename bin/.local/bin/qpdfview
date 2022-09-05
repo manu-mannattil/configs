@@ -7,6 +7,6 @@ unset QT_AUTO_SCREEN_SCALE_FACTOR
 # If there's evidence that we're opening a PDF that was compiled using
 # SyncTeX, use the LaTeX instance of qpdfview.  This way, a new window
 # will not be opened when compiling the file again (in VimTeX that is).
-[ $# -eq 1 ] && [ -f "${1%.*}.synctex.gz" ] && set -- --instance LaTeX "$1"
+[ $# -eq 1 ] && [ -f "${1%.*}.tex" ] && set -- --instance LaTeX "$1"
 
 exec /usr/bin/qpdfview --unique "$@"

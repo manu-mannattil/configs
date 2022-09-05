@@ -260,9 +260,6 @@ for_window [class="matplotlib"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Steam"] floating enable
 for_window [title="editinvim"] floating enable
-
-# Default floating mode for windows (e.g., pop-up) that one wouldn't use for
-# more than a few seconds.
 for_window [window_role="Preferences"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="pop-up"] floating enable
@@ -275,6 +272,9 @@ for_window [window_type="menu"] floating enable
 
 for_window [class="URxvt"] move container to workspace 1
 for_window [class="URxvt"] focus
+
+for_window [class="Spacefm"] move container to workspace 1
+for_window [class="Spacefm"] focus
 
 # Browsers (workspace 2) {{{2
 # ---------------------------
@@ -298,14 +298,11 @@ for_window [class="mpv"] focus
 for_window [class="vlc"] move container to workspace 3
 for_window [class="vlc"] focus
 
-# File management (workspace 4) {{{2
-# ----------------------------------
+# Mathematica (workspace 7) {{{2
+# ------------------------------
 
-for_window [class="Filezilla"] move container to workspace 4
-for_window [class="Filezilla"] focus
-
-for_window [class="Spacefm"] move container to workspace 4
-for_window [class="Spacefm"] focus
+for_window [class="Mathematica"] move container to workspace 7
+for_window [class="Mathematica"] focus
 
 # Large/bloated GUIs (workspace 9) {{{2
 # -------------------------------------
@@ -325,5 +322,5 @@ for_window [class="Inkscape"] focus
 for_window [class="Gimp"] move container to workspace 9
 for_window [class="Gimp"] focus
 
-for_window [class="Mathematica"] move container to workspace 9
-for_window [class="Mathematica"] focus
+for_window [class="Filezilla"] move container to workspace 9
+for_window [class="Filezilla"] focus

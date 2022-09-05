@@ -99,6 +99,10 @@ else
     xrdb -merge "${HOME}/.Xresources"
 fi
 
+# Qt theming.
+export QT_QPA_PLATFORMTHEME=gtk3
+export QT_STYLE_OVERRIDE="adwaita-dark"
+
 # Turn off the system bell.
 xset b off
 
@@ -106,8 +110,6 @@ xset b off
 # Without this, custom mappings in ~/.XCompose won't work.
 export GTK_IM_MODULE="xim"
 export QT_IM_MODULE="xim"
-
-export QT_STYLE_OVERRIDE="adwaita-dark"
 
 # X11 keyboard layout tweaks
 # --------------------------
@@ -153,7 +155,7 @@ fi
 dunst &
 
 # Control computer usage.
-xwrits top clock breakclock mouse=5 breaktime=10 typetime=60 &
+xwrits top clock breakclock mouse=5 &
 
 # I really don't want the overhead of a compositor, but Zoom's screen
 # sharing requires a compositor -- otherwise black squares will replace
@@ -164,11 +166,6 @@ compton --backend glx -b -c -l0 -t0 -r0 -o.00
 # Will reduce the time it takes for xdg-open to figure out that the DE
 # is a generic one.
 export XDG_CURRENT_DESKTOP="X-Generic"
-
-# Xubuntu sets this to gtk2.  But without setting this to gtk3, Qt
-# applications don't seem to respect font settings.  I don't know how
-# it works on Xubuntu.
-export QT_QPA_PLATFORMTHEME=gtk3
 
 # Since updating to Debian 10.10, launching the WM using dbus-launch
 # seems to be required to have a nonempty $DBUS_SESSION_BUS_ADDRESS.

@@ -8,8 +8,9 @@ PrivateFrontEndOptions->{"DialogSettings"->{
 "ShowAtStartup"->"NewDocument",
 "WolframAlphaSettings"->{"Autoload"->False, "SendMathematicaSessionInfo"->False}},
 PrivateNotebookOptions->{"FinalWindowPrompt"->False},
-(* Make variables local to current notebook. *)
 CellContext->Notebook,
-(* Disable predictive interface. *)
-ShowPredictiveInterface->False
+ShowPredictiveInterface->False,
+TrackCellChangeTimes->False,
+BlinkingCellInsertionPoint->False,
+TabSpacings->{2.},
 ]
