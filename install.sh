@@ -284,7 +284,9 @@ __install_liferea() {
 # :target: mathematica - Wolfram Mathematica configuration
 __install_mathematica() {
     install --copy "mathematica/.Mathematica/FrontEnd/init.m"
-    install "mathematica/.Mathematica/Kernel/init.m" "mathematica/.Mathematica/FrontEnd/frontend.css"
+    install "mathematica/.Mathematica/Kernel/init.m" \
+            "mathematica/.Mathematica/FrontEnd/frontend.css" \
+            "mathematica/.Mathematica/SystemFiles/FrontEnd/TextResources/X"
 }
 
 # :target: matplotlib - matplotlib configuration
