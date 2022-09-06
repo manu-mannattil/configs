@@ -1,13 +1,12 @@
 @@resource KeyEventTranslations
+
 (* Modifiers can be "Shift", "Control", "Command", "Option"
-  For Macintosh: "Command" = Command Key, "Option" = Option Key
-  For X11: "Command" = Mod1, "Option" = Mod2
-  For Windows: "Command" = Alt, "Option" = Alt
-*)
+   For Macintosh: "Command" = Command Key, "Option" = Option Key
+   For X11: "Command" = Mod1, "Option" = Mod2
+   For Windows: "Command" = Alt, "Option" = Alt *)
 
 EventTranslations[{
-
-(* Evaluation *)
+  (* Evaluation *)
   Item[KeyEvent["Enter"], "EvaluateCells"],
   Item[KeyEvent["KP_Enter"], "EvaluateCells"],
   Item[KeyEvent["Return", Modifiers -> {Shift}], "HandleShiftReturn"],
@@ -18,7 +17,7 @@ EventTranslations[{
   Item[KeyEvent[",", Modifiers->{Command}], FrontEnd`EvaluatorInterrupt[Automatic]],
   Item[KeyEvent["Escape"], "ShortNameDelimiter"],
 
-(* Cursor control *)
+  (* Cursor control *)
   Item[KeyEvent["Up"], "MovePreviousLine"],
   Item[KeyEvent["KP_Up"], "MovePreviousLine"],
   Item[KeyEvent["Down"], "MoveNextLine"],
@@ -34,7 +33,7 @@ EventTranslations[{
   Item[KeyEvent["Home"], "MoveLineBeginning"],
   Item[KeyEvent["KP_Home"], "MoveLineBeginning"],
 
-(* Selection *)
+  (* Selection *)
   Item[KeyEvent["Right", Modifiers -> {Shift}], "SelectNext"],
   Item[KeyEvent["Left", Modifiers -> {Shift}], "SelectPrevious"],
   Item[KeyEvent["Right", Modifiers -> {Control, Shift}], "SelectNextNaturalWord"],
@@ -46,7 +45,7 @@ EventTranslations[{
   Item[KeyEvent[".", Modifiers -> {Control}], "ExpandSelection"],
   Item[KeyEvent["KP_Decimal", Modifiers -> {Control}], "ExpandSelection"],
 
-(* Notebook window control *)
+  (* Notebook window control *)
   Item[KeyEvent["Up", Modifiers -> {Control}], "ScrollLineUp"],
   Item[KeyEvent["Down", Modifiers -> {Control}], "ScrollLineDown"],
   Item[KeyEvent["Page_Up"], "ScrollPageUp"],
@@ -65,11 +64,10 @@ EventTranslations[{
       FrontEnd`SelectionMove[FrontEnd`InputNotebook[], After, Notebook],
       FrontEnd`FrontEndToken[FrontEnd`InputNotebook[], "ScrollNotebookEnd"]
     }]],
-  Item[KeyEvent["w", Modifiers -> {Control}], "Close"],
   Item[KeyEvent["Left", Modifiers->{Command}], "HyperlinkGoBack"],
   Item[KeyEvent["Right", Modifiers->{Command}], "HyperlinkGoForward"],
 
-(* Input *)
+  (* Input *)
   Item[KeyEvent["Return"], "Linebreak"],
   Item[KeyEvent["Tab"], "Tab"],
   Item[KeyEvent["Tab", Modifiers -> {Shift}], "ShiftTab"],
@@ -79,7 +77,7 @@ EventTranslations[{
   Item[KeyEvent["Backspace", Modifiers->{Control}], "DeletePreviousNaturalWord"],
   Item[KeyEvent["Delete", Modifiers->{Control}], "DeleteNextNaturalWord"],
 
-(* Typesetting input *)
+  (* Typesetting input *)
   Item[KeyEvent["6", Modifiers -> {Control}], "Superscript"],
   Item[KeyEvent["KP_6", Modifiers -> {Control}], "Superscript"],
   Item[KeyEvent["^", Modifiers -> {Control}], "Superscript"],
@@ -117,12 +115,12 @@ EventTranslations[{
   Item[KeyEvent["Page_Up", Modifiers-> {Control}, CellClass -> BoxFormData], "PreviousFunctionTemplate"],
   Item[KeyEvent["Page_Down", Modifiers-> {Control}, CellClass -> BoxFormData], "NextFunctionTemplate"],
 
-(* Typesetting motion commands *)
+  (* Typesetting motion commands *)
   Item[KeyEvent[" ", Modifiers -> {Control}], "MoveDelimiterEnd"],
   Item[KeyEvent["Tab", Modifiers -> {Control}, CellClass -> BoxFormData], "MoveNextExpression"],
   Item[KeyEvent["Tab", Modifiers -> {Control, Shift}, CellClass -> BoxFormData], "MovePreviousExpression"],
 
-(* Drawing tool commands *)
+  (* Drawing tool commands *)
   Item[KeyEvent["o", CellClass->BoxFormData, BoxClass->GraphEdit2D], FrontEndExecute[Select2DTool["Select"]]],
   (* Reassigned to Rectangle in v8; I doubt anyone knows "r" does anything.  Double-click is easier. *)
   (* Item[KeyEvent["r", CellClass->BoxFormData, BoxClass->GraphEdit2D], FrontEndExecute[Select2DTool["Reshape"]]],*)
@@ -148,7 +146,7 @@ EventTranslations[{
   Item[KeyEvent["v", CellClass->BoxFormData, BoxClass->GraphEdit3D], FrontEndExecute[Select3DTool["AdjustView"]]],
   Item[KeyEvent["m", CellClass->BoxFormData, BoxClass->GraphEdit3D], FrontEndExecute[Select3DTool["AdjustLights"]]],
 
-(* Miscellaneous menu commands *)
+  (* Miscellaneous menu commands *)
   Item[KeyEvent["Cut"], "Cut"],
   Item[KeyEvent["Copy"], "Copy"],
   Item[KeyEvent["Paste"], Paste[After]],
@@ -161,5 +159,40 @@ EventTranslations[{
   Item[KeyEvent["Delete", Modifiers -> {Shift}], "Cut"],
   Item[KeyEvent["F1", Modifiers->{Shift}], SelectionHelpDialog[False]],
   Item[KeyEvent["F2"], FrontEnd`CompleteSelection[True]],
-  Item[KeyEvent["F10", Modifiers->{Shift}], "ShowContextMenu"]
+  Item[KeyEvent["F10", Modifiers->{Shift}], "ShowContextMenu"],
+
+  (* Custom keybindings *)
+  Item[KeyEvent["f", Modifiers -> {Control}], "MoveNext"],
+  Item[KeyEvent["f", Modifiers -> {Command}], "MoveNextNaturalWord"],
+  Item[KeyEvent["b", Modifiers -> {Control}], "MovePrevious"],
+  Item[KeyEvent["b", Modifiers -> {Command}], "MovePreviousNaturalWord"],
+  Item[KeyEvent["n", Modifiers -> {Control}], "MoveNextLine"],
+  Item[KeyEvent["p", Modifiers -> {Control}], "MovePreviousLine"],
+  Item[KeyEvent["a", Modifiers -> {Control}], "MoveLineBeginning"],
+  Item[KeyEvent["e", Modifiers -> {Control}], "MoveLineEnd"],
+
+  Item[KeyEvent["f", Modifiers -> {Control, Command}, CellClass -> BoxFormData], "MoveNextExpression"],
+  Item[KeyEvent["b", Modifiers -> {Control, Command}, CellClass -> BoxFormData], "MovePreviousExpression"],
+  Item[KeyEvent["f", Modifiers -> {Control, Shift}], "MoveDelimiterEnd"],
+
+  Item[KeyEvent["]", Modifiers -> {Control}], "MoveNextCell"],
+  Item[KeyEvent["[", Modifiers -> {Control}], "MovePreviousCell"],
+
+  Item[KeyEvent["Backspace"], "DeletePrevious"],
+  Item[KeyEvent["d", Modifiers -> {Control}], "DeleteNext"],
+  Item[KeyEvent["d", Modifiers -> {Command}], "DeleteNextNaturalWord"],
+  Item[KeyEvent["Backspace", Modifiers -> {Command}], "DeletePreviousNaturalWord"],
+
+  Item[KeyEvent["n", Modifiers -> {Command}], "ScrollPageDown"],
+  Item[KeyEvent["p", Modifiers -> {Command}], "ScrollPageUp"],
+  Item[KeyEvent["Prior"], "ScrollPageUp"],
+  Item[KeyEvent["Next"], "ScrollPageDown"],
+
+  (* C-w to delete cell; adapted from https://mathematica.stackexchange.com/a/1977 *)
+  Item[KeyEvent["k", Modifiers -> {Control}],
+    FrontEndExecute[{
+      FrontEnd`SelectionMove[FrontEnd`SelectedNotebook[], All, Cell],
+      FrontEnd`FrontEndToken["Clear"]
+    }]
+  ]
 }]

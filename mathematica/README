@@ -1,0 +1,88 @@
+                    CONFIGURATION NOTES
+
+1. Warnings of the following type
+
+      An improperly formatted directive with head ... was
+      encountered...
+
+   is indicative of a syntax error in either FrontEnd/init.m
+   or Kerner/init.m.  In particular, in FrontEnd/init.m make
+   sure that the last item in the argument list of
+   SetOptions[...] is _not_ followed by a comma.
+
+2. Keybindings can be customized by changing MenuSetup.tr
+   and KeyEventsTranslations.tr.  But the former has
+   precedence over the latter.
+
+3. The default MenuSetup.tr and KeyEventsTranslations.tr can be found
+   by inspecting the installation directory, usually under
+
+      .../path/to/installation/SystemFiles/FrontEnd/TextResources/X/
+
+4. Meta modifiers for menu items can be removed by removing
+   the ampersands (&) from the menu names in MenuSetup.tr.
+   For example, to remove the M-r shortcut for Format,
+   replace Menu["Fo&rmat", ...] with Menu["Format", ...]
+
+
+         EMACS-INSPIRED KEYBINDINGS FOR MATHEMATICA
+
+I would've preferred vi-style keybindings, but modal editing
+is hard to emulate, so I've settled for Emacs-style bindings
+instead.  Also, I've stripped the meta modifiers of all the
+menu items from my MenuSetup.tr since I don't use them and
+to avoid needless conflicts.
+
+Following Emacs notation, C-x is Ctrl+X; M-x is usually
+Alt+X; S-x is Shift+X; and C-M-x is Ctrl+Alt+X, etc.  Also,
+DEL is the "backspace" key, and not the "delete" key.
+
+MOVING COMMANDS
+
+  The following moving commands are completely analogous to
+  their Emacs counterparts:
+
+      C-f     move one character forward
+      M-f     move forward to next word
+      C-b     move one character backward
+      M-b     move backward to previous word
+      C-n     move to next line
+      C-p     move to previous line
+      C-a     move to beginning of line
+      C-e     move to end of line
+
+  Somewhat analogous commands:
+
+      M-p     move page up
+      M-n     move page down
+
+      C-M-f   move to next expression
+      C-M-b   move to previous expression
+      C-S-f   move to next delimiter ), ], }, etc.
+
+  The following moving commands have been inspired by Vim's
+  } and { motion commands and Emacs's M-} and M-{ keys to
+  move forward/backward by paragraphs:
+
+      C-]     move to next cell
+      C-[     move to previous cell
+
+EDITING COMMANDS
+
+  The following commands are somewhat analogous to their
+  Emacs counterparts:
+
+      C-k     delete current cell
+
+  Completely analogous commands:
+
+      DEL     delete one character backward
+      C-D     delete one character forward
+      M-DEL   delete one word backward
+      M-D     delete one word forward
+
+MISCELLANEOUS
+
+      M-/     search (i.e., find)
+      M-;     comment/uncomment selection
+      C-S-.   select all (cf. C-. to extend selection)
