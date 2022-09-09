@@ -6,7 +6,7 @@
       encountered...
 
    is indicative of a syntax error in either FrontEnd/init.m
-   or Kerner/init.m.  In particular, in FrontEnd/init.m make
+   or Kernel/init.m.  In particular, in FrontEnd/init.m make
    sure that the last item in the argument list of
    SetOptions[...] is _not_ followed by a comma.
 
@@ -25,7 +25,7 @@
    replace Menu["Fo&rmat", ...] with Menu["Format", ...]
 
 
-         EMACS-INSPIRED KEYBINDINGS FOR MATHEMATICA
+                 EMACS-INSPIRED KEYBINDINGS
 
 I would've preferred vi-style keybindings, but modal editing
 is hard to emulate, so I've settled for Emacs-style bindings

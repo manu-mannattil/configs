@@ -1,6 +1,6 @@
 SetOptions[$FrontEnd,
 VersionsLaunched->{"13.1.0"},
-DefaultStyleDefinitions->"ReverseColor.nb",
+DefaultStyleDefinitions->"Custom.nb",
 PrivateFrontEndOptions->{"DialogSettings"->{
   "Login"->{"RememberMe"->True},
   "WelcomeScreen"->{"ShowRecentFilesContextMenu"->False}},
@@ -10,7 +10,6 @@ PrivateFrontEndOptions->{"DialogSettings"->{
 PrivateNotebookOptions->{"FinalWindowPrompt"->False},
 CellContext->Notebook,
 ShowPredictiveInterface->False,
-TrackCellChangeTimes->False,
 BlinkingCellInsertionPoint->False,
-TabSpacings->{2.},
+TabSpacings->{2.}
 ]

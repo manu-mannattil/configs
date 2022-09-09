@@ -194,5 +194,5 @@ EventTranslations[{
       FrontEnd`SelectionMove[FrontEnd`SelectedNotebook[], All, Cell],
       FrontEnd`FrontEndToken["Clear"]
     }]
-  ]
+  ],
 }]
