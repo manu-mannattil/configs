@@ -124,6 +124,7 @@ let b:snipmate_quick_snippets = [
       \ ['`^', '\hat{${1}}${2}'],
       \ ['`{', '\left\{${1}\right\}${2}'],
       \ ['`~', '\tilde{${1}}${2}'],
+      \ ['`.', '\dot{${1}}${2}'],
       \]
 
 for snippet in b:snipmate_quick_snippets
