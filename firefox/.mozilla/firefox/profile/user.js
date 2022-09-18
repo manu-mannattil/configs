@@ -5,6 +5,11 @@
 // effect of making you fitter, happier, more productive,
 // comfortable, not drinking too much ...
 //
+// NOTE: if you've set a particular preference and it's not
+// being honored by Firefox, check (i) if there are typos,
+// (ii) if the preference value is properly quoted (or not),
+// (iii) if there _is_ a semicolon at the end of the line.
+//
 
 // ------------- Updates -------------
 
@@ -121,14 +126,26 @@ user_pref("network.security.esni.enabled", true);
 
 // ------------- Usability -------------
 
+// Treat me like an adult.
+user_pref("browser.aboutConfig.showWarning", false);
+
 // Disable Ctrl+Q quit shortcut.
 user_pref("browser.quitShortcut.disabled", true);
 
-// Ask what to do when downloading a file (old behavior).
+// There is so much BS regarding how the new Firefox downloads files.
+// I don't know if these options conflict each other (they probably do),
+// but I'm getting the old behavior back.  This whole thing can be fixed
+// by a few lines of if-else checks, but yet, here we are.
 user_pref("browser.download.improvements_to_download_panel", false);
-
-// Always ask for where to store downloaded files.
+user_pref("browser.download.start_downloads_in_tmp_dir", true);
+user_pref("browser.download.always_ask_before_handling_new_types", true);
 user_pref("browser.download.useDownloadDir", false);
+user_pref("browser.download.dir", "/tmp/downloads");
+user_pref("browser.download.lastDir", "/tmp/downloads");
+
+// Use the default download directory as the fallback
+// directory for uploading as well.
+user_pref("dom.input.fallbackUploadDir", "/tmp/downloads");
 
 // Blank startup and newtab page.
 user_pref("browser.newtab.preload", false);
