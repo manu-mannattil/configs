@@ -2,6 +2,7 @@
 
 [ -d ~/.dropbox-dist ] || {
     echo >&2 "${0##*/}: downloading dropbox daemon"
+    cd ~
     wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 }
 
