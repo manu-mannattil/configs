@@ -1,0 +1,56 @@
+GIMP Palette
+Name: Custom
+
+# Some default colors.
+0   0   0    Black
+255 255 255  White
+255   0   0  Red
+  0 255   0  Green
+  0   0 255  Blue
+255 255   0  Yellow
+  0 255 255  Aqua
+255   0 255  Pink
+
+# Bluesmoke.
+047 093 140 bs0 [#cde-9]
+053 106 159 bs1 [#cde-8]
+060 119 178 bs2 [#cde-7]
+070 132 193 bs3 [#cde-6]
+089 144 200 bs4 [#cde-5]
+108 157 206 bs5 [#cde-4]
+128 170 212 bs6 [#cde-3]
+147 183 219 bs7 [#cde-2]
+166 195 225 bs8 [#cde-1]
+204 221 238 bs9 [#cde+0]
+223 234 244 bs10 [#cde+1]
+242 246 251 bs11 [#cde+2]
+
+# Matplotlib colors.
+031 119 180 C0
+255 127 014 C1
+044 160 044 C2
+214 039 040 C3
+148 103 189 C4
+140 086 075 C5
+227 119 194 C6
+127 127 127 C7
+188 189 034 C8
+023 190 207 C9
+
+# Nord colors.
+046 052 064 polar night [nord0]
+059 066 082 polar night [nord1]
+067 076 094 polar night [nord2]
+076 086 106 polar night [nord3]
+216 222 233 snow storm [nord4]
+229 233 240 snow storm [nord5]
+236 239 244 snow storm [nord6]
+143 188 187 frost [nord7]
+136 192 208 frost [nord8]
+129 161 193 frost [nord9]
+094 129 172 frost [nord10]
+191 097 106 aurora [nord11]
+208 135 112 aurora [nord12]
+235 203 139 aurora [nord13]
+163 190 140 aurora [nord14]
+180 142 173 aurora [nord15]
