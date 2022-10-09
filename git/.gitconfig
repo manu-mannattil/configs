@@ -24,7 +24,8 @@
   empty-commit = commit --allow-empty-message -m ''
   lg = log --branches --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)[%an]%Creset' --abbrev-commit --date-order
   root = rev-parse --show-toplevel
-  st = status -s
+  st = status --branch --short --untracked-files=all
+  stt = !git --no-pager diff --stat
   texdiff = !git-latexdiff --latexmk --ln-untracked --quiet --latexpand --makeatletter --ignore-latex-errors
   wd = diff --word-diff
 
@@ -53,3 +54,6 @@
 
 [rebase]
   autoStash = true
+
+[help]
+  autocorrect = 1

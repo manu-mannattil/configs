@@ -251,6 +251,15 @@ bar {
 # Application settings {{{1
 # -------------------------
 
+# Use one of the following tokens:
+#
+#   class         con_id          con_mark
+#   floating      floating_from   id
+#   instance      tiling          tiling_from
+#   title         urgent          window_role
+#   window_type   workspace
+#
+
 # Floating mode {{{2
 # ------------------
 

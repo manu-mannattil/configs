@@ -49,4 +49,4 @@ SHELL=/bin/bash
 @hourly rm -f /tmp/editinvim.*
 
 # Clean *.torrent files from ~/ and ~/downloads.
-@hourly rm -f ~/*.torrent ~/downloads/*.torrent
+@hourly rm -f ~/*.torrent ~/downloads/*.torrent /tmp/downloads/*.torrent

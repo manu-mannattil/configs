@@ -2,4 +2,5 @@
 
 [ "$*" ] || set -- "about:blank"
 
+mkdir -p /tmp/downloads
 exec /usr/bin/firefox -P default "$@"
