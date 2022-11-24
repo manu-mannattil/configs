@@ -58,7 +58,6 @@ MOVING COMMANDS
 
       C-M-f   move to next expression
       C-M-b   move to previous expression
-      C-S-f   move to next delimiter ), ], }, etc.
 
   The following moving commands have been inspired by Vim's
   } and { motion commands and Emacs's M-} and M-{ keys to
@@ -84,5 +83,5 @@ EDITING COMMANDS
 MISCELLANEOUS
 
       M-/     search (i.e., find)
-      M-;     comment/uncomment selection
+      C-;     comment/uncomment selection
       C-S-.   select all (cf. C-. to extend selection)

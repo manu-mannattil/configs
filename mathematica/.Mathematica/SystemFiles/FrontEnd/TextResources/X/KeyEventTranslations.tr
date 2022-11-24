@@ -173,7 +173,6 @@ EventTranslations[{
 
   Item[KeyEvent["f", Modifiers -> {Control, Command}, CellClass -> BoxFormData], "MoveNextExpression"],
   Item[KeyEvent["b", Modifiers -> {Control, Command}, CellClass -> BoxFormData], "MovePreviousExpression"],
-  Item[KeyEvent["f", Modifiers -> {Control, Shift}], "MoveDelimiterEnd"],
 
   Item[KeyEvent["]", Modifiers -> {Control}], "MoveNextCell"],
   Item[KeyEvent["[", Modifiers -> {Control}], "MovePreviousCell"],
