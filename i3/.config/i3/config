@@ -258,16 +258,14 @@ bar {
 #   instance      tiling          tiling_from
 #   title         urgent          window_role
 #   window_type   workspace
-#
 
-# Floating mode {{{2
-# ------------------
+# Window types {{{2
+# -----------------
 
 for_window [class="Anki"] floating enable
 for_window [class="Arandr"] floating enable
 for_window [class="matplotlib"] floating enable
 for_window [class="Pavucontrol"] floating enable
-for_window [class="Steam"] floating enable
 for_window [title="editinvim"] floating enable
 for_window [window_role="Preferences"] floating enable
 for_window [window_role="bubble"] floating enable
@@ -275,6 +273,8 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
+
+for_window [class="Steam"] fullscreen enable
 
 # Terminals and file browser (workspace 1) {{{2
 # ---------------------------------------------
@@ -290,6 +290,12 @@ for_window [class="Spacefm"] focus
 
 for_window [class="firefox"] move container to workspace 2
 for_window [class="firefox"] focus
+
+for_window [class="Google-chrome"] move container to workspace 2
+for_window [class="Google-chrome"] focus
+
+for_window [class="Zeal"] move container to workspace 2
+for_window [class="Zeal"] focus
 
 for_window [class="Liferea"] move container to workspace 2
 for_window [class="Liferea"] focus
@@ -325,8 +331,11 @@ for_window [class="zoom"] focus
 for_window [class="lyx"] move container to workspace 9
 for_window [class="lyx"] focus
 
-for_window [class="Inkscape"] move container to workspace 9
-for_window [class="Inkscape"] focus
+# The hyphen is so that Inkscape extracted from the AppImage gets
+# recognized.  For reasons I don't understand, just checking the class
+# name doesn't work (version 1.2.1).
+for_window [title="- Inkscape"] move container to workspace 9
+for_window [title="- Inkscape"] focus
 
 for_window [class="Gimp"] move container to workspace 9
 for_window [class="Gimp"] focus
