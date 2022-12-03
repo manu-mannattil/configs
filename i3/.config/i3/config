@@ -99,12 +99,6 @@ bindsym $mod+b workspace back_and_forth
 # Move windows between two recent workspaces.
 bindsym $mod+Shift+b move container to workspace back_and_forth
 
-# Lock screen using Mod + Shift + X running i3lock.
-bindsym $mod+Shift+x exec --no-startup-id i3lock --ignore-empty-password --show-failed-attempts --color=333333
-
-# Use editinvim to edit the contents of a text box using Vim.
-bindsym $mod+Shift+v exec editinvim
-
 # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3).
 bindsym $mod+Shift+r restart
 
@@ -121,6 +115,15 @@ bindsym $mod+p exec passmenu
 
 # Switch windows using rofi.
 bindsym $mod+i exec rofi -show window
+
+# Lock screen using Mod + Shift + X running i3lock.
+bindsym $mod+Shift+x exec --no-startup-id i3lock --ignore-empty-password --show-failed-attempts --color=333333
+
+# Use editinvim to edit the contents of a text box using Vim.
+bindsym $mod+Shift+v exec editinvim
+
+# Invert colors.
+bindsym $mod+Shift+i exec xcalib -i -a
 
 # Mouse bindings {{{2
 # -------------------

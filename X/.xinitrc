@@ -155,7 +155,7 @@ fi
 dunst &
 
 # Control computer usage.
-xwrits top clock breakclock typetime=40 mouse=5 &
+xwrits top clock breakclock mouse=5 &
 
 # I really don't want the overhead of a compositor, but Zoom's screen
 # sharing requires a compositor -- otherwise black squares will replace
