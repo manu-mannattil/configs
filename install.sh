@@ -198,8 +198,6 @@ __install_firefox() {
         do
             ln -v -sf "${REPO}/firefox/.mozilla/firefox/profile/user.js" \
                 "${HOME}/.mozilla/firefox/${profile}"
-            cp -v -f "${REPO}/firefox/.mozilla/firefox/profile/handlers.json" \
-                "${HOME}/.mozilla/firefox/${profile}"
         done < <(sed -n 's/^Path=//p' "${HOME}/.mozilla/firefox/profiles.ini")
     fi
 

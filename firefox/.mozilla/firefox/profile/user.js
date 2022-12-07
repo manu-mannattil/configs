@@ -192,8 +192,10 @@ user_pref("font.default.x-western", "sans-serif");
 user_pref("font.name.sans-serif.x-western", "Nimbus Sans L");
 user_pref("font.name.serif.x-western", "Nimbus Roman No9 L");
 
-// Don't use the mailcap file to look up file/program associations.
-user_pref("helpers.global_mailcap_file", "");
+// Don't use the local ~/.mailcap file to look up file/program
+// associations.  However, don't change helpers.global_mailcap_file,
+// which should be /etc/mailcap (zoom.us links break otherwise, for
+// instance).
 user_pref("helpers.private_mailcap_file", "");
 
 // Printer settings (no headers/footers).
