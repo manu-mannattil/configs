@@ -122,7 +122,6 @@ bindsym $mod+Shift+x exec --no-startup-id i3lock --ignore-empty-password --show-
 # Use editinvim to edit the contents of a text box using Vim.
 bindsym $mod+Shift+v exec editinvim
 
-# Invert colors.
 bindsym $mod+Shift+i exec xcalib -i -a
 
 # Mouse bindings {{{2
@@ -277,8 +276,6 @@ for_window [window_role="task_dialog"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 
-for_window [class="Steam"] fullscreen enable
-
 # Terminals and file browser (workspace 1) {{{2
 # ---------------------------------------------
 
@@ -345,3 +342,7 @@ for_window [class="Gimp"] focus
 
 for_window [class="Filezilla"] move container to workspace 9
 for_window [class="Filezilla"] focus
+
+for_window [class="Steam"] move container to workspace 9
+for_window [class="Steam"] focus
+for_window [class="Steam"] floating enable
