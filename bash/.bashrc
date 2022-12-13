@@ -300,10 +300,32 @@ fi
 # -------
 
 # cd with automatic sourcing of .env files.
+# A leaner NIH version of autoenv: https://github.com/hyperupcall/autoenv
 cd() {
     if builtin cd "$@"
     then
-        [[ -f ".env" ]] && source ".env"
+        if [[ -f ".env" ]] && [[ "$PWD" != "$AUTOENV_ROOT" ]]
+        then
+            source ".env"
+            export AUTOENV_ROOT="$PWD"
+
+            if [[ -f ".env.leave" ]]
+            then
+                export AUTOENV_LEAVE="$PWD/.env.leave"
+            else
+                unset -v AUTOENV_LEAVE
+            fi
+        fi
+
+        # If there's an .env.leave file, and we're not in a child
+        # directory of the directory containing the .env file, then
+        # source the .env.leave file.
+        if [[ "$AUTOENV_LEAVE" ]] && [[ "$PWD"/ != "$AUTOENV_ROOT"/* ]]
+        then
+            source "$AUTOENV_LEAVE"
+            unset -v AUTOENV_ROOT AUTOENV_LEAVE
+        fi
+
         return 0
     else
         return $?
