@@ -145,9 +145,10 @@ PACKAGES=(
   gsmartcontrol # graphical user interface for smartctl
   gvfs # userspace virtual filesystem - GIO module
   gvfs-backends # userspace virtual filesystem - backends
+  inotify-tools # provides a simple interface to inotify (inotifywait & inotifywatch)
   jmtpfs # FUSE based filesystem for accessing MTP devices
-  testdisk # Partition scanner and disk recovery tool, and PhotoRec file recovery tool
   scalpel # fast filesystem-independent file recovery
+  testdisk # Partition scanner and disk recovery tool, and PhotoRec file recovery tool
 
   # Fonts and font utilities
   fonts-font-awesome # iconic font designed for use with Twitter Bootstrap

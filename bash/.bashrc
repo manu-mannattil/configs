@@ -146,9 +146,6 @@ alias ..='cd ..'
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
-# Don't ask for confirmation.
-alias add-apt-repository='add-apt-repository --yes'
-
 # Axel with sensible defaults.
 alias axel='axel -n 4 -a -U "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.101 Safari/537.36"'
 
@@ -205,7 +202,7 @@ alias redtoggle='pkill -USR1 redshift'
 alias scp='scp -C'
 
 # Don't run vi.
-alias vi=vim
+alias vi='vim'
 
 # latexindent.pl with some customizations:
 #
@@ -250,7 +247,6 @@ alias w3m='w3m -T text/html'
 alias wdiff='wdiff --start-delete="$COLOR_BRIGHT_RED" --end-delete="$COLOR_RESET" --start-insert="$COLOR_BRIGHT_GREEN" --end-insert="$COLOR_RESET"'
 
 # Online tools.
-alias wttr='curl -qsL https://wttr.in/?m'
 alias myip='curl -qsL http://icanhazip.com'
 
 # less configuration {{{1
