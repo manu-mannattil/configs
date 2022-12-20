@@ -1,9 +1,0 @@
-allow_lab_output=true
-plugins/darkroom/clipping/favorite=true
-plugins/darkroom/colisa/favorite=true
-plugins/darkroom/exposure/favorite=true
-plugins/darkroom/nlmeans/favorite=true
-plugins/darkroom/shadhi/favorite=true
-plugins/darkroom/sharpen/favorite=true
-ui_last/import_options_expanded=true
-ui_last/import_recursive=true

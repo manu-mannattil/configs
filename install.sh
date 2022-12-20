@@ -154,12 +154,6 @@ __install_ctags() {
     install "ctags/.ctags"
 }
 
-# :target: darktable - darktable configuration
-__install_darktable() {
-    install "darktable/.config/darktable/darktable.css"
-    install --copy "darktable/.config/darktable/darktablerc"
-}
-
 # :target: deadbeef - DeaDBeeF music player configuration
 __install_deadbeef() {
     # Preserve tabs and playlists.
@@ -262,11 +256,6 @@ __install_latexindent() {
 # :target: latexmk - latexmk configuration
 __install_latexmk() {
     install "latexmk/.latexmkrc"
-}
-
-# :target: lensfun - Lensfun misc lens files
-__install_lensfun() {
-    install "lensfun/.local/share/lensfun"
 }
 
 # :target: less - lessfilter for less
@@ -382,12 +371,6 @@ __install_tmux() {
 # :target: tridactyl - tridactyl configuration
 __install_tridactyl() {
     install "tridactyl/.tridactylrc" "tridactyl/.tridactylrc"
-}
-
-# :target: vale - vale linter configuration
-__install_vale() {
-    install "vale/.vale"
-    vale --config "${HOME}/.vale/vale.ini" sync
 }
 
 # :target: vim - Vim configuration and plugins
