@@ -1,6 +1,25 @@
 #!/bin/sh
 
+mkdir -p /tmp/downloads
+
+profile="default"
+case "$1" in
+    --private)  profile="private"; shift
+                rm -rf  ~/.cache/mozilla/firefox/*.private                \
+                        ~/.mozilla/firefox/*.private/content-prefs.sqlite \
+                        ~/.mozilla/firefox/*.private/cookies.sqlite       \
+                        ~/.mozilla/firefox/*.private/formhistory.sqlite   \
+                        ~/.mozilla/firefox/*.private/storage.sqlite       \
+                        ~/.mozilla/firefox/*.private/webappsstore.sqlite  \
+                        ~/.mozilla/firefox/*.private/crashes              \
+                        ~/.mozilla/firefox/*.private/datareporting        \
+                        ~/.mozilla/firefox/*.private/minidumps            \
+                        ~/.mozilla/firefox/*.private/storage
+                ;;
+    -*) exec /usr/bin/firefox "$@" ;;
+esac
+
 [ "$*" ] || set -- "about:blank"
 
 mkdir -p /tmp/downloads
-exec /usr/bin/firefox -P default "$@"
+exec nohup /usr/bin/firefox -P "$profile" "$@" >/dev/null 2>&1 &

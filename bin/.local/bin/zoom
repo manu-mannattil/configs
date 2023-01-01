@@ -9,7 +9,7 @@
 
 conf="$HOME/.config/zoomus.conf"
 
-if [ "$conf" ]
+if [ -f "$conf" ]
 then
     if [ "$GDK_SCALE" ]
     then

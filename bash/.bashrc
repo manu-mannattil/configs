@@ -248,6 +248,7 @@ alias wdiff='wdiff --start-delete="$COLOR_BRIGHT_RED" --end-delete="$COLOR_RESET
 
 # Online tools.
 alias myip='curl -qsL http://icanhazip.com'
+alias weather='curl -q http://wttr.in/?m'
 
 # less configuration {{{1
 # -----------------------

@@ -122,6 +122,7 @@ bindsym $mod+Shift+x exec --no-startup-id i3lock --ignore-empty-password --show-
 # Use editinvim to edit the contents of a text box using Vim.
 bindsym $mod+Shift+v exec editinvim
 
+# Invert X11 colors.
 bindsym $mod+Shift+i exec xcalib -i -a
 
 # Mouse bindings {{{2
@@ -208,7 +209,7 @@ mode "$mode_open" {
   bindsym b exec firefox; mode "default"
   bindsym f exec spacefm $HOME; mode "default"
   bindsym m exec deadbeef; mode "default"
-  bindsym p exec firefox-private; mode "default"
+  bindsym p exec firefox --private; mode "default"
 
   bindsym Escape mode "default"
   bindsym Return mode "default"
@@ -261,20 +262,22 @@ bar {
 #   title         urgent          window_role
 #   window_type   workspace
 
-# Window types {{{2
-# -----------------
+# Floating windows {{{2
+# ---------------------
+
+for_window [window_role="Preferences"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="About"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
 
 for_window [class="Anki"] floating enable
 for_window [class="Arandr"] floating enable
 for_window [class="matplotlib"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [title="editinvim"] floating enable
-for_window [window_role="Preferences"] floating enable
-for_window [window_role="bubble"] floating enable
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [window_type="dialog"] floating enable
-for_window [window_type="menu"] floating enable
 
 # Terminals and file browser (workspace 1) {{{2
 # ---------------------------------------------
