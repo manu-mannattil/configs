@@ -202,11 +202,12 @@ mode "resize" {
 # Binding mode for launching applications {{{2
 # --------------------------------------------
 
-set $mode_open [b]rowser [f]iles [m]usic [p]rivate-browser
+set $mode_open [b]rowser [f]iles mathemati[c]a [m]usic [p]rivate-browser
 bindsym $mod+o mode "$mode_open"
 
 mode "$mode_open" {
   bindsym b exec firefox; mode "default"
+  bindsym c exec mathematica; mode "default"
   bindsym f exec spacefm $HOME; mode "default"
   bindsym m exec deadbeef; mode "default"
   bindsym p exec firefox --private; mode "default"

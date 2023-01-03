@@ -187,6 +187,12 @@ EventTranslations[{
   Item[KeyEvent["Prior"], "ScrollPageUp"],
   Item[KeyEvent["Next"], "ScrollPageDown"],
 
+  (*  Bug in 13.1: S-Esc/C-Esc produces garbage.
+      https://mathematica.stackexchange.com/q/272417  *)
+  Item[KeyEvent["Escape", Modifiers->{Shift}], "ShortNameDelimiter"],
+  Item[KeyEvent["Escape", Modifiers->{Control}], "ShortNameDelimiter"],
+  Item[KeyEvent["Escape", Modifiers->{Control, Shift}], "ShortNameDelimiter"],
+
   (* C-w to delete cell; adapted from https://mathematica.stackexchange.com/a/1977 *)
   Item[KeyEvent["k", Modifiers -> {Control}],
     FrontEndExecute[{
