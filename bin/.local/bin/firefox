@@ -1,7 +1,5 @@
 #!/bin/sh
 
-mkdir -p /tmp/downloads
-
 profile="default"
 case "$1" in
     --private)  profile="private"; shift

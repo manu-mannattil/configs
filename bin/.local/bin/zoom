@@ -1,15 +1,14 @@
 #!/bin/sh
 #
-# zoom - run zoom with proper HiDPI setting
+# zoom - handle zoom.us URLs without a browser
 #
-# Note that the .desktop entry in
-# /usr/share/applications might need to be edited to run
-# this script instead of /usr/bin/zoom.
+# Note that the .desktop entry in /usr/share/applications might need to
+# be edited to run this script instead of /usr/bin/zoom.
 #
 
 conf="$HOME/.config/zoomus.conf"
 
-# Parse Zoom links and create zoommtg:// links.
+# Parse Zoom zoom.us URLs and create zoommtg:// links.
 case "$*" in
     http:*|https:*)
         set -- $(echo "$@" | sed 's|.*/j/\([0-9]*\).*pwd=\([a-zA-Z0-9]*\).*|\1 \2|')
