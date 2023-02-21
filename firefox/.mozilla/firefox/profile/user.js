@@ -56,6 +56,7 @@ user_pref("browser.newtabpage.activity-stream.section.highlights.includePocket",
 user_pref("browser.newtabpage.activity-stream.showSponsored", false);
 user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
 user_pref("browser.newtabpage.activity-stream.telemetry", false);
+user_pref("browser.newtabpage.enhanced", false);
 user_pref("browser.newtabpage.pinned", "");
 user_pref("browser.tabs.firefox-view", false);
 user_pref("browser.urlbar.suggest.quicksuggest.nonsponsored", false);
@@ -105,6 +106,9 @@ user_pref("extensions.screenshots.upload-disabled", true);
 
 // Disable Firefox accounts.
 user_pref("identity.fxaccounts.enabled", false);
+
+// Don't force a wait before installing an addon.
+user_pref("security.dialog_enable_delay", 0);
 
 // ------------- DNS -------------
 
@@ -199,8 +203,10 @@ user_pref("font.name.serif.x-western", "Nimbus Roman No9 L");
 user_pref("helpers.private_mailcap_file", "");
 
 // Printer settings (no headers/footers).
+user_pref("print.print_footercenter", "");
 user_pref("print.print_footerleft", "");
 user_pref("print.print_footerright", "");
+user_pref("print.print_headercenter", "");
 user_pref("print.print_headerleft", "");
 user_pref("print.print_headerright", "");
 
@@ -214,3 +220,9 @@ user_pref("browser.urlbar.trimURLs", false);
 // Display "Not Secure" icon and text on HTTP websites.
 user_pref("security.insecure_connection_icon.enabled", true);
 user_pref("security.insecure_connection_text.enabled", true);
+
+// Make scrollbars wider than the default, and don't allow sites to make
+// scrollbars narrow.
+user_pref("widget.gtk.overlay-scrollbars.enabled", false);
+user_pref("widget.non-native-theme.scrollbar.size.override", 15);
+user_pref("layout.css.scrollbar-width-thin.disabled", true);
