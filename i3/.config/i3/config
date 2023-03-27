@@ -160,6 +160,10 @@ bindsym button5 nop
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 10%+
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
 
+# Display turn on/off.
+bindsym Shift+XF86MonBrightnessUp exec --no-startup-id brightnessctl set 40%
+bindsym Shift+XF86MonBrightnessDown exec --no-startup-id brightnessctl set 0%
+
 # Volume raise/lower/mute and mic mute keys.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5%

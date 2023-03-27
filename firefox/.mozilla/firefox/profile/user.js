@@ -168,7 +168,7 @@ user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 
 // This is like the $GDK_SCALE environment variable that GTK+ uses for
 // HiDPI scaling, but allows fractional scaling.
-// user_pref("layout.css.devPixelsPerPx", "1.75");
+user_pref("layout.css.devPixelsPerPx", "-1");
 
 // Highlight matching search terms.
 user_pref("findbar.highlightAll", true);
