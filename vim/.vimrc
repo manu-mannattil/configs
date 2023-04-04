@@ -339,6 +339,10 @@ augroup ft_related
   " <esc>v in Bash's Vi mode).
   autocmd BufRead,BufNewFile /tmp/bash-fc-* set filetype=sh
 
+  " For "files" edited with vidir, assume that the underscore is a word
+  " boundary.
+  autocmd BufRead,BufNewFile /tmp/dir* setlocal iskeyword-=_
+
   " Detect files starting with #!/bin/dash, #!/bin/posh files as sh.
   autocmd BufRead,BufNewFile *
         \ if getline(1) =~ '#!.*\/\(da\|po\)sh$'                              |
@@ -355,7 +359,7 @@ augroup ft_related
   autocmd BufRead,BufNewFile \*sdcv\* set filetype=sdcv
 
   " Enable the longlines plugin for TeX and MediaWiki files.
-  autocmd FileType mail,mediawiki  LongLines | setlocal norelativenumber
+  autocmd FileType mail,mediawiki LongLines | setlocal norelativenumber
 augroup END
 
 " Miscellaneous.

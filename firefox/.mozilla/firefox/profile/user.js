@@ -209,6 +209,7 @@ user_pref("print.print_footerright", "");
 user_pref("print.print_headercenter", "");
 user_pref("print.print_headerleft", "");
 user_pref("print.print_headerright", "");
+user_pref("print.default_dpi", 300);
 
 // Disable picture-in-picture and the Ctrl+Shift+] shortcut that toggles it.
 user_pref("media.videocontrols.picture-in-picture.enabled", false);
@@ -226,3 +227,10 @@ user_pref("security.insecure_connection_text.enabled", true);
 user_pref("widget.gtk.overlay-scrollbars.enabled", false);
 user_pref("widget.non-native-theme.scrollbar.size.override", 15);
 user_pref("layout.css.scrollbar-width-thin.disabled", true);
+
+// Make title bar visible.
+user_pref("browser.tabs.inTitlebar", 0);
+
+// Whether copying the entire URL from the location bar will put a human
+// readable (percent-decoded) URL on the clipboard.
+user_pref("browser.urlbar.decodeURLsOnCopy", true);
