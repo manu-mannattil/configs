@@ -234,3 +234,6 @@ user_pref("browser.tabs.inTitlebar", 0);
 // Whether copying the entire URL from the location bar will put a human
 // readable (percent-decoded) URL on the clipboard.
 user_pref("browser.urlbar.decodeURLsOnCopy", true);
+
+// Always show bookmarks in the toolbar.
+user_pref("browser.toolbars.bookmarks.visibility", "always");
