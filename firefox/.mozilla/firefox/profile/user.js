@@ -36,8 +36,10 @@ user_pref("beacon.enabled", false);
 // Perform DNS lookups through the SOCKS proxy itself.
 user_pref("network.proxy.socks_remote_dns", true);
 
-// Disable autofilling of saved addresses.
+// Disable autofilling BS.
 user_pref("extensions.formautofill.addresses.enabled", false);
+user_pref("extensions.formautofill.creditCards.enabled", false);
+user_pref("extensions.formautofill.heuristics.enabled", false);
 
 // Don't record information about the current browser session and don't
 // attempt to restore it automatically.
@@ -106,9 +108,6 @@ user_pref("extensions.screenshots.upload-disabled", true);
 
 // Disable Firefox accounts.
 user_pref("identity.fxaccounts.enabled", false);
-
-// Don't force a wait before installing an addon.
-user_pref("security.dialog_enable_delay", 0);
 
 // ------------- DNS -------------
 
