@@ -135,6 +135,7 @@ new.entry.type {www}
 % Sort other fields alphabetically.
 sort.order {* = author #
   # editor
+  # maintitle
   # title
   # journal
   # institution
