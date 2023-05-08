@@ -652,6 +652,7 @@ let g:vimtex_quickfix_ignore_filters = [
       \ 'LastBibItem',
       \ 'Overfull',
       \ 'Underfull',
+      \ 'xcolor warning',
       \ ]
 
 " The bibunits package uses \defaultbibliograph{...} to include .bib files.

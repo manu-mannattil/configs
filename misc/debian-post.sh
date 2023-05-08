@@ -75,6 +75,7 @@ PACKAGES=(
   cryptsetup # disk encryption support - startup scripts
   gpgv2 # GNU privacy guard - signature verification tool (dummy transitional package)
   pinentry-gnome3 # GNOME 3 PIN or pass-phrase entry dialog for GnuPG
+  pass  # lightweight directory-based password manager
 
   # Debian
   apt-file # search for files within Debian packages (command-line interface)
