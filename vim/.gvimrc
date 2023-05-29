@@ -3,14 +3,6 @@
 " GUI configuration {{{1
 " ----------------------
 
-" Font: Comano
-" set guifont=Comano\ 8
-" set linespace=2
-
-" Font: Fira Mono
-" set guifont=Fira\ Mono\ Regular\ 9
-" set linespace=0
-
 " Font: Source Code Pro
 set guifont=Source\ Code\ Pro\ Semibold\ 9
 set linespace=0

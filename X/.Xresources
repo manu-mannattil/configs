@@ -116,28 +116,10 @@ URxvt*keysym.C-plus: font-size:incglobal
 URxvt*keysym.C-minus: font-size:decrease
 URxvt*keysym.C-underscore: font-size:decglobal
 
-! URxvt font: Comano (aka Monaco) {{{2
-! URxvt*font: xft:Comano:Bold:size=8, xft:DejaVu Sans Mono:Bold:size=9
-! URxvt*letterSpace: -1
-! URxvt*lineSpace: 1
-
-! URxvt font: Fira Mono {{{2
-! URxvt*font: xft:Fira Mono:Medium:size=9, xft:DejaVu Sans Mono:size=9
-! URxvt*letterSpace: -2
-! URxvt*lineSpace: 0
-
 ! URxvt font: Source Code Pro {{{2
 URxvt*font: xft:Source Code Pro:Semibold:size=9, xft:DejaVu Sans Mono:Bold:size=9
 URxvt*letterSpace: -1
 URxvt*lineSpace: 0
-
-! URxvt font: Terminus {{{2
-! URxvt*font: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-*
-! URxvt*lineSpace: 2
-
-! URxvt font: Terminus (xft) {{{2
-! URxvt*font: xft:Terminus:size=12
-! URxvt*lineSpace: 2
 
 ! Miscellaneous {{{1
 ! ------------------

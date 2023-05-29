@@ -1,5 +1,9 @@
 # vim: ft=perl fdm=marker et sts=4 sw=4
 
+# This is supposed to improve vimtex's error parsing.
+STDOUT->autoflush;
+STDERR->autoflush;
+
 # By default, generate PDF output using PDFLaTeX. Possible values of $pdf_mode
 # are: (1) generates a pdf version of the document using pdflatex, (2)
 # generates a pdf version of the document from the ps file, by using the
