@@ -16,13 +16,19 @@
 // Disable auto updates and notifications.  Doesn't work since FF 88;
 // create policies file instead:
 // https://linuxreviews.org/HOWTO_Make_Mozilla_Firefox_Stop_Nagging_You_About_Updates_And_Other_Annoying_Idiocy
+user_pref("app.update.BITS.enabled", false);
 user_pref("app.update.auto", false);
 user_pref("app.update.autoInstallEnabled", false);
 user_pref("app.update.background.scheduling.enabled", false);
 user_pref("app.update.checkInstallTime", false);
 user_pref("app.update.doorhanger", false);
+user_pref("app.update.enabled", false);
 user_pref("app.update.lastUpdateTime.background-update-timer", 0);
+user_pref("app.update.service.enabled", false);
 user_pref("app.update.silent", true);
+user_pref("app.update.url", "");
+user_pref("app.update.url.manual", "");
+user_pref("lightweightThemes.update.enabled", false);
 
 // ------------- Privacy and Security -------------
 
@@ -71,10 +77,6 @@ user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSpons
 user_pref("extensions.getAddons.showPane", false);
 user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
 user_pref("browser.discovery.enabled", false);
-
-// Allow extensions in private windows by default.
-// (I only install extensions I trust.)
-user_pref("extensions.allowPrivateBrowsingByDefault", true);
 
 // Allow "risky" downloads.
 user_pref("dom.block_download_insecure", false);

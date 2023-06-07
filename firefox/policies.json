@@ -1,0 +1,26 @@
+{
+  "policies": {
+    "DisableAppUpdate": true,
+    "DisableFeedbackCommands": true,
+    "DisableFirefoxAccounts": true,
+    "DisableFirefoxStudies": true,
+    "DisablePocket": true,
+    "DisableSetDesktopBackground": true,
+    "DisableTelemetry": true,
+    "DontCheckDefaultBrowser": true,
+    "NoDefaultBookmarks": true
+  },
+  "FirefoxHome": {
+    "Highlights": false,
+    "Pocket": false,
+    "Search": true,
+    "Snippets": false,
+    "TopSites": false
+  },
+  "FlashPlugin": {
+    "Default": false,
+    "Locked": true
+  },
+  "OverrideFirstRunPage": "",
+  "OverridePostUpdatePage": ""
+}

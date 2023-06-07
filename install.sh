@@ -185,6 +185,13 @@ __install_emacs() {
 
 # :target: firefox - Firefox configuration
 __install_firefox() {
+    [[ -f /usr/bin/firefox ]] || {
+        info "firefox binary not found; fetching..."
+        pushd "${REPO}/firefox"
+        sudo make install
+        popd
+    }
+
     # Symlink/copy some files in all Firefox profiles.
     if [[ -f "${HOME}/.mozilla/firefox/profiles.ini" ]]
     then

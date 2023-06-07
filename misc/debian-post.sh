@@ -24,6 +24,7 @@
 #                         https://github.com/restic/rest-server/releases
 #   Skype                 https://go.skype.com/skypeforlinux-64.deb
 #   Xournal++             https://github.com/xournalpp/xournalpp/releases
+#   Zoom                  https://zoom.us/download
 #
 # The following programs usually have outdated versions in the Debian
 # repositories, therefore it makes sense to install them manually:
