@@ -181,6 +181,7 @@ EventTranslations[{
   Item[KeyEvent["d", Modifiers -> {Control}], "DeleteNext"],
   Item[KeyEvent["d", Modifiers -> {Command}], "DeleteNextNaturalWord"],
   Item[KeyEvent["Backspace", Modifiers -> {Command}], "DeletePreviousNaturalWord"],
+  Item[KeyEvent["Backspace", Modifiers -> {Shift}], "DeletePreviousNaturalWord"],
 
   Item[KeyEvent["n", Modifiers -> {Command}], "ScrollPageDown"],
   Item[KeyEvent["p", Modifiers -> {Command}], "ScrollPageUp"],
