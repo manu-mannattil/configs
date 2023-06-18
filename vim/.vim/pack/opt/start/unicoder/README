@@ -1,0 +1,6 @@
+Personal fork of vim-unicoder [1].  Changes include:
+
+  - No automatic startup.
+  - Some changes in the abbreviations.
+
+[1] https://github.com/arthurxavierx/vim-unicoder
