@@ -16,3 +16,6 @@ if &ft == "text"
 endif
 
 setlocal keywordprg=:Sdcv
+
+" Call vim-unicoder.
+Unicoder
