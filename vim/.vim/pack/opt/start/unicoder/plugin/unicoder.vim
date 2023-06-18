@@ -355,7 +355,6 @@ function! s:setup_abbreviations()
   Noprefixab \<<           «
   Prefixab  \\ lll         ⋘
 
-  Prefixab  \\ gg          »
   Noprefixab \>>           »
   Prefixab  \\ ggg         ⋙
   " }}}

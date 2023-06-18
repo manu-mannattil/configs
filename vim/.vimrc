@@ -495,6 +495,10 @@ nnoremap <C-L> <C-W>l
 vnoremap < <gv
 vnoremap > >gv
 
+" Center next/previous search results.
+nnoremap n nzz
+nnoremap N Nzz
+
 " Don't use Ex mode and use Q for formatting.
 noremap Q gw
 
