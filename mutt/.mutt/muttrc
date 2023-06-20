@@ -155,7 +155,7 @@ set assumed_charset = "utf-8"
 # an interleaved email style.  But the following attribution seems to
 # (thankfully) disable Office 365's "smartness", and the quoted text is
 # displayed just as usual.
-set attribution = "%n said on %d:"
+set attribution = "%n said on %D:"
 
 # Apply the next function call/operation in the index menu to all tagged
 # messages (if there are any).
