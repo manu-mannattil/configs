@@ -1,3 +1,7 @@
+" Custom fork of vim-unicoder.
+" Version: 0.1
+" License: MIT
+
 if exists('g:loaded_unicoder')
   finish
 endif
@@ -6,7 +10,6 @@ let g:loaded_unicoder = 1
 if !exists('g:unicoder_command_abbreviations')
   let g:unicoder_command_abbreviations = 1
 endif
-" }}}
 
 function! s:irepl(prefix, default, repl)
   let n = len(a:prefix)
@@ -292,7 +295,7 @@ function! s:setup_abbreviations()
   " Calculus {{{
   Prefixab  \\ nabla       ∇
   Prefixab  \\ grad        ∇
-  Prefixab  \\ partial     𝜕
+  Prefixab  \\ partial     ∂
   Prefixab  \\ increment   ∆
   Prefixab  \\ inc         ∆
 
@@ -343,13 +346,13 @@ function! s:setup_abbreviations()
   " Inequalities {{{
   Prefixab  \\ leq         ≤
   Prefixab  \\ nleq        ≰
-  Noprefixab \<=         ≤
-  Noprefixab \<=n        ≰
+  Noprefixab \<=           ≤
+  Noprefixab \<=n          ≰
 
   Prefixab  \\ geq         ≥
   Prefixab  \\ ngeq        ≱
-  Noprefixab \>=         ≥
-  Noprefixab \>=n        ≱
+  Noprefixab \>=           ≥
+  Noprefixab \>=n          ≱
 
   Prefixab  \\ ll          «
   Noprefixab \<<           «

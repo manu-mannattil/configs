@@ -351,6 +351,6 @@ for_window [class="Gimp"] focus
 for_window [class="Filezilla"] move container to workspace 9
 for_window [class="Filezilla"] focus
 
-for_window [class="Steam"] move container to workspace 9
-for_window [class="Steam"] focus
-for_window [class="Steam"] floating enable
+for_window [class="steam"] move container to workspace 9
+for_window [class="steam"] focus
+for_window [class="steam"] floating enable
