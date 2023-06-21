@@ -66,4 +66,12 @@ do
   fi
 done
 
+# Remove old helptags and create new ones.
+find "${HOME}/.vim/" -type f -ipath '*/doc/tags' -delete
+find "${HOME}/.vim/" -type d -name doc \
+  -exec vim -e -s -u NONE -c ':helptags %' -c ':qall!' {} \;
+
+echo >&2 "${0##*/}: new helptags"
+find "${HOME}/.vim/" -type f -ipath '*/doc/tags'
+
 # vim: ft=sh fdm=marker et sts=2 sw=2
