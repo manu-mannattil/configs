@@ -29,7 +29,6 @@
 # should have a unique name and a URL pointing to a Git repository.
 declare -A plugin_urls
 plugin_urls=(
-  ['asymptote']='https://github.com/hura/vim-asymptote.git'
   ['commentary']='https://github.com/tpope/vim-commentary.git'
   ['fugitive']='https://github.com/tpope/vim-fugitive.git'
   ['gnupg']='https://github.com/jamessan/vim-gnupg.git'
