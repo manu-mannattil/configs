@@ -270,11 +270,6 @@ __install_less() {
     install "less/.lessfilter"
 }
 
-# :target: liferea - Liferea configuration
-__install_liferea() {
-    install "liferea/.config/liferea/liferea.css"
-}
-
 # :target: mathematica - Wolfram Mathematica configuration
 __install_mathematica() {
     install --copy "mathematica/.Mathematica/FrontEnd/init.m"
@@ -373,11 +368,6 @@ __install_tint2() {
 # :target: tmux - tmux configuration
 __install_tmux() {
     install "tmux/.tmux" "tmux/.tmux.conf"
-}
-
-# :target: tridactyl - tridactyl configuration
-__install_tridactyl() {
-    install "tridactyl/.tridactylrc" "tridactyl/.tridactylrc"
 }
 
 # :target: vim - Vim configuration and plugins
