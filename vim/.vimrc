@@ -405,6 +405,13 @@ augroup pass_entries
   autocmd BufRead,BufNewFile /dev/shm/*.txt set nospell
 augroup END
 
+" Automatically open the quickfix window/location list when they're populated.
+augroup quickfix
+  autocmd!
+  autocmd QuickFixCmdPost [^l]* cwindow
+  autocmd QuickFixCmdPost l* lwindow
+augroup END
+
 " Commands {{{1
 " -------------
 
@@ -438,12 +445,6 @@ command! -nargs=0 WildToggle
       \   echo "wildignore off"                                               |
       \ endif
 
-" Use brep (my GNU grep wrapper) for grepping.
-set grepprg=brep
-set grepformat=%f:%l:%m
-command! -nargs=+ Grep silent grep! <args> | silent redraw! | cwindow
-command! -nargs=+ LGrep silent lgrep! <args> | silent redraw! | lwindow
-
 " Run mkprg and open the QuickFix window.
 command! -nargs=* Make silent make! <args> | silent redraw! | cwindow
 command! -nargs=* LMake silent lmake! <args> | silent redraw! | lwindow
@@ -464,6 +465,27 @@ endfunction
 
 " For now, use the version supplied by vim-pathogen.
 " command! -bar Helptags call s:helptags()
+
+" Grep {{{2
+" ---------
+
+" Use ag for grepping.
+set grepprg=ag\ --vimgrep\ $*
+set grepformat=%f:%l:%c:%m
+
+" Function to run grep in a subshell.
+" Adapted from https://gist.github.com/romainl/56f0c28ef953ffc157f36cc495947ab3
+function! s:rungrep(...)
+  return system(join([&grepprg] + [expandcmd(join(a:000, ' '))], ' '))
+endfunction
+
+" Commands to populate the quickfix/location list with the output of s:rungrep().
+command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr s:rungrep(<f-args>)
+command! -nargs=+ -complete=file_in_path -bar LGrep lgetexpr s:rungrep(<f-args>)
+
+" Hack to replace :grep and :lgrep with :Grep and :LGrep, respectively.
+cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() ==# 'grep')  ? 'Grep'  : 'grep'
+cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() ==# 'lgrep') ? 'LGrep' : 'lgrep'
 
 " Mappings {{{1
 " -------------
@@ -656,7 +678,7 @@ let g:vimtex_quickfix_ignore_filters = [
       \ 'LastBibItem',
       \ 'Overfull',
       \ 'Underfull',
-      \ 'xcolor warning',
+      \ 'xcolor Warning',
       \ ]
 
 " The bibunits package uses \defaultbibliograph{...} to include .bib files.

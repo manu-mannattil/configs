@@ -105,6 +105,7 @@ PACKAGES=(
   input-utils # utilities for the input layer of the Linux kernel
   manpages-posix # Manual pages about using POSIX system
   patch # Apply a diff file to an original
+  silversearcher-ag # very fast grep-like program, alternative to ack-grep
   sloccount # programs for counting physical source lines of code (SLOC)
 
   # Display and X11
