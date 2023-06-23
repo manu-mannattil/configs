@@ -40,3 +40,6 @@ $xelatex = "xelatex -no-pdf -recorder -file-line-error -interaction=nonstopmode 
 
 # Additional extensions of files to be removed when latexmk -c or -C is used.
 $clean_ext = "synctex.gz synctex.gz(busy) %RNotes.bib run.xml spl pre xdv bbl";
+
+# Run ctags on successful compilation.
+$success_cmd = "ctags --tag-relative -R --languages=tex2,Tex,bib"
