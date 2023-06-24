@@ -156,3 +156,6 @@ function! s:texstrip(cmd)
 endfunction
 
 command! -nargs=1 TeXStrip silent call s:texstrip(<f-args>)
+
+" Open the first associated *.bib file using \lb.
+nnoremap <buffer> <silent> <localleader>lb :execute "split ".vimtex#bib#files()[0]<CR>
