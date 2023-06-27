@@ -293,6 +293,7 @@ PACKAGES=(
   # Utilities (assorted)
   dateutils # nifty command line date and time utilities
   fasd # jump to directories and files quickly
+  libfribidi-bin # convert strings in right-to-left languages like Arabic and Hebrew
   libtext-lorem-perl # random faux Latin text generator
   ncal # CLI calender program
   parallel # build and execute command lines from standard input in parallel

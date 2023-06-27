@@ -24,15 +24,10 @@ $dvi_mode = 0;
 
 # Program to run (along with additional parameters) if $pdf_mode is set to 1,
 # or -pdf is passed.
-$pdflatex = "pdflatex -file-line-error -interaction=nonstopmode -shell-escape -synctex=1 %O %S";
-
-# XeLaTeX options when -xelatex is used.  Note that the "XeLaTeX rule" of
-# Latexmk requires XeLaTeX to produce an .xdv file first.  This file is then
-# converted to a PDF using `xdvipdfmx'.
-$xelatex = "xelatex -no-pdf -recorder -file-line-error -interaction=nonstopmode -shell-escape -synctex=1 %O %S";
+$pdflatex = "pdflatex -recorder -file-line-error -interaction=nonstopmode -shell-escape -synctex=1 %O %S";
 
 # Additional extensions of files to be removed when latexmk -c or -C is used.
-$clean_ext = "acn bbl bcf fdb_latexmk glg loc nav pre %R-blx.bib %RNotes.bib run run.xml snm soc spl synctex.gz synctex.gz(busy) tdo tex.bak thm xdv";
+$clean_ext = "acn bbl bcf fdb_latexmk glg loc nav pre %R-blx.bib %RNotes.bib run run.xml snm soc spl synctex synctex(busy) synctex.gz synctex.gz(busy) tdo tex.bak thm xdv";
 
 # Run ctags on successful compilation.
 $success_cmd = "ctags --tag-relative -R --languages=tex2,Tex,bib"
