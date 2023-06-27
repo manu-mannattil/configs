@@ -31,15 +31,8 @@ $pdflatex = "pdflatex -file-line-error -interaction=nonstopmode -shell-escape -s
 # converted to a PDF using `xdvipdfmx'.
 $xelatex = "xelatex -no-pdf -recorder -file-line-error -interaction=nonstopmode -shell-escape -synctex=1 %O %S";
 
-# A list of extensions for files that are generated during a LaTeX run and
-# that are read in by LaTeX in later runs, either directly or indirectly.
-# push @generated_exts, "synctex.gz";
-# push @generated_exts, "synctex.gz(busy)";
-# push @generated_exts, "%RNotes.bib";
-# push @generated_exts, "run.xml";
-
 # Additional extensions of files to be removed when latexmk -c or -C is used.
-$clean_ext = "synctex.gz synctex.gz(busy) %RNotes.bib run.xml spl pre xdv bbl";
+$clean_ext = "acn bbl bcf fdb_latexmk glg loc nav pre %R-blx.bib %RNotes.bib run run.xml snm soc spl synctex.gz synctex.gz(busy) tdo tex.bak thm xdv";
 
 # Run ctags on successful compilation.
 $success_cmd = "ctags --tag-relative -R --languages=tex2,Tex,bib"
