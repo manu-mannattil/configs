@@ -128,15 +128,6 @@ setxkbmap -variant altgr-intl              \
           -option rupeesign:4              \
           -option terminate:ctrl_alt_bkspc
 
-# Preferred web browser.
-export BROWSER="firefox"
-
-# Local TEXMF directory.
-export TEXMFHOME="${HOME}/.texmf"
-
-# Preferred terminal emulator.
-export TERMINAL="${HOME}/code/scripts/terminal"
-
 # Start redshift to adjust screen temperature.
 redshift -l '43.088947:-76.154480' & # Syracuse
 # redshift -l '10.530345:76.214729' & # Thrissur
@@ -162,10 +153,6 @@ xwrits top clock breakclock mouse=5 &
 # Zoom's window.
 # https://support.zoom.us/hc/en-us/articles/202082128-Black-screen-during-screen-sharing
 compton --backend glx -b -c -l0 -t0 -r0 -o.00
-
-# Will reduce the time it takes for xdg-open to figure out that the DE
-# is a generic one.
-export XDG_CURRENT_DESKTOP="X-Generic"
 
 # Since updating to Debian 10.10, launching the WM using dbus-launch
 # seems to be required to have a nonempty $DBUS_SESSION_BUS_ADDRESS.

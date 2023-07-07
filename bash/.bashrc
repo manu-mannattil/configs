@@ -575,6 +575,9 @@ mergepath "${HOME}/code/bin" "${HOME}/.local/bin"
 export EDITOR="/usr/bin/vim"
 export FCEDIT="$EDITOR" VISUAL="$EDITOR"
 
+# Preferred web browser.
+export BROWSER="firefox"
+
 # Set locale properly.  Ubuntu sets LANG to en_IN if IST is selected as the
 # time zone.  But many programs (e.g., tmux) don't understand en_IN.
 export LANG="en_US.UTF-8"
@@ -598,6 +601,16 @@ export PYTHONSTARTUP="${HOME}/.pythonrc.py"
 
 # Don't save sdcv history.
 export SDCV_HISTSIZE=0
+
+# Local TEXMF directory.
+export TEXMFHOME="${HOME}/.texmf"
+
+# Preferred terminal emulator.
+export TERMINAL="${HOME}/code/scripts/terminal"
+
+# Will reduce the time it takes for xdg-open to figure out that the DE
+# is a generic one.
+export XDG_CURRENT_DESKTOP="X-Generic"
 
 # Sourced files {{{1
 # ------------------
