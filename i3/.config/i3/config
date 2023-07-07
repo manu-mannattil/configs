@@ -321,6 +321,18 @@ for_window [class="mpv"] focus
 for_window [class="vlc"] move container to workspace 3
 for_window [class="vlc"] focus
 
+# TeX {{{5
+# --------
+
+for_window [title="LaTeX" class="qpdfview"] move container to workspace 5
+for_window [title="LaTeX" class="qpdfview"] focus
+
+for_window [title=".tex" class="Gvim"] move container to workspace 5
+for_window [title=".tex" class="Gvim"] focus
+
+# for_window [title="GVIM"] move container to workspace 5
+# for_window [title="GVIM"] focus
+
 # Mathematica (workspace 7) {{{2
 # ------------------------------
 
