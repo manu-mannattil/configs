@@ -155,7 +155,7 @@ set complete=.,w,b,u,t,i,kspell
 
 " Optimize diffs for readability rather than speed.
 " https://vimways.org/2018/the-power-of-diff/
-set diffopt+=internal,algorithm:patience,indent-heuristic
+set diffopt+=internal,algorithm:patience,indent-heuristic,iwhiteall
 
 " Encoding of file *on disk*.  When 'fileencoding' is different from
 " 'encoding', conversion will be done when writing the file.

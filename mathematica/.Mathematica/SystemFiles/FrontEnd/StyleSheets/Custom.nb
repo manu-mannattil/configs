@@ -331,7 +331,7 @@ Cell[StyleData["CellExpression"],
   0.75],ExpressionUUID->"88932c32-4523-46ce-ab5c-2c71a622a2eb"],
 
 Cell[StyleData["CellLabel"],
- FontSize->9,
+ FontSize->10,
  FontColor->RGBColor[
   0.603861, 0.615915,
    0.607843],ExpressionUUID->"d417ddee-ed69-4539-b2cf-004074bae368"],
@@ -349,6 +349,28 @@ Cell[StyleData["InlineCellEditing"],
 
 Cell[CellGroupData[{
 
+Cell["OutputSizeLimit Styles", "Subsection",ExpressionUUID->"2ab5c53b-ef81-4f8d-9e49-0987a82bb4ac"],
+
+Cell[StyleData["OutputSizeLimit"],
+ Background->GrayLevel[
+  0.25],ExpressionUUID->"c7a80e62-db49-4637-81dc-670d069abb43"],
+
+Cell[StyleData["OSLTopFrameStored"],
+ FrameBoxOptions->{Background->None,
+ FrameStyle->Directive[
+   GrayLevel[0.32],
+   AbsoluteThickness[
+   1]]},ExpressionUUID->"5c2c795e-1653-4c63-a0fb-a943a34607fe"],
+
+Cell[StyleData["OSLTopFrame"],
+ FrameBoxOptions->{Background->GrayLevel[0.25],
+ FrameStyle->Directive[
+   GrayLevel[0.45],
+   Dashing[{2, 2}]]},ExpressionUUID->"fdaa8b98-f333-4603-bdc4-cb9ce299465d"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
 Cell["Graphics Styles", "Subsection",
  CellChangeTimes->{{3.603565272271762*^9,
   3.603565284491351*^9}},ExpressionUUID->"a139d5b8-1dd6-4aea-adfe-\
@@ -358,7 +380,7 @@ Cell[StyleData["GraphicsAxes"],
  LineColor->RGBColor[
   0.5764705882352941, 0.6313725490196078, 0.6313725490196078],
  FontFamily->"sans-serif",
- FontSize->9,
+ FontSize->10,
  FontWeight->"Plain",
  FontSlant->"Plain",
  FontColor->RGBColor[
@@ -369,7 +391,7 @@ Cell[StyleData["GraphicsFrame"],
  LineColor->RGBColor[
   0.5764705882352941, 0.6313725490196078, 0.6313725490196078],
  FontFamily->"sans-serif",
- FontSize->9,
+ FontSize->10,
  FontWeight->"Plain",
  FontSlant->"Plain",
  FontColor->RGBColor[
@@ -380,7 +402,7 @@ Cell[StyleData["Graphics3DAxes"],
  LineColor->RGBColor[
   0.5764705882352941, 0.6313725490196078, 0.6313725490196078],
  FontFamily->"sans-serif",
- FontSize->9,
+ FontSize->10,
  FontWeight->"Plain",
  FontSlant->"Plain",
  FontColor->RGBColor[

@@ -1,11 +1,11 @@
 @@resource KeyEventTranslations
-
 (* Modifiers can be "Shift", "Control", "Command", "Option"
    For Macintosh: "Command" = Command Key, "Option" = Option Key
    For X11: "Command" = Mod1, "Option" = Mod2
    For Windows: "Command" = Alt, "Option" = Alt *)
 
 EventTranslations[{
+
   (* Evaluation *)
   Item[KeyEvent["Enter"], "EvaluateCells"],
   Item[KeyEvent["KP_Enter"], "EvaluateCells"],
@@ -188,17 +188,31 @@ EventTranslations[{
   Item[KeyEvent["Prior"], "ScrollPageUp"],
   Item[KeyEvent["Next"], "ScrollPageDown"],
 
-  (*  Bug in 13.1: S-Esc/C-Esc produces garbage.
-      https://mathematica.stackexchange.com/q/272417  *)
-  Item[KeyEvent["Escape", Modifiers->{Shift}], "ShortNameDelimiter"],
-  Item[KeyEvent["Escape", Modifiers->{Control}], "ShortNameDelimiter"],
-  Item[KeyEvent["Escape", Modifiers->{Control, Shift}], "ShortNameDelimiter"],
-
-  (* C-w to delete cell; adapted from https://mathematica.stackexchange.com/a/1977 *)
+  (*  C-k to delete cell; adapted from https://mathematica.stackexchange.com/a/1977  *)
   Item[KeyEvent["k", Modifiers -> {Control}],
     FrontEndExecute[{
       FrontEnd`SelectionMove[FrontEnd`SelectedNotebook[], All, Cell],
       FrontEnd`FrontEndToken["Clear"]
     }]
   ],
+
+  (*  The following combinations produce junk by default.
+      Is there a front end token that does nothing, like Mutt's noop?
+      I don't know, so I'm using MacintoshOpenDeskAccessory, which is
+      a valid token, but has no effect on Linux.
+      https://mathematica.stackexchange.com/q/2572  *)
+  Item[KeyEvent["g", Modifiers->{Control}], "MacintoshOpenDeskAccessory"],
+  Item[KeyEvent["h", Modifiers->{Control}], "MacintoshOpenDeskAccessory"],
+  Item[KeyEvent["i", Modifiers->{Control}], "MacintoshOpenDeskAccessory"],
+  Item[KeyEvent["q", Modifiers->{Control}], "MacintoshOpenDeskAccessory"],
+  Item[KeyEvent["r", Modifiers->{Control}], "MacintoshOpenDeskAccessory"],
+  Item[KeyEvent["t", Modifiers->{Control}], "MacintoshOpenDeskAccessory"],
+  Item[KeyEvent["u", Modifiers->{Control}], "MacintoshOpenDeskAccessory"],
+  Item[KeyEvent["w", Modifiers->{Control}], "MacintoshOpenDeskAccessory"],
+
+  (*  Bug in 13.1: S-Esc/C-Esc produces garbage.
+      https://mathematica.stackexchange.com/q/272417  *)
+  Item[KeyEvent["Escape", Modifiers->{Shift}], "MacintoshOpenDeskAccessory"],
+  Item[KeyEvent["Escape", Modifiers->{Control}], "MacintoshOpenDeskAccessory"],
+  Item[KeyEvent["Escape", Modifiers->{Control, Shift}], "MacintoshOpenDeskAccessory"],
 }]
