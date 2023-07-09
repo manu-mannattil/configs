@@ -262,7 +262,7 @@ __install_latexindent() {
 
 # :target: latexmk - latexmk configuration
 __install_latexmk() {
-    install "latexmk/.latexmkrc"
+    install "latexmk/.config/latexmk"
 }
 
 # :target: less - lessfilter for less
