@@ -2,7 +2,7 @@
 
 # Setting QT_AUTO_SCREEN_SCALE_FACTOR pixelizes PDFs in qpdfview.
 # But almost all other Qt applications require it for HiDPI screens.
-unset QT_AUTO_SCREEN_SCALE_FACTOR
+unset QT_AUTO_SCREEN_SCALE_FACTOR QT_ENABLE_HIGHDPI_SCALING
 
 # If there's evidence that we're opening a PDF that was compiled using
 # SyncTeX, use the LaTeX instance of qpdfview.  This way, a new window

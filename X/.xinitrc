@@ -48,6 +48,9 @@ if [[ "$HIDPI" == 1 ]]
 then
     xrdb -DHIDPI=1 -merge "${HOME}/.Xresources"
 
+    # HiDPI GTK settings
+    # ------------------
+
     # Scale GTK3 UI elements by a factor of two.  But this
     # scales the text, which has been scaled once before.
     export GDK_SCALE=2
@@ -55,15 +58,26 @@ then
     # Thus, undo scaling of text.
     export GDK_DPI_SCALE=0.5
 
-    # HiDPI Qt settings.
-    # Set QT_AUTO_SCREEN_SCALE_FACTOR to 0 since we're
-    # setting the DPI exactly.
-    export QT_FONT_DPI=168
-    export QT_AUTO_SCREEN_SCALE_FACTOR=0
-
     # We need this since GTK 2.0 needs to have a different configuration for
     # low-DPI screens.
     export GTK2_RC_FILES="${HOME}/.gtkrc-hidpi-2.0"
+
+    # HiDPI Qt settings
+    # -----------------
+
+    # We're supposed to set QT_AUTO_SCREEN_SCALE_FACTOR to 0 since we're
+    # setting the DPI exactly.  But for some reason, icons in certain
+    # applications (e.g., XnView) don't scale properly without setting
+    # it to 1.
+    export QT_FONT_DPI=168
+    export QT_AUTO_SCREEN_SCALE_FACTOR=1
+    export QT_ENABLE_HIGHDPI_SCALING=1
+
+    # This variable describes the possible HiDPI scale factor
+    # rounding policy (either "round" or "passthrough"), which decide
+    # how non-integer scale factors (such as Windows 150%) are handled.
+    # "Round" is the Qt5 default and "PassThrough" is the Qt6 default.
+    export QT_SCALE_FACTOR_ROUNDING_POLICY="PassThrough"
 else
     # When on the NVIDIA dGPU Qt has to be told that we need 96 DPI when not
     # using HiDPI; I don't know why.
@@ -129,8 +143,9 @@ setxkbmap -variant altgr-intl              \
           -option terminate:ctrl_alt_bkspc
 
 # Start redshift to adjust screen temperature.
-redshift -l '43.088947:-76.154480' & # Syracuse
+# redshift -l '43.088947:-76.154480' & # Syracuse
 # redshift -l '10.530345:76.214729' & # Thrissur
+redshift -l '12.9716:77.5946' & # Bangalore
 
 # Set the background color to a no-nonsense gray.
 if command -v hsetroot &>/dev/null
