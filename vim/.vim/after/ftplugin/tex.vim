@@ -10,6 +10,11 @@ if expand('%:e') !=? 'tex'
   finish
 endif
 
+if executable('prettytex')
+  setlocal formatprg=prettytex
+  noremap <buffer> Q gq
+endif
+
 " Files to give less priority if editing a *.tex file.
 setlocal suffixes+=*.bbl,*.sty,*.bst,*.cls
 

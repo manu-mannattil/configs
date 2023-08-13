@@ -204,18 +204,6 @@ alias scp='scp -C'
 # Don't run vi.
 alias vi='vim'
 
-# latexindent.pl with some customizations:
-#
-# option    description
-# ------    -----------
-#
-#   -m      breaks lines; useful to format LaTeX so that
-#           each sentence is on one physical line
-#   -g      send indent.log to /dev/null
-#   -l      use settings from ~/.latexindent.yaml
-#
-alias latexindent='latexindent -m -g /dev/null -l="$HOME/.latexindent.yaml"'
-
 # Markdown using Pandoc.
 alias markdown='pandoc -S -f markdown+superscript+subscript -t html'
 
@@ -577,6 +565,9 @@ export FCEDIT="$EDITOR" VISUAL="$EDITOR"
 
 # Preferred web browser.
 export BROWSER="firefox"
+
+# Java applications: (i) pick up font settings from system, (ii) antialias text.
+export JDK_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 
 # Set locale properly.  Ubuntu sets LANG to en_IN if IST is selected as the
 # time zone.  But many programs (e.g., tmux) don't understand en_IN.

@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+#
+# prettytex -- a wrapper around latexindent that loads settings from
+#              ~/.latexindent.yaml and does other sensible things
+#
+
+run=( "/usr/bin/latexindent" -m -g /dev/null -l="$HOME/.latexindent.yaml" )
+
+# Options
+# -------
+#
+#   -m      breaks lines; useful to format LaTeX so that
+#           each sentence is on one physical line
+#   -g      send indent.log to /dev/null
+#   -l      use settings from ~/.latexindent.yaml
+
+if [[ -t 0 ]]
+then
+    case "$1" in
+        -*) exec "${run[0]}" "$@"             ;;
+        "") exec "${run[0]}" --help           ;;
+        *)  exec "${run[@]}" "$@" 2>/dev/null ;;
+    esac
+else
+    exec "${run[@]}" "-" 2>/dev/null
+fi
