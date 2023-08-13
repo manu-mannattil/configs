@@ -363,3 +363,9 @@ for_window [class="Filezilla"] focus
 for_window [class="steam"] move container to workspace 9
 for_window [class="steam"] focus
 for_window [class="steam"] floating enable
+
+for_window [title="SoulseekQt build"] move container to workspace 9
+for_window [title="SoulseekQt build"] focus
+
+for_window [class="Signal"] move container to workspace 9
+for_window [class="Signal"] focus
