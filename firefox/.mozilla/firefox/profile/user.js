@@ -167,10 +167,6 @@ user_pref("layout.spellcheckDefault", 2);
 // Enable loading of userChrome.css if available.
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 
-// This is like the $GDK_SCALE environment variable that GTK+ uses for
-// HiDPI scaling, but allows fractional scaling.
-user_pref("layout.css.devPixelsPerPx", "-1");
-
 // Highlight matching search terms.
 user_pref("findbar.highlightAll", true);
 
@@ -238,3 +234,9 @@ user_pref("browser.urlbar.decodeURLsOnCopy", true);
 
 // Always show bookmarks in the toolbar.
 user_pref("browser.toolbars.bookmarks.visibility", "always");
+
+// Set of zoom values that Firefox can use.  The only addition to this
+// from the default list is 88% zoom, which I added so that 168 DPI text
+// appears as 96 DPI text on my HiDPI laptop screen with a Zoom factor
+// of 2.  The math is as follows: (168/96)/2 = 0.875 = 87.5%.
+user_pref("toolkit.zoomManager.zoomValues", ".3,.5,.67,.8,.875,.9,1,1.1,1.2,1.33,1.5,1.7,2,2.4,3,4,5");
