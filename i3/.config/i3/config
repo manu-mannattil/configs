@@ -112,6 +112,7 @@ bindsym $mod+d exec rofi -show-icons -show drun
 # Run passmenu -- a script to choose pass-managed password store
 # entries using dmenu/rofi.
 bindsym $mod+p exec passmenu
+bindsym $mod+Shift+p exec passmenu otp -c
 
 # Switch windows using rofi.
 bindsym $mod+i exec rofi -show window
