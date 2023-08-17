@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Run YaLafi on .tex files
+# https://github.com/torik42/YaLafi
+
+exec python3 -m yalafi "$@" 2>/dev/null
