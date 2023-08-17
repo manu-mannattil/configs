@@ -1,4 +1,7 @@
-// Resource for user.js hardening: https://github.com/arkenfox/user.js
+// Resource for user.js tweaking:
+//
+//    https://github.com/arkenfox/user.js
+//    https://github.com/yokoffing/Betterfox
 //
 // A much better way to be safe from your browser is to
 // browse the web less.  It also has the (positive) side
@@ -54,13 +57,17 @@ user_pref("browser.sessionstore.max_tabs_undo", 0);
 user_pref("browser.sessionstore.max_windows_undo", 0);
 user_pref("browser.sessionstore.restore_on_demand", false);
 
-// Disable all sponsored crap.
+// Disable all sponsored crap and show nothing in activity stream.
 user_pref("browser.newtabpage.activity-stream.default.sites", "");
 user_pref("browser.newtabpage.activity-stream.feeds.discoverystreamfeed", false);
 user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
 user_pref("browser.newtabpage.activity-stream.feeds.snippets", false);
 user_pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
+user_pref("browser.newtabpage.activity-stream.section.highlights.includeBookmarks", false);
+user_pref("browser.newtabpage.activity-stream.section.highlights.includeDownloads", false);
 user_pref("browser.newtabpage.activity-stream.section.highlights.includePocket", false);
+user_pref("browser.newtabpage.activity-stream.section.highlights.includeVisited", false);
+user_pref("browser.newtabpage.activity-stream.section.highlights.rows", 0);
 user_pref("browser.newtabpage.activity-stream.showSponsored", false);
 user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
 user_pref("browser.newtabpage.activity-stream.telemetry", false);
@@ -88,10 +95,17 @@ user_pref("app.shield.optoutstudies.enabled", false);
 user_pref("breakpad.reportURL", "");
 user_pref("browser.crashReports.unsubmittedCheck.autoSubmit2", false);
 user_pref("browser.crashReports.unsubmittedCheck.enabled", false);
+user_pref("browser.discovery.enabled", false);
+user_pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
+user_pref("browser.newtabpage.activity-stream.telemetry", false);
 user_pref("browser.ping-centre.telemetry", false);
 user_pref("browser.tabs.crashReporting.sendReport", false);
+user_pref("captivedetect.canonicalURL", "");
 user_pref("datareporting.healthreport.uploadEnabled", false);
 user_pref("datareporting.policy.dataSubmissionEnabled", false);
+user_pref("default-browser-agent.enabled", false);
+user_pref("network.captive-portal-service.enabled", false);
+user_pref("network.connectivity-service.enabled", false);
 user_pref("toolkit.coverage.endpoint.base", "");
 user_pref("toolkit.coverage.opt-out", true);
 user_pref("toolkit.telemetry.archive.enabled", false);
@@ -110,6 +124,26 @@ user_pref("extensions.screenshots.upload-disabled", true);
 
 // Disable Firefox accounts.
 user_pref("identity.fxaccounts.enabled", false);
+
+// ------------- Performance -------------
+
+// How long FF will wait before rendering the page, in milliseconds
+// Reduce the 5ms Firefox waits to render the page.
+user_pref("nglayout.initialpaint.delay", 0);
+user_pref("nglayout.initialpaint.delay_in_oopif", 0);
+
+// Notification interval (in microseconds) [to avoid layout thrashing]
+// When Firefox is loading a page, it periodically reformats
+// or "reflows" the page as it loads. The page displays new elements
+// every 0.12 seconds by default. These redraws increase the total page load time.
+user_pref("content.notify.interval", 100000);
+
+// More TLS token caching (fast reconnects).
+user_pref("network.ssl_tokens_cache_capacity", 32768);
+
+// Use bigger packets.
+user_pref("network.buffer.cache.size", 262144);
+user_pref("network.buffer.cache.count", 128);
 
 // ------------- DNS -------------
 
@@ -240,3 +274,13 @@ user_pref("browser.toolbars.bookmarks.visibility", "always");
 // appears as 96 DPI text on my HiDPI laptop screen with a Zoom factor
 // of 2.  The math is as follows: (168/96)/2 = 0.875 = 87.5%.
 user_pref("toolkit.zoomManager.zoomValues", ".3,.5,.67,.8,.875,.9,1,1.1,1.2,1.33,1.5,1.7,2,2.4,3,4,5");
+
+// Better smooth scrolling.
+// https://github.com/yokoffing/Betterfox
+user_pref("general.smoothScroll", true);
+user_pref("mousewheel.default.delta_multiplier_y", 300);
+user_pref("general.smoothScroll.msdPhysics.enabled", true);
+
+// Wrap long lines while viewing source and in devtools.
+user_pref("view_source.wrap_long_lines", true);
+user_pref("devtools.debugger.ui.editor-wrapping", true);
