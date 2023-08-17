@@ -270,6 +270,11 @@ __install_less() {
     install "less/.lessfilter"
 }
 
+# :target: liferea - Liferea configuration
+__install_liferea() {
+    install "liferea/.config/liferea/liferea.css"
+}
+
 # :target: mathematica - Wolfram Mathematica configuration
 __install_mathematica() {
     install --copy "mathematica/.Mathematica/FrontEnd/init.m"
