@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# mp3tag with HiDPI fix
+
+dpi=$(printf '%.8X\n' "$QT_FONT_DPI")
+
+[ -f "$HOME/.wine/user.reg" ] && {
+    sed -i "s/^\"LogPixels\".*/\"LogPixels\"=dword:$dpi/" "$HOME/.wine/user.reg"
+}
+
+exec /usr/local/bin/mp3tag "$@"
