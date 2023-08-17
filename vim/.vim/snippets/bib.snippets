@@ -102,3 +102,13 @@ snippet web w/o explicit URL
 		url    = {${4:url}},
 		year   = {accessed `strftime("%Y-%m-%d")`}
 	}
+snippet arxiv
+	@misc{${1:id},
+		author = {${2:authors separated by "and"}},
+		title = {${3:title}},
+		year = ${4:year},
+		eprint = {${4:eprint}},
+		archiveprefix = {arXiv},
+		primaryclass = {cond-mat.soft},
+		note = {preprint}
+	}

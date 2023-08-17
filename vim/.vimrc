@@ -80,6 +80,10 @@ set mouse=a
 " Show line numbers.
 set number
 
+" Determines the maximum number of items to show in the popup menu for
+" insert mode completion.
+set pumheight=12
+
 " Show the line number relative to the line with the cursor in front of each
 " line.
 set relativenumber
@@ -287,6 +291,7 @@ set whichwrap+=l,h,>,<
 " --------------------
 
 " Insert spaces instead of tabs.
+" https://www.youtube.com/watch?v=SsoOG6ZeyUI
 set expandtab
 
 " Round indent to multiple of 'shiftwidth'.

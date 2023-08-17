@@ -25,6 +25,7 @@
 #   Skype                 https://go.skype.com/skypeforlinux-64.deb
 #   Xournal++             https://github.com/xournalpp/xournalpp/releases
 #   Zoom                  https://zoom.us/download
+#   LanguageTool          https://languagetool.org/download/LanguageTool-stable.zip
 #
 # The following programs usually have outdated versions in the Debian
 # repositories, therefore it makes sense to install them manually:
@@ -77,6 +78,7 @@ PACKAGES=(
   gpgv2 # GNU privacy guard - signature verification tool (dummy transitional package)
   pinentry-gnome3 # GNOME 3 PIN or pass-phrase entry dialog for GnuPG
   pass  # lightweight directory-based password manager
+  oauthtool # totp manager
 
   # Debian
   apt-file # search for files within Debian packages (command-line interface)
@@ -309,6 +311,7 @@ PACKAGES=(
   tty-clock # simple terminal clock
   uchardet # universal charset detection library - cli utility
   units # converts between different systems of units
+  zbar-tools # QR code scanner/decoder
 
   # Miscellaneous
   wine # Windows API implementation - standard suite

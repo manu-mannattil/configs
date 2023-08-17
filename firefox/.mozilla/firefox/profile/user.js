@@ -59,9 +59,12 @@ user_pref("browser.sessionstore.restore_on_demand", false);
 
 // Disable all sponsored crap and show nothing in activity stream.
 user_pref("browser.newtabpage.activity-stream.default.sites", "");
+user_pref("browser.newtabpage.activity-stream.discoverystream.enabled", false);
+user_pref("browser.newtabpage.activity-stream.enabled", false);
 user_pref("browser.newtabpage.activity-stream.feeds.discoverystreamfeed", false);
 user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
 user_pref("browser.newtabpage.activity-stream.feeds.snippets", false);
+user_pref("browser.newtabpage.activity-stream.feeds.system.topsites", false);
 user_pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
 user_pref("browser.newtabpage.activity-stream.section.highlights.includeBookmarks", false);
 user_pref("browser.newtabpage.activity-stream.section.highlights.includeDownloads", false);
