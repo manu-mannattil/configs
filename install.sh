@@ -331,6 +331,11 @@ __install_parallel() {
     install "parallel/.parallel/config"
 }
 
+# :target: proxychains -- proxychains configuration
+__install_proxychains() {
+    install "proxychains/.proxychains"
+}
+
 # :target: python - CPython REPL configuration
 __install_python() {
     install "python/.pythonrc.py"
