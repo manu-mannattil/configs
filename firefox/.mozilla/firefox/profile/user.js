@@ -1,4 +1,4 @@
-// Resource for user.js tweaking:
+// Resources for user.js tweaking:
 //
 //    https://github.com/arkenfox/user.js
 //    https://github.com/yokoffing/Betterfox

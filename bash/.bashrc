@@ -127,6 +127,7 @@ unalias -a &>/dev/null
 # Make things more verbose and meaningful, pretty print stuff, ask
 # before overwriting files, vi keybindings, etc.
 alias chmod='chmod --preserve-root'
+alias chown='chown -c'
 alias cp='cp -iv'
 alias du='du -csh'
 alias egrep='egrep --color=auto'

@@ -127,7 +127,12 @@ set linebreak
 " -----------
 
 " Set colorscheme.
-colorscheme distinguished
+try
+  colorscheme distinguishedx
+catch /^Vim\%((\a\+)\)\=:E185/
+  set background=dark
+  syntax off
+endtry
 
 " Highlight `bad' words so that they *always* stand out boldly.
 if has('gui_running') || &t_Co >= 256
