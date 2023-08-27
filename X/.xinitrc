@@ -143,9 +143,15 @@ setxkbmap -variant altgr-intl              \
           -option terminate:ctrl_alt_bkspc
 
 # Start redshift to adjust screen temperature.
-# redshift -l '43.088947:-76.154480' & # Syracuse
-# redshift -l '10.530345:76.214729' & # Thrissur
-redshift -l '12.9716:77.5946' & # Bangalore
+# The actual latitude:longitude is set in ~/.location
+# for cleaner version control.
+[[ -f "$HOME/.location" ]] && {
+    loc=$(sed '/^\s*#/d
+               /^\s*$/d
+               s/\s*#.*$//
+               s/^\s*//' "$HOME/.location" | head -n 1)
+    redshift -l "$loc" &
+}
 
 # Set the background color to a no-nonsense gray.
 if command -v hsetroot &>/dev/null
