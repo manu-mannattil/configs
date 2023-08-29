@@ -126,9 +126,10 @@ set linebreak
 " Colors {{{2
 " -----------
 
-" Set colorscheme.
+" If the `distinguished' colorscheme isn't available, don't
+" bother with a colorscheme.
 try
-  colorscheme distinguishedx
+  colorscheme distinguished
 catch /^Vim\%((\a\+)\)\=:E185/
   set background=dark
   syntax off
