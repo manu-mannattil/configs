@@ -17,8 +17,8 @@
   ci = commit
   cl = clone
   co = checkout
-  dc = diff --cached
-  df = diff --diff-filter=d
+  dc = diff --patience --cached
+  df = diff --patience --diff-filter=d
   dl = clone --depth=1
   dt = difftool
   empty-commit = commit --allow-empty-message -m ''
@@ -27,7 +27,8 @@
   st = status --branch --short --untracked-files=all
   stt = !git --no-pager diff --stat
   texdiff = !git-latexdiff --latexmk --ln-untracked --quiet --latexpand --makeatletter --ignore-latex-errors
-  wd = diff --word-diff
+  wd = diff --word-diff --unified=0
+  dw = wd
 
 [color]
   ui = auto
