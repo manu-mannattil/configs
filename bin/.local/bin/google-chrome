@@ -1,12 +1,34 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 case "$1" in
     -*) exec /usr/bin/google-chrome "$@" ;;
 esac
 
-exec firejail                        \
-    --whitelist=~/.config/fontconfig \
-    --whitelist=~/downloads          \
-    /usr/bin/google-chrome           \
-    --password-store=basic           \
-    --incognito "$@"
+# Documentation on flags:
+#
+#   https://peter.sh/experiments/chromium-command-line-switches
+#   https://github.com/GoogleChrome/chrome-launcher/blob/main/docs/chrome-flags-for-tools.md
+#   https://github.com/ungoogled-software/ungoogled-chromium/blob/master/docs/flags.md
+#
+# The ArchWiki mentions a ~/.config/chrome-flags.conf file that can be
+# used to configure Chrome.  But that file is specific to the Chrome
+# package distributed with Arch Linux and will not work with Google's
+# official package.
+# https://wiki.archlinux.org/title/Chromium#Making_flags_persistent
+flags=(
+    --disable-background-networking
+    --disable-client-side-phishing-detection
+    --disable-component-update
+    --disable-default-apps
+    --disable-extensions
+    --disable-features=InterestFeedContentSuggestions
+    --disable-sync
+    --gtk-version=4
+    --incognito
+    --no-default-browser-check
+    --no-first-run
+    --print-to-pdf-no-header
+    --system-font-family
+)
+
+nohup /usr/bin/google-chrome "${flags[@]}" "$@" >/dev/null 2>&1 &
