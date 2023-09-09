@@ -38,6 +38,7 @@ plugin_urls=(
   ['tabular']='https://github.com/godlygeek/tabular.git'
   ['vimtex']='https://github.com/lervag/vimtex.git'
   ['fzf']='https://github.com/junegunn/fzf.vim'
+  ['vimwiki']='https://github.com/vimwiki/vimwiki'
 )
 
 # Absolute path to the plugin directory.  We make use of Vim's new

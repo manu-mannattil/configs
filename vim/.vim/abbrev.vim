@@ -377,6 +377,7 @@ if &ft == "tex"
   iabbrev <buffer> Francois Fran\c{c}ois
   iabbrev <buffer> Godel G\"{o}del
   iabbrev <buffer> Kieslowski Kie\'{s}lowski
+  iabbrev <buffer> Lame Lam\'{e}
   iabbrev <buffer> Mobius M\"{o}bius
   iabbrev <buffer> Poincare Poincar\'{e}
   iabbrev <buffer> Polya P\'{o}lya
@@ -390,6 +391,7 @@ else
   iabbrev <buffer> Francois François
   iabbrev <buffer> Godel Gödel
   iabbrev <buffer> Kieslowski Kieślowski
+  iabbrev <buffer> Lame Lamé
   iabbrev <buffer> Mobius Möbius
   iabbrev <buffer> Poincare Poincaré
   iabbrev <buffer> Polya Pólya

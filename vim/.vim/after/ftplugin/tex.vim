@@ -10,6 +10,8 @@ if expand('%:e') !=? 'tex'
   finish
 endif
 
+setlocal iskeyword+=-
+
 " Use my wrapper around latexindent as the formatprg if available.
 " https://github.com/manu-mannattil/configs/blob/master/bin/.local/bin/prettytex
 if executable('prettytex')

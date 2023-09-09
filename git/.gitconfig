@@ -11,6 +11,7 @@
   attributesfile = ~/.gitattributes
   excludesfile = ~/.cvsignore
   editor = vim
+  pager = perl /usr/share/doc/git/contrib/diff-highlight/diff-highlight | less
 
 [alias]
   br = branch
@@ -27,11 +28,16 @@
   st = status --branch --short --untracked-files=all
   stt = !git --no-pager diff --stat
   texdiff = !git-latexdiff --latexmk --ln-untracked --quiet --latexpand --makeatletter --ignore-latex-errors
-  wd = diff --word-diff --unified=0
+  wd = diff --word-diff --unified=0 --word-diff-regex=[^[:space:],]+ --color-words
   dw = wd
 
 [color]
   ui = auto
+
+; [color "diff"]
+;   meta = blue
+;   old = red italic
+;   new = brightgreen italic
 
 [diff]
   tool = vimdiff
@@ -58,3 +64,6 @@
 
 [help]
   autocorrect = 1
+
+[interactive]
+  difffilter = perl /usr/share/doc/git/contrib/diff-highlight/diff-highlight
