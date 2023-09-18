@@ -390,6 +390,14 @@ macro index,pager,attach,compose gy                                             
   <enter-command>set pipe_decode=\$my_pipe_decode; unset my_pipe_decode<Enter>" \
   "copy message to clipboard using pbcopy"
 
+# Run mutt-trans -- my script to pipe message thru trans(1)
+# on pressing H.
+macro index,pager,attach,compose H                                              \
+  "<enter-command>set my_pipe_decode=\$pipe_decode pipe_decode<Enter>           \
+  <pipe-message>mutt-trans<Enter>                                               \
+  <enter-command>set pipe_decode=\$my_pipe_decode; unset my_pipe_decode<Enter>" \
+  "copy message to clipboard using pbcopy"
+
 # Mutt/Notmuch integration {{{1
 # -----------------------------
 
