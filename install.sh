@@ -336,11 +336,6 @@ __install_proxychains() {
     install "proxychains/.proxychains"
 }
 
-# :target: python - CPython REPL configuration
-__install_python() {
-    install "python/.pythonrc.py"
-}
-
 # :target: qpdfview - qpdfview configuration
 __install_qpdfview() {
     install --copy "qpdfview/.config/qpdfview/qpdfview.conf"
@@ -475,7 +470,6 @@ __parse_group() {
                 ipython
                 less
                 parallel
-                python
                 readline
                 ssh
                 terminfo

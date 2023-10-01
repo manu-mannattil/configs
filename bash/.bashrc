@@ -588,9 +588,6 @@ export PASSWORD_STORE_DIR="${HOME}/documents/.password-store"
 export PAGER="less"
 export MANPAGER="less"
 
-# File that's imported when the CPython interpreter is called interactively.
-export PYTHONSTARTUP="${HOME}/.pythonrc.py"
-
 # Don't save sdcv history.
 export SDCV_HISTSIZE=0
 
