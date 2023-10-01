@@ -5,9 +5,6 @@
 #
 # Usage: install-conda.sh
 #
-# This script installs a bunch of common Python modules using Miniconda.
-# https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-#
 
 PACKAGES=(
   # Python linter.
@@ -55,5 +52,12 @@ PACKAGES=(
   titlecase
 )
 
-conda update --all
-conda install "${PACKAGES[@]}"
+if command -v mamba &>/dev/null
+then
+  installer="mamba"
+else
+  installer="conda"
+fi
+
+"$installer" update --all
+"$installer" install "${PACKAGES[@]}"
