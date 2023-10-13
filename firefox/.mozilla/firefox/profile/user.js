@@ -172,7 +172,7 @@ user_pref("network.security.esni.enabled", true);
 // Treat me like an adult.
 user_pref("browser.aboutConfig.showWarning", false);
 
-// Disable Ctrl+Q quit shortcut.
+// Disable the Ctrl+Q quit shortcut.
 user_pref("browser.quitShortcut.disabled", true);
 
 // There is so much BS regarding how the new Firefox downloads files.
@@ -275,7 +275,7 @@ user_pref("browser.toolbars.bookmarks.visibility", "always");
 // Set of zoom values that Firefox can use.  The only addition to this
 // from the default list is 88% zoom, which I added so that 168 DPI text
 // appears as 96 DPI text on my HiDPI laptop screen with a Zoom factor
-// of 2.  The math is as follows: (168/96)/2 = 0.875 = 87.5%.
+// of 2.  The math is as follows: (168/96)/2 = 0.875 = 87.5% ~ 88%.
 user_pref("toolkit.zoomManager.zoomValues", ".3,.5,.67,.8,.875,.9,1,1.1,1.2,1.33,1.5,1.7,2,2.4,3,4,5");
 
 // Better smooth scrolling.
@@ -287,3 +287,16 @@ user_pref("general.smoothScroll.msdPhysics.enabled", true);
 // Wrap long lines while viewing source and in devtools.
 user_pref("view_source.wrap_long_lines", true);
 user_pref("devtools.debugger.ui.editor-wrapping", true);
+
+// Disable media autoplay.  I would ideally want to better understand
+// these options, but Mozilla keeps changing them all the time, so
+// such a task would not be worth it.
+// https://news.ycombinator.com/item?id=28131896
+user_pref("media.autoplay.allow-muted", false);
+user_pref("media.autoplay.block-event.enabled", true);
+user_pref("media.autoplay.block-webaudio", true);
+user_pref("media.autoplay.default", 5);
+user_pref("media.autoplay.enabled.user-gestures-needed", false);
+
+// Control GIF autoplay (accepted values - "none", "normal", "once").
+user_pref("image.animation_mode", "once");
