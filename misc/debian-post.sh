@@ -82,6 +82,7 @@ PACKAGES=(
 
   # Debian
   apt-file # search for files within Debian packages (command-line interface)
+  deborphan # lists orphaned packages
 
   # Desktop and window managers
   adwaita-qt # Adwaita light/dark theme for Qt
@@ -269,7 +270,6 @@ PACKAGES=(
   bibtool # tool to manipulate BibTeX files
   diction # Utilities to help with style and diction (English and German)
   libreoffice-gtk3 # office productivity suite
-  lyx # document processor
   sdcv # StarDict Console Version
   texlive-full # TeX Live: metapackage pulling in all components of TeX Live
   wdiff # compare two files word by word
