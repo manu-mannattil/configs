@@ -108,38 +108,6 @@ for dict in b:vimtex_imaps_list
   call vimtex#imaps#add_map(dict)
 endfor
 
-" Quick snippets using my fork of snipmate.
-let b:snipmate_quick_snippets = [
-      \ ['#b', '\mathbb{${1}}${2}'],
-      \ ['#B', '\mathbf{${1}}${2}'],
-      \ ['#c', '\mathcal{${1}}${2}'],
-      \ ['#C', '\mathscr{${1}}${2}'],
-      \ ['#d', '\dd{${1}}\,${2}'],
-      \ ['#e', '\emph{${1}}${2}'],
-      \ ['#m', '\bm{${1}}${2}'],
-      \ ['#s', '\mathsf{${1}}${2}'],
-      \ ['#t', '\text{${1}}${2}'],
-      \ ['#<', '\bra{${1}}${2}'],
-      \ ['#>', '\ket{${1}}${2}'],
-      \ ['#\|', '\braket{${1}}${2}'],
-      \ ['#*', '\star'],
-      \ ['^' , '^{${1}}${2}'],
-      \ ['_' , '_{${1}}${2}'],
-      \ ['`(', '\left(${1}\right)${2}'],
-      \ ['`-', '\bar{${1}}${2}'],
-      \ ['`/', '\frac{${1}}{${2}}${3}'],
-      \ ['`2', '\sqrt{${1}}${2}'],
-      \ ['`[', '\left[${1}\right]${2}'],
-      \ ['`^', '\hat{${1}}${2}'],
-      \ ['`{', '\left\{${1}\right\}${2}'],
-      \ ['`~', '\tilde{${1}}${2}'],
-      \ ['`.', '\dot{${1}}${2}'],
-      \]
-
-for snippet in b:snipmate_quick_snippets
-  call call('QuickSnippet', snippet)
-endfor
-
 " Function to strip a TeX command.  Consider the following situation
 " where you want to just remove the outer \hl{ ... } highlighting.
 "
@@ -168,3 +136,70 @@ command! -nargs=1 TeXStrip silent call s:texstrip(<f-args>)
 
 " Open the first associated *.bib file using \lb.
 nnoremap <buffer> <silent> <localleader>lb :execute "split ".vimtex#bib#files()[0]<CR>
+
+" Quick snippets using snipMate and vimtex {{{1
+" ---------------------------------------------
+
+" Trigger snipMate snippet insertion if we're in a math environment.
+" If not, just insert the text as usual.
+function! s:snipMateMathSnippet(trigger, snippet)
+  if vimtex#syntax#in_mathzone()
+    call snipmate#expandQuickSnip(a:snippet)
+    startinsert
+  else " Is there a simpler way to insert text using a function?
+    " Modify the current line to include the trigger.
+    let line = getline('.')
+    let pos = col('.') - 1
+    let line = line[:pos] . a:trigger . line[pos + 1:]
+    call setline('.', line)
+
+    " Put cursor on the next column (by simulating an append or move
+    " forward) if we are at the last character of the current line.
+    " This makes inserting text more natural and consistent with Vim's
+    " default behavior.
+    call cursor(line('.'), pos + len(a:trigger) + 1)
+    if len(line) == col('.')
+      call feedkeys('a', 'n') " simulate append
+    else
+      call feedkeys('l', 'n') " simulate move forward
+    endif
+  endif
+endfunction
+
+" Helper function to make math snippets.
+function! s:makeSnipMateMathSnippet(trigger, snippet)
+  silent execute 'inoremap <silent><buffer>' a:trigger
+        \ '<esc>:call <SID>snipMateMathSnippet("' . escape(a:trigger, '\') . '", "'
+        \ . escape(a:snippet, '\') . '")<cr>'
+endfunction
+
+let b:snipmate_math_snippets = [
+      \ ['#b', '\mathbb{${1}}${2}'],
+      \ ['#B', '\mathbf{${1}}${2}'],
+      \ ['#c', '\mathcal{${1}}${2}'],
+      \ ['#C', '\mathscr{${1}}${2}'],
+      \ ['#d', '\dd{${1}}\,${2}'],
+      \ ['#e', '\emph{${1}}${2}'],
+      \ ['#m', '\bm{${1}}${2}'],
+      \ ['#s', '\mathsf{${1}}${2}'],
+      \ ['#t', '\text{${1}}${2}'],
+      \ ['#<', '\bra{${1}}${2}'],
+      \ ['#>', '\ket{${1}}${2}'],
+      \ ['#\|', '\braket{${1}}${2}'],
+      \ ['#*', '\star'],
+      \ ['^' , '^{${1}}${2}'],
+      \ ['_' , '_{${1}}${2}'],
+      \ ['`(', '\left(${1}\right)${2}'],
+      \ ['`-', '\bar{${1}}${2}'],
+      \ ['`/', '\frac{${1}}{${2}}${3}'],
+      \ ['`2', '\sqrt{${1}}${2}'],
+      \ ['`[', '\left[${1}\right]${2}'],
+      \ ['`^', '\hat{${1}}${2}'],
+      \ ['`{', '\left\{${1}\right\}${2}'],
+      \ ['`~', '\tilde{${1}}${2}'],
+      \ ['`.', '\dot{${1}}${2}'],
+      \]
+
+for snippet in b:snipmate_math_snippets
+  call call('<SID>makeSnipMateMathSnippet', snippet)
+endfor
