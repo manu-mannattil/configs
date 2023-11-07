@@ -210,6 +210,7 @@ function! s:setup_abbreviations()
   Prefixab  \\ sqrt3       ∛
   Prefixab  \\ sqrt4       ∜
   Prefixab  \\ inf         ∞
+  Prefixab  \\ infty       ∞
   Prefixab  \\ propto      ∝
   Prefixab  \\ pitchfork   ⋔
 

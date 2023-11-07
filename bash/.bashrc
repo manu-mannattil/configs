@@ -72,7 +72,7 @@ PROMPT_COMMAND="${PROMPT_COMMAND}; history -n"
 # first line of $HISTFILE is _not_ a blank line.  Basically, a two word command
 # like `echo a' gets completed twice if the first line of $HISTFILE isn't
 # a blank line.
-export HISTFILE="${HOME}/.cache/bash_history"
+export HISTFILE="$HOME/.cache/bash_history"
 
 # Don't restrict history file's size at all.
 export HISTFILESIZE=""
@@ -91,7 +91,7 @@ export HISTTIMEFORMAT="%Y-%m-%d %H:%M %Z "
 export HISTIGNORE="bg:clear:fg:history:ls:rm *:aria2c *:find *-delete*:"
 
 # Store history files for commands wrapped with rl-wrap in separate directory.
-export RLWRAP_HOME="${HOME}/.cache/rlwrap"
+export RLWRAP_HOME="$HOME/.cache/rlwrap"
 
 # Colors {{{2
 # -----------
@@ -196,6 +196,9 @@ alias posh='rlwrap -a -c posh'
 # Don't compress raster images embedded in PDFs.
 alias pdfsizeopt='pdfsizeopt --do-optimize-images=no'
 
+# Decode QR code without extraneous information.
+alias qrdecode='zbarimg -q --raw'
+
 # Toggle redshift.
 alias redtoggle='pkill -USR1 redshift'
 
@@ -244,7 +247,7 @@ alias weather='curl -q http://wttr.in/?m'
 
 # Options for less.  See less(1) for more.
 export LESS="-cfiJMR -j .5"
-export LESSHISTFILE="${HOME}/.cache/lesshst"
+export LESSHISTFILE="$HOME/.cache/lesshst"
 export LESSHISTSIZE="5000"
 
 # Enhance less using lesspipe.
@@ -321,7 +324,7 @@ cd() {
 # plmgr {{{2
 # ----------
 
-: ${PLMGR_PLAYLIST_DIR:="${HOME}/music/playlists"}
+: ${PLMGR_PLAYLIST_DIR:="$HOME/music/playlists"}
 : ${PLMGR_PLAYLIST_DEFAULT:="miscellaneous.m3u"}
 
 _plmgr() {
@@ -465,7 +468,7 @@ mergepath() {
 # /etc/environment so as to make it the default profile when mutt is
 # called outside this function.
 
-: ${MUTT_PROFILE_DIR:="${HOME}/.mutt/profiles"}
+: ${MUTT_PROFILE_DIR:="$HOME/.mutt/profiles"}
 
 mutt() {
     if [[ "$1" =~ (^-[aAbcdDefFhHimnpQRsvxyzZ-]|^mailto:|.*@.*|^$) ]]
@@ -495,7 +498,7 @@ complete -F _mutt mutt
 #
 # A dumb tmux sessions `manager'.
 
-: ${TMUX_SESSIONS_DIR:="${HOME}/.tmux"}
+: ${TMUX_SESSIONS_DIR:="$HOME/.tmux"}
 : ${TMUX_DEFAULT_SESSION:="default"}
 
 mux() {
@@ -550,15 +553,15 @@ export SDCV_PAGER="sdcv-prettify --color | less"
 export MANWIDTH=80
 
 # Set up $LS_COLORS.
-if [[ -f "${HOME}/.dir_colors" ]]
+if [[ -f "$HOME/.dir_colors" ]]
 then
-    eval $(dircolors "${HOME}/.dir_colors")
+    eval $(dircolors "$HOME/.dir_colors")
 else
     eval $(dircolors)
 fi
 
 # Set the PATH.
-mergepath "${HOME}/code/bin" "${HOME}/.local/bin"
+mergepath "$HOME/code/bin" "$HOME/.local/bin"
 
 # Note that fc(1) in vi-mode uses $VISUAL instead of $FCEDIT.
 export EDITOR="/usr/bin/vim"
@@ -582,7 +585,7 @@ export MUTT_PROFILE="posteo"
 export PASSWORD_STORE_CLIP_TIME=180
 
 # Location of password store git repo.
-export PASSWORD_STORE_DIR="${HOME}/documents/.password-store"
+export PASSWORD_STORE_DIR="$HOME/documents/.password-store"
 
 # Default pager.
 export PAGER="less"
@@ -592,10 +595,10 @@ export MANPAGER="less"
 export SDCV_HISTSIZE=0
 
 # Local TEXMF directory.
-export TEXMFHOME="${HOME}/.texmf"
+export TEXMFHOME="$HOME/.texmf"
 
 # Preferred terminal emulator.
-export TERMINAL="${HOME}/code/scripts/terminal"
+export TERMINAL="$HOME/code/scripts/terminal"
 
 # Will reduce the time it takes for xdg-open to figure out that the DE
 # is a generic one.
@@ -619,7 +622,7 @@ export COMP_KNOWN_HOSTS_WITH_HOSTFILE=
 export BASH_COMPLETION_KNOWN_HOSTS_WITH_HOSTFILE=
 
 # Source local .bashrc if any.
-[[ -f "${HOME}/.bashrc_local" ]] && source "${HOME}/.bashrc_local"
+[[ -f "$HOME/.bashrc_local" ]] && source "$HOME/.bashrc_local"
 
 # Source .env file if any.  This is a security risk!
 [[ -f ".env" ]] && source ".env"

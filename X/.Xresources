@@ -117,7 +117,7 @@ URxvt*keysym.C-minus: font-size:decrease
 URxvt*keysym.C-underscore: font-size:decglobal
 
 ! URxvt font: Source Code Pro {{{2
-URxvt*font: xft:Source Code Pro:Semibold:size=9, xft:DejaVu Sans Mono:Bold:size=9, xft:DejaVu Sans:Normal:size=9, xft:FreeSerif:Normal:size=9
+URxvt*font: xft:Source Code Pro:Semibold:size=9, xft:DejaVu Sans Mono:Bold:size=9, xft:DejaVu Sans:Normal:size=9, xft:FreeSerif:Normal:size=9, xft:Noto Color Emoji:Normal:size=10
 
 URxvt*letterSpace: -1
 URxvt*lineSpace: 0

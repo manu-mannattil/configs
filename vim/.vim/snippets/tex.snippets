@@ -161,3 +161,16 @@ snippet subeq
 			${2:a &= b}
 		\end{align}
 	\end{subequations}
+snippet emem
+	\documentclass{article}
+
+	\usepackage{emem}
+	\title[${2:short title}]{${1:title}}
+	\author{Manu Mannattil}
+	\date{\today}
+
+	\begin{document}
+		\maketitle
+
+		$2
+	\end{document}
