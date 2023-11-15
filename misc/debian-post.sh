@@ -121,6 +121,7 @@ PACKAGES=(
   xautolock # Program launcher for idle X sessions
   xbacklight # simple utility to set the backlight level
   xclip # command line interface to X selections
+  xcompmgr # X11 compositor -- for better screen sharing when using Zoom
   xdotool # simulate (generate) X11 keyboard/mouse input events
   xinput # Runtime configuration and test of XInput devices
   xsel # command-line tool to access X clipboard and selection buffers

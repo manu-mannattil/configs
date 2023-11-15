@@ -33,6 +33,7 @@ export USE_EMOJI="false"
 PROGRAMS=(
   howdoi            # code snippet lookup tool
   s-tui             # Stress Terminal UI stress test and monitoring tool
+  yt-dlp            # youtube-dl fork
 )
 
 pip install pipx

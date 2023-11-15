@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
+flags=(--incognito)
 case "$1" in
-    -*) exec /usr/bin/google-chrome "$@" ;;
+    --no-incognito) flags=(); shift         ;;
+    -*) exec /usr/bin/google-chrome "$@"    ;;
 esac
 
 # Documentation on flags:
@@ -15,7 +17,7 @@ esac
 # package distributed with Arch Linux and will not work with Google's
 # official package.
 # https://wiki.archlinux.org/title/Chromium#Making_flags_persistent
-flags=(
+flags+=(
     --disable-background-networking
     --disable-client-side-phishing-detection
     --disable-component-update
@@ -24,7 +26,6 @@ flags=(
     --disable-features=InterestFeedContentSuggestions
     --disable-sync
     --gtk-version=4
-    --incognito
     --no-default-browser-check
     --no-first-run
     --print-to-pdf-no-header
