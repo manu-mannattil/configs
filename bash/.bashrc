@@ -448,7 +448,7 @@ mergepath() {
 
     for arg
     do
-        [[ "${sep}${!var}${sep}" == *"${sep}${arg%/}${sep}"* ]] || {
+        [[ -d "$arg" ]] && ! [[ "${sep}${!var}${sep}" == *"${sep}${arg%/}${sep}"* ]] && {
             export $var="${arg%/}${sep}${!var}"
         }
     done
