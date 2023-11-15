@@ -21,6 +21,7 @@ MODULES=(
   readability-lxml  # fast html to text parser (article readability tool) with python 3 support
 )
 
+pip install --upgrade pip
 pip install --upgrade "${MODULES[@]}"
 
 # pipx -----------------------------------------------------------------
