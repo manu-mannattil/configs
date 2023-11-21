@@ -209,8 +209,8 @@ user_pref("findbar.highlightAll", true);
 
 // Reader-view preferences.
 user_pref("reader.color_scheme", "dark");
-user_pref("reader.content_width", 4);
-user_pref("reader.font_size", 2);
+user_pref("reader.content_width", 3);
+user_pref("reader.font_size", 4);
 user_pref("reader.line_height", 3);
 
 // Disable narration in Reader.

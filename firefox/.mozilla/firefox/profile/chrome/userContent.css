@@ -3,3 +3,27 @@
 #outerContainer > #mainContainer > #viewerContainer > #viewer > .page {
   filter: invert(100%);
 }
+
+@-moz-document url-prefix("about:reader") {
+  body.dark {
+    color: white !important;
+    background-color: black !important;
+  }
+  body.light {
+    color: #black !important;
+    background-color: #white !important;
+  }
+
+  body.sepia {
+    color: #5B4636 !important;
+    background-color: #F4ECD8 !important;
+  }
+
+  body.serif {
+    font-family: "Source Serif 4", "Georgia", serif !important;
+  }
+
+  body.sans-serif {
+    font-family: Helvetica, "Nimbus Sans L", sans-serif !important;
+  }
+}
