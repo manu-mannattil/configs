@@ -2,8 +2,8 @@
 
 flags=(--incognito)
 case "$1" in
-    --no-incognito) flags=(); shift         ;;
-    -*) exec /usr/bin/google-chrome "$@"    ;;
+    --no-i*|--no-pri*) flags=(); shift    ;;
+    -*) exec /usr/bin/google-chrome "$@"  ;;
 esac
 
 # Documentation on flags:
@@ -22,7 +22,6 @@ flags+=(
     --disable-client-side-phishing-detection
     --disable-component-update
     --disable-default-apps
-    --disable-extensions
     --disable-features=InterestFeedContentSuggestions
     --disable-sync
     --gtk-version=4

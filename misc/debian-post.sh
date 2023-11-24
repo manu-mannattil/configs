@@ -223,7 +223,8 @@ PACKAGES=(
   pdfcrack # PDF files password cracker
   pdfgrep # search in pdf files for strings matching a regular expression
   pdfshuffler # merge, split and re-arrange PDF documents - transitional package
-  pdftk # transitional package for pdftk, a tool for manipulating PDF documents
+  pdfarranger # merge, split and re-arrange pages from PDF documents
+  pdftk-java # transitional package for pdftk, a tool for manipulating PDF documents
   poppler-utils # PDF utilities (based on Poppler)
   qpdfview # tabbed document viewer
   wkhtmltopdf # Command line utilities to convert html to pdf or image using WebKit

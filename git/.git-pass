@@ -40,6 +40,9 @@ exec awk -F = '
         } else if (host ~ /gitlab.com/) {
             username = "manu-mannattil"
             entry = "dev/gitlab"
+        } else if (host ~ /git.overleaf.com/) {
+            username = "mm2718@proton.me"
+            entry = "misc/overleaf"
         } else {
             printf("error: no matches found for %s\n", host)
             exit 1

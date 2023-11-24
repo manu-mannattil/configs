@@ -331,17 +331,32 @@ for_window [title="LaTeX" class="qpdfview"] focus
 for_window [title=".tex" class="Gvim"] move container to workspace 5
 for_window [title=".tex" class="Gvim"] focus
 
+# Large/bloated GUIs I (workspace 6) {{{2
+# ---------------------------------------
+
+for_window [class="wpp"] move container to workspace 6
+for_window [class="wpp"] focus
+
+for_window [class="et"] move container to workspace 6
+for_window [class="et"] focus
+
+for_window [class="wpspdf"] move container to workspace 6
+for_window [class="wpspdf"] focus
+
+for_window [class="wps"] move container to workspace 6
+for_window [class="wps"] focus
+
+for_window [class="libreoffice"] move container to workspace 9
+for_window [class="libreoffice"] focus
+
 # Mathematica (workspace 7) {{{2
 # ------------------------------
 
 for_window [class="Mathematica"] move container to workspace 7
 for_window [class="Mathematica"] focus
 
-# Large/bloated GUIs (workspace 9) {{{2
-# -------------------------------------
-
-for_window [class="libreoffice"] move container to workspace 9
-for_window [class="libreoffice"] focus
+# Large/bloated GUIs II (workspace 9) {{{2
+# ----------------------------------------
 
 for_window [class="zoom"] move container to workspace 9
 for_window [class="zoom"] focus
