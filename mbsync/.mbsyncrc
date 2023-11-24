@@ -112,7 +112,7 @@ Inbox ~/mail/posteo/inbox
 Channel posteo-all
 Master :posteo-remote:
 Slave :posteo-local:
-Patterns * !Drafts !drafts !Sent !sent !Trash !trash
+Patterns * !Drafts !drafts !Sent !sent !Trash !trash !Spam !spam
 
 Channel posteo-drafts
 Master :posteo-remote:Drafts
@@ -126,8 +126,13 @@ Channel posteo-trash
 Master :posteo-remote:Trash
 Slave :posteo-local:trash
 
+Channel posteo-spam
+Master :posteo-remote:Spam
+Slave :posteo-local:spam
+
 Group posteo
 Channel posteo-all
 Channel posteo-sent
 Channel posteo-trash
 Channel posteo-drafts
+Channel posteo-spam
