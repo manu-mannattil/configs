@@ -9,10 +9,16 @@
 #
 # It is assumed that you have conda/mamba installed.
 #
+#   NOTE: mambaforge is discouraged since September 2023.
 #   https://conda-forge.org/miniforge
 #
 # Usage: python-post.sh
 #
+
+# Clean installation.
+# rm -rf ~/.local/pipx-bin
+# rm -rf ~/.local/pipx
+# rm -rf ~/.local/miniforge
 
 # pip ------------------------------------------------------------------
 

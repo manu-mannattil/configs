@@ -10,6 +10,7 @@
 div.content {
   margin: 2em 2em auto;
   width: 36em;
+  font-size: 12pt;
 }
 
 code, pre {
