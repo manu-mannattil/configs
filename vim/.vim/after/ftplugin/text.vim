@@ -3,7 +3,6 @@
 
 setlocal complete+=kspell
 setlocal formatoptions+=n,t
-setlocal spell
 setlocal textwidth=72
 
 " Recognize lists with Roman numerals, single letters, digits, etc.

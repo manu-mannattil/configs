@@ -369,6 +369,9 @@ iabbrev <buffer> yuor your
 " Accents {{{1
 " ------------
 
+iabbrev <buffer> Lopital L'Hospital
+iabbrev <buffer> LHospital L'Hospital
+
 if &ft == "tex"
   iabbrev <buffer> Ampere Amp\`{e}re
   iabbrev <buffer> Amperian Amp\`{e}rian

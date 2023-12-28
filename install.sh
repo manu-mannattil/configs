@@ -60,8 +60,8 @@ install() {
 
     for file
     do
-        local origin="${REPO}/${file}"
-        local target="${HOME}/${file#*/}"
+        local origin="$REPO/$file"
+        local target="$HOME/${file#*/}"
         local tardir=$(dirname "$target")
 
         # Catch potential rm -rf $HOME: if the file/directory name ends
@@ -106,7 +106,7 @@ __install_bash() {
     install "bash/.bashrc" "bash/.bash_profile"
 
     # No motd (message of the day) login banner.
-    touch "${HOME}/.hushlogin"
+    touch "$HOME/.hushlogin"
 
     # NOTE (2018-05-26): For reasons I don't fully understand, readline
     # screws up the history-search-forward/backward functions (set in
@@ -146,7 +146,7 @@ __install_curl() {
 # :target: cvs - cvs configuration
 __install_cvs() {
     # Strip comments and empty lines when copying.
-    grep -v '\(^$\|^#\)' "${REPO}/cvs/.cvsignore" | sort | uniq >"${HOME}/.cvsignore"
+    grep -v '\(^$\|^#\)' "$REPO/cvs/.cvsignore" | sort | uniq >"$HOME/.cvsignore"
 }
 
 # :target: ctags - exuberant ctags configuration
@@ -157,12 +157,12 @@ __install_ctags() {
 # :target: deadbeef - DeaDBeeF music player configuration
 __install_deadbeef() {
     # Preserve tabs and playlists.
-    if [[ -f "${HOME}/.config/deadbeef/config" ]] &&
-        grep -q "^playlist.tab" "${HOME}/.config/deadbeef/config"
+    if [[ -f "$HOME/.config/deadbeef/config" ]] &&
+        grep -q "^playlist.tab" "$HOME/.config/deadbeef/config"
     then
-        grep "^playlist.tab" "${HOME}/.config/deadbeef/config" >"${HOME}/.config/deadbeef/tabs"
+        grep "^playlist.tab" "$HOME/.config/deadbeef/config" >"$HOME/.config/deadbeef/tabs"
         install --copy "deadbeef/.config/deadbeef/config"
-        cat "${HOME}/.config/deadbeef/tabs" >>"${HOME}/.config/deadbeef/config"
+        cat "$HOME/.config/deadbeef/tabs" >>"$HOME/.config/deadbeef/config"
     else
         install --copy "deadbeef/.config/deadbeef"
     fi
@@ -187,27 +187,27 @@ __install_emacs() {
 __install_firefox() {
     [[ -f /usr/bin/firefox ]] || {
         info "firefox binary not found; fetching..."
-        pushd "${REPO}/firefox"
+        pushd "$REPO/firefox"
         sudo make install
         popd
     }
 
     # Symlink/copy some files in all Firefox profiles.
-    if [[ -f "${HOME}/.mozilla/firefox/profiles.ini" ]]
+    if [[ -f "$HOME/.mozilla/firefox/profiles.ini" ]]
     then
         while IFS= read -r profile
         do
-            ln -v -sf "${REPO}/firefox/.mozilla/firefox/profile/user.js" \
-                "${HOME}/.mozilla/firefox/${profile}"
-        done < <(sed -n 's/^Path=//p' "${HOME}/.mozilla/firefox/profiles.ini")
+            ln -v -sf "$REPO/firefox/.mozilla/firefox/profile/user.js" \
+                "$HOME/.mozilla/firefox/$profile"
+        done < <(sed -n 's/^Path=//p' "$HOME/.mozilla/firefox/profiles.ini")
     fi
 
     # Symlink `chrome' directory to default profile.
-    default=$(echo "${HOME}/.mozilla/firefox/"*.default)
+    default=$(echo "$HOME/.mozilla/firefox/"*.default)
     if [[ -d "$default" ]]
     then
         rm -rf "$default/chrome"
-        ln -v -sf "${REPO}/firefox/.mozilla/firefox/profile/chrome" "$default"
+        ln -v -sf "$REPO/firefox/.mozilla/firefox/profile/chrome" "$default"
     fi
 }
 
@@ -221,8 +221,8 @@ __install_gnupg() {
     install "gnupg/.gnupg/gpg.conf" "gnupg/.gnupg/gpg-agent.conf"
 
     # Set the right permissions.
-    chmod -v 700 "${HOME}/.gnupg"
-    chmod -v 600 "${HOME}/.gnupg/gpg.conf" "${HOME}/.gnupg/gpg-agent.conf"
+    chmod -v 700 "$HOME/.gnupg"
+    chmod -v 600 "$HOME/.gnupg/gpg.conf" "$HOME/.gnupg/gpg-agent.conf"
 }
 
 # :target: git - git configuration and helpers
@@ -280,6 +280,7 @@ __install_mathematica() {
     install --copy "mathematica/.Mathematica/FrontEnd/init.m"
     install "mathematica/.Mathematica/Kernel/init.m"                        \
             "mathematica/.Mathematica/FrontEnd/frontend.css"                \
+            "mathematica/.Mathematica/Applications"                         \
             "mathematica/.Mathematica/SystemFiles/FrontEnd/TextResources/X" \
             "mathematica/.Mathematica/SystemFiles/FrontEnd/StyleSheets"
 }
@@ -302,7 +303,7 @@ __install_mpv() {
 # :target: msmtp - msmtp configuration
 __install_msmtp() {
     # msmtp requires ~/.msmtprc to be rw only by the user.
-    chmod -v 600 "${REPO}/msmtp/.msmtprc"
+    chmod -v 600 "$REPO/msmtp/.msmtprc"
     install "msmtp/.msmtprc"
 }
 
@@ -311,9 +312,9 @@ __install_mutt() {
     install "mutt/.mutt" "mutt/.mailcap" "mutt/.urlview"
 
     # Create cache directories.
-    mkdir -vp "${HOME}/.cache/mutt/attach"
-    mkdir -vp "${HOME}/.cache/mutt/notmuch"
-    mkdir -vp "${HOME}/.cache/mutt/headers"
+    mkdir -vp "$HOME/.cache/mutt/attach"
+    mkdir -vp "$HOME/.cache/mutt/notmuch"
+    mkdir -vp "$HOME/.cache/mutt/headers"
 }
 
 # :target: notmuch - notmuch mail indexer configuration
@@ -347,7 +348,7 @@ __install_readline() {
     install "readline/.inputrc"
 
     # Cache directory for rlwrap command history.
-    mkdir -vp "${HOME}/.cache/rlwrap"
+    mkdir -vp "$HOME/.cache/rlwrap"
 }
 
 # :target: rofi - rofi configuration
@@ -379,26 +380,26 @@ __install_tmux() {
 __install_vim() {
     install "vim/.vimrc" "vim/.vim" "vim/.gvimrc"
 
-    mkdir -vp "${HOME}/.cache/vim/swap"
-    mkdir -vp "${HOME}/.cache/vim/backup"
-    mkdir -vp "${HOME}/.cache/vim/undo"
+    mkdir -vp "$HOME/.cache/vim/swap"
+    mkdir -vp "$HOME/.cache/vim/backup"
+    mkdir -vp "$HOME/.cache/vim/undo"
 
     # Create nonstandard spell files if they don't already exist.  If
     # this is not done, Vim will warn each time spellcheck is turned on.
-    mkdir -p "${HOME}/.vim/spell"
-    [[ -f "${HOME}/.vim/spell/in" ]] || touch "${HOME}/.vim/spell/in"
+    mkdir -p "$HOME/.vim/spell"
+    [[ -f "$HOME/.vim/spell/in" ]] || touch "$HOME/.vim/spell/in"
 
     # Now, run :mkspell on spell files.
     info "compiling vim spell files"
-    find "${HOME}/.vim/spell" -type f ! -name '*.spl' \
+    find "$HOME/.vim/spell" -type f ! -name '*.spl' \
         -exec vim -e -s -u NONE -c ':mkspell! %' -c ':qall!' {} \;
 
     # Install plugins.
-    "${HOME}/.vim/install-plugins"
+    "$HOME/.vim/install-plugins"
 
     # Create a symlink of the snippets directory to ~ for easier access.
-    rm -f "${HOME}/.snippets"
-    ln -v -sf "${HOME}/.vim/snippets" "${HOME}/.snippets"
+    rm -f "$HOME/.snippets"
+    ln -v -sf "$HOME/.vim/snippets" "$HOME/.snippets"
 }
 
 # :target: wget - wget configuration
@@ -409,7 +410,7 @@ __install_wget() {
 # :target: x - X11 configuration
 __install_x() {
     install "X/.XCompose" "X/.xinitrc" "X/.Xresources"
-    [[ "$DISPLAY" ]] && xrdb -merge "${HOME}/.Xresources"
+    [[ "$DISPLAY" ]] && xrdb -merge "$HOME/.Xresources"
 }
 
 # :target: xdg - common configuration used by all X desktop environments
@@ -418,7 +419,7 @@ __install_xdg() {
             "xdg/.local/share/applications"/* \
             "xdg/.local/share/mime/packages"/*
 
-    update-mime-database -V "${HOME}/.local/share/mime"
+    update-mime-database -V "$HOME/.local/share/mime"
 }
 
 # :target: xnview - XnView configuration

@@ -94,6 +94,7 @@ PACKAGES=(
   rofi # window switcher, run dialog and dmenu replacement
   spacefm-gtk3 # Multi-panel tabbed file manager - GTK3 version
   suckless-tools # simple commands for minimalistic window managers
+  tint2 # panel for openbox desktop
   wmctrl # control an EWMH/NetWM compatible X Window Manager
 
   # Development
@@ -142,6 +143,8 @@ PACKAGES=(
   urlview # Extracts URLs from text
 
   # File system
+  btrfs-compsize # btrfs compression size utility
+  btrfs-progs # btrfs utilities
   duff # Duplicate file finder
   exfat-fuse # read and write exFAT driver for FUSE
   exfat-utils # utilities to create, check, label and dump exFAT filesystem
@@ -200,15 +203,15 @@ PACKAGES=(
   libimage-exiftool-perl # library and program to read and write meta information in multimedia files
   optipng # advanced PNG (Portable Network Graphics) optimizer
   pngcrush # optimizes PNG (Portable Network Graphics) files
-  rawtherapee # raw image converter and digital photo processor
 
   # Internet
   elinks # advanced text-mode WWW browser
   elinks-doc # advanced text-mode WWW browser - documentation
+  liferea # feed/news/podcast client with plugin support
   lynx # classic non-graphical (text-mode) web browser
+  netsurf-gtk # netsurf web browser
   w3m # WWW browsable pager with excellent tables/frames support
   w3m-img # inline image extension support utilities for w3m
-  liferea # feed/news/podcast client with plugin support
 
   # Languages
   python2 # Python 2 is required by some legacy software (e.g., pdfsizeopt)
@@ -329,40 +332,6 @@ REMOVE_PACKAGES=(
   unattended-upgrades
 )
 
-# Optimization {{{1
-# -----------------
-
-# Disable the following systemd units since I don't really make any
-# practical use of them.  Analyze each unit by looking at the output of
-#
-#   systemd-analyze blame
-#   systemctl list-units --all
-#
-DISABLE_UNITS=(
-  # APT related automatic cleanup, download, etc.
-  apt-daily.service apt-daily-upgrade.service
-  apt-daily.timer apt-daily-upgrade.timer
-
-  # Message of the day spam.
-  # motd-news.timer motd.service motd-news.service
-
-  # Tor daemon.  It's better to start it when needed.
-  tor.service tor@default.servick
-
-  # DBus activated daemon for mobile broadband interface.
-  ModemManager.service
-
-  # Zeroconf and mDNS/DNS-SD service discovery.
-  avahi-daemon.service avahi-daemon.socket
-
-  # Bluetooth support.
-  bluetooth.service
-
-  # Docker.
-  docker.service
-  containerd.service
-)
-
 # Host-specific packages {{{1
 # ---------------------------
 
@@ -393,15 +362,67 @@ apt install --yes "${PACKAGES[@]}"
 apt autoremove --yes
 apt clean --yes
 
-# Disable systemd units {{{1
-# --------------------------
+# Systemd Optimization {{{1
+# -------------------------
 
-# Now, disable the systemd units that we don't use.  However, use
-# `disable' instead of `mask' since the services ought to be started if
-# they are required.
+# Disable the following systemd units since I don't really make any
+# practical use of them.  Analyze each unit by looking at the output of
+#
+#   systemd-analyze blame
+#   systemctl list-units --all
+#
+DISABLE_UNITS=(
+  # Tor daemon.  It's better to start it when needed.
+  tor.service tor@default.servick
+
+  # Docker.
+  docker.service
+  containerd.service
+)
+
+MASK_UNITS=(
+  # APT related automatic cleanup, download, etc.
+  apt-daily.service apt-daily-upgrade.service
+  apt-daily.timer apt-daily-upgrade.timer
+
+  # Message of the day spam.
+  motd-news.timer motd.service motd-news.service
+
+  # DBus activated daemon for mobile broadband interface.
+  ModemManager.service
+
+  # Zeroconf and mDNS/DNS-SD service discovery.
+  avahi-daemon.service avahi-daemon.socket
+
+  # Bluetooth support.
+  bluetooth.service
+
+  # I don't want my computer to sleep/hibernate.
+  sleep.target
+  suspend.target
+  hibernate.target
+  hybrid-sleep.target
+
+  # Thunderbolt service.
+  bolt.service
+)
+
+set +eu
+
+# Now, disable the systemd units that we don't want to run at start up.
+# However, use `disable' instead of `mask' since the services ought to
+# be started if they are required.
 for unit in "${DISABLE_UNITS[@]}"
 do
-  systemctl disable --now "$unit"
+  systemctl stop "$unit"
+  systemctl disable "$unit"
+done
+
+# Now, mask the systemd units that we will never user at any point ever.
+for unit in "${MASK_UNITS[@]}"
+do
+  systemctl stop "$unit"
+  systemctl mask "$unit"
 done
 
 popd

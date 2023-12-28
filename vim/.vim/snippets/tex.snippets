@@ -176,9 +176,16 @@ snippet emem
 	\title[${2:short title}]{${1:title}}
 	\author{Manu Mannattil}
 	\date{\today}
+	\hypersetup{
+		pdfauthor={Manu Mannattil},
+		pdftitle={$1},
+	}
 
 	\begin{document}
-		\maketitle
+	\maketitle
+	\begin{abstract}
+	${3:abstract}
+	\end{abstract}
 
-		$2
+	$4
 	\end{document}

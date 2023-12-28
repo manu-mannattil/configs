@@ -297,17 +297,20 @@ for_window [class="Spacefm"] focus
 # Browsers (workspace 2) {{{2
 # ---------------------------
 
+for_window [class="Brave-browser"] move container to workspace 2
+for_window [class="Brave-browser"] focus
+
 for_window [class="firefox"] move container to workspace 2
 for_window [class="firefox"] focus
 
 for_window [class="Google-chrome"] move container to workspace 2
 for_window [class="Google-chrome"] focus
 
-for_window [class="Zeal"] move container to workspace 2
-for_window [class="Zeal"] focus
-
 for_window [class="Liferea"] move container to workspace 2
 for_window [class="Liferea"] focus
+
+for_window [class="Zeal"] move container to workspace 2
+for_window [class="Zeal"] focus
 
 # Media (workspace 3) {{{2
 # ------------------------

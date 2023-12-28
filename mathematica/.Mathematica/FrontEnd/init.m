@@ -13,5 +13,6 @@ BlinkingCellInsertionPoint->False,
 PrivateNotebookOptions->{"FinalWindowPrompt"->False},
 CellContext->Notebook,
 ShowPredictiveInterface->False,
+NotebookAutoSave->True,
 TabSpacings->{2.}
 ]

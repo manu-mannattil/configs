@@ -4,3 +4,6 @@ snippet mdate
 	`strftime("%a, %d %b %Y %I:%M:%S%p %z")`
 snippet mod
 	`printf("vim: ft=%s fdm=%s %s sts=%s sw=%s\n", &filetype, &foldmethod, &expandtab ? "et" : "noet", &sts, &sw)`
+snippet boiler
+	 created  `strftime("%Y-%m-%d %H:%M %Z")`
+	modified  `strftime("%Y-%m-%d %H:%M %Z")`

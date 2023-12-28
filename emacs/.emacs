@@ -1,16 +1,6 @@
 ;; A minimalistic Emacs configuration for those occasions where Vim
 ;; isn't available.
 
-;; Use MELPA.
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(package-initialize)
-
-;; Be evil.
-(setq evil-want-C-u-scroll t)
-(require 'evil)
-(evil-mode 1)
-
 ;; Show line/column numbers.
 (global-linum-mode 1)
 (column-number-mode 1)
@@ -30,7 +20,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Source Code Pro Medium" :foundry "ADOBE" :slant normal :weight semibold :height 90 :width normal)))))
+ '(default ((t (:family "Source Code Pro" :foundry "ADOBE" :slant normal :weight semibold :height 90 :width normal)))))
 
 ;; Make interface more minimalistic
 (menu-bar-mode -1)

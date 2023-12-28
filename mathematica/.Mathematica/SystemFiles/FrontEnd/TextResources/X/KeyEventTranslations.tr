@@ -196,8 +196,10 @@ EventTranslations[{
     }]
   ],
 
+  Item[KeyEvent["r", Modifiers->{Control}], "EvaluateInitialization"],
+
   (*  The following combinations produce junk by default.
-      Is there a front end token that does nothing, like Mutt's noop?
+      Is there a front end token that does nothing, like a no-op code?
       I don't know, so I'm using MacintoshOpenDeskAccessory, which is
       a valid token, but has no effect on Linux.
       https://mathematica.stackexchange.com/q/2572  *)
@@ -205,10 +207,10 @@ EventTranslations[{
   Item[KeyEvent["h", Modifiers->{Control}], "MacintoshOpenDeskAccessory"],
   Item[KeyEvent["i", Modifiers->{Control}], "MacintoshOpenDeskAccessory"],
   Item[KeyEvent["q", Modifiers->{Control}], "MacintoshOpenDeskAccessory"],
-  Item[KeyEvent["r", Modifiers->{Control}], "MacintoshOpenDeskAccessory"],
   Item[KeyEvent["t", Modifiers->{Control}], "MacintoshOpenDeskAccessory"],
   Item[KeyEvent["u", Modifiers->{Control}], "MacintoshOpenDeskAccessory"],
   Item[KeyEvent["w", Modifiers->{Control}], "MacintoshOpenDeskAccessory"],
+  Item[KeyEvent["3", Modifiers->{Control}], "MacintoshOpenDeskAccessory"],
 
   (*  Bug in 13.1: S-Esc/C-Esc produces garbage.
       https://mathematica.stackexchange.com/q/272417  *)
