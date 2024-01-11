@@ -34,11 +34,6 @@
 [color]
   ui = auto
 
-; [color "diff"]
-;   meta = blue
-;   old = red italic
-;   new = brightgreen italic
-
 [diff]
   tool = vimdiff
 
@@ -67,3 +62,17 @@
 
 [interactive]
   difffilter = perl /usr/share/doc/git/contrib/diff-highlight/diff-highlight
+
+# After GitHub removed support for password-based HTTP authentication,
+# the simplest way to pull/push from/to a repository is using SSH.
+# However, sometimes the displayed repository URI is an HTTP URI.  The
+# option below converts an HTTP repository URI into an SSH URI whenever
+# encountered.
+[url "git@github.com:"]
+  insteadOf = https://github.com/
+  insteadOf = git://github.com/
+
+# Convert Overleaf project URIs into Git repository URIs.
+[url "https://git.overleaf.com/"]
+  insteadOf = https://www.overleaf.com/project/
+  insteadOf = https://overleaf.com/project/
