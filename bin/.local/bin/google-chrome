@@ -24,6 +24,7 @@ flags+=(
     --disable-default-apps
     --disable-features=InterestFeedContentSuggestions
     --disable-sync
+    --disable-gpu
     --gtk-version=4
     --no-default-browser-check
     --no-first-run
