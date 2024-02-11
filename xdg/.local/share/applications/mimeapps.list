@@ -229,6 +229,7 @@ audio/x-ms-asx=deadbeef.desktop
 audio/x-ms-wax=deadbeef.desktop
 audio/x-musepack=deadbeef.desktop
 audio/x-pn-aiff=deadbeef.desktop
+audio/x-aiff=deadbeef.desktop
 audio/x-pn-au=deadbeef.desktop
 audio/x-pn-realaudio=deadbeef.desktop
 audio/x-pn-realaudio-plugin=deadbeef.desktop

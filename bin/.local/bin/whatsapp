@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec nohup firefox -P whatsapp "$@" >/dev/null 2>&1 &

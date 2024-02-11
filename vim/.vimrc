@@ -364,7 +364,7 @@ augroup ft_related
   " Mathematica files.
   autocmd BufRead,BufNewFile *
         \ if getline(1) =~? '#!.*\(MathematicaScript\|WolframScript\).*$'     |
-        \   set filetype=wl                                                   |
+        \   set filetype=mma                                                  |
         \ endif
 
   autocmd BufRead,BufNewFile \*sdcv\* set filetype=sdcv

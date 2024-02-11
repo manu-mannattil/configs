@@ -11,7 +11,6 @@
   attributesfile = ~/.gitattributes
   excludesfile = ~/.cvsignore
   editor = vim
-  pager = perl /usr/share/doc/git/contrib/diff-highlight/diff-highlight | less
 
 [alias]
   br = branch
@@ -71,6 +70,7 @@
 [url "git@github.com:"]
   insteadOf = https://github.com/
   insteadOf = git://github.com/
+  insteadOf = github:
 
 # Convert Overleaf project URIs into Git repository URIs.
 [url "https://git.overleaf.com/"]
