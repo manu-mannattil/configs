@@ -14,5 +14,6 @@ PrivateNotebookOptions->{"FinalWindowPrompt"->False},
 CellContext->Notebook,
 ShowPredictiveInterface->False,
 NotebookAutoSave->True,
-TabSpacings->{2.}
+TabSpacings->{2.},
+Magnification->0.9
 ]

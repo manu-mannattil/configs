@@ -302,6 +302,3 @@ user_pref("media.autoplay.block-event.enabled", true);
 user_pref("media.autoplay.block-webaudio", true);
 user_pref("media.autoplay.default", 5);
 user_pref("media.autoplay.enabled.user-gestures-needed", false);
-
-// Control GIF autoplay (accepted values - "none", "normal", "once").
-user_pref("image.animation_mode", "once");
