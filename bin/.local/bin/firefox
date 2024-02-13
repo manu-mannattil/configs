@@ -2,18 +2,22 @@
 
 profile="default"
 case "$1" in
-    --private)  profile="private"; shift
-                rm -rf  ~/.cache/mozilla/firefox/*.private                \
-                        ~/.mozilla/firefox/*.private/content-prefs.sqlite \
-                        ~/.mozilla/firefox/*.private/cookies.sqlite       \
-                        ~/.mozilla/firefox/*.private/formhistory.sqlite   \
-                        ~/.mozilla/firefox/*.private/storage.sqlite       \
-                        ~/.mozilla/firefox/*.private/webappsstore.sqlite  \
-                        ~/.mozilla/firefox/*.private/crashes              \
-                        ~/.mozilla/firefox/*.private/datareporting        \
-                        ~/.mozilla/firefox/*.private/minidumps            \
-                        ~/.mozilla/firefox/*.private/storage
-                ;;
+    --private-profile)
+        shift
+        grep -q 'Name=private' "$HOME/.mozilla/firefox/profiles.ini" >/dev/null 2>&1 && {
+            profile="private"
+            rm -rf  ~/.cache/mozilla/firefox/*.private                \
+                    ~/.mozilla/firefox/*.private/content-prefs.sqlite \
+                    ~/.mozilla/firefox/*.private/cookies.sqlite       \
+                    ~/.mozilla/firefox/*.private/formhistory.sqlite   \
+                    ~/.mozilla/firefox/*.private/storage.sqlite       \
+                    ~/.mozilla/firefox/*.private/webappsstore.sqlite  \
+                    ~/.mozilla/firefox/*.private/crashes              \
+                    ~/.mozilla/firefox/*.private/datareporting        \
+                    ~/.mozilla/firefox/*.private/minidumps            \
+                    ~/.mozilla/firefox/*.private/storage
+        }
+        ;;
     -*) exec /usr/bin/firefox "$@" ;;
 esac
 

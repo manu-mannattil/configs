@@ -215,7 +215,7 @@ mode "$mode_open" {
   bindsym c exec mathematica; mode "default"
   bindsym f exec spacefm $HOME; mode "default"
   bindsym m exec deadbeef; mode "default"
-  bindsym p exec firefox --private; mode "default"
+  bindsym p exec firefox --private-profile; mode "default"
 
   bindsym Escape mode "default"
   bindsym Return mode "default"

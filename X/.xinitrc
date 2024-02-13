@@ -26,6 +26,9 @@ case "$HOSTNAME" in
                  --set-ctrl=saturation=70 \
                  --set-ctrl=sharpness=5
         ;;
+    magrathea)
+        : ${DE:=i3}
+        ;;
 esac
 
 # Notes on my HiDPI display configuration
@@ -153,14 +156,15 @@ setxkbmap -variant altgr-intl              \
     redshift -l "$loc" &
 }
 
-# Set the background color to a no-nonsense gray.
+# Set the background color.
+bgcolor="#333333"
 if command -v hsetroot &>/dev/null
 then
     # Compton doesn't work with xsetroot.
     # https://github.com/chjj/compton/issues/162
-    hsetroot -solid "#333333"
+    hsetroot -solid "$bgcolor"
 else
-    xsetroot -solid "#333333"
+    xsetroot -solid "$bgcolor"
 fi
 
 # Use dunst for notifications.
