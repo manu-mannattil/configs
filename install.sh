@@ -47,12 +47,21 @@ info() {
     echo >&2 "${0##*/}: $@"
 }
 
+sts() {
+    [[ "$1" == "--" ]] && shift
+    "$REPO/sts.py" --shell "/bin/bash" "$1" >"$2" 2>&1
+}
+
 # Function to copy/symlink a file from the repository tree into $HOME.
 # Parent directories will be created if they don't exist.
 install() {
     if [[ "$1" =~ ^(-c|--copy)$ ]]
     then
         local cmd=(cp -vr)
+        shift
+    elif [[ "$1" =~ ^(-t|--template)$ ]]
+    then
+        local cmd=(sts)
         shift
     else
         local cmd=(ln -vs)
@@ -242,7 +251,8 @@ __install_htop() {
 
 # :target: i3 - i3 wm configuration
 __install_i3() {
-    install "i3/.config/i3/config" "i3/.config/i3/i3status.conf"
+    install "i3/.config/i3/config"
+    install --template "i3/.config/i3/i3status.conf"
 }
 
 # :target: inkscape - inkscape configuration
