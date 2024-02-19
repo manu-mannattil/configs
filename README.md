@@ -1,5 +1,4 @@
-configs
-=======
+# configs
 
 This is a repository for managing my configuration files (aka dotfiles), meticulously yak shaved over the years and contains about <!--FILES-->194 configuration files for about <!--PROGRAMS-->51
 programs.  There are [many like it][others], but this one is mine.
@@ -32,7 +31,7 @@ one could issue the command
 
     stow --target="$HOME" vim mutt
 
-### Templating
+## Templating
 
 In some cases, one needs different versions of the same configuration
 file to use on different hosts.  In such situations, we use a simple

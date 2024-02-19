@@ -85,7 +85,7 @@ def execute(commands, shell=None, dry_run=False, debug=False):
     sys.stdout.flush()
 
 def process(fd, args=None, dry_run=False, shell=None, debug=False):
-    """Compile a file."""
+    """Process a file."""
     # Convert to absolute path and make an attributes dictionary.
     name = path.abspath(fd.name)
     attributes = {

@@ -49,7 +49,8 @@ info() {
 
 sts() {
     [[ "$1" == "--" ]] && shift
-    "$REPO/sts.py" --shell "/bin/bash" "$1" >"$2" 2>&1
+    "$REPO/sts.py" --shell "/bin/bash" "$1" >"$2"
+    echo >&2 "sts: processed '$1' -> '$2'"
 }
 
 # Function to copy/symlink a file from the repository tree into $HOME.
