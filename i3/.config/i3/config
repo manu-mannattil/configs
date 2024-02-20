@@ -107,7 +107,7 @@ bindsym $mod+Shift+r restart
 
 # Start dmenu/rofi.
 # bindsym $mod+d exec dmenu_run -fn 'Source Code Pro Semibold:size=9'
-bindsym $mod+d exec rofi -show-icons -show drun
+bindsym $mod+d exec rofi -show-icons -show drun -drun-display-format "{name} [<span size='90%'><i>({generic})</i></span>]"
 
 # Run passmenu -- a script to choose pass-managed password store
 # entries using dmenu/rofi.
