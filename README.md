@@ -1,6 +1,6 @@
 # configs
 
-This is a repository for managing my configuration files (aka dotfiles), meticulously yak shaved over the years and contains about <!--FILES-->194 configuration files for about <!--PROGRAMS-->51
+This is a repository for managing my configuration files (aka dotfiles), meticulously yak shaved over the years and contains about <!--FILES-->195 configuration files for about <!--PROGRAMS-->51
 programs.  There are [many like it][others], but this one is mine.
 
 <a href="https://xkcd.com/1806/">

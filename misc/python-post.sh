@@ -38,14 +38,10 @@ mkdir -p "$PIPX_BIN_DIR"
 export USE_EMOJI="false"
 
 PROGRAMS=(
-  # Code snippet lookup tool.
-  howdoi
-
-  # Stress Terminal UI stress test and monitoring tool
-  s-tui
-
-  # youtube-dl fork with regular updates.
-  yt-dlp
+  gallery-dl # youtube-dl for galleries
+  howdoi # code snippet lookup tool
+  s-tui # stress Terminal UI stress test and monitoring tool
+  yt-dlp # youtube-dl fork with regular updates
 )
 
 pip install pipx

@@ -1,6 +1,6 @@
 SetOptions[$FrontEnd,
 DefaultStyleDefinitions->"Custom.nb",
-VersionsLaunched->{"13.3.0"},
+VersionsLaunched->{"13.3.0", "14.0.0"},
 MessageOptions->{"DelimiterAutoMatchWarning"->False},
 PrivateFrontEndOptions->{"DialogSettings"->{
   "Login" -> {"RememberMe" -> True},

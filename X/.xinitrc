@@ -26,6 +26,7 @@ case "$HOSTNAME" in
                  --set-ctrl=saturation=70 \
                  --set-ctrl=sharpness=5
         ;;
+    # Tel Aviv U. desktop.
     magrathea)
         : ${DE:=i3}
         ;;

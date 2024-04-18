@@ -69,6 +69,10 @@ bindsym $mod+a focus parent
 # Focus the child container.
 bindsym $mod+Shift+a focus child
 
+# Moving workspaces between screens.
+# (Assuming you have two monitors in a side-by-side configuration.)
+bindsym $mod+m move workspace to output right
+
 # Switch to workspace.
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
