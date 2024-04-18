@@ -69,7 +69,7 @@ resolvePlotTheme["CharuFrame",
 resolvePlotTheme["CharuFrame2D",_]:=
   Themes`SetWeight[
    {AxesStyle->Directive[AbsoluteThickness[0.8],monoColor,FontSize->10],
-    BaseStyle->{Directive[FontFamily->"Nimbus Sans L"],SingleLetterItalics->True},
+    BaseStyle->{Directive[FontFamily->"TeXGyreHeros"],SingleLetterItalics->True},
     PlotStyle->{Directive[Thickness[0.006]]},
     FrameStyle->Directive[AbsoluteThickness[0.8],monoColor,FontSize->10],
     TicksStyle->Directive[monoColor,FontSize->10],
@@ -80,7 +80,7 @@ resolvePlotTheme["CharuFrame2D",_]:=
 resolvePlotTheme["CharuFrame3D",_]:=
   Themes`SetWeight[
    {AxesStyle->Directive[AbsoluteThickness[0.8],monoColor,FontSize->10],
-    BaseStyle->{Directive[FontFamily->"Nimbus Sans L"],SingleLetterItalics->True},
+    BaseStyle->{Directive[FontFamily->"TeXGyreHeros"],SingleLetterItalics->True},
     PlotStyle->{Directive[Thickness[0.006]]},
     TicksStyle->Directive[monoColor,FontSize->10],
     BoxStyle->monoColor},
