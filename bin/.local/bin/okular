@@ -1,0 +1,4 @@
+#!/bin/sh
+unset QT_QPA_PLATFORMTHEME
+unset QT_STYLE_OVERRIDE
+exec /usr/bin/okular "$@"
