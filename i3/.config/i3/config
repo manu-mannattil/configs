@@ -11,6 +11,18 @@ font pango:Source Code Pro Semibold 9
 # By default windows ought to be tabbed, not tiled.
 workspace_layout tabbed
 
+# Workspace names.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
 # Keybindings {{{1
 # ----------------
 
@@ -74,28 +86,28 @@ bindsym $mod+Shift+a focus child
 bindsym $mod+m move workspace to output right
 
 # Switch to workspace.
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # Move focused container to workspace.
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Switch between two recent workspaces.
 bindsym $mod+b workspace back_and_forth
@@ -170,10 +182,10 @@ bindsym Shift+XF86MonBrightnessUp exec --no-startup-id brightnessctl set 40%
 bindsym Shift+XF86MonBrightnessDown exec --no-startup-id brightnessctl set 0%
 
 # Volume raise/lower/mute and mic mute keys.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 1 toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Use arandr (a GUI interface to xrandr) to configure display.
 bindsym XF86Display exec --no-startup-id arandr
@@ -275,13 +287,20 @@ bar {
 # Floating windows {{{2
 # ---------------------
 
-for_window [window_role="Preferences"] floating enable
-for_window [window_role="bubble"] floating enable
 for_window [window_role="About"] floating enable
+for_window [window_role="bubble"] floating enable
 for_window [window_role="pop-up"] floating enable
+for_window [window_role="Preferences"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [window_type="dialog"] floating enable
+for_window [window_type="dropdown_menu"] floating enable
 for_window [window_type="menu"] floating enable
+for_window [window_type="notification"] floating enable
+for_window [window_type="popup_menu"] floating enable
+for_window [window_type="splash"] floating enable
+for_window [window_type="toolbar"] floating enable
+for_window [window_type="tooltip"] floating enable
+for_window [window_type="utility"] floating enable
 
 for_window [class="Anki"] floating enable
 for_window [class="Arandr"] floating enable
@@ -289,106 +308,110 @@ for_window [class="matplotlib"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [title="editinvim"] floating enable
 
-# Terminals and file browser (workspace 1) {{{2
-# ---------------------------------------------
+# No border for the applications below.
+for_window [class="XWrits"] border pixel 0
+for_window [window_type="splash"] border pixel 0
 
-for_window [class="URxvt"] move container to workspace 1
+# Terminals and file browser (workspace $ws1) {{{2
+# ------------------------------------------------
+
+for_window [class="URxvt"] move container to workspace $ws1
 for_window [class="URxvt"] focus
 
-for_window [class="Spacefm"] move container to workspace 1
+for_window [class="Spacefm"] move container to workspace $ws1
 for_window [class="Spacefm"] focus
 
-# Browsers (workspace 2) {{{2
-# ---------------------------
+# Browsers (workspace $ws2) {{{2
+# ------------------------------
 
-for_window [class="Brave-browser"] move container to workspace 2
+for_window [class="Brave-browser"] move container to workspace $ws2
 for_window [class="Brave-browser"] focus
 
-for_window [class="firefox"] move container to workspace 2
+for_window [class="firefox"] move container to workspace $ws2
 for_window [class="firefox"] focus
 
-for_window [class="Google-chrome"] move container to workspace 2
+for_window [class="Google-chrome"] move container to workspace $ws2
 for_window [class="Google-chrome"] focus
 
-for_window [class="Liferea"] move container to workspace 2
+for_window [class="Liferea"] move container to workspace $ws2
 for_window [class="Liferea"] focus
 
-for_window [class="Zeal"] move container to workspace 2
+for_window [class="Zeal"] move container to workspace $ws2
 for_window [class="Zeal"] focus
 
-# Media (workspace 3) {{{2
-# ------------------------
+# Media (workspace $ws3) {{{2
+# ---------------------------
 
-for_window [class="Deadbeef"] move container to workspace 3
+for_window [class="Deadbeef"] move container to workspace $ws3
 for_window [class="Deadbeef"] focus
 
-for_window [class="mpv"] move container to workspace 3
+for_window [class="mpv"] move container to workspace $ws3
 for_window [class="mpv"] floating enable
 for_window [class="mpv"] focus
 
-for_window [class="vlc"] move container to workspace 3
+for_window [class="vlc"] move container to workspace $ws3
 for_window [class="vlc"] focus
 
-# TeX (workspace 5) {{{2
-# ----------------------
+# TeX (workspace $ws5) {{{2
+# -------------------------
 
-for_window [title="LaTeX" class="qpdfview"] move container to workspace 5
+for_window [title="LaTeX" class="qpdfview"] move container to workspace $ws5
 for_window [title="LaTeX" class="qpdfview"] focus
 
-for_window [title=".tex" class="Gvim"] move container to workspace 5
+for_window [title=".tex" class="Gvim"] move container to workspace $ws5
 for_window [title=".tex" class="Gvim"] focus
 
-# Large/bloated GUIs I (workspace 6) {{{2
-# ---------------------------------------
+# Large/bloated GUIs I (workspace $ws6) {{{2
+# ------------------------------------------
 
-for_window [class="wpp"] move container to workspace 6
+for_window [class="wpp"] move container to workspace $ws6
 for_window [class="wpp"] focus
 
-for_window [class="et"] move container to workspace 6
+for_window [class="et"] move container to workspace $ws6
 for_window [class="et"] focus
 
-for_window [class="wpspdf"] move container to workspace 6
+for_window [class="wpspdf"] move container to workspace $ws6
 for_window [class="wpspdf"] focus
 
-for_window [class="wps"] move container to workspace 6
+for_window [class="wps"] move container to workspace $ws6
 for_window [class="wps"] focus
 
-for_window [class="libreoffice"] move container to workspace 9
+for_window [class="libreoffice"] move container to workspace $ws6
 for_window [class="libreoffice"] focus
 
-# Mathematica (workspace 7) {{{2
-# ------------------------------
+for_window [class="lyx"] move container to workspace $ws6
+for_window [class="lyx"] focus
 
-for_window [class="Mathematica"] move container to workspace 7
+# Mathematica (workspace $ws7) {{{2
+# ---------------------------------
+
+for_window [class="Mathematica"] move container to workspace $ws7
 for_window [class="Mathematica"] focus
 
-# Large/bloated GUIs II (workspace 9) {{{2
-# ----------------------------------------
+# Large/bloated GUIs II (workspace $ws9) {{{2
+# -------------------------------------------
 
-for_window [class="zoom"] move container to workspace 9
+for_window [class="zoom"] move container to workspace $ws9
 for_window [class="zoom"] focus
-
-for_window [class="lyx"] move container to workspace 9
-for_window [class="lyx"] focus
 
 # The hyphen is so that Inkscape extracted from the AppImage gets
 # recognized.  For reasons I don't understand, just checking the class
 # name doesn't work (version 1.2.1).
-for_window [title="- Inkscape"] move container to workspace 9
+for_window [title="- Inkscape"] move container to workspace $ws9
 for_window [title="- Inkscape"] focus
 
-for_window [class="Gimp"] move container to workspace 9
+for_window [class="Gimp"] move container to workspace $ws9
 for_window [class="Gimp"] focus
 
-for_window [class="Filezilla"] move container to workspace 9
-for_window [class="Filezilla"] focus
+for_window [class="File[Zz]illa"] move container to workspace $ws9
+for_window [class="File[Zz]illa"] focus
 
-for_window [class="steam"] move container to workspace 9
+for_window [class="steam"] move container to workspace $ws9
 for_window [class="steam"] focus
 for_window [class="steam"] floating enable
 
-for_window [title="SoulseekQt build"] move container to workspace 9
+for_window [title="SoulseekQt build"] move container to workspace $ws9
 for_window [title="SoulseekQt build"] focus
 
-for_window [class="Signal"] move container to workspace 9
+for_window [class="Signal"] move container to workspace $ws9
 for_window [class="Signal"] focus

@@ -14,7 +14,7 @@
 #   DeaDBeeF              https://deadbeef.sourceforge.io/download.html
 #   fzf                   https://github.com/junegunn/fzf-bin/releases
 #                         https://raw.githubusercontent.com/junegunn/fzf/master/man/man1/fzf.1
-#   Geekbench             https://www.geekbench.com/download/linux/
+#   Geekbench             https://www.geekbench.com/download/linux
 #   git-latexdiff         https://gitlab.com/git-latexdiff/git-latexdiff
 #   Google Chrome         https://www.google.com/chrome
 #   pdfsizeopt            https://github.com/pts/pdfsizeopt
@@ -31,8 +31,9 @@
 # repositories, therefore it makes sense to install them manually:
 #
 #   Calibre               http://calibre-ebook.com/download_linux
-#   Latexmk               http://personal.psu.edu/jcc8/software/latexmk-jcc/versions.html
+#   Latexmk               https://www.cantab.net/users/johncollins/latexmk/versions.html
 #   Pass                  https://git.zx2c4.com/password-store/
+#   Pass OTP              https://github.com/tadfisher/pass-otp
 #   mktorrent             https://github.com/pobrn/mktorrent/archive/master.zip
 #
 
@@ -78,7 +79,8 @@ PACKAGES=(
   gpgv2 # GNU privacy guard - signature verification tool (dummy transitional package)
   pinentry-gnome3 # GNOME 3 PIN or pass-phrase entry dialog for GnuPG
   pass  # lightweight directory-based password manager
-  oauthtool # totp manager
+  pass-otp # pass extension for generating TOTPs
+  oathtool # totp manager
 
   # Debian
   apt-file # search for files within Debian packages (command-line interface)
@@ -147,7 +149,7 @@ PACKAGES=(
   btrfs-progs # btrfs utilities
   duff # Duplicate file finder
   exfat-fuse # read and write exFAT driver for FUSE
-  exfat-utils # utilities to create, check, label and dump exFAT filesystem
+  exfatprogs # utilities to create, check, label and dump exFAT filesystem
   extundelete # utility to recover deleted files from ext3/ext4 partition
   foremost # forensic program to recover lost files
   fuseiso # FUSE module to mount ISO filesystem images
@@ -158,6 +160,7 @@ PACKAGES=(
   inotify-tools # provides a simple interface to inotify (inotifywait & inotifywatch)
   jmtpfs # FUSE based filesystem for accessing MTP devices
   scalpel # fast filesystem-independent file recovery
+  syncthing # decentralized file synchronization
   testdisk # Partition scanner and disk recovery tool, and PhotoRec file recovery tool
 
   # Fonts and font utilities
@@ -171,7 +174,6 @@ PACKAGES=(
   figlet # Make large character ASCII banners out of ordinary text
   fortune-mod # provides fortune cookies on demand
   fortunes # Data files containing fortune cookies
-  fortunes-off # Data files containing offensive fortune cookies
   toilet # display large colourful characters in text mode
 
   # Hardware
@@ -186,18 +188,14 @@ PACKAGES=(
   vainfo # Video Acceleration (VA) API for Linux -- info program
 
   # Image manipulation
-  darktable # virtual lighttable and darkroom for photographers
   exif # command-line utility to show EXIF information in JPEG files
   exiftran # digital camera JPEG image transformer
   gifsicle # GIF compressor
   gimp-data-extras # Extra brushes and patterns for GIMP
-  gimp-gap # animation package for the GIMP
   gimp # GNU Image Manipulation Program
   gimp-help-en # Documentation for the GIMP (English)
-  gimp-lensfun # Gimp plugin to correct lens distortion using the lensfun library
   gimp-plugin-registry # repository of optional extensions for GIMP
   gmic # GREYC's Magic for Image Computing
-  hugin # panorama photo stitcher - GUI tools
   ink-generator # Inkscape extension to automatically generate files from a template
   inkscape # vector-based drawing program
   libimage-exiftool-perl # library and program to read and write meta information in multimedia files
@@ -214,7 +212,6 @@ PACKAGES=(
   w3m-img # inline image extension support utilities for w3m
 
   # Languages
-  python2 # Python 2 is required by some legacy software (e.g., pdfsizeopt)
   default-jre # Default Java runtime
 
   # PDF, PS, and DjVu tools
@@ -225,7 +222,6 @@ PACKAGES=(
   pdf2djvu # PDF to DjVu converter
   pdfcrack # PDF files password cracker
   pdfgrep # search in pdf files for strings matching a regular expression
-  pdfshuffler # merge, split and re-arrange PDF documents - transitional package
   pdfarranger # merge, split and re-arrange pages from PDF documents
   pdftk-java # transitional package for pdftk, a tool for manipulating PDF documents
   poppler-utils # PDF utilities (based on Poppler)
@@ -274,7 +270,7 @@ PACKAGES=(
   # TeX and writing
   bibtool # tool to manipulate BibTeX files
   diction # Utilities to help with style and diction (English and German)
-  libreoffice-gtk3 # office productivity suite
+  libreoffice # office productivity suite
   sdcv # StarDict Console Version
   texlive-full # TeX Live: metapackage pulling in all components of TeX Live
   wdiff # compare two files word by word
@@ -321,15 +317,18 @@ PACKAGES=(
   # Miscellaneous
   wine # Windows API implementation - standard suite
   libwine:i386 # Windows API implementation - library (32-bit version)
-
-  # Docker
-  containerd.io # An open and reliable container runtime
-  docker-ce # Docker: the open-source application container engine
-  docker-ce-cli # Docker CLI: the open-source application container engine
 )
 
 REMOVE_PACKAGES=(
   unattended-upgrades
+
+  # gnome-keyring creates isses with XDG something.
+  # If gnome-keyring is present, some applications, e.g., pinentry takes
+  # an additional 30s to show up.
+  gnome-keyring
+
+  # We'll get Firefox from Mozilla directly.
+  firefox-esr
 )
 
 # Host-specific packages {{{1
@@ -352,15 +351,13 @@ esac
 # Installation {{{1
 # -----------------
 
-# Docker.
-curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-
 dpkg --add-architecture i386
 apt update
 apt upgrade --yes
 apt install --yes "${PACKAGES[@]}"
 apt autoremove --yes
 apt clean --yes
+apt remove --yes "${REMOVE_PACKAGES[@]}"
 
 # Systemd Optimization {{{1
 # -------------------------
@@ -374,10 +371,6 @@ apt clean --yes
 DISABLE_UNITS=(
   # Tor daemon.  It's better to start it when needed.
   tor.service tor@default.servick
-
-  # Docker.
-  docker.service
-  containerd.service
 )
 
 MASK_UNITS=(

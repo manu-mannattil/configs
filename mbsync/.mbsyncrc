@@ -65,25 +65,25 @@ Inbox ~/mail/gmail/inbox
 # Sync all folders (including the inbox) except the Gmail internal
 # folders, drafts, sent, and trash.
 Channel gmail-all
-Master :gmail-remote:
-Slave :gmail-local:
+Far :gmail-remote:
+Near :gmail-local:
 Patterns * ![Gmail]* !drafts !sent !spam !trash
 
 Channel gmail-drafts
-Master :gmail-remote:[Gmail]/Drafts
-Slave :gmail-local:drafts
+Far :gmail-remote:[Gmail]/Drafts
+Near :gmail-local:drafts
 
 Channel gmail-sent
-Master :gmail-remote:"[Gmail]/Sent Mail"
-Slave :gmail-local:sent
+Far :gmail-remote:"[Gmail]/Sent Mail"
+Near :gmail-local:sent
 
 Channel gmail-spam
-Master :gmail-remote:[Gmail]/Spam
-Slave :gmail-local:spam
+Far :gmail-remote:[Gmail]/Spam
+Near :gmail-local:spam
 
 Channel gmail-trash
-Master :gmail-remote:[Gmail]/Trash
-Slave :gmail-local:trash
+Far :gmail-remote:[Gmail]/Trash
+Near :gmail-local:trash
 
 Group gmail
 Channel gmail-all
@@ -110,25 +110,25 @@ Path ~/mail/posteo/
 Inbox ~/mail/posteo/inbox
 
 Channel posteo-all
-Master :posteo-remote:
-Slave :posteo-local:
+Far :posteo-remote:
+Near :posteo-local:
 Patterns * !Drafts !drafts !Sent !sent !Trash !trash !Spam !spam
 
 Channel posteo-drafts
-Master :posteo-remote:Drafts
-Slave :posteo-local:drafts
+Far :posteo-remote:Drafts
+Near :posteo-local:drafts
 
 Channel posteo-sent
-Master :posteo-remote:Sent
-Slave :posteo-local:sent
+Far :posteo-remote:Sent
+Near :posteo-local:sent
 
 Channel posteo-trash
-Master :posteo-remote:Trash
-Slave :posteo-local:trash
+Far :posteo-remote:Trash
+Near :posteo-local:trash
 
 Channel posteo-spam
-Master :posteo-remote:Spam
-Slave :posteo-local:spam
+Far :posteo-remote:Spam
+Near :posteo-local:spam
 
 Group posteo
 Channel posteo-all

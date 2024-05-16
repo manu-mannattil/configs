@@ -1,6 +1,14 @@
 configuration {
- font: "Source Code Pro Semibold 9";
- show-icons: true;
+  font: "Source Code Pro Semibold 9";
+  show-icons: true;
 }
 
 @theme "haze"
+
+/* Required for icons to scale properly.
+ * The -dpi flag is no longer relevant.
+ * https://github.com/davatorium/rofi/issues/1185
+ */
+element-icon {
+  size: 1.25em;
+}

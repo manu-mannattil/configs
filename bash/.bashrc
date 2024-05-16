@@ -576,11 +576,6 @@ export BROWSER="firefox"
 # Java applications: (i) pick up font settings from system, (ii) antialias text.
 export JDK_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 
-# Set locale properly.  Ubuntu sets LANG to en_IN if IST is selected as the
-# time zone.  But many programs (e.g., tmux) don't understand en_IN.
-export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
-
 # Default Mutt profile.
 export MUTT_PROFILE="posteo"
 
