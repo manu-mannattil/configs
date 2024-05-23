@@ -370,6 +370,10 @@ __install_rofi() {
 # :target: ssh - SSH config
 __install_ssh() {
     install "ssh/.ssh/config"
+    mkdir -p "$HOME/.ssh/controlmasters"
+    chmod 700 "$HOME/.ssh"
+    chmod 600 "$HOME/.ssh/"id_*
+    chmod 644 "$HOME/.ssh/"id_*.pub
 }
 
 # :target: terminfo - terminfo files for less-known terminals
