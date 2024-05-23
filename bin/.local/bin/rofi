@@ -3,6 +3,6 @@
 # Handle HiDPI displays properly.  Note that -dpi only scales text.
 # Using -dpi 1 picks up 4 times the required DPI, but because we're on
 # a WQHD display with fractional scaling, that would be too much.
-: ${QT_FONT_DPI:=96}
+dpi=$(xrdb -get 'Xft*dpi')
 
-exec /usr/bin/rofi -dpi "$QT_FONT_DPI" "$@"
+exec /usr/bin/rofi -dpi "$dpi" "$@"
