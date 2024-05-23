@@ -228,7 +228,7 @@ __install_fontconfig() {
 
 # :target: gnupg - GnuPG configuration
 __install_gnupg() {
-    install "gnupg/.gnupg/gpg.conf" "gnupg/.gnupg/gpg-agent.conf"
+    install --copy "gnupg/.gnupg/gpg.conf" "gnupg/.gnupg/gpg-agent.conf"
 
     # Set the right permissions.
     chmod -v 700 "$HOME/.gnupg"
@@ -314,8 +314,8 @@ __install_mpv() {
 # :target: msmtp - msmtp configuration
 __install_msmtp() {
     # msmtp requires ~/.msmtprc to be rw only by the user.
-    chmod -v 600 "$REPO/msmtp/.msmtprc"
-    install "msmtp/.msmtprc"
+    install --copy "msmtp/.msmtprc"
+    chmod 600 "$HOME/.msmtprc"
 }
 
 # :target: mutt - Mutt configuration and profiles
@@ -369,7 +369,7 @@ __install_rofi() {
 
 # :target: ssh - SSH config
 __install_ssh() {
-    install "ssh/.ssh/config"
+    install --copy "ssh/.ssh/config"
     mkdir -p "$HOME/.ssh/controlmasters"
     chmod 700 "$HOME/.ssh"
     chmod 600 "$HOME/.ssh/"id_*
@@ -550,7 +550,7 @@ do
 done
 
 # Set up Git hooks.
-git config --local core.hooksPath .githooks
+git rev-parse --is-inside-work-tree &>/dev/null && git config --local core.hooksPath .githooks
 
 # End of script.
 popd &>/dev/null
