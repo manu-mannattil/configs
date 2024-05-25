@@ -20,6 +20,23 @@
 # rm -rf ~/.local/pipx
 # rm -rf ~/.local/miniforge
 
+# Miniforge ------------------------------------------------------------
+
+tmpdir="$(mktemp -d)"
+trap 'rm -rf "$tmpdir" >/dev/null 2>&1' EXIT
+trap 'exit 2' HUP INT QUIT TERM
+
+tmpdir=/tmp/downloads
+pushd "$tmpdir"
+
+wget --continue --no-config --progress=bar -O miniforge3.sh \
+    "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh"
+
+chmod +x miniforge3.sh
+./miniforge3.sh -b -p ~/.local/miniforge
+
+popd
+
 # pip ------------------------------------------------------------------
 
 MODULES=(
