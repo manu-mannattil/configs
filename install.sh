@@ -315,7 +315,7 @@ __install_mpv() {
 __install_msmtp() {
     # msmtp requires ~/.msmtprc to be rw only by the user.
     install --copy "msmtp/.msmtprc"
-    chmod 600 "$HOME/.msmtprc"
+    chmod -v 600 "$HOME/.msmtprc"
 }
 
 # :target: mutt - Mutt configuration and profiles
@@ -370,10 +370,9 @@ __install_rofi() {
 # :target: ssh - SSH config
 __install_ssh() {
     install --copy "ssh/.ssh/config"
+    chmod -v 600 "$HOME/.ssh/config"
+    chmod -v 700 "$HOME/.ssh"
     mkdir -p "$HOME/.ssh/controlmasters"
-    chmod 700 "$HOME/.ssh"
-    chmod 600 "$HOME/.ssh/"id_*
-    chmod 644 "$HOME/.ssh/"id_*.pub
 }
 
 # :target: terminfo - terminfo files for less-known terminals

@@ -391,8 +391,8 @@ for_window [class="Mathematica"] focus
 # Large/bloated GUIs II (workspace $ws9) {{{2
 # -------------------------------------------
 
-for_window [class="zoom"] move container to workspace $ws9
-for_window [class="zoom"] focus
+for_window [class="(zoom|join\?)"] move container to workspace $ws9
+for_window [class="(zoom|join\?)"] focus
 
 # The hyphen is so that Inkscape extracted from the AppImage gets
 # recognized.  For reasons I don't understand, just checking the class

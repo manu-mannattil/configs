@@ -26,7 +26,6 @@ tmpdir="$(mktemp -d)"
 trap 'rm -rf "$tmpdir" >/dev/null 2>&1' EXIT
 trap 'exit 2' HUP INT QUIT TERM
 
-tmpdir=/tmp/downloads
 pushd "$tmpdir"
 
 wget --continue --no-config --progress=bar -O miniforge3.sh \

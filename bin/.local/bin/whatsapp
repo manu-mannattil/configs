@@ -1,3 +1,4 @@
 #!/bin/sh
 
-exec nohup firefox -P whatsapp "$@" >/dev/null 2>&1 &
+grep -q 'Name=whatsapp' "$HOME/.mozilla/firefox/profiles.ini" && set -- -P whatsapp "$@"
+exec nohup /usr/bin/firefox "$@" >/dev/null 2>&1 &

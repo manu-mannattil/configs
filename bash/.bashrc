@@ -226,6 +226,14 @@ alias pdf2eps='pdftops -f 1 -l 1 -eps'
 # PDF to TXT that preserves layout
 alias pdf2txt='pdftotext -layout'
 
+# Clear Qt theme environment variables before running Python.
+# Without doing so, we get the following error (e.g., while using
+# Matplotlib's Qt backend):
+#
+#   QApplication: invalid style override 'adwaita-dark' passed, ignoring it.
+#
+alias python='QT_QPA_PLATFORMTHEME= QT_STYLE_OVERRIDE= python'
+
 # Overwrite 5 times, fill up with zeroes, and then delete.
 alias shred='shred -vzfun 5'
 
@@ -581,9 +589,6 @@ export MUTT_PROFILE="posteo"
 
 # 3 minutes to clear the clipboard after copying a password.
 export PASSWORD_STORE_CLIP_TIME=180
-
-# Location of password store git repo.
-export PASSWORD_STORE_DIR="$HOME/documents/.password-store"
 
 # Default pager.
 export PAGER="less"
