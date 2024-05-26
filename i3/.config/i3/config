@@ -245,8 +245,8 @@ bindsym $mod+shift+e mode "$mode_exit"
 
 mode "$mode_exit" {
   bindsym e exec i3-msg exit
-  bindsym p exec poweroff
-  bindsym r exec reboot
+  bindsym r exec systemctl reboot -i
+  bindsym p exec systemctl poweroff -i
 
   bindsym Escape mode "default"
   bindsym Return mode "default"
