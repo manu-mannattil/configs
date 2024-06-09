@@ -2,6 +2,7 @@
 
 flags=(--incognito)
 case "$1" in
+    # Additional flag: --no-incognito (equivalent to --no-private).
     --no-i*|--no-pri*) flags=(); shift    ;;
     -*) exec /usr/bin/google-chrome "$@"  ;;
 esac
@@ -10,7 +11,6 @@ esac
 #
 #   https://peter.sh/experiments/chromium-command-line-switches
 #   https://github.com/GoogleChrome/chrome-launcher/blob/main/docs/chrome-flags-for-tools.md
-#   https://github.com/ungoogled-software/ungoogled-chromium/blob/master/docs/flags.md
 #
 # The ArchWiki mentions a ~/.config/chrome-flags.conf file that can be
 # used to configure Chrome.  But that file is specific to the Chrome
@@ -18,18 +18,21 @@ esac
 # official package.
 # https://wiki.archlinux.org/title/Chromium#Making_flags_persistent
 flags+=(
+    --allow-running-insecure-content
+    --ash-no-nudges
     --disable-background-networking
     --disable-client-side-phishing-detection
     --disable-component-update
     --disable-default-apps
     --disable-features=InterestFeedContentSuggestions
-    --disable-sync
     --disable-gpu
-    --gtk-version=4
+    --disable-notifications
+    --disable-sync
     --no-default-browser-check
     --no-first-run
     --print-to-pdf-no-header
     --system-font-family
+    --hide-crash-restore-bubble
 )
 
 nohup /usr/bin/google-chrome "${flags[@]}" "$@" >/dev/null 2>&1 &
