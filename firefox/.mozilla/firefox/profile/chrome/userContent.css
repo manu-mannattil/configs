@@ -4,6 +4,12 @@
   filter: invert(100%);
 }
 
+/* Disable animation when going to full screen mode. */
+#navigator-toolbox[fullscreenShouldAnimate] {
+  transition: none !important;
+}
+
+/* Reader view settings. */
 @-moz-document url-prefix("about:reader") {
   body.dark {
     color: white !important;

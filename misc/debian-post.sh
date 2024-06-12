@@ -85,6 +85,7 @@ PACKAGES=(
   # Debian
   apt-file # search for files within Debian packages (command-line interface)
   deborphan # lists orphaned packages
+  needrestart # tells you whether a restart is required after installing packages
 
   # Desktop and window managers
   adwaita-qt # Adwaita light/dark theme for Qt
@@ -196,8 +197,6 @@ PACKAGES=(
   gimp-help-en # Documentation for the GIMP (English)
   gimp-plugin-registry # repository of optional extensions for GIMP
   gmic # GREYC's Magic for Image Computing
-  ink-generator # Inkscape extension to automatically generate files from a template
-  inkscape # vector-based drawing program
   libimage-exiftool-perl # library and program to read and write meta information in multimedia files
   optipng # advanced PNG (Portable Network Graphics) optimizer
   pngcrush # optimizes PNG (Portable Network Graphics) files

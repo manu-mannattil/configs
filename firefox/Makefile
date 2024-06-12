@@ -23,6 +23,7 @@ install:
 
 	rm -rf /opt/firefox
 	cp -r firefox /opt/
+	chmod -R g=rwX,o=rX /opt/firefox
 	ln -fs /opt/firefox/firefox /usr/bin
 
 	mkdir -p /usr/share/applications

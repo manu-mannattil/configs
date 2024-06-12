@@ -7,7 +7,11 @@
 # See the man page for details on how to write a sudoers file.
 #
 Defaults env_reset
-Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+# By default Debian enables secure_path, which restricts the PATH when
+# invoking sudo.  But I'd rather give sudo the full path of the user
+# invoking sudo, so we comment the line out.
+# Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 # This fixes CVE-2005-4890 and possibly breaks some versions of kdesu
 # (#1011624, https://bugs.kde.org/show_bug.cgi?id=452532)
