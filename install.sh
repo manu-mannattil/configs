@@ -376,7 +376,7 @@ __install_ssh() {
 }
 
 # :target: systemd - systemd user-level config
-__install_ssh() {
+__install_systemd() {
     install "systemd/.config/systemd"
 }
 

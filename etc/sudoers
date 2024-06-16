@@ -24,12 +24,12 @@ Defaults umask=002
 # Show asterisks when passwords are typed.
 Defaults pwfeedback
 
-# Always show an error message when a wrong password is entered.
-Defaults lecture="always"
-
 # As long as timestamp_timeout isn't reached, just ask the
 # password once for a given user.
 Defaults timestamp_type="global"
+
+# Use the same PATH as the user invoking sudo.
+#Defaults:%sudo env_keep += "PATH"
 
 # This preserves proxy settings from user environments of root
 # equivalent users (group sudo)
