@@ -1,0 +1,9 @@
+#!/bin/sh
+
+preamble="$HOME/.latexdiff.d/preamble.tex"
+[ -f "$preamble" ] && set -- --preamble="$preamble" "$@"
+
+exec /usr/bin/latexdiff       \
+    --math-markup="coarse"    \
+    --disable-citation-markup \
+    --graphics-markup=0 "$@"

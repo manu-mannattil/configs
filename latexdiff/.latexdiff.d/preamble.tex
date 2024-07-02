@@ -1,0 +1,48 @@
+% Custom preamble for latexdiff.
+% To use this, run latexdiff as
+%   latexdiff -p .../path/to/preamble.tex <arg>...
+
+\usepackage[normalem]{ulem}
+\def\ULthickness{0.75pt}
+\usepackage{color}
+
+\definecolor{colorDEL}{rgb}{0.9,0.1,0.0}
+\definecolor{colorADD}{rgb}{0.0,0.1,0.9}
+
+\providecommand{\DIFadd}[1]{{\protect\color{colorADD}\uline{#1}}}
+\providecommand{\DIFdel}[1]{{\protect\color{colorDEL}\sout{#1}}}
+
+\providecommand{\DIFaddbegin}{}
+\providecommand{\DIFaddend}{}
+\providecommand{\DIFdelbegin}{}
+\providecommand{\DIFdelend}{}
+\providecommand{\DIFmodbegin}{}
+\providecommand{\DIFmodend}{}
+
+% Floats.
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}}
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}}
+\providecommand{\DIFaddbeginFL}{}
+\providecommand{\DIFaddendFL}{}
+\providecommand{\DIFdelbeginFL}{}
+\providecommand{\DIFdelendFL}{}
+
+\makeatletter
+
+% Force hyperref to avoid color links.
+\@ifpackageloaded{hyperref}{\hypersetup{hidelinks}}{}
+
+% Put line numbers if we're not already doing so.
+\@ifpackageloaded{lineno}{}{
+  \usepackage[columnwise]{lineno}
+  \if@twocolumn
+    \def\linenumbersep{2pt}
+  \else
+    \def\linenumbersep{10pt}
+  \fi
+  \definecolor{snow}{rgb}{0.5,0.5,0.5}
+  \def\linenumberfont{\color{snow}\normalfont\footnotesize\sffamily}
+  \linenumbers
+}
+
+\makeatother
