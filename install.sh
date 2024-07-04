@@ -138,6 +138,11 @@ __install_bin() {
     install "bin/.local/bin"
 }
 
+# :target: btop - btop configuration
+__install_btop() {
+    install --copy "btop/.config/btop/btop.conf"
+}
+
 # :target: clang - clang configuration files
 __install_clang() {
     install "clang/.clang-format"
@@ -269,6 +274,11 @@ __install_ipython() {
 # :target: latexindent - latexindent configuration
 __install_latexindent() {
     install "latexindent/.latexindent.yaml"
+}
+
+# :target: latexdiff - latexdiff configuration
+__install_latexdiff() {
+    install "latexdiff/.latexdiff.d"
 }
 
 # :target: latexmk - latexmk configuration
