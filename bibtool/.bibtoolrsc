@@ -72,6 +72,10 @@ delete.field = {keywords}
 delete.field = {author_keywords}
 delete.field = {source}
 
+# Some publishers put links in the eprint field.
+# Delete such fields.
+delete.field = {eprint if eprint = "https?://"}
+
 % Entries and sort order -----------------------------------------------
 
 % Use lower case entry names.
