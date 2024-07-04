@@ -99,7 +99,7 @@ set shortmess+=I
 
 " More informative, yet minimalistic statusline.
 set statusline=[%n]\ %t\ [%{&ff}\|%{strlen(&fenc)?&fenc:&enc}\|%{strlen(&ft)?&ft:'none'}]\ %m%q%r%w
-set statusline+=%=%<[0x%B]\ L:%l/%L,C:%c\ (%P)
+set statusline+=%=%<L:%l/%L,C:%c\ (%P)
 
 " Ignore common binary files during completion.  Alternatively, use the
 " 'suffixes' option to give these extensions a low priority while doing tab
@@ -334,6 +334,7 @@ set splitright
 augroup ft_related
   autocmd!
 
+  autocmd BufRead,BufNewFile *.bibtex set filetype=bib
   autocmd BufRead,BufNewFile *.conf set filetype=conf
   autocmd BufRead,BufNewFile *.fold set filetype=json
   autocmd BufRead,BufNewFile *.gp,*.plt set filetype=gnuplot

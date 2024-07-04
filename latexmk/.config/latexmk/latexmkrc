@@ -36,5 +36,4 @@ $clean_ext = 'acn bbl bcf fdb_latexmk glg loc nav pre %R-blx.bib %RNotes.bib run
 $success_cmd = '~/.config/latexmk/success_cmd.sh';
 
 # Put .aux and other files in a separate directory.
-# "latex.out" is the name of the directory that latexrun uses as well.
-$aux_dir = 'latex.out';
+$aux_dir = '.latex';
