@@ -50,3 +50,6 @@ SHELL=/bin/bash
 
 # Clean *.torrent files from ~/ and ~/downloads.
 @hourly rm -f ~/*.torrent ~/downloads/*.torrent /tmp/downloads/*.torrent
+
+# git-latexdiff puts temp files in /tmp.
+@hourly rm -rf /tmp/git-latexdiff.*

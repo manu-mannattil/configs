@@ -51,7 +51,8 @@ set display=lastline
 set exrc
 
 " Prettier Unicode borders while splitting windows vertically.
-set fillchars+=vert:│
+" set fillchars+=vert:│
+set fillchars+=vert:║
 
 " Marker as the foldmethod works consistently for *all* files.
 set foldmethod=marker

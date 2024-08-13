@@ -259,11 +259,12 @@ PACKAGES=(
   zsh # shell with lots of features
 
   # System tools
-  psmisc # utilities that use the proc file system (e.g., killall, pstree, etc.)
-  iotop # simple top-like I/O monitor
-  htop # interactive processes viewer
+  btop # fancy top(1) equivalent
   fakeroot # tool for simulating superuser privileges
   firejail # sandbox to restrict the application environment
+  htop # interactive processes viewer
+  iotop # simple top-like I/O monitor
+  psmisc # utilities that use the proc file system (e.g., killall, pstree, etc.)
   sysvinit-utils # System-V-like utilities
 
   # TeX and writing
@@ -318,6 +319,11 @@ PACKAGES=(
   libwine:i386 # Windows API implementation - library (32-bit version)
 )
 
+# Packages to be installed with --no-install-recommends.
+PACKAGES_NO_RECOMMENDS=(
+  okular # KDE PDF viewer
+)
+
 REMOVE_PACKAGES=(
   unattended-upgrades
 
@@ -354,6 +360,7 @@ dpkg --add-architecture i386
 apt update
 apt upgrade --yes
 apt install --yes "${PACKAGES[@]}"
+apt install --yes --no-install-recommends "${PACKAGES_NO_RECOMMENDS[@]}"
 apt autoremove --yes
 apt clean --yes
 apt remove --yes "${REMOVE_PACKAGES[@]}"
