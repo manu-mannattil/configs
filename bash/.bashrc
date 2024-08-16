@@ -293,6 +293,23 @@ then
     alias vv='fasd -f -e e'
 fi
 
+# Bash completion {{{1
+# --------------------
+
+# Setup Bash completion.
+if [[ -f /usr/share/bash-completion/bash_completion ]]
+then
+    source /usr/share/bash-completion/bash_completion
+elif [[ -f /etc/bash_completion ]]
+then
+    source /etc/bash_completion
+fi
+
+# Prevent Bash completion from using /etc/hosts entries as SSH
+# hostnames.  See /usr/share/bash-completion/bash_completion
+export COMP_KNOWN_HOSTS_WITH_HOSTFILE=
+export BASH_COMPLETION_KNOWN_HOSTS_WITH_HOSTFILE=
+
 # Functions {{{1
 # --------------
 
@@ -359,8 +376,7 @@ _plmgr() {
     fi
 
     return 0
-}
-complete -F _plmgr plmgr
+} && complete -F _plmgr plmgr
 
 # ls {{{2
 # -------
@@ -499,8 +515,7 @@ _mutt() {
     [[ "$COMP_CWORD" = 1 ]] || return 0
     COMPREPLY=( $(CDPATH= cd "$MUTT_PROFILE_DIR"
                   compgen -A file -- "${COMP_WORDS[COMP_CWORD]}") )
-}
-complete -F _mutt mutt
+} && complete -F _mutt mutt
 
 # mux {{{2
 # --------
@@ -541,8 +556,49 @@ _mux() {
     COMPREPLY=( "${COMPREPLY[@]/%.tmux/}" )
 
     return 0
-}
-complete -F _mux mux
+} && complete -F _mux mux
+
+# Vim Bash completion {{{2
+# ------------------------
+
+# This is simplified version of https://github.com/SuperSandro2000/vim-bash-completion
+# that removes scp:// completion and includes a "filterpat"
+# to weed out files that I don't usually edit with Vim.
+# License: MIT
+
+_vim() {
+    local cur prev words cword split
+    _init_completion -s -n : || return
+    $split && return
+
+    case $cur in
+        -V) COMPREPLY=( $(compgen -W '-V{1..10}' -- "$cur") )
+            ;;
+        -*) # Output of "vim --help", sorted.
+            COMPREPLY=( $(compgen -W '-t -q -- -v -e -E -s -d -y -R -Z -m -M -b -l -C -N -V -D
+            -n -r -L -A -H -T --not-a-term --ttyfail -u --noplugin -p -o -O + --cmd
+            -S -s -w -W -x --startuptime -i --clean -h --help --version' -- "$cur") )
+            # Additional options that might not be in your vim
+            # compilation because they may require features like GUI.
+            COMPREPLY+=( $(compgen -W '+/ -c -f --nofork -F -g -nb -U -X
+            --echo-wid --literal --remote --remote-expr --remote-send
+            --remote-silent --remote-wait --remote-wait-silent
+            --serverlist --servername --socketid' -- "$cur") )
+            ;;
+        *)  _tilde "$cur" || return
+            # A filter pattern for weeding out most binary files (or
+            # stuff (e.g., temporary LaTeX files) that I wouldn't
+            # usually touch with vim).
+            local filterpat='?(*~|*.7z|*.aac|*.acn|*.acr|*.alg|*.anx|*.asf|*.au|*.aux|*.avi|*.axa|*.axv|*.bbl|*.bcf|*.blg|*-blx.bib|*.bmp|*.bz|*.bz2|*.cgm|*.class|*.com|*.deb|.directory|*.djvu|*.dl|*.dll|*.dmg|*.doc|*.docx|*.dot|*.dotx|.DS_Store|*.dvi|ehthumbs.db|*.emf|*.eps|*.exe|*.fdb_latexmk|*.fla|*.flac|*.flc|*.fli|*.fls|*.flv|.fuse_hidden*|*.gif|.git|*.gl|*.glg|*.glo|*.gls|*.gnumeric|*.gz|.hg|*.idx|*.ilg|*.ind|*.ipynb|*.iso|*.ist|*.jar|*.jpeg|*.jpg|latex.out|*.lof|*.log|*.lot|*.m2v|*.m4a|*.m4v|__MACOSX|*.maf|*.maff|*.mid|*.midi|*.mka|*.mkv|*.mng|*.mov|*.mp3|*.mp4|*.mp4v|*.mpa|*.mpc|*.mpeg|*.mpg|*.mtc|*.mtc0|*.nav|*.nb|*.nlo|*Notes.bib|*.nuv|*.o|*.odt|*.oga|*.ogg|*.ogm|*.ogv|*.ogx|*.out|*.pcx|*.pdf|*.pdfsync|*.png|*.pps|*.ppsx|*.ppt|*.pptx|*.ps|*.psd|*.pyc|*.qt|*.ra|*.rar|*.rm|*.rmvb|*.rpm|*.rtf|*.run.xml|*.snm|*.so|.Spotlight-V100|*.spx|*.sql|*.sqlite|*.svg|*.svgz|*.swf|*.synctex.gz*|tags|*.tar|*.tar.gz|*.tdo|*.tga|*.tgz|Thumbs.db|*.tif|*.tiff|*.toc|*.torrent|.Trash-*|.Trashes|*.vob|*.vrb|*.wav|*.webm|*.wmv|*.xbm|*.xcf|*.xdy|*.xls|*.xlsx|*.xpm|*.xspf|*.xwd|*.yuv|*.zip)'
+            # Without setting IFS, if a filename contains
+            # spaces, then each word is used as one of the
+            # possible completions.
+            local IFS=$'\n'
+            compopt -o filenames -o bashdefault +o nospace
+            COMPREPLY+=( $(compgen -f -X "$filterpat" -- "$cur") )
+            ;;
+    esac
+} && complete -F _vim e vi vim gvim nvim
 
 # Exports {{{1
 # ------------
@@ -609,20 +665,6 @@ export XDG_CURRENT_DESKTOP="X-Generic"
 
 # Sourced files {{{1
 # ------------------
-
-# Setup Bash completion.
-if [[ -f /usr/share/bash-completion/bash_completion ]]
-then
-    source /usr/share/bash-completion/bash_completion
-elif [[ -f /etc/bash_completion ]]
-then
-    source /etc/bash_completion
-fi
-
-# Prevent Bash completion from using /etc/hosts entries as SSH
-# hostnames.  See /usr/share/bash-completion/bash_completion
-export COMP_KNOWN_HOSTS_WITH_HOSTFILE=
-export BASH_COMPLETION_KNOWN_HOSTS_WITH_HOSTFILE=
 
 # Source local .bashrc if any.
 [[ -f "$HOME/.bashrc_local" ]] && source "$HOME/.bashrc_local"
