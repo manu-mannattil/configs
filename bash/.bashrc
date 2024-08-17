@@ -576,14 +576,14 @@ _vim() {
             ;;
         -*) # Output of "vim --help", sorted.
             COMPREPLY=( $(compgen -W '-t -q -- -v -e -E -s -d -y -R -Z -m -M -b -l -C -N -V -D
-            -n -r -L -A -H -T --not-a-term --ttyfail -u --noplugin -p -o -O + --cmd
-            -S -s -w -W -x --startuptime -i --clean -h --help --version' -- "$cur") )
+                          -n -r -L -A -H -T --not-a-term --ttyfail -u --noplugin -p -o -O + --cmd
+                          -S -s -w -W -x --startuptime -i --clean -h --help --version' -- "$cur") )
             # Additional options that might not be in your vim
             # compilation because they may require features like GUI.
             COMPREPLY+=( $(compgen -W '+/ -c -f --nofork -F -g -nb -U -X
-            --echo-wid --literal --remote --remote-expr --remote-send
-            --remote-silent --remote-wait --remote-wait-silent
-            --serverlist --servername --socketid' -- "$cur") )
+                           --echo-wid --literal --remote --remote-expr --remote-send
+                           --remote-silent --remote-wait --remote-wait-silent
+                           --serverlist --servername --socketid' -- "$cur") )
             ;;
         *)  _tilde "$cur" || return
             # A filter pattern for weeding out most binary files (or
