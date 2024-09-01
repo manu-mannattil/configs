@@ -132,6 +132,9 @@ user_pref("extensions.screenshots.upload-disabled", true);
 // Disable Firefox accounts.
 user_pref("identity.fxaccounts.enabled", false);
 
+// Disable "privacy-preserving ad measurement".
+user_pref("dom.private-attribution.submission.enabled", false);
+
 // ------------- Performance -------------
 
 // How long FF will wait before rendering the page, in milliseconds

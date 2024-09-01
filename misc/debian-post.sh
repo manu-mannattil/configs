@@ -238,13 +238,14 @@ PACKAGES=(
   # Network
   curl # command line tool for transferring data with URL syntax
   hexchat # IRC client for X based on X-Chat 2
+  macchanger # utility for manipulating the MAC address of network interfaces
+  megatools # download stuff from mega.nz
   mtr # Full screen ncurses and X11 traceroute tool
   openssh-client # secure shell (SSH) client, for secure access to remote machines
   openssh-server # secure shell (SSH) server, for secure access from remote machines
   sshfs # filesystem client based on SSH File Transfer Protocol
-  macchanger # utility for manipulating the MAC address of network interfaces
-  whois # intelligent WHOIS client
   tor # anonymizing overlay network for TCP
+  whois # intelligent WHOIS client
 
   # Scientific
   bc # GNU bc arbitrary precision calculator language
@@ -355,6 +356,11 @@ esac
 
 # Installation {{{1
 # -----------------
+
+# Without this some third-party packages (e.g., HDFView) produces a
+# "xdg-desktop-menu: No writable system menu directory found" error.
+# https://askubuntu.com/a/406015
+mkdir -p /usr/share/desktop-directories
 
 dpkg --add-architecture i386
 apt update

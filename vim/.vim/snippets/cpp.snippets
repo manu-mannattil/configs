@@ -9,7 +9,7 @@ snippet com
 snippet cout
 	${1:std::}cout << ${2} << $1endl;
 snippet for
-	for (int ${1:i} = 0; $1 < ${2:count}; $1${3:++}) {
+	for (size_t ${1:i} = 0; $1 < ${2:count}; $1${3:++}) {
 		${4}
 	}
 snippet fore
@@ -46,3 +46,5 @@ snippet switch
 		default:
 			${6}
 	}
+snippet st
+	size_t
