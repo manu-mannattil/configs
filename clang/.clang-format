@@ -1,16 +1,15 @@
 # vim: ft=yaml fdm=marker et sts=2 sw=2
----
 BasedOnStyle: LLVM
 UseTab: Never
 IndentWidth: 4
 ColumnLimit: 100
----
-Language: Cpp
 
-# Force pointers to the type for C++.
+# Force pointers to the type, e.g.,
+#   int *x;
 DerivePointerAlignment: false
 PointerAlignment: Left
 
-# If true, a space is inserted after C style casts.
+# If true, a space is inserted after C style casts, e.g.,
+#   int x = (int) 3.1415;
+#   int* x = (int*) malloc(N * sizeof(int));
 SpaceAfterCStyleCast: true
----

@@ -12,7 +12,7 @@
 # installed:
 #
 #   DeaDBeeF              https://deadbeef.sourceforge.io/download.html
-#   fzf                   https://github.com/junegunn/fzf-bin/releases
+#   fzf                   https://github.com/junegunn/fzf/releases
 #                         https://raw.githubusercontent.com/junegunn/fzf/master/man/man1/fzf.1
 #   Geekbench             https://www.geekbench.com/download/linux
 #   git-latexdiff         https://gitlab.com/git-latexdiff/git-latexdiff
@@ -124,6 +124,7 @@ PACKAGES=(
   redshift # Adjusts the color temperature of your screen
   xautolock # Program launcher for idle X sessions
   xbacklight # simple utility to set the backlight level
+  xcalib # tiny monitor calibration loader for Xorg (useful to invert colors)
   xclip # command line interface to X selections
   xcompmgr # X11 compositor -- for better screen sharing when using Zoom
   xdotool # simulate (generate) X11 keyboard/mouse input events
