@@ -304,14 +304,14 @@ set expandtab
 " Round indent to multiple of 'shiftwidth'.
 set shiftround
 
-" Number of space to use while indenting.  A value of zero tells Vim to use the
-" 'tabstop' value.  But since that breaks some (old) indent plugins, we set it
-" explicitly.
-set shiftwidth=2
+" Number of spaces to use while indenting.  A value of zero tells Vim to use
+" the 'tabstop' value.  But since that breaks some (old) indent plugins, we set
+" it explicitly.
+set shiftwidth=4
 
 " Number of spaces that a <Tab> counts for while performing editing operations,
 " like inserting a <Tab> or using <BS>.
-set softtabstop=2
+set softtabstop=4
 
 " An actual tab character in the buffer should be shown as 8 spaces as usual.
 set tabstop=8

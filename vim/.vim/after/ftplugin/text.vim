@@ -3,6 +3,8 @@
 
 setlocal complete+=kspell
 setlocal formatoptions+=n,t
+setlocal shiftwidth=2
+setlocal softtabstop=2
 setlocal textwidth=72
 
 " Recognize lists with Roman numerals, single letters, digits, etc.

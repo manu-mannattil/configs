@@ -1,6 +1,5 @@
 " Vim filetype plugin file
-" Language: Mathematica/Wolfram
+" Language: XML
 
-setlocal commentstring=(*%s*)
 setlocal shiftwidth=2
 setlocal softtabstop=2

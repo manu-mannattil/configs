@@ -1,6 +1,9 @@
 " Vim filetype plugin file
 " Language: TeX
 
+setlocal shiftwidth=2
+setlocal softtabstop=2
+
 " Files to ignore.
 setlocal wildignore+=*-blx.bib,*Notes.bib,*.acn,*.acr,*.alg,*.aux,*.bcf,*.blg,*.dvi,*.fdb_latexmk,*.fls,*.glg,*.glo,*.gls,*.idx,*.ilg,*.ind,*.ist,*.lof,*.log,*.lot,*.maf,*.mtc,*.mtc0,*.nav,*.nlo,*.out,*.pdfsync,*.ps,*.run.xml,*.snm,*.synctex.gz,*.synctex.gz(busy),*.tdo,*.toc,*.vrb,*.xdy
 
