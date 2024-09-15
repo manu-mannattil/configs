@@ -377,6 +377,11 @@ __install_rofi() {
     install "rofi/.config/rofi"
 }
 
+# :target: spacefm - SpaceFM file manager config
+__install_spacefm() {
+    install --copy "spacefm/.config/spacefm/session"
+}
+
 # :target: ssh - SSH config
 __install_ssh() {
     install --copy "ssh/.ssh/config"
