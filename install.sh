@@ -390,11 +390,6 @@ __install_ssh() {
     mkdir -p "$HOME/.ssh/controlmasters"
 }
 
-# :target: systemd - systemd user-level config
-__install_systemd() {
-    install "systemd/.config/systemd"
-}
-
 # :target: terminfo - terminfo files for less-known terminals
 __install_terminfo() {
     install "terminfo/.terminfo"
