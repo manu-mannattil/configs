@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Do a distclean.  Without this, all PDFs will be symlinked by
+# git-latexdiff.  This would result in the actual PDF output getting
+# overwritten with the diff.
+latexmk -norc -pdf -ps- -dvi- -C >/dev/null 2>&1
+
+repo=$(git rev-parse --show-toplevel 2>/dev/null)
+repo="${repo##*/}"
+
+[ "$repo" ] || {
+    echo >&2 "${0##*/}: fatal; not a valid git repository"
+    exit 1
+}
+
+git-latexdiff --latexmk                 \
+              --ln-untracked            \
+              --quiet                   \
+              --latexpand               \
+              --makeatletter            \
+              --output "$repo-diff.pdf" \
+              --ignore-latex-errors "$@"
+
+nohup xdg-open "$repo-diff.pdf" </dev/null >/dev/null 2>&1 &

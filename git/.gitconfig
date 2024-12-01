@@ -26,7 +26,6 @@
   root = rev-parse --show-toplevel
   st = status --branch --short --untracked-files=all
   stt = !git --no-pager diff --stat
-  texdiff = !git-latexdiff --latexmk --ln-untracked --quiet --latexpand --makeatletter --ignore-latex-errors
   wd = diff --word-diff --unified=0 --word-diff-regex=[^[:space:],]+ --color-words
   dw = wd
 

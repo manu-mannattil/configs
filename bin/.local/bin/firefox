@@ -2,9 +2,12 @@
 
 profile="default"
 case "$1" in
+    # If there's a dedicated private profile, prefer that, otherwise,
+    # use the incognito mode.
     --private-profile)
         shift
-        grep -q 'Name=private' "$HOME/.mozilla/firefox/profiles.ini" >/dev/null 2>&1 && {
+        if grep -q 'Name=private' "$HOME/.mozilla/firefox/profiles.ini" >/dev/null 2>&1
+        then
             profile="private"
             rm -rf  ~/.cache/mozilla/firefox/*.private                \
                     ~/.mozilla/firefox/*.private/content-prefs.sqlite \
@@ -16,7 +19,9 @@ case "$1" in
                     ~/.mozilla/firefox/*.private/datareporting        \
                     ~/.mozilla/firefox/*.private/minidumps            \
                     ~/.mozilla/firefox/*.private/storage
-        }
+        else
+            set -- --private-window "$@"
+        fi
         ;;
     -*) exec /usr/bin/firefox "$@" ;;
 esac
