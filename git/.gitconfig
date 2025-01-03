@@ -18,6 +18,7 @@
   cl = clone
   co = checkout
   dc = diff --patience --cached
+  dcw = diff --cached --word-diff --unified=0 --word-diff-regex=[^[:space:],]+ --color-words
   df = diff --patience --diff-filter=d
   dl = clone --depth=1
   dt = difftool

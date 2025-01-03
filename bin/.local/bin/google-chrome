@@ -35,4 +35,8 @@ flags+=(
     --hide-crash-restore-bubble
 )
 
+# Always start clean.
+rm -rf ~/.config/google-chrome
+rm -rf ~/.cache/google-chrome
+
 nohup /usr/bin/google-chrome "${flags[@]}" "$@" >/dev/null 2>&1 &

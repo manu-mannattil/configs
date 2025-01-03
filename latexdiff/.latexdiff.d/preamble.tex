@@ -6,8 +6,8 @@
 \def\ULthickness{0.75pt}
 \usepackage{color}
 
-\definecolor{colorDEL}{rgb}{0.9,0.1,0.0}
-\definecolor{colorADD}{rgb}{0.0,0.1,0.9}
+\definecolor{colorDEL}{rgb}{0.9,0.1,0.1}
+\definecolor{colorADD}{rgb}{0.1,0.1,0.9}
 
 \providecommand{\DIFadd}[1]{{\protect\color{colorADD}\uline{#1}}}
 \providecommand{\DIFdel}[1]{{\protect\color{colorDEL}\sout{#1}}}
@@ -40,6 +40,8 @@
   \else
     \def\linenumbersep{10pt}
   \fi
+  % Same thing as above, but for RevTeX.
+  \twocolumn@sw{\def\linenumbersep{2pt}}{\def\linenumbersep{10pt}}
   \definecolor{snow}{rgb}{0.5,0.5,0.5}
   \def\linenumberfont{\color{snow}\normalfont\footnotesize\sffamily}
   \linenumbers

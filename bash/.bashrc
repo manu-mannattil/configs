@@ -290,7 +290,7 @@ then
     alias di='fasd_cd -d -i'
     alias o='fasd -e open'
     alias v='fasd -f -e vim'
-    alias vv='fasd -f -e e'
+    alias ee='fasd -f -e e'
 fi
 
 # Bash completion {{{1
@@ -589,7 +589,7 @@ _vim() {
             # A filter pattern for weeding out most binary files (or
             # stuff (e.g., temporary LaTeX files) that I wouldn't
             # usually touch with vim).
-            local filterpat='?(*~|*.7z|*.aac|*.acn|*.acr|*.alg|*.anx|*.asf|*.au|*.aux|*.avi|*.axa|*.axv|*.bbl|*.bcf|*.blg|*-blx.bib|*.bmp|*.bz|*.bz2|*.cgm|*.class|*.com|*.deb|.directory|*.djvu|*.dl|*.dll|*.dmg|*.doc|*.docx|*.dot|*.dotx|.DS_Store|*.dvi|ehthumbs.db|*.emf|*.eps|*.exe|*.fdb_latexmk|*.fla|*.flac|*.flc|*.fli|*.fls|*.flv|.fuse_hidden*|*.gif|.git|*.gl|*.glg|*.glo|*.gls|*.gnumeric|*.gz|.hg|*.idx|*.ilg|*.ind|*.ipynb|*.iso|*.ist|*.jar|*.jpeg|*.jpg|latex.out|*.lof|*.log|*.lot|*.m2v|*.m4a|*.m4v|__MACOSX|*.maf|*.maff|*.mid|*.midi|*.mka|*.mkv|*.mng|*.mov|*.mp3|*.mp4|*.mp4v|*.mpa|*.mpc|*.mpeg|*.mpg|*.mtc|*.mtc0|*.nav|*.nb|*.nlo|*Notes.bib|*.nuv|*.o|*.odt|*.oga|*.ogg|*.ogm|*.ogv|*.ogx|*.out|*.pcx|*.pdf|*.pdfsync|*.png|*.pps|*.ppsx|*.ppt|*.pptx|*.ps|*.psd|*.pyc|*.qt|*.ra|*.rar|*.rm|*.rmvb|*.rpm|*.rtf|*.run.xml|*.snm|*.so|.Spotlight-V100|*.spx|*.sql|*.sqlite|*.svg|*.svgz|*.swf|*.synctex.gz*|tags|*.tar|*.tar.gz|*.tdo|*.tga|*.tgz|Thumbs.db|*.tif|*.tiff|*.toc|*.torrent|.Trash-*|.Trashes|*.vob|*.vrb|*.wav|*.webm|*.wmv|*.xbm|*.xcf|*.xdy|*.xls|*.xlsx|*.xpm|*.xspf|*.xwd|*.yuv|*.zip)'
+            local filterpat='?(*~|*.7z|*.aac|*.acn|*.acr|*.alg|*.anx|*.asf|*.au|*.aux|*.avi|*.axa|*.axv|*.bbl|*.bcf|*.bin|*.blg|*-blx.bib|*.bmp|*.bz|*.bz2|*.cgm|*.class|*.com|*.deb|.directory|*.djvu|*.dl|*.dll|*.dmg|*.doc|*.docx|*.dot|*.dotx|.DS_Store|*.dvi|ehthumbs.db|*.emf|*.eps|*.exe|*.fdb_latexmk|*.fla|*.flac|*.flc|*.fli|*.fls|*.flv|.fuse_hidden*|*.gif|.git|*.gl|*.glg|*.glo|*.gls|*.gnumeric|*.gz|.hg|*.idx|*.ilg|*.ind|*.ipynb|*.iso|*.ist|*.jar|*.jpeg|*.jpg|latex.out|*.lof|*.log|*.lot|*.m2v|*.m4a|*.m4v|__MACOSX|*.maf|*.maff|*.mid|*.midi|*.mka|*.mkv|*.mng|*.mov|*.mp3|*.mp4|*.mp4v|*.mpa|*.mpc|*.mpeg|*.mpg|*.mtc|*.mtc0|*.nav|*.nb|*.nlo|*Notes.bib|*.nuv|*.o|*.odt|*.oga|*.ogg|*.ogm|*.ogv|*.ogx|*.out|*.pcx|*.pdf|*.pdfsync|*.pdf_tex|*.png|*.pps|*.ppsx|*.ppt|*.pptx|*.ps|*.psd|*.pyc|*.qt|*.ra|*.rar|*.rm|*.rmvb|*.rpm|*.rtf|*.run.xml|*.snm|*.so|.Spotlight-V100|*.spx|*.sql|*.sqlite|*.svg|*.svgz|*.swf|*.synctex.gz*|tags|*.tar|*.tar.gz|*.tdo|*.tga|*.tgz|Thumbs.db|*.tif|*.tiff|*.toc|*.torrent|.Trash-*|.Trashes|*.vob|*.vrb|*.wav|*.webm|*.wmv|*.xbm|*.xcf|*.xdy|*.xls|*.xlsx|*.xpm|*.xspf|*.xwd|*.yuv|*.zip|__pycache__)'
             # Without setting IFS, if a filename contains
             # spaces, then each word is used as one of the
             # possible completions.
@@ -662,6 +662,9 @@ export TERMINAL="$HOME/code/scripts/terminal"
 # Will reduce the time it takes for xdg-open to figure out that the DE
 # is a generic one.
 export XDG_CURRENT_DESKTOP="X-Generic"
+
+# No colors and other fanciness.
+export NODE_DISABLE_COLORS=1
 
 # Sourced files {{{1
 # ------------------

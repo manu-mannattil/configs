@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # vim: ft=sh fdm=marker et sts=2 sw=2
 #
-# debian-post.sh -- Debian post-installation script
+# debian-setup.sh -- Debian post-installation script
 #
-# Usage: debian-post.sh
+# Usage: debian-setup.sh
 #
 # This is a post-installation script to install some packages and setup
 # the system the way I want it after a fresh Debian install from the
@@ -16,15 +16,12 @@
 #                         https://raw.githubusercontent.com/junegunn/fzf/master/man/man1/fzf.1
 #   Geekbench             https://www.geekbench.com/download/linux
 #   git-latexdiff         https://gitlab.com/git-latexdiff/git-latexdiff
-#   Google Chrome         https://www.google.com/chrome
 #   pdfsizeopt            https://github.com/pts/pdfsizeopt
 #   PDF Scale             https://github.com/tavinus/pdfScale/releases
 #   rclone                https://rclone.org/downloads
 #   restic                https://github.com/restic/restic/releases
 #                         https://github.com/restic/rest-server/releases
-#   Skype                 https://go.skype.com/skypeforlinux-64.deb
 #   Xournal++             https://github.com/xournalpp/xournalpp/releases
-#   Zoom                  https://zoom.us/download
 #   LanguageTool          https://languagetool.org/download/LanguageTool-stable.zip
 #
 # The following programs usually have outdated versions in the Debian
@@ -326,6 +323,14 @@ PACKAGES_NO_RECOMMENDS=(
   okular # KDE PDF viewer
 )
 
+# Packages to be downloaded and installed.
+PACKAGES_DOWNLOAD=(
+  'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb' # Google Chrome
+  'https://go.skype.com/skypeforlinux-64.deb' # Skype
+  'https://download.xnview.com/XnViewMP-linux-x64.deb' # XnView
+  'https://zoom.us/client/latest/zoom_amd64.deb' # Zoom
+)
+
 REMOVE_PACKAGES=(
   unattended-upgrades
 
@@ -372,7 +377,22 @@ apt autoremove --yes
 apt clean --yes
 apt remove --yes "${REMOVE_PACKAGES[@]}"
 
-# Systemd Optimization {{{1
+# Packages to be downloaded and installed {{{2
+# --------------------------------------------
+
+apt_wget() {
+  for package
+  do
+    deb="/tmp/$(echo "$package" | md5sum | cut -d ' ' -f 1).deb"
+    echo >&2 "${0##*/}: downloading '$package'"
+    wget --quiet --show-progress --no-config --progress=bar -O "$deb" "$1"
+    apt install "$deb"
+  done
+}
+
+apt_wget "${PACKAGES_DOWNLOAD[@]}"
+
+# Systemd optimization {{{1
 # -------------------------
 
 # Disable the following systemd units since I don't really make any

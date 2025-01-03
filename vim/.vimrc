@@ -107,7 +107,7 @@ set statusline+=%=%<L:%l/%L,C:%c\ (%P)
 " completion.  To ignore directories, append a '/' to the pattern.
 " NOTE: A downside is that insert mode file name completions using
 " CTRL-X_CTRL-F will also get affected (see :WildToggle).
-set wildignore+=*~,*.7z,*.aac,*.anx,*.asf,*.au,*.avi,*.axa,*.axv,*.bmp,*.bz,*.bz2,*.cgm,*.class,*.com,*.deb,*.djvu,.directory,*.dl,*.dll,*.dmg,*.doc,*.docx,*.dot,*.dotx,.DS_Store,*.dvi,ehthumbs.db,*.emf,*.eps,*.exe,*.fla,*.flac,*.flc,*.fli,*.flv,.fuse_hidden*,*.gif,.git/,*.gl,*.gnumeric,*.gz,.hg/,*.ipynb,*.iso,*.jar,*.jpeg,*.jpg,latex.out/,*.m2v,*.m4a,*.m4v,__MACOSX/,*.maff,*.mid,*.midi,*.mka,*.mkv,*.mng,*.mov,*.mp3,*.mp4,*.mp4v,*.mpa,*.mpc,*.mpeg,*.mpg,*.nb,*.nuv,*.o,*.odt,*.oga,*.ogg,*.ogm,*.ogv,*.ogx,*.pcx,*.pdf,*.png,*.pps,*.ppsx,*.ppt,*.pptx,*.ps,*.psd,*.pyc,*.qt,*.ra,*.rar,*.rm,*.rmvb,*.rpm,*.rtf,*.so,.Spotlight-V100,*.spx,*.sql,*.sqlite,*.svg,*.svgz,*.swf,tags,*.tar,*.tar.gz,*.tga,*.tgz,Thumbs.db,*.tif,*.tiff,*.torrent,.Trash-*/,.Trashes,*.vob,*.wav,*.webm,*.wmv,*.xbm,*.xcf,*.xls,*.xlsx,*.xpm,*.xspf,*.xwd,*.yuv,*.zip
+set wildignore+=*~,*.7z,*.aac,*.anx,*.asf,*.au,*.avi,*.axa,*.axv,*.bin,*.bmp,*.bz,*.bz2,*.cgm,*.class,*.com,*.deb,*.djvu,.directory,*.dl,*.dll,*.dmg,*.doc,*.docx,*.dot,*.dotx,.DS_Store,*.dvi,ehthumbs.db,*.emf,*.eps,*.exe,*.fla,*.flac,*.flc,*.fli,*.flv,.fuse_hidden*,*.gif,.git/,*.gl,*.gnumeric,*.gz,.hg/,*.ipynb,*.iso,*.jar,*.jpeg,*.jpg,latex.out/,*.m2v,*.m4a,*.m4v,__MACOSX/,*.maff,*.mid,*.midi,*.mka,*.mkv,*.mng,*.mov,*.mp3,*.mp4,*.mp4v,*.mpa,*.mpc,*.mpeg,*.mpg,*.nb,*.nuv,*.o,*.odt,*.oga,*.ogg,*.ogm,*.ogv,*.ogx,*.pcx,*.pdf,*.pdf_tex,*.png,*.pps,*.ppsx,*.ppt,*.pptx,*.ps,*.psd,*.pyc,*.qt,*.ra,*.rar,*.rm,*.rmvb,*.rpm,*.rtf,*.so,.Spotlight-V100,*.spx,*.sql,*.sqlite,*.svg,*.svgz,*.swf,tags,*.tar,*.tar.gz,*.tga,*.tgz,Thumbs.db,*.tif,*.tiff,*.torrent,.Trash-*/,.Trashes,*.vob,*.wav,*.webm,*.wmv,*.xbm,*.xcf,*.xls,*.xlsx,*.xpm,*.xspf,*.xwd,*.yuv,*.zip
 
 " Ignore case while completing file names and directories.
 set wildignorecase
@@ -298,7 +298,7 @@ set whichwrap+=l,h,>,<
 " --------------------
 
 " Insert spaces instead of tabs.
-" https://www.youtube.com/watch?v=SsoOG6ZeyUI
+" https://www.youtube.com/watch?v=oRva7UxGQDw
 set expandtab
 
 " Round indent to multiple of 'shiftwidth'.

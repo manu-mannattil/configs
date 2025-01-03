@@ -309,9 +309,9 @@ function! s:setup_abbreviations()
   " }}}
 
   " Equalities {{{
-  Prefixab  \\ sim         ∼
+  Prefixab  \\ sim         ~
   Prefixab  \\ nsim        ≁
-  Noprefixab \~            ∼
+  Noprefixab \~            ~
   Noprefixab \~n           ≁
 
   Prefixab  \\ simeq       ≃
