@@ -51,11 +51,65 @@ suppress.initial.newline = true
 rewrite.rule { "^\" *\"$" }
 rewrite.rule { "^{ *}$" }
 
-% Correct page ranges.
-rewrite.rule { pages # "\([0-9]+\) *\(-\|---\) *\([0-9]+\)" = "\1--\3"}
+% Correct page/volume ranges.
+rewrite.rule { pages # "\([0-9]+\) *\(–\|—\|-\|---\) *\([0-9]+\)" = "\1--\3"}
+rewrite.rule { volume # "\([0-9]+\) *\(–\|—\|-\|---\) *\([0-9]+\)" = "\1--\3"}
 
 % Delete delimiters if the field is purely numerical.
 rewrite.rule { "^[\"{] *\([0-9]+\) *[\"}]$" "\1" }
+
+% Replace Unicode em/en dashes with TeX versions.
+rewrite.rule { "—" = "---" }
+rewrite.rule { "–" = "--" }
+
+% Replace Unicode accents with TeX versions.
+rewrite.rule { "À" == "\\`{A}" }
+rewrite.rule { "Á" == "\\'{A}" }
+rewrite.rule { "Â" == "\\^{A}" }
+rewrite.rule { "Ã" == "\\~{A}" }
+rewrite.rule { "Ä" == "\\\"{A}" }
+rewrite.rule { "Å" == "\\r{A}" }
+rewrite.rule { "Æ" == "{\\AE}" }
+rewrite.rule { "Ç" == "\\c{C}" }
+rewrite.rule { "Ø" == "{\\O}" }
+rewrite.rule { "æ" == "{\\ae}" }
+rewrite.rule { "ç" == "\\c{c}" }
+rewrite.rule { "è" == "\\`{e}" }
+rewrite.rule { "é" == "\\'{e}" }
+rewrite.rule { "ê" == "\\^{e}" }
+rewrite.rule { "ë" == "\\\"{e}" }
+rewrite.rule { "ì" == "\\`{i}" }
+rewrite.rule { "í" == "\\'{i}" }
+rewrite.rule { "î" == "\\^{i}" }
+rewrite.rule { "ï" == "\\\"{i}" }
+rewrite.rule { "ñ" == "\\~{n}" }
+rewrite.rule { "ò" == "\\`{o}" }
+rewrite.rule { "ó" == "\\'{o}" }
+rewrite.rule { "ô" == "\\^{o}" }
+rewrite.rule { "õ" == "\\~{o}" }
+rewrite.rule { "ö" == "\\\"{o}" }
+rewrite.rule { "ø" == "{\\o}" }
+rewrite.rule { "ù" == "\\`{u}" }
+rewrite.rule { "ú" == "\\'{u}" }
+rewrite.rule { "û" == "\\^{u}" }
+rewrite.rule { "ü" == "\\\"{u}" }
+rewrite.rule { "ą" == "\\k{a}" }
+rewrite.rule { "ć" == "\\'{c}" }
+rewrite.rule { "č" == "\\v{c}" }
+rewrite.rule { "ď" == "\\v{d}" }
+rewrite.rule { "ę" == "\\k{e}" }
+rewrite.rule { "ě" == "\\v{e}" }
+rewrite.rule { "ğ" == "\\u{g}" }
+rewrite.rule { "ł" == "{\\l}" }
+rewrite.rule { "ń" == "\\'{n}" }
+rewrite.rule { "Œ" == "{\\OE}" }
+rewrite.rule { "œ" == "{\\oe}" }
+rewrite.rule { "ř" == "\\v{r}" }
+rewrite.rule { "ş" == "\\c{s}" }
+rewrite.rule { "š" == "\\v{s}" }
+rewrite.rule { "ť" == "\\v{t}" }
+rewrite.rule { "ů" == "\\r{u}" }
+rewrite.rule { "ž" == "\\v{z}" }
 
 % Translate double quotes as delimiters "" by braces {}.
 rewrite.rule { "^\"\([^#]*\)\"$" = "{\1}" }
