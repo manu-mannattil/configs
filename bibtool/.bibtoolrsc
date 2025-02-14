@@ -28,35 +28,25 @@ key.number.separator = { "" }
 
 % URL/DOI cleanup ------------------------------------------------------
 
+# Common URL encoded characters found in DOI URLs.
+rewrite.rule { url # "%2F" # "/" }
+rewrite.rule { url # "%3A" # ":" }
+rewrite.rule { url # "%3B" # ";" }
+rewrite.rule { url # "%28" # "(" }
+rewrite.rule { url # "%29" # ")" }
+
 % Turn DOI links into pure DOI.
 rename.field { url=doi if url = "10\.[0-9.]+/[-._;()/:a-zA-Z0-9]+" }
 rewrite.rule { doi # ".*/\(10\.[0-9.]+\/[-._;()/:a-zA-Z0-9]+\)" # "{\1}" }
 
-% Misc options ---------------------------------------------------------
+# Some publishers put links in the eprint field.
+# Delete such fields.
+delete.field = {eprint if eprint = "https?://"}
 
-% Delete double entries.
-check.double = on
-check.double.delete = on
+# Remove URLs to ArXiv -- it will be added by ReVTeX anyway.
+delete.field = {url if url = "arxiv\.org"}
 
-% Use spaces instead of tabs for alignment.
-print.use.tab = false
-
-% Sort entries.
-sort = on
-
-% Don't print a newline in the beginning.
-suppress.initial.newline = true
-
-% Delete empty fields.
-rewrite.rule { "^\" *\"$" }
-rewrite.rule { "^{ *}$" }
-
-% Correct page/volume ranges.
-rewrite.rule { pages # "\([0-9]+\) *\(–\|—\|-\|---\) *\([0-9]+\)" = "\1--\3"}
-rewrite.rule { volume # "\([0-9]+\) *\(–\|—\|-\|---\) *\([0-9]+\)" = "\1--\3"}
-
-% Delete delimiters if the field is purely numerical.
-rewrite.rule { "^[\"{] *\([0-9]+\) *[\"}]$" "\1" }
+% Punctuation and related stuff ----------------------------------------
 
 % Replace Unicode em/en dashes with TeX versions.
 rewrite.rule { "—" = "---" }
@@ -117,18 +107,50 @@ rewrite.rule { "# \"\([^#]*\)\"$" = "# {\1}" }
 rewrite.rule { "^\"\([^#]*\)\" #" = "{\1} #" }
 rewrite.rule { "# \"\([^#]*\)\" #" = "# {\1} #" }
 
+% Misc options ---------------------------------------------------------
+
+% Delete double entries.
+check.double = on
+check.double.delete = on
+
+% Use spaces instead of tabs for alignment.
+print.use.tab = false
+
+% Sort entries.
+sort = on
+
+% Don't print a newline in the beginning.
+suppress.initial.newline = true
+
+% Delete empty fields.
+rewrite.rule { "^\" *\"$" }
+rewrite.rule { "^{ *}$" }
+
+% Correct page/volume ranges.
+rewrite.rule { pages # "\([0-9]+\) *\(–\|—\|-\|---\) *\([0-9]+\)" = "\1--\3"}
+rewrite.rule { volume # "\([0-9]+\) *\(–\|—\|-\|---\) *\([0-9]+\)" = "\1--\3"}
+
+% Delete delimiters if the field is purely numerical.
+rewrite.rule { "^[\"{] *\([0-9]+\) *[\"}]$" "\1" }
+
 % Delete rarely used fields.
 delete.field = {abstract}
 delete.field = {affiliation}
-delete.field = {correspondence_address1}
-delete.field = {references}
-delete.field = {keywords}
 delete.field = {author_keywords}
-delete.field = {source}
-
-# Some publishers put links in the eprint field.
-# Delete such fields.
-delete.field = {eprint if eprint = "https?://"}
+delete.field = {day}
+delete.field = {hal_id}
+delete.field = {hal_version}
+delete.field = {isbn}
+delete.field = {issn}
+delete.field = {keywords}
+delete.field = {month}
+delete.field = {mrclass}
+delete.field = {mrreviewer}
+delete.field = {msc2010}
+delete.field = {numpages}
+delete.field = {rating}
+delete.field = {references}
+delete.field = {article-number}
 
 % Entries and sort order -----------------------------------------------
 
@@ -218,7 +240,6 @@ sort.order {* = author #
   # eid
   # howpublished
   # isbn
-  # issn
   # key
   # language
   # month
