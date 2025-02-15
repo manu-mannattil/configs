@@ -15,45 +15,53 @@
 # Usage: python-setup.sh
 #
 
-# Clean installation.
-# rm -rf ~/.local/pipx-bin
-# rm -rf ~/.local/pipx
-# rm -rf ~/.local/miniforge
-
 set -euo pipefail
+
+# pipx configuration.
+export PIPX_HOME="$HOME/.local/share/pipx"
+export PIPX_BIN_DIR="$HOME/.local/pipx-bin"
+export USE_EMOJI="false"
+
+export MINIFORGE_HOME="$HOME/.local/miniforge"
+export VENVS_DIRECTORY="$HOME/.local/venvs"
 
 # Miniforge ------------------------------------------------------------
 
-tmpdir="$(mktemp -d)"
-trap 'rm -rf "$tmpdir" >/dev/null 2>&1' EXIT
-trap 'exit 2' HUP INT QUIT TERM
+install_miniforge() {
+  tmpdir="$(mktemp -d)"
+  trap 'rm -rf "$tmpdir" >/dev/null 2>&1' EXIT
+  trap 'exit 2' HUP INT QUIT TERM
 
-pushd "$tmpdir"
+  pushd "$tmpdir"
 
-wget --continue --no-config --progress=bar -O miniforge3.sh \
-  "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh"
+  wget --continue --no-config --progress=bar -O miniforge3.sh \
+    "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh"
 
-chmod +x miniforge3.sh
-./miniforge3.sh -b -p ~/.local/miniforge
+  chmod +x miniforge3.sh
+  # ~/.local/miniforge must not exit
+  ./miniforge3.sh -b -p "$MINIFORGE_HOME"
 
-popd
+  popd
+}
 
 # pip ------------------------------------------------------------------
 
 MODULES=(
-  mutagen           # read and write audio tags for many formats
   readability-lxml  # fast html to text parser (article readability tool) with Python 3 support
 )
 
-pip install --upgrade pip
-pip install --upgrade "${MODULES[@]}"
+install_pip_modules() {
+  pip install --upgrade pip
+  pip install --upgrade "${MODULES[@]}"
+}
+
+# If we update all modules, this is bound to create conflicts with mamba
+# installed stuff.
+update_pip_modules() {
+  install_pip_modules
+}
 
 # pipx -----------------------------------------------------------------
-
-# pipx configuration.
-export PIPX_BIN_DIR="$HOME/.local/pipx-bin"
-mkdir -p "$PIPX_BIN_DIR"
-export USE_EMOJI="false"
 
 PROGRAMS=(
   black      # Python code formatter
@@ -65,22 +73,19 @@ PROGRAMS=(
   flake8     # Python linter
 )
 
-pip install pipx
-for p in "${PROGRAMS[@]}"
-do
-  pipx install "$p"
-done
+install_pipx_programs() {
+  pip install pipx
+  for p in "${PROGRAMS[@]}"
+  do
+    pipx install "$p"
+  done
+}
+
+update_pipx_programs() {
+  pipx upgrade-all --include-injected
+}
 
 # conda/mamba ----------------------------------------------------------
-
-if command -v mamba &>/dev/null
-then
-  installer="mamba"
-else
-  installer="conda"
-fi
-
-"$installer" update -n base "$installer"
 
 CONDA_MODULES=(
   # Scientific Python stack.
@@ -90,6 +95,8 @@ CONDA_MODULES=(
   numba
   numpy
   scipy
+  scikit-learn
+  opencv
 
   # Testing.
   pytest
@@ -105,32 +112,30 @@ CONDA_MODULES=(
   # Python library designed for screen-scraping.
   beautifulsoup4
 
-  # Cssselect parses CSS3 Selectors and translates them to XPath 1.0.
-  cssselect
-
   # Powerful and Pythonic XML processing library combining
   # libxml2/libxslt with the ElementTree API.
   lxml
-
-  # Semi-analytical tricks.
-  theano
 
   # Module to convert a sentence to title case.
   titlecase
 )
 
-"$installer" update --all
-"$installer" install "${CONDA_MODULES[@]}"
+install_conda_modules() {
+  mamba update -n base "mamba"
+  mamba install "${CONDA_MODULES[@]}"
+}
+
+update_conda_modules() {
+  mamba update -n base "mamba"
+  mamba update --all
+}
 
 # Modules in separate virtualenvs --------------------------------------
 
 # These are python packages that do not provide an executable and
 # require to be used as python -m <package>.
 
-VENVS_DIRECTORY="$HOME/.local/venvs"
-mkdir -p "$VENVS_DIRECTORY"
-
-pip_venv_install() {
+_pip_venv_install() {
   for package
   do
     python -m venv "$VENVS_DIRECTORY/$package"
@@ -139,4 +144,63 @@ pip_venv_install() {
   done
 }
 
-pip_venv_install "yalafi"
+install_pip_venv_programs() {
+  _pip_venv_install "yalafi"
+}
+
+# Option selection -----------------------------------------------------
+
+[[ "$*" ]] || {
+    echo >&2 "${0##*/}: option must be specified"
+    echo >&2 "usage: ${0##*/} install|update|clean"
+    exit 1
+}
+
+case "$1" in
+  -u|--update|update)
+    echo >&2 "${0##*/}: updating conda modules"
+    update_conda_modules
+
+    echo >&2 "${0##*/}: updating pip modules"
+    update_pip_modules
+
+    echo >&2 "${0##*/}: updating pipx programs"
+    update_pipx_programs
+
+    mamba clean --all
+    rm -vrf ~/.cache/pipx
+    ;;
+  -i|--install|install)
+    mkdir -p "$PIPX_BIN_DIR"
+    mkdir -p "$VENVS_DIRECTORY"
+
+    echo >&2 "${0##*/}: installing miniforge"
+    install_miniforge
+
+    echo >&2 "${0##*/}: installing conda modules"
+    install_conda_modules
+
+    echo >&2 "${0##*/}: installing pip modules"
+    install_pip_modules
+
+    echo >&2 "${0##*/}: installing pipx programs"
+    install_pipx_programs
+
+    echo >&2 "${0##*/}: installing venv programs"
+    install_pip_venv_programs
+
+    mamba clean --all
+    rm -vrf ~/.cache/pipx
+    ;;
+  -c|--clean|clean)
+    rm -vrf "$MINIFORGE_HOME"
+    rm -vrf "$PIPX_HOME"
+    rm -vrf "$PIPX_BIN_DIR"
+    rm -vrf "$VENVS_DIRECTORY"
+    rm -vrf ~/.cache/pipx
+    ;;
+  *)
+    echo >&2 "usage: ${0##*/} install|update|clean"
+    exit 1
+    ;;
+esac
