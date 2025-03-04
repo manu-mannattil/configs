@@ -17,9 +17,9 @@
 .PHONY: install uninstall clean
 
 install:
-	wget --continue --no-config --progress=bar -O firefox.tar.bz2 \
+	wget --continue --no-config --progress=bar -O firefox.tar.xz \
 		"https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
-	tar xjf firefox.tar.bz2
+	tar xf firefox.tar.xz
 
 	rm -rf /opt/firefox
 	cp -r firefox /opt/
