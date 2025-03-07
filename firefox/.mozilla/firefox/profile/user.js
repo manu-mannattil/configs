@@ -3,6 +3,9 @@
 //    https://github.com/arkenfox/user.js
 //    https://github.com/yokoffing/Betterfox
 //
+// Librewolf policies file: https://codeberg.org/librewolf/settings/src/branch/master/distribution/policies.json
+// Librewolf config: https://codeberg.org/librewolf/settings/src/branch/master/librewolf.cfg
+//
 // A much better way to be safe from your browser is to
 // browse the web less.  It also has the (positive) side
 // effect of making you fitter, happier, more productive,
@@ -40,7 +43,8 @@ user_pref("privacy.trackingprotection.socialtracking.enabled", true);
 
 // Disables sending additional analytics to web servers.
 // https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon
-user_pref("beacon.enabled", false);
+// This breaks some sites, e.g., perplexity.ai.
+// user_pref("beacon.enabled", false);
 
 // Perform DNS lookups through the SOCKS proxy itself.
 user_pref("network.proxy.socks_remote_dns", true);
@@ -94,6 +98,15 @@ user_pref("browser.urlbar.yelp.featureGate", false);
 user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsored", false);
 user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSites", false);
 
+// Disable AI crap.
+user_pref("browser.ml.chat.hideFromLabs", true);
+user_pref("browser.ml.chat.hideLabsShortcuts", true);
+user_pref("browser.ml.chat.providers", "");
+user_pref("browser.ml.chat.provider", "");
+user_pref("browser.ml.chat.enabled", false);
+user_pref("browser.ml.enabled", false);
+user_pref("browser.ml.chat.openSidebarOnProviderChange", false);
+
 // Quieter fox.
 user_pref("extensions.getAddons.showPane", false);
 user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
@@ -144,23 +157,23 @@ user_pref("dom.private-attribution.submission.enabled", false);
 
 // ------------- Performance -------------
 
-// How long FF will wait before rendering the page, in milliseconds
-// Reduce the 5ms Firefox waits to render the page.
-user_pref("nglayout.initialpaint.delay", 0);
-user_pref("nglayout.initialpaint.delay_in_oopif", 0);
+// // How long FF will wait before rendering the page, in milliseconds
+// // Reduce the 5ms Firefox waits to render the page.
+// user_pref("nglayout.initialpaint.delay", 0);
+// user_pref("nglayout.initialpaint.delay_in_oopif", 0);
 
-// Notification interval (in microseconds) [to avoid layout thrashing]
-// When Firefox is loading a page, it periodically reformats
-// or "reflows" the page as it loads. The page displays new elements
-// every 0.12 seconds by default. These redraws increase the total page load time.
-user_pref("content.notify.interval", 100000);
+// // Notification interval (in microseconds) [to avoid layout thrashing]
+// // When Firefox is loading a page, it periodically reformats
+// // or "reflows" the page as it loads. The page displays new elements
+// // every 0.12 seconds by default. These redraws increase the total page load time.
+// user_pref("content.notify.interval", 100000);
 
-// More TLS token caching (fast reconnects).
-user_pref("network.ssl_tokens_cache_capacity", 32768);
+// // More TLS token caching (fast reconnects).
+// user_pref("network.ssl_tokens_cache_capacity", 32768);
 
-// Use bigger packets.
-user_pref("network.buffer.cache.size", 262144);
-user_pref("network.buffer.cache.count", 128);
+// // Use bigger packets.
+// user_pref("network.buffer.cache.size", 262144);
+// user_pref("network.buffer.cache.count", 128);
 
 // ------------- DNS -------------
 
@@ -319,3 +332,6 @@ user_pref("browser.tabs.hoverPreview.enabled", false);
 // Enable VAAPI video acceleration.
 // user_pref("gfx.webrender.all", true);
 // user_pref("media.ffmpeg.vaapi.enabled", true);
+
+// Remove new sidebar.
+user_pref("sidebar.revamp", false);

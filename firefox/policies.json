@@ -1,26 +1,40 @@
 {
   "policies": {
+    "AutofillAddressEnabled": false,
+    "AutofillCreditCardEnabled": false,
+    "BackgroundAppUpdate": false,
     "DisableAppUpdate": true,
     "DisableFeedbackCommands": true,
     "DisableFirefoxAccounts": true,
     "DisableFirefoxStudies": true,
     "DisablePocket": true,
+    "DisableProfileImport": true,
     "DisableSetDesktopBackground": true,
     "DisableTelemetry": true,
+    "DisplayBookmarksToolbar": true,
     "DontCheckDefaultBrowser": true,
-    "NoDefaultBookmarks": true
-  },
-  "FirefoxHome": {
-    "Highlights": false,
-    "Pocket": false,
-    "Search": true,
-    "Snippets": false,
-    "TopSites": false
-  },
-  "FlashPlugin": {
-    "Default": false,
-    "Locked": true
-  },
-  "OverrideFirstRunPage": "",
-  "OverridePostUpdatePage": ""
+    "FirefoxHome": {
+        "Highlights": false,
+        "Pocket": false,
+        "Search": false,
+        "Snippets": false,
+        "TopSites": false
+    },
+    "FirefoxSuggest": {
+      "SponsoredSuggestions": false
+    },
+    "FlashPlugin": {
+        "Default": false,
+        "Locked": true
+    },
+    "EnableTrackingProtection": {
+      "Value": true,
+      "Cryptomining": true,
+      "Fingerprinting": true,
+      "EmailTracking": true
+    },
+    "NoDefaultBookmarks": true,
+    "OverrideFirstRunPage": "",
+    "OverridePostUpdatePage": ""
+  }
 }
