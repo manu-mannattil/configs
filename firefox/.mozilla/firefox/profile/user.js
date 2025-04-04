@@ -11,10 +11,16 @@
 // effect of making you fitter, happier, more productive,
 // comfortable, not drinking too much ...
 //
-// NOTE: if you've set a particular preference and it's not
-// being honored by Firefox, check (i) if there are typos,
-// (ii) if the preference value is properly quoted (or not),
-// (iii) if there _is_ a semicolon at the end of the line.
+// Notes
+// -----
+//
+// 1. If you've set a particular preference and it's not
+//    being honored by Firefox, check (i) if there are typos,
+//    (ii) if the preference value is properly quoted (or not),
+//    (iii) if there _is_ a semicolon at the end of the line.
+//
+// 2. Some of these preferences are redunant as they're being
+//    set globally using the policies.json file.
 //
 
 // ------------- Updates -------------
@@ -234,13 +240,6 @@ user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 // Highlight matching search terms.
 user_pref("findbar.highlightAll", true);
 
-// Reader-view preferences.
-user_pref("reader.color_scheme", "dark");
-user_pref("reader.content_width", 3);
-user_pref("reader.font_size", 4);
-user_pref("reader.font_type", "serif");
-user_pref("reader.line_height", 3);
-
 // Disable narration in Reader.
 user_pref("narrate.enabled", false);
 
@@ -335,3 +334,6 @@ user_pref("browser.tabs.hoverPreview.enabled", false);
 
 // Remove new sidebar.
 user_pref("sidebar.revamp", false);
+
+// Internal custom pref to ensure that we've reach the end without syntax errors.
+user_pref("_user.js.parrot", "SUCCESS: No no he's not dead, he's, he's restin'!");

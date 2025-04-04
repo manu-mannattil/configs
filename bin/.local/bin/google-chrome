@@ -35,6 +35,10 @@ flags+=(
     --hide-crash-restore-bubble
 )
 
+# Setting HiDPI scaling doubles the font resolution.
+unset GDK_SCALE
+unset GDK_DPI_SCALE
+
 # Always start clean.
 rm -rf ~/.config/google-chrome
 rm -rf ~/.cache/google-chrome

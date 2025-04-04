@@ -78,7 +78,7 @@ then
     export QT_ENABLE_HIGHDPI_SCALING=1
 
     # This variable describes the possible HiDPI scale factor
-    # rounding policy (either "round" or "passthrough"), which decide
+    # rounding policy (either "round" or "passthrough"), which decides
     # how non-integer scale factors (such as Windows 150%) are handled.
     # "Round" is the Qt5 default and "PassThrough" is the Qt6 default.
     export QT_SCALE_FACTOR_ROUNDING_POLICY="PassThrough"

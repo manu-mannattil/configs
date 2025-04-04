@@ -13,6 +13,7 @@ setlocal suffixes+=*.bbl,*.sty,*.bst,*.cls
 
 " Use BibTool for formatting if available.
 if executable('bibtool')
-  setlocal formatprg=bibtool\ -q
+  "setlocal formatprg=bibtool\ -q
+  setlocal formatprg=bibclean
   noremap <buffer> Q gq
 endif

@@ -672,9 +672,6 @@ export NODE_DISABLE_COLORS=1
 # Source local .bashrc if any.
 [[ -f "$HOME/.bashrc_local" ]] && source "$HOME/.bashrc_local"
 
-# Source .env file if any.  This is a security risk!
-[[ -f ".env" ]] && source ".env"
-
 # Bash prompt {{{1
 # ----------------
 
@@ -721,6 +718,8 @@ export GIT_PS1_SHOWUPSTREAM=auto
 __bash_prompt() {
     local ps1_git=$(git rev-parse --is-inside-work-tree &>/dev/null &&
                     echo " ${PS1_BRIGHT_CYAN}git${PS1_BRIGHT_WHITE}:$(__git_ps1 '%s')")
+    local ps1_venv=$([[ "$VIRTUAL_ENV" ]] &&
+                     echo " ${PS1_BRIGHT_MAGENTA}venv${PS1_BRIGHT_WHITE}:${VIRTUAL_ENV##*/}")
     local ps1_conda=$([[ "$CONDA_DEFAULT_ENV" ]] &&
                       echo " ${PS1_BRIGHT_MAGENTA}conda${PS1_BRIGHT_WHITE}:${CONDA_DEFAULT_ENV##*/}")
 

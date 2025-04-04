@@ -207,6 +207,9 @@ __install_firefox() {
         popd
     }
 
+    wget --no-config --quiet -O /tmp/prefsCleaner.sh \
+        'https://raw.githubusercontent.com/arkenfox/user.js/refs/heads/master/prefsCleaner.sh'
+
     # Symlink/copy some files in all Firefox profiles.
     if [[ -f "$HOME/.mozilla/firefox/profiles.ini" ]]
     then
@@ -214,6 +217,10 @@ __install_firefox() {
         do
             ln -v -sf "$REPO/firefox/.mozilla/firefox/profile/user.js" \
                 "$HOME/.mozilla/firefox/$profile"
+
+            cp -f /tmp/prefsCleaner.sh "$HOME/.mozilla/firefox/$profile"
+            chmod +x "$HOME/.mozilla/firefox/$profile/prefsCleaner.sh"
+            echo >&2 "${0##*/}: installed prefsCleaner.sh and user.js for $profile"
         done < <(sed -n 's/^Path=//p' "$HOME/.mozilla/firefox/profiles.ini")
     fi
 
