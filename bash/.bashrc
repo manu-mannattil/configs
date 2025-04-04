@@ -195,6 +195,7 @@ alias html2pdf='wkhtmltopdf'
 alias dash='rlwrap -a -c dash'
 alias gnuplot='rlwrap -pgreen -a -c gnuplot'
 alias posh='rlwrap -a -c posh'
+alias node='rlwrap node'
 
 # Don't compress raster images embedded in PDFs.
 alias pdfsizeopt='pdfsizeopt --do-optimize-images=no'
@@ -665,6 +666,7 @@ export XDG_CURRENT_DESKTOP="X-Generic"
 
 # No colors and other fanciness.
 export NODE_DISABLE_COLORS=1
+export NODE_NO_READLINE=1
 
 # Sourced files {{{1
 # ------------------
