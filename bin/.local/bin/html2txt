@@ -1,0 +1,7 @@
+#!/bin/sh
+
+elinks -force-html            \
+       -dump-width 72         \
+       -dump-charset utf-8    \
+       -dump "$@"             |
+sed 's/^[ \t]*//;s/[ \t]*$//'

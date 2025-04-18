@@ -241,9 +241,6 @@ alias shred='shred -vzfun 5'
 # Hack to 'sudo' aliases; also preserve environment.
 alias sudo='sudo -E '
 
-# HTML -> Text using elinks.
-alias html2txt='elinks -force-html -dump'
-
 # Always tell w3m that we're opening HTML files.
 alias w3m='w3m -T text/html'
 
