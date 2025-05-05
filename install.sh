@@ -217,10 +217,15 @@ __install_firefox() {
         do
             ln -v -sf "$REPO/firefox/.mozilla/firefox/profile/user.js" \
                 "$HOME/.mozilla/firefox/$profile"
+            echo >&2 "${0##*/}: linked user.js for $profile"
 
-            cp -f /tmp/prefsCleaner.sh "$HOME/.mozilla/firefox/$profile"
+            cp -v -f "$REPO/firefox/.mozilla/firefox/profile/handlers.json" \
+                "$HOME/.mozilla/firefox/$profile"
+            echo >&2 "${0##*/}: copied handlers.json for $profile"
+
+            cp -v -f /tmp/prefsCleaner.sh "$HOME/.mozilla/firefox/$profile"
             chmod +x "$HOME/.mozilla/firefox/$profile/prefsCleaner.sh"
-            echo >&2 "${0##*/}: installed prefsCleaner.sh and user.js for $profile"
+            echo >&2 "${0##*/}: installed prefsCleaner.sh for $profile"
         done < <(sed -n 's/^Path=//p' "$HOME/.mozilla/firefox/profiles.ini")
     fi
 

@@ -1,0 +1,67 @@
+{
+  "defaultHandlersVersion": {},
+  "mimeTypes": {
+    "application/pdf": {
+      "action": 3,
+      "extensions": [
+        "pdf"
+      ]
+    },
+    "image/webp": {
+      "action": 3,
+      "extensions": [
+        "webp"
+      ]
+    },
+    "image/avif": {
+      "action": 3,
+      "extensions": [
+        "avif"
+      ]
+    },
+    "application/x-bibtex": {
+      "action": 2,
+      "handlers": [
+        {
+          "name": "Firefox",
+          "id": "firefox.desktop"
+        }
+      ]
+    },
+    "text/x-bibtex": {
+      "action": 2,
+      "handlers": [
+        {
+          "name": "Firefox",
+          "id": "firefox.desktop"
+        }
+      ]
+    },
+    "text/plain": {
+      "action": 2,
+      "handlers": [
+        {
+          "name": "Firefox",
+          "id": "firefox.desktop"
+        }
+      ]
+    }
+  },
+  "schemes": {
+    "mailto": {
+      "stubEntry": true
+    }
+  },
+  "extensions": {
+    "bib": {
+      "action": 2,
+      "handlers": [
+        {
+          "name": "Firefox",
+          "id": "firefox.desktop"
+        }
+      ]
+    }
+  },
+  "isDownloadsImprovementsAlreadyMigrated": false
+}

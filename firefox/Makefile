@@ -56,5 +56,5 @@ uninstall:
 	done;
 
 clean:
-	rm -f firefox.tar.bz2
+	rm -f firefox.tar.xz
 	rm -rf firefox

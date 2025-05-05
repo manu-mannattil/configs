@@ -194,7 +194,7 @@ user_pref("network.trr.bootstrapAddress", "9.9.9.9");
 
 // DNS over HTTPS (DoH) with Quad9's DNS.
 // Alternative DoH servers: https://github.com/curl/curl/wiki/DNS-over-HTTPS
-user_pref("network.trr.uri", "https://dns.quad9.net/dns-query");
+user_pref("network.trr.uri", "https://family.cloudflare-dns.com/dns-query")
 
 // Enable encrypted server name indication (SNI), which conceals the
 // hostname during TLS connections: https://www.cloudflare.com/ssl/encrypted-sni/
