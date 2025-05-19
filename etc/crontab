@@ -38,7 +38,7 @@
 SHELL=/bin/bash
 
 # Backup some system configuration files hourly/daily.
-@hourly crontab -l >~/code/configs/etc/crontab
+# @daily crontab -l >~/code/configs/etc/crontab
 
 # Delete cached mutt attachments hourly.  But only delete files created at
 # least a day ago.
@@ -51,5 +51,6 @@ SHELL=/bin/bash
 # Clean *.torrent files from ~/ and ~/downloads.
 @hourly rm -f ~/*.torrent ~/downloads/*.torrent /tmp/downloads/*.torrent
 
-# git-latexdiff puts temp files in /tmp.
-@hourly rm -rf /tmp/git-latexdiff.*
+# Backup to Hetzner Storage Box every 8 hours.
+# Triggered at 08:00, 16:00, and 00:00 -- 3 snapshots per day.
+0 */8 * * * ~/code/bckp/bckp_bx11 backup

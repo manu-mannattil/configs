@@ -488,7 +488,7 @@ set crypt_replyencrypt = yes
 
 # Automatically sign replies to any signed (but not necessarily encrypted)
 # email that's received.
-set crypt_replysign = yes
+set crypt_replysign = no
 
 # Automatically sign and encrypt replies to any signed and encrypted email
 # that's received.

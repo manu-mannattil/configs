@@ -100,7 +100,7 @@ set shortmess+=I
 
 " More informative, yet minimalistic statusline.
 set statusline=[%n]\ %t\ [%{&ff}\|%{strlen(&fenc)?&fenc:&enc}\|%{strlen(&ft)?&ft:'none'}]\ %m%q%r%w
-set statusline+=%=%<L:%l/%L,C:%c\ (%P)
+set statusline+=%=%<[0x%B]\ L:%l/%L,C:%c\ (%P)
 
 " Ignore common binary files during completion.  Alternatively, use the
 " 'suffixes' option to give these extensions a low priority while doing tab
@@ -372,7 +372,7 @@ augroup ft_related
   autocmd BufRead,BufNewFile \*sdcv\* set filetype=sdcv
 
   " Enable the longlines plugin for TeX and MediaWiki files.
-  autocmd FileType mail,mediawiki LongLines | setlocal norelativenumber
+  autocmd FileType mail,mediawiki,markdown LongLines | setlocal norelativenumber
 augroup END
 
 " Miscellaneous.
@@ -664,13 +664,6 @@ let g:vimtex_quickfix_open_on_warning = 0
 
 " Disable recursive searching of included packages.
 let g:vimtex_include_search_enabled = 0
-
-" Enable folding using Vimtex's foldexpr function.
-let g:vimtex_fold_enabled = 1
-
-" But only compute fold levels on demand, i.e., use fdm=manual.  To force
-" update the fold level, reload the file or use 'zx'.
-let g:vimtex_fold_manual = 1
 
 " Disable folding for certain parts of the document.
 let g:vimtex_fold_types = {
