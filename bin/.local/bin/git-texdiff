@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Do a distclean.  Without this, all PDFs will be symlinked by
 # git-latexdiff.  This would result in the actual PDF output getting
@@ -8,17 +8,30 @@ latexmk -norc -pdf -ps- -dvi- -C >/dev/null 2>&1
 repo=$(git rev-parse --show-toplevel 2>/dev/null)
 repo="${repo##*/}"
 
-[ "$repo" ] || {
+[[ "$repo" ]] || {
     echo >&2 "${0##*/}: fatal; not a valid git repository"
     exit 1
 }
+
+args=()
+out="$repo-diff.pdf"
+for arg
+do
+    [[ "$arg" == "--main" ]] && {
+        shift
+        out="${1%.*}-diff.pdf"
+        args+=( "--main" )
+    }
+    args+=( "$1" )
+    shift
+done
 
 git-latexdiff --latexmk                 \
               --ln-untracked            \
               --quiet                   \
               --latexpand               \
               --makeatletter            \
-              --output "$repo-diff.pdf" \
-              --ignore-latex-errors "$@"
+              --output "$out"           \
+              --ignore-latex-errors "${args[@]}"
 
-nohup xdg-open "$repo-diff.pdf" </dev/null >/dev/null 2>&1 &
+nohup xdg-open "$out" </dev/null >/dev/null 2>&1 &
