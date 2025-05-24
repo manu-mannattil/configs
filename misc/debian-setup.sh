@@ -23,6 +23,7 @@
 #                         https://github.com/restic/rest-server/releases
 #   Xournal++             https://github.com/xournalpp/xournalpp/releases
 #   LanguageTool          https://languagetool.org/download/LanguageTool-stable.zip
+#   Ferdium               https://ferdium.org/download
 #
 # The following programs usually have outdated versions in the Debian
 # repositories, therefore it makes sense to install them manually:
@@ -239,6 +240,7 @@ PACKAGES=(
   macchanger # utility for manipulating the MAC address of network interfaces
   megatools # download stuff from mega.nz
   mtr # Full screen ncurses and X11 traceroute tool
+  net-tools # many useful utilities to manage the network, e.g., route, netstat, etc.
   openssh-client # secure shell (SSH) client, for secure access to remote machines
   openssh-server # secure shell (SSH) server, for secure access from remote machines
   sshfs # filesystem client based on SSH File Transfer Protocol
@@ -326,7 +328,6 @@ PACKAGES_NO_RECOMMENDS=(
 # Packages to be downloaded and installed.
 PACKAGES_DOWNLOAD=(
   'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb' # Google Chrome
-  'https://go.skype.com/skypeforlinux-64.deb' # Skype
   'https://download.xnview.com/XnViewMP-linux-x64.deb' # XnView
   'https://zoom.us/client/latest/zoom_amd64.deb' # Zoom
 )
@@ -389,6 +390,8 @@ apt_wget() {
     apt install "$deb"
   done
 }
+
+# TODO: Adapt from https://github.com/cereda/fedora-postinstall/blob/master/extra-binaries.sh
 
 apt_wget "${PACKAGES_DOWNLOAD[@]}"
 

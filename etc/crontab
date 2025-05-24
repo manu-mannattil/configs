@@ -38,7 +38,7 @@
 SHELL=/bin/bash
 
 # Backup some system configuration files hourly/daily.
-# @daily crontab -l >~/code/configs/etc/crontab
+@daily crontab -l >~/code/configs/etc/crontab
 
 # Delete cached mutt attachments hourly.  But only delete files created at
 # least a day ago.

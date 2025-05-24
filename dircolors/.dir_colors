@@ -179,12 +179,15 @@ EXEC 01;33
 .jpeg 00;35
 .jpg 00;35
 .nth 00;35
+.odp 00;35
 .pbm 00;35
 .pdf 00;35
 .pgm 00;35
 .png 00;35
 .pnm 00;35
 .ppm 00;35
+.ppt 00;35
+.pptx 00;35
 .ps 00;35
 .ps.gz 00;35
 .psd 00;35
@@ -315,6 +318,7 @@ EXEC 01;33
 .vrb 00;37
 .zcompdump 00;37
 .zwc 00;37
+*tags 00;37
 
 # Source files
 *config.mk 01;37

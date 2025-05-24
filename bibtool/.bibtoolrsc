@@ -28,7 +28,7 @@ key.number.separator = { "" }
 
 % URL/DOI cleanup ------------------------------------------------------
 
-# Common URL encoded characters found in DOI URLs.
+% Common URL encoded characters found in DOI URLs.
 rewrite.rule { url # "%2F" # "/" }
 rewrite.rule { url # "%3A" # ":" }
 rewrite.rule { url # "%3B" # ";" }
@@ -39,73 +39,98 @@ rewrite.rule { url # "%29" # ")" }
 rename.field { url=doi if url = "10\.[0-9.]+/[-._;()/:a-zA-Z0-9]+" }
 rewrite.rule { doi # ".*/\(10\.[0-9.]+\/[-._;()/:a-zA-Z0-9]+\)" # "{\1}" }
 
-# Some publishers put links in the eprint field.
-# Delete such fields.
-delete.field = {eprint if eprint = "https?://"}
+% Some publishers put links in the eprint field.
+% Delete such fields.
+delete.field = { eprint if eprint = "https?://" }
 
-# Remove URLs to ArXiv -- it will be added by ReVTeX anyway.
-delete.field = {url if url = "arxiv\.org"}
+% Remove URLs to ArXiv -- it will be added by ReVTeX anyway.
+delete.field = { url if url = "arxiv\.org" }
+
+% Remove common publisher URLs.
+delete.field = { url if url = "\(jstor\.org\|mdpi\.com\|sciencedirect\.com\)" }
 
 % Punctuation and related stuff ----------------------------------------
 
 % Replace Unicode em/en dashes with TeX versions.
 rewrite.rule { "—" = "---" }
 rewrite.rule { "–" = "--" }
+rewrite.rule { "−" = "-" }
 
 % Replace Unicode accents with TeX versions.
-rewrite.rule { "À" == "\\`{A}" }
+rewrite.rule { "á" == "\\'{a}" }
 rewrite.rule { "Á" == "\\'{A}" }
+rewrite.rule { "à" == "\\`{a}" }
+rewrite.rule { "À" == "\\`{A}" }
+rewrite.rule { "â" == "\\^{a}" }
 rewrite.rule { "Â" == "\\^{A}" }
-rewrite.rule { "Ã" == "\\~{A}" }
+rewrite.rule { "ä" == "\\\"{a}" }
 rewrite.rule { "Ä" == "\\\"{A}" }
-rewrite.rule { "Å" == "\\r{A}" }
-rewrite.rule { "Æ" == "{\\AE}" }
-rewrite.rule { "Ç" == "\\c{C}" }
-rewrite.rule { "Ø" == "{\\O}" }
+rewrite.rule { "ã" == "\\~{a}" }
+rewrite.rule { "Ã" == "\\~{A}" }
+rewrite.rule { "ȧ" == "\\.{a}" }
+rewrite.rule { "ā" == "\\={a}" }
 rewrite.rule { "æ" == "{\\ae}" }
-rewrite.rule { "ç" == "\\c{c}" }
-rewrite.rule { "è" == "\\`{e}" }
-rewrite.rule { "é" == "\\'{e}" }
-rewrite.rule { "ê" == "\\^{e}" }
-rewrite.rule { "ë" == "\\\"{e}" }
-rewrite.rule { "ì" == "\\`{i}" }
-rewrite.rule { "í" == "\\'{i}" }
-rewrite.rule { "î" == "\\^{i}" }
-rewrite.rule { "ï" == "\\\"{i}" }
-rewrite.rule { "ñ" == "\\~{n}" }
-rewrite.rule { "ò" == "\\`{o}" }
-rewrite.rule { "ó" == "\\'{o}" }
-rewrite.rule { "ô" == "\\^{o}" }
-rewrite.rule { "õ" == "\\~{o}" }
-rewrite.rule { "ö" == "\\\"{o}" }
-rewrite.rule { "ø" == "{\\o}" }
-rewrite.rule { "ù" == "\\`{u}" }
-rewrite.rule { "ú" == "\\'{u}" }
-rewrite.rule { "û" == "\\^{u}" }
-rewrite.rule { "ü" == "\\\"{u}" }
+rewrite.rule { "Æ" == "{\\AE}" }
 rewrite.rule { "ą" == "\\k{a}" }
+rewrite.rule { "Å" == "\\r{A}" }
+rewrite.rule { "ă" == "\\u{a}" }
 rewrite.rule { "ć" == "\\'{c}" }
+rewrite.rule { "ç" == "\\c{c}" }
+rewrite.rule { "Ç" == "\\c{C}" }
 rewrite.rule { "č" == "\\v{c}" }
 rewrite.rule { "ď" == "\\v{d}" }
+rewrite.rule { "é" == "\\'{e}" }
+rewrite.rule { "è" == "\\`{e}" }
+rewrite.rule { "ê" == "\\^{e}" }
+rewrite.rule { "ë" == "\\\"{e}" }
 rewrite.rule { "ę" == "\\k{e}" }
 rewrite.rule { "ě" == "\\v{e}" }
 rewrite.rule { "ğ" == "\\u{g}" }
+rewrite.rule { "í" == "\\'{i}" }
+rewrite.rule { "ì" == "\\`{i}" }
+rewrite.rule { "î" == "\\^{i}" }
+rewrite.rule { "ï" == "\\\"{i}" }
 rewrite.rule { "ł" == "{\\l}" }
 rewrite.rule { "ń" == "\\'{n}" }
-rewrite.rule { "Œ" == "{\\OE}" }
+rewrite.rule { "ñ" == "\\~{n}" }
 rewrite.rule { "œ" == "{\\oe}" }
+rewrite.rule { "Œ" == "{\\OE}" }
+rewrite.rule { "ó" == "\\'{o}" }
+rewrite.rule { "ò" == "\\`{o}" }
+rewrite.rule { "ô" == "\\^{o}" }
+rewrite.rule { "ö" == "\\\"{o}" }
+rewrite.rule { "õ" == "\\~{o}" }
+rewrite.rule { "ø" == "{\\o}" }
+rewrite.rule { "Ø" == "{\\O}" }
 rewrite.rule { "ř" == "\\v{r}" }
 rewrite.rule { "ş" == "\\c{s}" }
 rewrite.rule { "š" == "\\v{s}" }
 rewrite.rule { "ť" == "\\v{t}" }
 rewrite.rule { "ů" == "\\r{u}" }
+rewrite.rule { "ú" == "\\'{u}" }
+rewrite.rule { "ù" == "\\`{u}" }
+rewrite.rule { "û" == "\\^{u}" }
+rewrite.rule { "ü" == "\\\"{u}" }
 rewrite.rule { "ž" == "\\v{z}" }
+
+% TeX style quotes and ellipsis.
+rewrite.rule { "‘" == "`" }
+rewrite.rule { "“" == "``" }
+rewrite.rule { "’" == "'" }
+rewrite.rule { "”" == "''" }
+rewrite.rule { "…" == "{\\ldots}" }
 
 % Translate double quotes as delimiters "" by braces {}.
 rewrite.rule { "^\"\([^#]*\)\"$" = "{\1}" }
 rewrite.rule { "# \"\([^#]*\)\"$" = "# {\1}" }
 rewrite.rule { "^\"\([^#]*\)\" #" = "{\1} #" }
 rewrite.rule { "# \"\([^#]*\)\" #" = "# {\1} #" }
+
+% Journal abbreviations ------------------------------------------------
+
+rewrite.rule { journal # "The Journal of Chemical Physics" = "J. Chem. Phys." }
+rewrite.rule { journal # "Proceedings of the National Academy of Sciences" = "Proc. Nat. Acad. Sci. USA" }
+rewrite.rule { journal # "Journal of Physics. Condensed Matter" = "J. Phys. Condens. Matter" }
 
 % Misc options ---------------------------------------------------------
 
