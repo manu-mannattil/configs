@@ -6,8 +6,8 @@
 (add-to-list 'package-archives
     '("MELPA" .
       "http://melpa.org/packages/"))
-
 (package-initialize)
+
 ;; Show line/column numbers.
 (global-linum-mode 1)
 (column-number-mode 1)

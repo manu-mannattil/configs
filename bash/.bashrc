@@ -212,6 +212,9 @@ alias scp='scp -C'
 # Don't run vi.
 alias vi='vim'
 
+# Use all available cores, and print only when a target finishes.
+alias make='make -j$(nproc) --output-sync=recurse'
+
 # Markdown using Pandoc.
 alias markdown='pandoc -S -f markdown+superscript+subscript -t html'
 
