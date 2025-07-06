@@ -18,10 +18,8 @@
 #   git-latexdiff         https://gitlab.com/git-latexdiff/git-latexdiff
 #   pdfsizeopt            https://github.com/pts/pdfsizeopt
 #   PDF Scale             https://github.com/tavinus/pdfScale/releases
-#   rclone                https://rclone.org/downloads
 #   restic                https://github.com/restic/restic/releases
 #                         https://github.com/restic/rest-server/releases
-#   Xournal++             https://github.com/xournalpp/xournalpp/releases
 #   LanguageTool          https://languagetool.org/download/LanguageTool-stable.zip
 #   Ferdium               https://ferdium.org/download
 #
@@ -43,6 +41,40 @@ pushd "$(dirname "$(readlink -f -- "$0")")"
 
 # Always run as root.
 [[ $(id -u) == 0 ]] || exec sudo -- "$0" "$@"
+
+# Helper functions {{{1
+# ---------------------
+
+# Synopsis: fetch_github_release user/repo patterns...
+# Patterns are regular expressions.
+fetch_github_release() {
+    python - "$@" <<EOF
+import json
+import re
+import sys
+from urllib import request
+
+def multimatch(patterns, string):
+    """Check if the string matches all the patterns."""
+    for patt in patterns:
+        if not re.search(patt, string, re.IGNORECASE):
+            return False
+    return True
+
+try:
+    url = f"https://api.github.com/repos/{sys.argv[1]}/releases/latest"
+    req = request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    with request.urlopen(req) as response:
+        data = response.read().decode("utf-8")
+        data = json.loads(data)
+
+    for asset in data["assets"]:
+        if multimatch(sys.argv[2:], asset["name"]):
+            print(asset["browser_download_url"])
+except:
+    pass
+EOF
+}
 
 # Packages {{{1
 # -------------
@@ -105,6 +137,7 @@ PACKAGES=(
   diffutils # File comparison utilities
   exuberant-ctags # build tag file indexes of source code definitions
   gcc-doc # documentation for gcc, g++, gobjc, etc.
+  gfortran # GNU Fortran compiler -- required for building Armadillo
   indent # C language source code formatting program
   indent-doc # Documentation for GNU indent
   input-utils # utilities for the input layer of the Linux kernel
@@ -325,14 +358,7 @@ PACKAGES_NO_RECOMMENDS=(
   okular # KDE PDF viewer
 )
 
-# Packages to be downloaded and installed.
-PACKAGES_DOWNLOAD=(
-  'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb' # Google Chrome
-  'https://download.xnview.com/XnViewMP-linux-x64.deb' # XnView
-  'https://zoom.us/client/latest/zoom_amd64.deb' # Zoom
-)
-
-REMOVE_PACKAGES=(
+PACKAGES_TO_REMOVE=(
   unattended-upgrades
 
   # gnome-keyring creates isses with XDG something.
@@ -344,7 +370,7 @@ REMOVE_PACKAGES=(
   firefox-esr
 )
 
-# Host-specific packages {{{1
+# Host-specific packages {{{2
 # ---------------------------
 
 case "$HOSTNAME" in
@@ -361,6 +387,22 @@ case "$HOSTNAME" in
     )
 esac
 
+# Packages to be downloaded and installed {{{2
+# --------------------------------------------
+
+PACKAGES_DOWNLOAD=(
+  'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb' # Google Chrome
+  'https://download.xnview.com/XnViewMP-linux-x64.deb' # XnView
+  'https://zoom.us/client/latest/zoom_amd64.deb' # Zoom
+)
+
+# Ferdium - client for WhatsApp, Discord, etc.
+PACKAGES_DOWNLOAD+=( "$(fetch_github_release 'ferdium/ferdium-app' 'amd64' 'deb$')" )
+# rclone -- "rsync for cloud storage" - Google Drive, S3, Dropbox, etc
+PACKAGES_DOWNLOAD+=( "$(fetch_github_release 'rclone/rclone' 'linux' 'amd64' 'deb$')" )
+# Xournal++ -- take notes, annotate PDFs, etc.
+PACKAGES_DOWNLOAD+=( "$(fetch_github_release 'xournalpp/xournalpp' 'debian' 'x86_64' 'deb$')" )
+
 # Installation {{{1
 # -----------------
 
@@ -376,22 +418,25 @@ apt install --yes "${PACKAGES[@]}"
 apt install --yes --no-install-recommends "${PACKAGES_NO_RECOMMENDS[@]}"
 apt autoremove --yes
 apt clean --yes
-apt remove --yes "${REMOVE_PACKAGES[@]}"
+apt remove --yes "${PACKAGES_TO_REMOVE[@]}"
 
 # Packages to be downloaded and installed {{{2
 # --------------------------------------------
 
 apt_wget() {
-  for package
+  for url
   do
-    deb="/tmp/$(echo "$package" | md5sum | cut -d ' ' -f 1).deb"
-    echo >&2 "${0##*/}: downloading '$package'"
-    wget --quiet --show-progress --no-config --progress=bar -O "$deb" "$1"
-    apt install "$deb"
+    deb="/tmp/$(echo "$url" | md5sum | cut -d ' ' -f 1).deb"
+    echo >&2 "${0##*/}: downloading '$url'"
+    wget --no-config      \
+         --continue       \
+         --quiet          \
+         --show-progress  \
+         --progress=bar   \
+         -O "$deb" "$url"
+    apt install --yes --no-install-recommends "$deb"
   done
 }
-
-# TODO: Adapt from https://github.com/cereda/fedora-postinstall/blob/master/extra-binaries.sh
 
 apt_wget "${PACKAGES_DOWNLOAD[@]}"
 
