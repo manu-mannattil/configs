@@ -482,8 +482,8 @@ endfunction
 " Grep {{{2
 " ---------
 
-" Use ag for grepping.
-set grepprg=ag\ --vimgrep\ $*
+" Use rg for grepping.
+set grepprg=rg\ --vimgrep\ $*
 set grepformat=%f:%l:%c:%m
 
 " Function to run grep in a subshell.
