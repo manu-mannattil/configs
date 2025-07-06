@@ -21,7 +21,7 @@
 #   restic                https://github.com/restic/restic/releases
 #                         https://github.com/restic/rest-server/releases
 #   LanguageTool          https://languagetool.org/download/LanguageTool-stable.zip
-#   Ferdium               https://ferdium.org/download
+#   Signal                https://signal.org/download/
 #
 # The following programs usually have outdated versions in the Debian
 # repositories, therefore it makes sense to install them manually:
@@ -63,7 +63,7 @@ def multimatch(patterns, string):
 
 try:
     url = f"https://api.github.com/repos/{sys.argv[1]}/releases/latest"
-    req = request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    req = request.Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible)"})
     with request.urlopen(req) as response:
         data = response.read().decode("utf-8")
         data = json.loads(data)
@@ -141,8 +141,10 @@ PACKAGES=(
   indent # C language source code formatting program
   indent-doc # Documentation for GNU indent
   input-utils # utilities for the input layer of the Linux kernel
+  libtool # GNU tool to simplify the creation and management of portable compiled libraries
   manpages-posix # Manual pages about using POSIX system
   patch # Apply a diff file to an original
+  ripgrep # Recursively searches directories for a regex pattern
   silversearcher-ag # very fast grep-like program, alternative to ack-grep
   sloccount # programs for counting physical source lines of code (SLOC)
 
@@ -392,7 +394,7 @@ esac
 
 PACKAGES_DOWNLOAD=(
   'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb' # Google Chrome
-  'https://download.xnview.com/XnViewMP-linux-x64.deb' # XnView
+  'https://download.xnview.com/XnViewMP-linux-x64.deb' # XnView image viewer
   'https://zoom.us/client/latest/zoom_amd64.deb' # Zoom
 )
 

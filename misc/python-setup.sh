@@ -196,7 +196,12 @@ case "$1" in
     mamba clean --all
     rm -vrf ~/.cache/pipx
     ;;
-  -c|--clean|clean)
+  -p|--purge|purge)
+    read -rp "To purge existing installation and packages type YES in all caps: " response
+    [[ "$response" = "YES" ]] || {
+      echo >&2 "${0##*/}: aborted"
+      exit 0
+    }
     rm -vrf "$MINIFORGE_HOME"
     rm -vrf "$PIPX_HOME"
     rm -vrf "$PIPX_BIN_DIR"
@@ -204,7 +209,7 @@ case "$1" in
     rm -vrf ~/.cache/pipx
     ;;
   *)
-    echo >&2 "usage: ${0##*/} install|update|clean"
+    echo >&2 "usage: ${0##*/} install|update|purge"
     exit 1
     ;;
 esac
