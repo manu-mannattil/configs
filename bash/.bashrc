@@ -213,7 +213,7 @@ alias scp='scp -C'
 alias vi='vim'
 
 # Use all available cores, and print only when a target finishes.
-alias make='make -j$(nproc) --output-sync=recurse'
+alias make='make -j$(nproc)'
 
 # Markdown using Pandoc.
 alias markdown='pandoc -S -f markdown+superscript+subscript -t html'
@@ -650,6 +650,9 @@ export PASSWORD_STORE_CLIP_TIME=180
 # Default pager.
 export PAGER="less"
 export MANPAGER="less"
+
+# Default flags for ripgrep.
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgreprc"
 
 # Don't save sdcv history.
 export SDCV_HISTSIZE=0

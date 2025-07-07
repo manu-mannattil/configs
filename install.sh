@@ -384,6 +384,11 @@ __install_readline() {
     mkdir -vp "$HOME/.cache/rlwrap"
 }
 
+# :target: ripgrep - ripgrep default flags
+__install_ripgrep() {
+    install "ripgrep/.config/ripgreprc"
+}
+
 # :target: rofi - rofi configuration
 __install_rofi() {
     install "rofi/.config/rofi"

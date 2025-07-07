@@ -1,0 +1,14 @@
+# vim: ft=conf fdm=marker et sts=4 sw=4
+
+# Searches case insensitively if the pattern is all
+# lowercase. Search case sensitively otherwise.
+--smart-case
+
+# This flag enables sorting of results in ascending order.
+# Sort by file path. Always single-threaded.
+--sort=path
+
+# Don't completly print lines longer than --max-columns in
+# bytes.  Instead, print a preview of the line.
+--max-columns=100
+--max-columns-preview
