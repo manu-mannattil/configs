@@ -1,28 +1,28 @@
 # configs
 
-This is a repository for managing my configuration files (aka dotfiles), meticulously yak shaved over the years and contains about <!--FILES-->208 configuration files for about <!--PROGRAMS-->55
+This is a repository for managing my configuration files (aka dotfiles), meticulously yak shaved over the years and contains about <!--FILES-->209 configuration files for about <!--PROGRAMS-->55
 programs.  There are [many like it][others], but this one is mine.
 
 <a href="https://xkcd.com/1806/">
   <img align="right" src="https://raw.githubusercontent.com/manu-mannattil/assets/master/configs/xkcd.png"/>
 </a>
 
-## Installation
+## Setup
 
-To "install" the configuration files, clone the repository and run
-the `install.sh` script.  `install.sh` can take one or more targets as
+To setup the configuration files, clone the repository and run the
+`setup.sh` script.  `setup.sh` can take one or more targets as
 arguments.  In that case, configuration files for only those targets
 will be installed.  Targets can be grouped into groups.  As an example,
 to install the targets from the `cli` group along with the targets
 `firefox` and `mutt`, run
 
-    install.sh --group cli firefox mutt
+    setup.sh --group cli firefox mutt
 
 By default all targets will be installed.  To list the available targets
 and groups, run
 
-    install.sh --list
-    install.sh --list-groups
+    setup.sh --list
+    setup.sh --list-groups
 
 One can also use a symlink farm manager like [GNU Stow][stow] to install
 the configuration files on a per-target basis.  For instance, to install

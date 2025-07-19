@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # vim: ft=sh fdm=marker et sts=2 sw=2
 #
-# debian-setup.sh -- Debian post-installation script
+# setup-debian.sh -- Debian post-installation script
 #
-# Usage: debian-setup.sh
+# Usage: setup-debian.sh
 #
 # This is a post-installation script to install some packages and setup
 # the system the way I want it after a fresh Debian install from the
@@ -22,6 +22,7 @@
 #                         https://github.com/restic/rest-server/releases
 #   LanguageTool          https://languagetool.org/download/LanguageTool-stable.zip
 #   Signal                https://signal.org/download/
+#   czkawka               https://github.com/qarmin/czkawka/releases
 #
 # The following programs usually have outdated versions in the Debian
 # repositories, therefore it makes sense to install them manually:

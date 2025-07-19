@@ -12,7 +12,7 @@ echo >&2 "updating repository statistics in README.md"
 echo >&2
 
 FILES=$(find -path ./.git -prune -o -path ./vim/.vim/pack -prune -o -type f -print | wc -l)
-PROGRAMS=$(./install.sh --list | wc -l)
+PROGRAMS=$(./setup.sh --list | wc -l)
 
 sed -i \
     -e "s|<!--FILES-->[^ ]*|<!--FILES-->$FILES|" \

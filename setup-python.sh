@@ -1,18 +1,13 @@
 #!/usr/bin/env bash
 # vim: ft=sh fdm=marker et sts=2 sw=2
 #
-# python-setup.sh -- install a bunch of Python modules and programs
+# setup-python.sh -- install a bunch of Python modules and programs
 #
 # This script installs a bunch of useful Python modules using
 # conda/mamba, pip, and pipx.  Python-based CLI programs are installed
 # using pipx, with each program in an isolated virtual environment.
 #
-# It is assumed that you have conda/mamba installed.
-#
-#   NOTE: mambaforge is discouraged since September 2023.
-#   https://conda-forge.org/miniforge
-#
-# Usage: python-setup.sh
+# Usage: setup-python.sh install|update|purge
 #
 
 set -euo pipefail
@@ -159,7 +154,7 @@ install_pip_venv_programs() {
 
 [[ "$*" ]] || {
     echo >&2 "${0##*/}: option must be specified"
-    echo >&2 "usage: ${0##*/} install|update|clean"
+    echo >&2 "usage: ${0##*/} install|update|purge"
     exit 1
 }
 

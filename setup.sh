@@ -2,13 +2,13 @@
 #
 # NAME
 #
-#   install.sh - configuration files installation script
+#   setup.sh - configuration files installation script
 #
 # SYNOPSIS
 #
-#   install.sh [--group <group>] [<target>...]
-#   install.sh --list
-#   install.sh --list-groups
+#   setup.sh [--group <group>] [<target>...]
+#   setup.sh --list
+#   setup.sh --list-groups
 #
 # OPTIONS
 #
@@ -18,12 +18,12 @@
 #
 # DESCRIPTION
 #
-#   install.sh is a simple shell script to copy/symlink my configuration
+#   setup.sh is a simple shell script to copy/symlink my configuration
 #   files to $HOME.  It makes sense to symlink only those configuration
 #   files that would not get overwritten or edited by programs.  Others
 #   should be copied instead.
 #
-#   install.sh can take one or more targets as arguments.  In that case,
+#   setup.sh can take one or more targets as arguments.  In that case,
 #   the configuration files for only those targets will be installed.
 #   By default all targets will be installed.
 #
@@ -124,7 +124,7 @@ __install_bash() {
     # line.  Basically, a two word command like `echo a' gets completed
     # twice if the first line of $HISTFILE isn't a blank line.
     : ${HISTFILE:=$HOME/.cache/bash_history}
-    mkdir -p ~/.cache
+    mkdir -vp ~/.cache
     echo "" >$HISTFILE
 }
 
@@ -233,7 +233,7 @@ __install_firefox() {
     default=$(echo "$HOME/.mozilla/firefox/"*.default)
     if [[ -d "$default" ]]
     then
-        rm -rf "$default/chrome"
+        rm -vrf "$default/chrome"
         ln -v -sf "$REPO/firefox/.mozilla/firefox/profile/chrome" "$default"
     fi
 }
@@ -404,7 +404,7 @@ __install_ssh() {
     install --copy "ssh/.ssh/config"
     chmod -v 600 "$HOME/.ssh/config"
     chmod -v 700 "$HOME/.ssh"
-    mkdir -p "$HOME/.ssh/controlmasters"
+    mkdir -vp "$HOME/.ssh/controlmasters"
 }
 
 # :target: terminfo - terminfo files for less-known terminals
@@ -432,7 +432,7 @@ __install_vim() {
 
     # Create nonstandard spell files if they don't already exist.  If
     # this is not done, Vim will warn each time spellcheck is turned on.
-    mkdir -p "$HOME/.vim/spell"
+    mkdir -vp "$HOME/.vim/spell"
     [[ -f "$HOME/.vim/spell/in" ]] || touch "$HOME/.vim/spell/in"
 
     # Now, run :mkspell on spell files.
@@ -444,8 +444,8 @@ __install_vim() {
     # "$HOME/.vim/install-plugins"
 
     # Create a symlink of the snippets directory to ~ for easier access.
-    rm -f "$HOME/.snippets"
-    ln -v -sf "$HOME/.vim/snippets" "$HOME/.snippets"
+    rm -vf "$HOME/.snippets"
+    ln -vsf "$HOME/.vim/snippets" "$HOME/.snippets"
 }
 
 # :target: wget - wget configuration
@@ -514,10 +514,13 @@ __parse_group() {
                 git
                 gnupg
                 htop
+                btop
+                ctags
                 ipython
                 less
                 parallel
                 readline
+                ripgrep
                 ssh
                 terminfo
                 tmux
