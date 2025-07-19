@@ -495,4 +495,4 @@ set crypt_replysign = no
 set crypt_replysignencrypted = yes
 
 # Attempt to verify email signatures automatically.
-set crypt_verify_sig = yes
+set crypt_verify_sig = no

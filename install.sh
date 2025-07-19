@@ -441,7 +441,7 @@ __install_vim() {
         -exec vim -e -s -u NONE -c ':mkspell! %' -c ':qall!' {} \;
 
     # Install plugins.
-    "$HOME/.vim/install-plugins"
+    # "$HOME/.vim/install-plugins"
 
     # Create a symlink of the snippets directory to ~ for easier access.
     rm -f "$HOME/.snippets"

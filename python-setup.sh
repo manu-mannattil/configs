@@ -102,6 +102,9 @@ CONDA_MODULES=(
   scikit-learn
   opencv
 
+  # C++ linear algebra library with Python interface.
+  xtensor
+
   # Testing.
   pytest
 

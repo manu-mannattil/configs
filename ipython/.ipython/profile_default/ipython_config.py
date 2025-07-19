@@ -2,8 +2,7 @@
 
 # Lines of code to run at IPython startup.
 c.InteractiveShellApp.exec_lines = """\
-    import cmath
-    import math
+    import cmath as math
     import matplotlib.pyplot as plt
     import numpy as np
 """.split('\n')

@@ -396,6 +396,7 @@ for_window [class="Mathematica"] focus
 
 for_window [class="(zoom|join\?)"] move container to workspace $ws9
 for_window [class="(zoom|join\?)"] focus
+for_window [class="(zoom|join\?)"] floating enable
 
 # The hyphen is so that Inkscape extracted from the AppImage gets
 # recognized.  For reasons I don't understand, just checking the class

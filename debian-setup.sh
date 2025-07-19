@@ -56,10 +56,7 @@ from urllib import request
 
 def multimatch(patterns, string):
     """Check if the string matches all the patterns."""
-    for patt in patterns:
-        if not re.search(patt, string, re.IGNORECASE):
-            return False
-    return True
+    return all(re.search(patt, string) for patt in patterns)
 
 try:
     url = f"https://api.github.com/repos/{sys.argv[1]}/releases/latest"
