@@ -161,26 +161,6 @@ user_pref("identity.fxaccounts.enabled", false);
 // Disable "privacy-preserving ad measurement".
 user_pref("dom.private-attribution.submission.enabled", false);
 
-// ------------- Performance -------------
-
-// // How long FF will wait before rendering the page, in milliseconds
-// // Reduce the 5ms Firefox waits to render the page.
-// user_pref("nglayout.initialpaint.delay", 0);
-// user_pref("nglayout.initialpaint.delay_in_oopif", 0);
-
-// // Notification interval (in microseconds) [to avoid layout thrashing]
-// // When Firefox is loading a page, it periodically reformats
-// // or "reflows" the page as it loads. The page displays new elements
-// // every 0.12 seconds by default. These redraws increase the total page load time.
-// user_pref("content.notify.interval", 100000);
-
-// // More TLS token caching (fast reconnects).
-// user_pref("network.ssl_tokens_cache_capacity", 32768);
-
-// // Use bigger packets.
-// user_pref("network.buffer.cache.size", 262144);
-// user_pref("network.buffer.cache.count", 128);
-
 // ------------- DNS -------------
 
 // Cloudflare test page for DOH: https://1.1.1.1/help
@@ -248,6 +228,9 @@ user_pref("browser.ctrlTab.recentlyUsedOrder", false);
 
 // Don't warn on closing multiple tabs.
 user_pref("browser.tabs.warnOnClose", false);
+
+// New tabs open next to your current tab, not at the end.
+user_pref("browser.tabs.insertAfterCurrent", true);
 
 // Disable UI animations.
 user_pref("toolkit.cosmeticAnimations.enabled", false);
@@ -334,6 +317,11 @@ user_pref("browser.tabs.hoverPreview.enabled", false);
 
 // Remove new sidebar.
 user_pref("sidebar.revamp", false);
+
+// Disable in-browser translations -- they're slow and of poor quality.
+user_pref("browser.translations.automaticallyPopup", false);
+user_pref("browser.translations.enable", false);
+user_pref("browser.translations.panelShown", false);
 
 // Internal custom pref to ensure that we've reach the end without syntax errors.
 user_pref("_user.js.parrot", "SUCCESS: No no he's not dead, he's, he's restin'!");

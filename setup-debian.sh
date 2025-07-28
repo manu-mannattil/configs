@@ -11,27 +11,27 @@
 # in the Debian repositories, some packages need to be manually
 # installed:
 #
+#   czkawka               https://github.com/qarmin/czkawka/releases
 #   DeaDBeeF              https://deadbeef.sourceforge.io/download.html
 #   fzf                   https://github.com/junegunn/fzf/releases
 #                         https://raw.githubusercontent.com/junegunn/fzf/master/man/man1/fzf.1
 #   Geekbench             https://www.geekbench.com/download/linux
 #   git-latexdiff         https://gitlab.com/git-latexdiff/git-latexdiff
-#   pdfsizeopt            https://github.com/pts/pdfsizeopt
+#   LanguageTool          https://languagetool.org/download/LanguageTool-stable.zip
 #   PDF Scale             https://github.com/tavinus/pdfScale/releases
+#   pdfsizeopt            https://github.com/pts/pdfsizeopt
 #   restic                https://github.com/restic/restic/releases
 #                         https://github.com/restic/rest-server/releases
-#   LanguageTool          https://languagetool.org/download/LanguageTool-stable.zip
 #   Signal                https://signal.org/download/
-#   czkawka               https://github.com/qarmin/czkawka/releases
 #
 # The following programs usually have outdated versions in the Debian
 # repositories, therefore it makes sense to install them manually:
 #
 #   Calibre               http://calibre-ebook.com/download_linux
 #   Latexmk               https://www.cantab.net/users/johncollins/latexmk/versions.html
+#   mktorrent             https://github.com/pobrn/mktorrent/archive/master.zip
 #   Pass                  https://git.zx2c4.com/password-store/
 #   Pass OTP              https://github.com/tadfisher/pass-otp
-#   mktorrent             https://github.com/pobrn/mktorrent/archive/master.zip
 #
 
 set -eu
@@ -418,7 +418,7 @@ apt install --yes "${PACKAGES[@]}"
 apt install --yes --no-install-recommends "${PACKAGES_NO_RECOMMENDS[@]}"
 apt autoremove --yes
 apt clean --yes
-apt remove --yes "${PACKAGES_TO_REMOVE[@]}"
+apt purge --yes "${PACKAGES_TO_REMOVE[@]}"
 
 # Packages to be downloaded and installed {{{2
 # --------------------------------------------
