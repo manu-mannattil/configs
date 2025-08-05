@@ -169,6 +169,13 @@ __install_ctags() {
     install "ctags/.ctags"
 }
 
+# :target: dconf - dconf/gsettings configuration.
+# https://anarc.at/blog/2020-03-02-moving-dconf-entries-to-git/
+__install_dconf() {
+    install "dconf/.config/dconf/profile" \
+            "dconf/.config/dconf/user.txt"
+}
+
 # :target: deadbeef - DeaDBeeF music player configuration
 __install_deadbeef() {
     # Preserve tabs and playlists.
@@ -259,7 +266,10 @@ __install_git() {
 
 # :target: gtk - GTK 2/3 configuration
 __install_gtk() {
-    install "gtk/.gtkrc-2.0" "gtk/.gtkrc-hidpi-2.0" "gtk/.config/gtk-3.0/settings.ini"
+    install "gtk/.gtkrc-2.0"                   \
+            "gtk/.gtkrc-hidpi-2.0"             \
+            "gtk/.config/gtk-3.0/settings.ini" \
+            "gtk/.config/gtk-4.0/settings.ini"
 }
 
 # :target: htop - htop configuration

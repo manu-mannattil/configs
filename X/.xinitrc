@@ -129,6 +129,13 @@ xset b off
 export GTK_IM_MODULE="xim"
 export QT_IM_MODULE="xim"
 
+# Use a plain text file for all gsettings configurations.
+# The file itself is at ~/.config/dconf/user.txt.
+# Without this, some GTK applications (Firefox, for example) does not
+# respect colorscheme preference (dark vs. light).
+# https://anarc.at/blog/2020-03-02-moving-dconf-entries-to-git
+export DCONF_PROFILE="$HOME/.config/dconf/profile"
+
 # X11 keyboard layout tweaks
 # --------------------------
 
