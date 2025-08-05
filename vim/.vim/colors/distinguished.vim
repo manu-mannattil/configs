@@ -112,9 +112,10 @@ call s:ColorDictParser({
   \ , 'SyntasticWarning'            : [    220,     94,               '',      'ffd700',  '875f00',               '']
   \ , 'SyntasticError'              : [    202,     52,               '',      'ff5f00',  '5f0000',               '']
   \
-  \ , 'Pmenu'                       : [    248,    240,               '',      'a8a8a8',  '585858',               '']
-  \ , 'PmenuSel'                    : [    253,    245,               '',      'dadada',  '8a8a8a',               '']
-  \ , 'PmenuSbar'                   : [    253,    248,               '',      'dadada',  'a8a8a8',               '']
+  \ , 'Pmenu'                       : [    250,    235,               '',      'bcbcbc',  '262626',               '']
+  \ , 'PmenuSel'                    : [    255,    238,               '',      'eeeeee',  '444444',               '']
+  \ , 'PmenuSbar'                   : [    255,    238,               '',      'eeeeee',  '444444',               '']
+  \ , 'PmenuThumb'                  : [    255,    250,               '',      'eeeeee',  'bcbcbc',               '']
   \
   \ , 'phpEOL'                      : [    245,     '',               '',      '8a8a8a',        '',               '']
   \ , 'phpStringDelim'              : [     94,     '',               '',      '875f00',        '',               '']
@@ -227,3 +228,18 @@ let g:terminal_ansi_colors = [
       \ '#5fafaf',
       \ '#ffffff',
       \ ]
+
+highlight! link LspDiagInlineError ErrorText
+highlight! link LspDiagInlineWarning WarningText
+highlight! link LspDiagInlineInfo InfoText
+highlight! link LspDiagInlineHint HintText
+highlight! link LspDiagSignErrorText RedSign
+highlight! link LspDiagSignWarningText YellowSign
+highlight! link LspDiagSignInfoText BlueSign
+highlight! link LspDiagSignHintText PurpleSign
+highlight! link LspDiagVirtualTextError VirtualTextError
+highlight! link LspDiagVirtualTextWarning VirtualTextWarning
+highlight! link LspDiagVirtualTextInfo VirtualTextInfo
+highlight! link LspDiagVirtualTextHint VirtualTextHint
+highlight! link LspInlayHintsParam InlayHints
+highlight! link LspSigActiveParameter DiffAdd
