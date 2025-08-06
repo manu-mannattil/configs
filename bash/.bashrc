@@ -53,7 +53,8 @@ shopt -s histappend
 # Give the user an opportunity to reedit a failed history substitution.
 shopt -s histreedit
 
-# Disable annoying XON/XOFF flow control.
+# Disable annoying XON/XOFF flow control (Ctrl-S to pause output and
+# Ctrl-Q to resume).
 stty -ixon
 
 # Bash history {{{2
@@ -197,6 +198,9 @@ alias gnuplot='rlwrap -pgreen -a -c gnuplot'
 alias posh='rlwrap -a -c posh'
 alias node='rlwrap node'
 
+# Maximum PNG compression when using optipng.
+alias optipng='optipng --strip all -o7'
+
 # Don't compress raster images embedded in PDFs.
 alias pdfsizeopt='pdfsizeopt --do-optimize-images=no'
 
@@ -212,8 +216,8 @@ alias scp='scp -C'
 # Don't run vi.
 alias vi='vim'
 
-# Use all available cores, and print only when a target finishes.
-alias make='make -j$(nproc)'
+# Use all available cores and don't guess rules.
+alias make='make -j$(nproc) --no-builtin-rules'
 
 # Markdown using Pandoc.
 alias markdown='pandoc -S -f markdown+superscript+subscript -t html'

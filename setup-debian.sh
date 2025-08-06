@@ -145,6 +145,7 @@ PACKAGES=(
   ripgrep # Recursively searches directories for a regex pattern
   silversearcher-ag # very fast grep-like program, alternative to ack-grep
   sloccount # programs for counting physical source lines of code (SLOC)
+  xxd # make a hexdump of a given file
 
   # Display and X11
   arandr # Simple visual front end for XRandR
@@ -274,8 +275,11 @@ PACKAGES=(
   megatools # download stuff from mega.nz
   mtr # Full screen ncurses and X11 traceroute tool
   net-tools # many useful utilities to manage the network, e.g., route, netstat, etc.
+  network-manager-openvpn-gnome # OpenVPN support for NetworkManager
+  network-manager-openvpn # OpenVPN support for NetworkManager
   openssh-client # secure shell (SSH) client, for secure access to remote machines
   openssh-server # secure shell (SSH) server, for secure access from remote machines
+  proxychains # pipe network traffic through a proxy
   sshfs # filesystem client based on SSH File Transfer Protocol
   tor # anonymizing overlay network for TCP
   whois # intelligent WHOIS client

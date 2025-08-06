@@ -228,18 +228,3 @@ let g:terminal_ansi_colors = [
       \ '#5fafaf',
       \ '#ffffff',
       \ ]
-
-highlight! link LspDiagInlineError ErrorText
-highlight! link LspDiagInlineWarning WarningText
-highlight! link LspDiagInlineInfo InfoText
-highlight! link LspDiagInlineHint HintText
-highlight! link LspDiagSignErrorText RedSign
-highlight! link LspDiagSignWarningText YellowSign
-highlight! link LspDiagSignInfoText BlueSign
-highlight! link LspDiagSignHintText PurpleSign
-highlight! link LspDiagVirtualTextError VirtualTextError
-highlight! link LspDiagVirtualTextWarning VirtualTextWarning
-highlight! link LspDiagVirtualTextInfo VirtualTextInfo
-highlight! link LspDiagVirtualTextHint VirtualTextHint
-highlight! link LspInlayHintsParam InlayHints
-highlight! link LspSigActiveParameter DiffAdd
