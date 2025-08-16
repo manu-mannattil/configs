@@ -323,5 +323,8 @@ user_pref("browser.translations.automaticallyPopup", false);
 user_pref("browser.translations.enable", false);
 user_pref("browser.translations.panelShown", false);
 
+// Disable grouping tabs.
+user_pref("browser.tabs.groups.enabled", false);
+
 // Internal custom pref to ensure that we've reach the end without syntax errors.
 user_pref("_user.js.parrot", "SUCCESS: No no he's not dead, he's, he's restin'!");

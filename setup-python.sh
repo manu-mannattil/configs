@@ -59,17 +59,30 @@ update_pip_modules() {
 # pipx -----------------------------------------------------------------
 
 PROGRAMS=(
-  black               # Python code formatter
-  flake8              # Python linter
-  gallery-dl          # youtube-dl for galleries
-  howdoi              # code snippet lookup tool
-  markdown-anki-decks # make Anki decks with markdown
-  s-tui               # stress Terminal UI stress test and monitoring tool
-  speedtest-cli       # speedtest.net on the CLI
-  tidal-dl            # download tidal.com media
-  vsci                # video contact sheet (i.e., thumbnails) maker
-  yapf                # Python code formatter
-  yt-dlp              # youtube-dl fork with regular updates
+  # Python code formatter
+  black
+  # vidir-like program to rename files using $EDITOR with extra features
+  edir
+  # Python linter
+  flake8
+  # youtube-dl for galleries
+  gallery-dl
+  # code snippet lookup tool
+  howdoi
+  # make Anki decks with markdown
+  markdown-anki-decks
+  # stress Terminal UI stress test and monitoring tool
+  s-tui
+  # speedtest.net on the CLI
+  speedtest-cli
+  # download tidal.com media
+  tidal-dl
+  # video contact sheet (i.e., thumbnails) maker
+  vsci
+  # Python code formatter
+  yapf
+  # youtube-dl fork with regular updates
+  'yt-dlp[default,curl-cffi]'
 )
 
 install_pipx_programs() {
