@@ -476,6 +476,7 @@ __install_xdg() {
             "xdg/.local/share/mime/packages"/*
 
     update-mime-database -V "$HOME/.local/share/mime"
+    update-desktop-database -v "$HOME/.local/share/applications"
 }
 
 # :target: xnview - XnView configuration

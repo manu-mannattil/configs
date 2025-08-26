@@ -310,7 +310,7 @@ for_window [title="editinvim"] floating enable
 
 # No border for the applications below.
 for_window [class="XWrits"] border pixel 0
-for_window [window_type="splash"] border pixel 0
+for_window [window_type="splash"] border pixel 0 # Mathematica logo, for example
 
 # Terminals and file browser (workspace $ws1) {{{2
 # ------------------------------------------------

@@ -1,11 +1,16 @@
 [style]
+arithmetic_precedence_indication = true
 based_on_style = pep8
-spaces_before_comment = 1
-split_before_logical_operator = true
-column_limit = 100
-no_spaces_around_selected_binary_operators = true
 blank_lines_around_top_level_definition = 1
 blank_lines_between_top_level_imports_and_variables = 1
-split_all_top_level_comma_separated_values = true
-arithmetic_precedence_indication = true
 coalesce_brackets = true
+column_limit = 100
+disable_ending_comma_heuristic = true
+no_spaces_around_selected_binary_operators = true
+spaces_before_comment = 1
+split_all_top_level_comma_separated_values = true
+split_before_dot = true
+split_before_expression_after_opening_paren = false
+split_before_first_argument = false
+split_before_logical_operator = true
+split_before_named_assigns = false
