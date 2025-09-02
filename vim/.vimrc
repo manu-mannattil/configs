@@ -1,4 +1,18 @@
 " vim: ft=vim fdm=marker et sts=2 sw=2
+"
+"  _______________________________________
+" < I like big ~/.vimrc and I cannot lie. >
+"  ---------------------------------------
+"    \
+"     \
+"         .--.
+"        |o_o |
+"        |:_/ |
+"       //   \ \
+"      (|     | )
+"     /'\_   _/`\
+"     \___)=(___/
+"
 
 " Preamble {{{1
 " -------------
@@ -468,7 +482,7 @@ if executable('titlecase')
 endif
 
 " Command to run helptags on all plugin directories in ~/.vim.
-function! s:helptags() abort
+function! GenerateHelpTags() abort
   for dir in split(&rtp, ',')
     if dir[0:strlen($VIM)-1] !=# $VIM && isdirectory(dir.'/doc')
       helptags `=dir.'/doc'`
@@ -477,7 +491,89 @@ function! s:helptags() abort
 endfunction
 
 " For now, use the version supplied by vim-pathogen.
-" command! -bar Helptags call s:helptags()
+" command! -bar Helptags call GenerateHelpTags()
+
+" AIRewrite {{{2
+" --------------
+
+" Command to rewrite a range of text using aichat(1).
+" Requires: https://github.com/sigoden/aichat
+function! AIRewrite(...) range abort
+  if !executable('aichat')
+    echom "AIRewrite: aichat is not in PATH"
+    return
+  endif
+
+  let cmd = 'aichat'
+
+  if empty(a:1)
+    if empty(&filetype)
+      let prompt = [
+            \ 'You are an editor.',
+            \ 'Follow my instructions and improve or rewrite the text I provide.',
+            \ 'Generate ONLY the replacement text,',
+            \ 'without any explanations.'
+            \ ]
+    elseif &filetype == 'mail'
+      let prompt = [
+            \ 'You are composing an email.',
+            \ 'Follow my instructions and improve or rewrite the text I provide.',
+            \ 'Generate ONLY the replacement text,',
+            \ 'without any explanations.'
+            \ ]
+    elseif &filetype == 'markdown' || &filetype == 'tex' || &filetype == 'text'
+      let lang = get({'tex': 'LaTeX'}, &filetype, &filetype)
+      let article = lang =~? '^[aeiou]' ? 'an' : 'a'
+      let prompt = [
+            \ 'You are ' . article . ' ' . lang . ' editor.',
+            \ 'Follow my instructions and improve or rewrite the text I provide.',
+            \ 'Generate ONLY the replacement text in ' . lang,
+            \ 'without any explanations.'
+            \ ]
+    else
+      let lang = get({
+            \ 'c': 'C',
+            \ 'cpp': 'C++',
+            \ 'mma': 'Mathematica',
+            \ 'sh': 'Shell',
+            \ 'vim': 'Vimscript',
+            \ }, &filetype, &filetype)
+      let article = lang =~? '^[aeiou]' ? 'an' : 'a'
+      let prompt = [
+            \ 'You are ' . article . ' ' . lang . ' programmer.',
+            \ 'Follow my instructions and refactor the ' . lang . ' code I provide.',
+            \ 'Generate ONLY ' . lang . ' code as output without Markdown code fences.',
+            \ 'But add useful comments in the code.',
+            \ 'Do NOT ask further questions and make all necessary assumptions.'
+            \ ]
+    endif
+
+    let cmd .= ' ' . shellescape(join(prompt, "\n"))
+  else
+    let cmd .= ' ' . shellescape(a:1)
+  endif
+
+  " Get lines in given range and pass to aichat's stdin.
+  let lines = getline(a:firstline, a:lastline)->join("\n")
+  if lines =~ '^[\s\n]*$'
+    echom "AIRewrite: nothing to rewrite."
+    return
+  else
+    let output = systemlist(cmd, lines)
+  endif
+
+  if v:shell_error != 0
+    echom "AIRewrite failed:" . join(output, "\n")
+    return
+  endif
+
+  " Append output below the last line of the range and delete the
+  " original text.
+  call append(a:lastline, output)
+  call deletebufline('', a:firstline, a:lastline)
+endfunction
+
+command! -range -nargs=* AIRewrite <line1>,<line2>call AIRewrite(<q-args>)
 
 " Grep {{{2
 " ---------
@@ -488,13 +584,13 @@ set grepformat=%f:%l:%c:%m
 
 " Function to run grep in a subshell.
 " Adapted from https://gist.github.com/romainl/56f0c28ef953ffc157f36cc495947ab3
-function! s:rungrep(...)
+function! RunGrep(...) abort
   return system(join([&grepprg] + [expandcmd(join(a:000, ' '))], ' '))
 endfunction
 
 " Commands to populate the quickfix/location list with the output of s:rungrep().
-command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr s:rungrep(<f-args>)
-command! -nargs=+ -complete=file_in_path -bar LGrep lgetexpr s:rungrep(<f-args>)
+command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr RunGrep(<f-args>)
+command! -nargs=+ -complete=file_in_path -bar LGrep lgetexpr RunGrep(<f-args>)
 
 " Hack to replace :grep and :lgrep with :Grep and :LGrep, respectively.
 cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() ==# 'grep')  ? 'Grep'  : 'grep'
@@ -504,12 +600,12 @@ cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() ==# 'lgrep') ? 'L
 " -------------
 
 " ,$ strips trailing spaces.
-function! s:rm_trailing_spaces() abort
+function! RemoveTrailingSpaces() abort
   let winview = winsaveview()
   %substitute/\s\+$//e
   call winrestview(winview)
 endfunction
-nnoremap <silent> ,$ :call <SID>rm_trailing_spaces()<CR>
+nnoremap <silent> ,$ :call RemoveTrailingSpaces()<CR>
 
 " Toggle search highlighting, spelling etc.
 nnoremap <silent> ,h :set list!<CR>
@@ -569,7 +665,7 @@ nnoremap <BS> <C-^>
 
 " Fix broken 'gx' in netrw.
 " https://github.com/felipec/vim-sanegx
-function! s:gxbrowse(url)
+function! GXBrowse(url)
   let redir = '>&/dev/null'
   if exists('g:netrw_browsex_viewer')
     let viewer = g:netrw_browsex_viewer
@@ -587,7 +683,7 @@ function! s:gxbrowse(url)
   execute 'silent! !' . viewer . ' ' . shellescape(a:url, 1) . redir
   redraw!
 endfunction
-nnoremap <silent> gx :call <SID>gxbrowse(expand('<cWORD>'))<CR>
+nnoremap <silent> gx :call GXBrowse(expand('<cWORD>'))<CR>
 
 " File and buffer navigation tricks {{{2
 " --------------------------------------

@@ -365,6 +365,7 @@ iabbrev <buffer> yrea year
 iabbrev <buffer> ytou you
 iabbrev <buffer> yuo you
 iabbrev <buffer> yuor your
+iabbrev <buffer> lamba lambda
 
 " Accents {{{1
 " ------------
