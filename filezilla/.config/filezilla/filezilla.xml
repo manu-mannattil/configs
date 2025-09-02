@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<FileZilla3 version="3.63.0" platform="*nix">
+  <Settings>
+    <Setting name="Size format">1</Setting>
+    <Setting name="Filelist directory sort">2</Setting>
+    <Setting name="Filelist name sort">0</Setting>
+  </Settings>
+</FileZilla3>

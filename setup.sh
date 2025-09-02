@@ -205,6 +205,12 @@ __install_emacs() {
     install "emacs/.emacs"
 }
 
+# :target: filezilla - Filezilla configuration
+__install_filezilla() {
+    install --copy "filezilla/.config/filezilla/filezilla.xml"
+    install --copy "filezilla/.config/filezilla/filters.xml"
+}
+
 # :target: firefox - Firefox configuration
 __install_firefox() {
     [[ -f /usr/bin/firefox ]] || {
