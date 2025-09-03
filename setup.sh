@@ -499,9 +499,15 @@ __install_xournalpp() {
 __install_yapf() {
     install "yapf/.config/yapf"
 }
+
 # :target: youtube-dl - youtube-dl configuration
 __install_youtube-dl() {
     install "youtube-dl/.config/youtube-dl.conf"
+}
+
+# :target: zeal - Zeal docs configuration
+__install_zeal() {
+    install --copy "zeal/.config/Zeal/Zeal.conf"
 }
 
 # }}}
