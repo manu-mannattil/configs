@@ -230,15 +230,15 @@ __install_firefox() {
         do
             ln -v -sf "$REPO/firefox/.mozilla/firefox/profile/user.js" \
                 "$HOME/.mozilla/firefox/$profile"
-            echo >&2 "${0##*/}: linked user.js for $profile"
+            echo >&2 "${0##*/}: firefox: linked user.js for $profile"
 
             cp -v -f "$REPO/firefox/.mozilla/firefox/profile/handlers.json" \
                 "$HOME/.mozilla/firefox/$profile"
-            echo >&2 "${0##*/}: copied handlers.json for $profile"
+            echo >&2 "${0##*/}: firefox: copied handlers.json for $profile"
 
             cp -v -f /tmp/prefsCleaner.sh "$HOME/.mozilla/firefox/$profile"
             chmod +x "$HOME/.mozilla/firefox/$profile/prefsCleaner.sh"
-            echo >&2 "${0##*/}: installed prefsCleaner.sh for $profile"
+            echo >&2 "${0##*/}: firefox: installed prefsCleaner.sh for $profile"
         done < <(sed -n 's/^Path=//p' "$HOME/.mozilla/firefox/profiles.ini")
     fi
 
@@ -428,6 +428,27 @@ __install_terminfo() {
     install "terminfo/.terminfo"
 }
 
+# :target: thunderbird - Thunderbird configuration
+__install_thunderbird() {
+    if [[ -f "$HOME/.thunderbird/profiles.ini" ]]
+    then
+        while IFS= read -r profile
+        do
+            rm -f "$HOME/.thunderbird/$profile/user.js"
+
+            # Use preferences from Firefox's user.js as well.
+            cat "$REPO/firefox/.mozilla/firefox/profile/user.js" >  \
+                "$HOME/.thunderbird/$profile/user.js"
+
+            printf "\n\n" >>"$HOME/.thunderbird/$profile/user.js"
+
+            cat "$REPO/thunderbird/.thunderbird/profile/user.js" >> \
+                "$HOME/.thunderbird/$profile/user.js"
+            echo >&2 "${0##*/}: thunderbird: created user.js for $profile"
+        done < <(sed -n 's/^Path=//p' "$HOME/.thunderbird/profiles.ini")
+    fi
+}
+
 # :target: tint2 - tint2 panel configuration
 __install_tint2() {
     install "tint2/.config/tint2"
@@ -457,7 +478,7 @@ __install_vim() {
         -exec vim -e -s -u NONE -c ':mkspell! %' -c ':qall!' {} \;
 
     # Install plugins.
-    # "$HOME/.vim/install-plugins"
+    "$HOME/.vim/install-plugins"
 
     # Create a symlink of the snippets directory to ~ for easier access.
     rm -vf "$HOME/.snippets"
