@@ -257,6 +257,7 @@ PACKAGES=(
   pdfarranger # merge, split and re-arrange pages from PDF documents
   pdftk-java # transitional package for pdftk, a tool for manipulating PDF documents
   poppler-utils # PDF utilities (based on Poppler)
+  qpdf # tools for transforming and inspecting PDF files
   qpdfview # tabbed document viewer
   wkhtmltopdf # Command line utilities to convert html to pdf or image using WebKit
   zathura # document viewer with a minimalistic interface

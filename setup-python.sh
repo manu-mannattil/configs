@@ -36,6 +36,10 @@ install_miniforge() {
   # ~/.local/miniforge must not exit
   ./miniforge3.sh -b -p "$MINIFORGE_HOME"
 
+  export PATH="$PATH:$MINIFORGE_HOME/bin"
+  export MAMBA_ROOT_PREFIX="$MINIFORGE_HOME"
+  source "$MINIFORGE_HOME/etc/profile.d/mamba.sh"
+
   popd
 }
 
@@ -77,8 +81,6 @@ PROGRAMS=(
   speedtest-cli
   # download tidal.com media
   tidal-dl
-  # video contact sheet (i.e., thumbnails) maker
-  vsci
   # Python code formatter
   yapf
   # youtube-dl fork with regular updates

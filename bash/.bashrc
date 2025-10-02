@@ -440,7 +440,7 @@ mbsync() {
         # which folders have new messages.
         cd ~/mail
         find -type f -path '*/new/*' -not -path '*/spam/*' \
-                     -not -path '*/trash/*' | awk -F / '
+                     -not -path '*/trash/*' -not -path '*/robots/*' | awk -F / '
             /^\./ {
                 count[$2 "/" $3] += 1
             }

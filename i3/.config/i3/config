@@ -342,6 +342,9 @@ for_window [class="Zeal"] focus
 for_window [class="Ferdium"] move container to workspace $ws2
 for_window [class="Ferdium"] focus
 
+for_window [class="thunderbird-default"] move container to workspace $ws2
+for_window [class="thunderbird-default"] focus
+
 # Media (workspace $ws3) {{{2
 # ---------------------------
 
