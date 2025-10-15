@@ -279,6 +279,7 @@ audio/x-wavpack=deadbeef.desktop
 audio/x-xi=deadbeef.desktop
 audio/x-xm=deadbeef.desktop
 audio/x-xmf=deadbeef.desktop
+image/webp=XnView.desktop
 image/bmp=XnView.desktop
 image/eps=qpdfview.desktop
 image/gif=mpv.desktop

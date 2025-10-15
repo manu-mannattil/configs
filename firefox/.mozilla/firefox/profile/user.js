@@ -63,9 +63,11 @@ user_pref("extensions.formautofill.heuristics.enabled", false);
 // Don't record information about the current browser session and don't
 // attempt to restore it automatically.
 user_pref("browser.sessionstore.enabled", false);
+user_pref("browser.sessionstore.max_resumed_crashes", 0);
 user_pref("browser.sessionstore.max_tabs_undo", 0);
 user_pref("browser.sessionstore.max_windows_undo", 0);
 user_pref("browser.sessionstore.restore_on_demand", false);
+user_pref("browser.sessionstore.resume_from_crash", false);
 
 // Disable all sponsored crap and show nothing in activity stream.
 user_pref("browser.newtabpage.activity-stream.default.sites", "");
@@ -187,6 +189,9 @@ user_pref("browser.aboutConfig.showWarning", false);
 
 // Disable the Ctrl+Q quit shortcut.
 user_pref("browser.quitShortcut.disabled", true);
+
+// Disable menu popup on pressing the alt key.
+user_pref("ui.key.menuAccessKeyFocuses", false);
 
 // There is so much BS regarding how the new Firefox downloads files.
 // I don't know if these options conflict each other (they probably do),
@@ -312,8 +317,13 @@ user_pref("media.autoplay.enabled.user-gestures-needed", false);
 user_pref("browser.tabs.hoverPreview.enabled", false);
 
 // Enable VAAPI video acceleration.
-// user_pref("gfx.webrender.all", true);
-// user_pref("media.ffmpeg.vaapi.enabled", true);
+// To check if video acceleration is working install the intel-gpu-tools
+// Debian package and run intel_gpu_top as sudo.  The video engine
+// should show load when these options are active.
+user_pref("gfx.webrender.all", true);
+user_pref("media.ffmpeg.vaapi.enabled", true);
+user_pref("media.ffmpeg.vaapi-drm-display.enabled", true);
+user_pref("media.ffvpx.enabled", false);
 
 // Remove new sidebar.
 user_pref("sidebar.revamp", false);
