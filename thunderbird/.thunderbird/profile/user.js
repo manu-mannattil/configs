@@ -44,5 +44,11 @@ user_pref("permissions.default.image", 2);
 // Disable remote content loading.
 user_pref("mailnews.message_display.disable_remote_image", true);
 
+// Use system titlebar.
+user_pref("mail.tabs.drawInTitlebar", false);
+
+// Always keep threads open (i.e., uncollapsed).
+user_pref("mailnews.thread_expand_all", true);
+
 // Internal custom pref to ensure that we've reach the end without syntax errors.
 user_pref("_user.js.parrot", "SUCCESS: Thunderbird is not dead, he's, he's restin'!");

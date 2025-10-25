@@ -445,6 +445,9 @@ __install_thunderbird() {
             cat "$REPO/thunderbird/.thunderbird/profile/user.js" >> \
                 "$HOME/.thunderbird/$profile/user.js"
             echo >&2 "${0##*/}: thunderbird: created user.js for $profile"
+
+            ln -v -sf "$REPO/thunderbird/.thunderbird/profile/chrome" \
+                "$HOME/.thunderbird/$profile"
         done < <(sed -n 's/^Path=//p' "$HOME/.thunderbird/profiles.ini")
     fi
 }

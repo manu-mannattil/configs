@@ -1,0 +1,7 @@
+/* Hide remote content warning. */
+#mail-notification-top {
+  display: none !important;
+}
+.notificationbox-stack[notificationside="top"] > notification {
+  display: none !important;
+}
