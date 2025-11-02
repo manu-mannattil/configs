@@ -5,7 +5,7 @@ IndentWidth: 4
 ColumnLimit: 100
 
 # Force pointers to the type, e.g.,
-#   int *x;
+#   int* x;
 DerivePointerAlignment: false
 PointerAlignment: Left
 

@@ -106,14 +106,11 @@ user_pref("browser.urlbar.yelp.featureGate", false);
 user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsored", false);
 user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSites", false);
 
-// Disable AI crap.
-user_pref("browser.ml.chat.hideFromLabs", true);
-user_pref("browser.ml.chat.hideLabsShortcuts", true);
-user_pref("browser.ml.chat.providers", "");
-user_pref("browser.ml.chat.provider", "");
-user_pref("browser.ml.chat.enabled", false);
+// Disable AI BS.
 user_pref("browser.ml.enabled", false);
-user_pref("browser.ml.chat.openSidebarOnProviderChange", false);
+user_pref("extensions.ml.enabled", false);
+user_pref("browser.tabs.groups.smart.enabled", false);
+user_pref("browser.tabs.groups.smart.userEnable", false);
 
 // Quieter fox.
 user_pref("extensions.getAddons.showPane", false);
@@ -337,4 +334,4 @@ user_pref("browser.translations.panelShown", false);
 user_pref("browser.tabs.groups.enabled", false);
 
 // Internal custom pref to ensure that we've reach the end without syntax errors.
-user_pref("_user.js.parrot", "SUCCESS: No no he's not dead, he's, he's restin'!");
+user_pref("_user.js.parrot", "SUCCESS: Firefox is not dead, he's, he's restin'!");

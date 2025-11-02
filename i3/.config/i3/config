@@ -342,9 +342,6 @@ for_window [class="Zeal"] focus
 for_window [class="Ferdium"] move container to workspace $ws2
 for_window [class="Ferdium"] focus
 
-for_window [class="thunderbird-default"] move container to workspace $ws2
-for_window [class="thunderbird-default"] focus
-
 # Media (workspace $ws3) {{{2
 # ---------------------------
 
@@ -357,6 +354,22 @@ for_window [class="mpv"] focus
 
 for_window [class="vlc"] move container to workspace $ws3
 for_window [class="vlc"] focus
+
+# Other internet (workspace $ws4) {{{2
+# ------------------------------------
+
+for_window [class="thunderbird-default"] move container to workspace $ws4
+for_window [class="thunderbird-default"] focus
+# Thunderbird compose window.
+for_window [title="^Write:.*Thunderbird"] floating enable
+# Compose window size as a function of screen size 40% by 70%.
+for_window [title="^Write:.*Thunderbird" floating] resize set 40 ppt 70 ppt
+
+for_window [class="File[Zz]illa"] move container to workspace $ws4
+for_window [class="File[Zz]illa"] focus
+
+for_window [title="SoulseekQt build"] move container to workspace $ws4
+for_window [title="SoulseekQt build"] focus
 
 # TeX (workspace $ws5) {{{2
 # -------------------------
@@ -410,15 +423,9 @@ for_window [title="- Inkscape"] focus
 for_window [class="Gimp"] move container to workspace $ws9
 for_window [class="Gimp"] focus
 
-for_window [class="File[Zz]illa"] move container to workspace $ws9
-for_window [class="File[Zz]illa"] focus
-
 for_window [class="steam"] move container to workspace $ws9
 for_window [class="steam"] focus
 for_window [class="steam"] floating enable
-
-for_window [title="SoulseekQt build"] move container to workspace $ws9
-for_window [title="SoulseekQt build"] focus
 
 for_window [class="Signal"] move container to workspace $ws9
 for_window [class="Signal"] focus
