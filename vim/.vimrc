@@ -416,10 +416,10 @@ augroup cursor_line
   autocmd WinLeave * setlocal nocursorline
 augroup END
 
-" Highlight TODO keywords everywhere.  Default syntax files don't always
-" contain all the TODO keywords. https://stackoverflow.com/a/30552423
-augroup hl_todo
+augroup extra_hl
     autocmd!
+    " Highlight TODO keywords everywhere.  Default syntax files don't always
+    " contain all the TODO keywords. https://stackoverflow.com/a/30552423
     autocmd Syntax *
           \ syntax keyword generalTodo TODO FIXME XXX NOTE NOTES COMMENT COMMENTS
           \ containedin=.*Comment,vimCommentTitle
@@ -470,6 +470,17 @@ command! -nargs=0 WildToggle
       \   let b:wildignore = &l:wildignore                                    |
       \   setlocal wildignore&                                                |
       \   echo "wildignore off"                                               |
+      \ endif
+
+command! -nargs=0 ShowNonASCII
+      \ if exists('b:ShowNonASCII')                                           |
+      \   syntax clear nonASCII                                               |
+      \   hi clear nonASCII                                                   |
+      \   unlet b:ShowNonASCII                                                |
+      \ else                                                                  |
+      \   syntax match nonASCII "[^\x00-\x7F]" containedin=ALL                |
+      \   hi def link nonASCII Todo                                           |
+      \   let b:ShowNonASCII = 1                                              |
       \ endif
 
 " Run mkprg and open the QuickFix window.
