@@ -56,6 +56,9 @@ rewrite.rule { "—" = "---" }
 rewrite.rule { "–" = "--" }
 rewrite.rule { "−" = "-" }
 
+% Remove Unicode space.
+rewrite.rule { " " = " " }
+
 % Replace Unicode accents with TeX versions.
 rewrite.rule { "á" == "\\'{a}" }
 rewrite.rule { "Á" == "\\'{A}" }
