@@ -146,10 +146,14 @@ export DCONF_PROFILE="$HOME/.config/dconf/profile"
 # rupeesign:4 = altgr + 4 gives rupee sign
 # terminate:ctrl_alt_bkspc = ctrl + alt + bkspc terminates X
 
-setxkbmap -variant altgr-intl              \
-          -option compose:rctrl            \
-          -option caps:swapescape          \
-          -option lv3:ralt_switch          \
+# setxkbmap -variant altgr-intl              \
+#           -option compose:rctrl            \
+#           -option caps:swapescape          \
+#           -option lv3:ralt_switch          \
+#           -option rupeesign:4              \
+#           -option terminate:ctrl_alt_bkspc
+
+setxkbmap -option caps:swapescape          \
           -option rupeesign:4              \
           -option terminate:ctrl_alt_bkspc
 

@@ -304,6 +304,7 @@ user_pref("devtools.debugger.ui.editor-wrapping", true);
 // these options, but Mozilla keeps changing them all the time, so
 // such a task would not be worth it.
 // https://news.ycombinator.com/item?id=28131896
+user_pref("media.autoplay.blocking_policy", 2);
 user_pref("media.autoplay.allow-muted", false);
 user_pref("media.autoplay.block-event.enabled", true);
 user_pref("media.autoplay.block-webaudio", true);
