@@ -407,6 +407,14 @@ for_window [class="lyx"] focus
 for_window [class="Mathematica"] move container to workspace $ws7
 for_window [class="Mathematica"] focus
 
+# Virtual machines (workspace $ws8) {{{2
+# --------------------------------------
+
+for_window [class="Virt-manager"] move container to workspace $ws8
+for_window [class="Virt-manager"] focus
+for_window [class="Virt-manager"] floating enable
+for_window [class="Virt-manager"] resize set 60 ppt 80 ppt
+
 # Large/bloated GUIs II (workspace $ws9) {{{2
 # -------------------------------------------
 
