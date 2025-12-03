@@ -1,5 +1,11 @@
 # configs
 
+> The Buddha, the Godhead, resides quite as comfortably in the circuits
+> of a digital computer or the gears of a cycle transmission as he does
+> at the top of a mountain or in the petals of a flower. To think
+> otherwise is to demean the Buddha, which is to demean oneself. --
+> Robert M. Pirsig, *Zen and the Art of Motorcycle Maintenance*
+
 This is a repository for managing my configuration files (aka dotfiles), meticulously yak shaved over the years and contains about <!--FILES-->220 configuration files for about <!--PROGRAMS-->59
 programs.  There are [many like it][others], but this one is mine.
 

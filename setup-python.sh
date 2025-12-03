@@ -85,6 +85,8 @@ PROGRAMS=(
   yapf
   # youtube-dl fork with regular updates
   'yt-dlp[default,curl-cffi]'
+  # open source Dropbox client
+  maestral
 )
 
 install_pipx_programs() {
