@@ -1,17 +1,13 @@
 # configs
 
-> The Buddha, the Godhead, resides quite as comfortably in the circuits
+> "The Buddha, the Godhead, resides quite as comfortably in the circuits
 > of a digital computer or the gears of a cycle transmission as he does
 > at the top of a mountain or in the petals of a flower. To think
-> otherwise is to demean the Buddha, which is to demean oneself. --
-> Robert M. Pirsig, *Zen and the Art of Motorcycle Maintenance*
+> otherwise is to demean the Buddha, which is to demean oneself." 
+> -- Robert M. Pirsig, *Zen and the Art of Motorcycle Maintenance*
 
-This is a repository for managing my configuration files (aka dotfiles), meticulously yak shaved over the years and contains about <!--FILES-->220 configuration files for about <!--PROGRAMS-->59
+This is a repository for managing my configuration files (aka dotfiles), meticulously yak shaved since 2010 or so and contains about <!--FILES-->221 configuration files for about <!--PROGRAMS-->60
 programs.  There are [many like it][others], but this one is mine.
-
-<a href="https://xkcd.com/1806/">
-  <img align="right" src="https://raw.githubusercontent.com/manu-mannattil/assets/master/configs/xkcd.png"/>
-</a>
 
 ## Setup
 

@@ -107,10 +107,12 @@ user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSpons
 user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSites", false);
 
 // Disable AI BS.
+user_pref("browser.ml.chat.enabled", false);
+user_pref("browser.ml.chat.menu", false);
 user_pref("browser.ml.enabled", false);
-user_pref("extensions.ml.enabled", false);
 user_pref("browser.tabs.groups.smart.enabled", false);
 user_pref("browser.tabs.groups.smart.userEnable", false);
+user_pref("extensions.ml.enabled", false);
 
 // Quieter fox.
 user_pref("extensions.getAddons.showPane", false);

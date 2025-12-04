@@ -13,12 +13,8 @@
 #
 #   czkawka               https://github.com/qarmin/czkawka/releases
 #   DeaDBeeF              https://deadbeef.sourceforge.io/download.html
-#   fzf                   https://github.com/junegunn/fzf/releases
-#                         https://raw.githubusercontent.com/junegunn/fzf/master/man/man1/fzf.1
 #   Geekbench             https://www.geekbench.com/download/linux
 #   git-latexdiff         https://gitlab.com/git-latexdiff/git-latexdiff
-#   LanguageTool          https://languagetool.org/download/LanguageTool-stable.zip
-#   PDF Scale             https://github.com/tavinus/pdfScale/releases
 #   pdfsizeopt            https://github.com/pts/pdfsizeopt
 #   restic                https://github.com/restic/restic/releases
 #                         https://github.com/restic/rest-server/releases
@@ -30,8 +26,6 @@
 #   Calibre               http://calibre-ebook.com/download_linux
 #   Latexmk               https://www.cantab.net/users/johncollins/latexmk/versions.html
 #   mktorrent             https://github.com/pobrn/mktorrent/archive/master.zip
-#   Pass                  https://git.zx2c4.com/password-store/
-#   Pass OTP              https://github.com/tadfisher/pass-otp
 #
 
 set -eu
@@ -49,7 +43,7 @@ pushd "$(dirname "$(readlink -f -- "$0")")"
 # Synopsis: fetch_github_release user/repo patterns...
 # Patterns are regular expressions.
 fetch_github_release() {
-    python - "$@" <<EOF
+    python3 - "$@" <<EOF
 import json
 import re
 import sys
@@ -104,7 +98,6 @@ PACKAGES=(
   gnupg # GNU privacy guard - a free PGP replacement
   gnupg-agent # GNU privacy guard - cryptographic agent (dummy transitional package)
   cryptsetup # disk encryption support - startup scripts
-  gpgv2 # GNU privacy guard - signature verification tool (dummy transitional package)
   pinentry-gnome3 # GNOME 3 PIN or pass-phrase entry dialog for GnuPG
   pass  # lightweight directory-based password manager
   pass-otp # pass extension for generating TOTPs
@@ -112,7 +105,6 @@ PACKAGES=(
 
   # Debian
   apt-file # search for files within Debian packages (command-line interface)
-  deborphan # lists orphaned packages
   needrestart # tells you whether a restart is required after installing packages
 
   # Desktop and window managers
@@ -134,6 +126,7 @@ PACKAGES=(
   colordiff # tool to colorize 'diff' output
   diffutils # File comparison utilities
   exuberant-ctags # build tag file indexes of source code definitions
+  fzf # fuzzy file finder
   gcc-doc # documentation for gcc, g++, gobjc, etc.
   gfortran # GNU Fortran compiler -- required for building Armadillo
   indent # C language source code formatting program
@@ -154,7 +147,6 @@ PACKAGES=(
   hsetroot # tool for composing root-pixmaps for X11
   mesa-utils # Miscellaneous Mesa GL utilities
   redshift # Adjusts the color temperature of your screen
-  xautolock # Program launcher for idle X sessions
   xbacklight # simple utility to set the backlight level
   xcalib # tiny monitor calibration loader for Xorg (useful to invert colors)
   xclip # command line interface to X selections
@@ -217,8 +209,6 @@ PACKAGES=(
   intel-gpu-tools # tools for debugging the Intel graphics driver
   intel-media-va-driver-non-free # VAAPI driver for the Intel GEN8+ Graphics family
   lm-sensors # utilities to read temperature/voltage/fan sensors
-  tlp # Save battery power on laptops
-  tlp-rdw # Radio device wizard
   vainfo # Video Acceleration (VA) API for Linux -- info program
 
   # Image manipulation
@@ -228,7 +218,6 @@ PACKAGES=(
   gimp-data-extras # Extra brushes and patterns for GIMP
   gimp # GNU Image Manipulation Program
   gimp-help-en # Documentation for the GIMP (English)
-  gimp-plugin-registry # repository of optional extensions for GIMP
   gmic # GREYC's Magic for Image Computing
   libimage-exiftool-perl # library and program to read and write meta information in multimedia files
   optipng # advanced PNG (Portable Network Graphics) optimizer
@@ -250,7 +239,6 @@ PACKAGES=(
   atril # MATE document viewer
   djvulibre-bin # Utilities for the DjVu image format
   gv # PostScript and PDF viewer for X
-  krop # tool to crop PDF files
   pdf2djvu # PDF to DjVu converter
   pdfcrack # PDF files password cracker
   pdfgrep # search in pdf files for strings matching a regular expression
@@ -259,7 +247,6 @@ PACKAGES=(
   poppler-utils # PDF utilities (based on Poppler)
   qpdf # tools for transforming and inspecting PDF files
   qpdfview # tabbed document viewer
-  wkhtmltopdf # Command line utilities to convert html to pdf or image using WebKit
   zathura # document viewer with a minimalistic interface
 
   # Multimedia
@@ -282,7 +269,6 @@ PACKAGES=(
   openssh-server # secure shell (SSH) server, for secure access from remote machines
   proxychains # pipe network traffic through a proxy
   sshfs # filesystem client based on SSH File Transfer Protocol
-  tor # anonymizing overlay network for TCP
   whois # intelligent WHOIS client
 
   # Scientific
@@ -307,9 +293,10 @@ PACKAGES=(
   sysvinit-utils # System-V-like utilities
 
   # TeX and writing
+  asciidoc # ASCIIDOC to other formats
   bibtool # tool to manipulate BibTeX files
   diction # Utilities to help with style and diction (English and German)
-  libreoffice # office productivity suite
+  libreoffice-gtk3 # office productivity suite
   sdcv # StarDict Console Version
   texlive-full # TeX Live: metapackage pulling in all components of TeX Live
   wdiff # compare two files word by word
@@ -355,7 +342,6 @@ PACKAGES=(
 
   # Miscellaneous
   wine # Windows API implementation - standard suite
-  libwine:i386 # Windows API implementation - library (32-bit version)
 )
 
 # Packages to be installed with --no-install-recommends.
@@ -379,16 +365,12 @@ PACKAGES_TO_REMOVE=(
 # ---------------------------
 
 case "$HOSTNAME" in
-  # Dell Inspiron 3442.
-  carbon)
-    PACKAGES+=(
-      bcmwl-kernel-source # Broadcom Wi-Fi drivers.
-    )
-    ;;
   # ThinkPad P43s.
   boron)
     PACKAGES+=(
       acpi-call-dkms  # ThinkPad hardware/firmware access modules source - dkms version
+      tlp # Save battery power on laptops
+      tlp-rdw # Radio device wizard
     )
 esac
 
@@ -405,8 +387,6 @@ PACKAGES_DOWNLOAD=(
 PACKAGES_DOWNLOAD+=( "$(fetch_github_release 'ferdium/ferdium-app' 'amd64' 'deb$')" )
 # rclone -- "rsync for cloud storage" - Google Drive, S3, Dropbox, etc
 PACKAGES_DOWNLOAD+=( "$(fetch_github_release 'rclone/rclone' 'linux' 'amd64' 'deb$')" )
-# Xournal++ -- take notes, annotate PDFs, etc.
-PACKAGES_DOWNLOAD+=( "$(fetch_github_release 'xournalpp/xournalpp' 'debian' 'x86_64' 'deb$')" )
 
 # Installation {{{1
 # -----------------
@@ -454,10 +434,7 @@ apt_wget "${PACKAGES_DOWNLOAD[@]}"
 #   systemd-analyze blame
 #   systemctl list-units --all
 #
-DISABLE_UNITS=(
-  # Tor daemon.  It's better to start it when needed.
-  tor.service tor@default.servick
-)
+DISABLE_UNITS=()
 
 MASK_UNITS=(
   # APT related automatic cleanup, download, etc.

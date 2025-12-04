@@ -30,6 +30,13 @@ case "$HOSTNAME" in
     magrathea)
         : ${DE:=i3}
         ;;
+    # Nukbox
+    carbon)
+        : ${DE:=i3}
+        ;;
+    *)
+        : ${DE:=i3}
+        ;;
 esac
 
 # Notes on my HiDPI display configuration
@@ -185,11 +192,8 @@ dunst &
 # Control computer usage.
 xwrits top clock breakclock mouse=5 &
 
-# I really don't want the overhead of a compositor, but Zoom's screen
-# sharing requires a compositor -- otherwise black squares will replace
-# Zoom's window.  The issue seems to be
-# https://support.zoom.us/hc/en-us/articles/202082128-Black-screen-during-screen-sharing
-xcompmgr -c -l0 -t0 -r0 -o.00 &
+# A compositor is required with newer Intel driver.
+picom &
 
 # Since updating to Debian 10.10, launching the WM using dbus-launch
 # seems to be required to have a nonempty $DBUS_SESSION_BUS_ADDRESS.

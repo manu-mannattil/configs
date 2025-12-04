@@ -381,6 +381,11 @@ __install_parallel() {
     install "parallel/.parallel/config"
 }
 
+# :target: picom - picom compositor
+__install_picom() {
+    install "picom/.config/picom.conf"
+}
+
 # :target: proxychains -- proxychains configuration
 __install_proxychains() {
     install "proxychains/.proxychains"

@@ -305,7 +305,8 @@ for_window [window_type="utility"] floating enable
 for_window [class="Anki"] floating enable
 for_window [class="Arandr"] floating enable
 for_window [class="matplotlib"] floating enable
-for_window [class="Pavucontrol"] floating enable
+for_window [class="(?i)pavucontrol"] floating enable
+for_window [class="(?i)nm-connection-editor"] floating enable
 for_window [title="editinvim"] floating enable
 
 # No border for the applications below.
@@ -365,8 +366,8 @@ for_window [title="^Write:.*Thunderbird"] floating enable
 # Compose window size as a function of screen size 40% by 70%.
 for_window [title="^Write:.*Thunderbird" floating] resize set 40 ppt 70 ppt
 
-for_window [class="File[Zz]illa"] move container to workspace $ws4
-for_window [class="File[Zz]illa"] focus
+for_window [class="(?i)FileZilla"] move container to workspace $ws4
+for_window [class="(?i)FileZilla"] focus
 
 for_window [title="SoulseekQt build"] move container to workspace $ws4
 for_window [title="SoulseekQt build"] focus
@@ -418,8 +419,8 @@ for_window [class="Virt-manager"] resize set 60 ppt 80 ppt
 # Large/bloated GUIs II (workspace $ws9) {{{2
 # -------------------------------------------
 
-for_window [class="(zoom|join\?)"] move container to workspace $ws9
-for_window [class="(zoom|join\?)"] focus
+# for_window [class="(zoom|join\?)"] move container to workspace $ws9
+# for_window [class="(zoom|join\?)"] focus
 for_window [class="(zoom|join\?)"] floating enable
 
 # The hyphen is so that Inkscape extracted from the AppImage gets

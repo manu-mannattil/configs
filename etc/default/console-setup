@@ -9,7 +9,8 @@ CODESET="guess"
 
 # Use larger font to accomodate HiDPI displays.
 FONTFACE="TerminusBold"
-FONTSIZE="16x32"
+FONTSIZE="16x32" # WQHD
+# FONTSIZE="10x18" # HD
 
 VIDEOMODE=
 
