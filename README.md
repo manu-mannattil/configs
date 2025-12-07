@@ -6,7 +6,7 @@
 > otherwise is to demean the Buddha, which is to demean oneself." 
 > -- Robert M. Pirsig, *Zen and the Art of Motorcycle Maintenance*
 
-This is a repository for managing my configuration files (aka dotfiles), meticulously yak shaved since 2010 or so and contains about <!--FILES-->221 configuration files for about <!--PROGRAMS-->60
+This is a repository for managing my configuration files (aka dotfiles), meticulously yak shaved since 2010 or so and contains about <!--FILES-->222 configuration files for about <!--PROGRAMS-->60
 programs.  There are [many like it][others], but this one is mine.
 
 ## Setup
@@ -74,5 +74,5 @@ Public domain.  See the file UNLICENSE for more details.
 (Quite obviously this only applies to stuff I've written, i.e., things
 without an explicit attribution.)
 
-[others]: https://github.com/search?q=dotfiles+OR+configs
+[others]: https://www.google.com/search?hl=en&udm=14&&filter=0&q=dotfiles OR configs site:github.com
 [stow]: https://www.gnu.org/software/stow/stow.html

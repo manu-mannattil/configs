@@ -346,7 +346,9 @@ __install_mbsync() {
 
 # :target: mpv - mpv media player configuration
 __install_mpv() {
-    install "mpv/.config/mpv/mpv.conf" "mpv/.config/mpv/input.conf"
+    install "mpv/.config/mpv/mpv.conf"   \
+            "mpv/.config/mpv/input.conf" \
+            "mpv/.config/mpv/scripts"
 }
 
 # :target: msmtp - msmtp configuration
