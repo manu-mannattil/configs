@@ -39,3 +39,8 @@ a.out
 
 # Com
 .comfile
+
+# Syncthing
+.syncthing.*.tmp
+~syncthing~*.tmp
+.stfolder

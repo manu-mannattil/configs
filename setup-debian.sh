@@ -16,8 +16,6 @@
 #   Geekbench             https://www.geekbench.com/download/linux
 #   git-latexdiff         https://gitlab.com/git-latexdiff/git-latexdiff
 #   pdfsizeopt            https://github.com/pts/pdfsizeopt
-#   restic                https://github.com/restic/restic/releases
-#                         https://github.com/restic/rest-server/releases
 #   Signal                https://signal.org/download/
 #
 # The following programs usually have outdated versions in the Debian
@@ -143,9 +141,9 @@ PACKAGES=(
   # Display and X11
   arandr # Simple visual front end for XRandR
   brightnessctl # Control backlight brightness
-  compton # compositor for X11, based on xcompmgr
   hsetroot # tool for composing root-pixmaps for X11
   mesa-utils # Miscellaneous Mesa GL utilities
+  picom # compositor for X11
   redshift # Adjusts the color temperature of your screen
   xbacklight # simple utility to set the backlight level
   xcalib # tiny monitor calibration loader for Xorg (useful to invert colors)
@@ -161,13 +159,15 @@ PACKAGES=(
   aria2 # High speed download utility
   axel # light command line download accelerator
   filezilla # Full-featured graphical FTP/FTPS/SFTP client
+  nicotine # Client for the Soulseek network
 
   # Email
   isync # IMAP and MailDir mailbox synchronizer
+  msmtp # light SMTP client with support for server profiles
   mutt # text-based mailreader supporting MIME, GPG, PGP and threading
   notmuch # thread-based email index, search and tagging
   notmuch-mutt # thread-based email index, search and tagging (Mutt interface)
-  msmtp # light SMTP client with support for server profiles
+  thunderbird # bloated email client from Mozilla
   urlview # Extracts URLs from text
 
   # File system
@@ -263,11 +263,12 @@ PACKAGES=(
   megatools # download stuff from mega.nz
   mtr # Full screen ncurses and X11 traceroute tool
   net-tools # many useful utilities to manage the network, e.g., route, netstat, etc.
-  network-manager-openvpn-gnome # OpenVPN support for NetworkManager
   network-manager-openvpn # OpenVPN support for NetworkManager
+  network-manager-openvpn-gnome # OpenVPN support for NetworkManager
   openssh-client # secure shell (SSH) client, for secure access to remote machines
   openssh-server # secure shell (SSH) server, for secure access from remote machines
   proxychains # pipe network traffic through a proxy
+  restic # backup tool
   sshfs # filesystem client based on SSH File Transfer Protocol
   whois # intelligent WHOIS client
 

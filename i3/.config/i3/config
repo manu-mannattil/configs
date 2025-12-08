@@ -287,20 +287,20 @@ bar {
 # Floating windows {{{2
 # ---------------------
 
-for_window [window_role="About"] floating enable
-for_window [window_role="bubble"] floating enable
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="Preferences"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [window_type="dialog"] floating enable
-for_window [window_type="dropdown_menu"] floating enable
-for_window [window_type="menu"] floating enable
-for_window [window_type="notification"] floating enable
-for_window [window_type="popup_menu"] floating enable
-for_window [window_type="splash"] floating enable
-for_window [window_type="toolbar"] floating enable
-for_window [window_type="tooltip"] floating enable
-for_window [window_type="utility"] floating enable
+for_window [window_role="(?i)About"] floating enable
+for_window [window_role="(?i)bubble"] floating enable
+for_window [window_role="(?i)pop-up"] floating enable
+for_window [window_role="(?i)Preferences"] floating enable
+for_window [window_role="(?i)task_dialog"] floating enable
+for_window [window_type="(?i)dialog"] floating enable
+for_window [window_type="(?i)dropdown_menu"] floating enable
+for_window [window_type="(?i)menu"] floating enable
+for_window [window_type="(?i)notification"] floating enable
+for_window [window_type="(?i)popup_menu"] floating enable
+for_window [window_type="(?i)splash"] floating enable
+for_window [window_type="(?i)toolbar"] floating enable
+for_window [window_type="(?i)tooltip"] floating enable
+for_window [window_type="(?i)utility"] floating enable
 
 for_window [class="Anki"] floating enable
 for_window [class="Arandr"] floating enable
@@ -371,6 +371,9 @@ for_window [class="(?i)FileZilla"] focus
 
 for_window [title="SoulseekQt build"] move container to workspace $ws4
 for_window [title="SoulseekQt build"] focus
+
+for_window [class="org.nicotine_plus.Nicotine"] move container to workspace $ws4
+for_window [class="org.nicotine_plus.Nicotine"] focus
 
 # TeX (workspace $ws5) {{{2
 # -------------------------

@@ -74,5 +74,5 @@ Public domain.  See the file UNLICENSE for more details.
 (Quite obviously this only applies to stuff I've written, i.e., things
 without an explicit attribution.)
 
-[others]: https://www.google.com/search?hl=en&udm=14&&filter=0&q=dotfiles OR configs site:github.com
+[others]: https://github.com/search?q=dotfiles+OR+configs
 [stow]: https://www.gnu.org/software/stow/stow.html
