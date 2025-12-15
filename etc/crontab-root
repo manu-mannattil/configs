@@ -1,6 +1,7 @@
 # vim: ft=crontab fdm=marker et sts=4 sw=4
 #
 # NOTE: This is not meant to replace the system-wide crontab at /etc/crontab!
+# This is the root-only crontab.  Edit this file by running sudo crontab -e
 #
 # Cron rules
 # ----------
@@ -36,26 +37,13 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 #
 
-# By default cron uses sh(1), but we like Bash more.
 SHELL=/bin/bash
 
-# Backup some system configuration files hourly/daily.
-# @daily crontab -l >~/code/configs/etc/crontab
+# Clean my Debian system weekly.
+@weekly /home/manu/code/scripts/deb-squeaky-clean
 
-# Delete cached mutt attachments hourly.  But only delete files created at
-# least a day ago.
-@hourly find ~/.cache/mutt/attach -type f -mtime +1 -delete
-
-# Clean temporary files created by my scripts "web" and "editinvim".
+# Clean temporary files.
 @hourly rm -f /tmp/web.*.html
 @hourly rm -f /tmp/editinvim.*
-
-# Clean *.torrent files from ~/ and ~/downloads.
-@hourly rm -f ~/*.torrent ~/downloads/*.torrent /tmp/downloads/*.torrent
-
-# Backup to Hetzner Storage Box at 3:00 AM.
-* 3 * * * ~/code/bckp/bckp_bx11 backup
-
-# Backup to Hetzner Storage Box every 8 hours.
-# Triggered at 08:00, 16:00, and 00:00 -- 3 snapshots per day.
-# 0 */8 * * * ~/code/bckp/bckp_bx11 backup
+@hourly rm -f /tmp/downloads/*.torrent
+@hourly rm -f /tmp/*.torrent
