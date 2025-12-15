@@ -5,7 +5,7 @@ local mp = require "mp"
 local function use_fast_profile()
     local height = tonumber(mp.get_property("height"))
     if height > 1080 then
-        mp.msg.info("high-res video height =", height)
+        mp.msg.info("high-res video: height =", height)
         mp.commandv("set", "profile", "fast")
     end
 end

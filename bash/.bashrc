@@ -279,10 +279,15 @@ fi
 export LESS_TERMCAP_mb=$'\E[5m'                 # begin blinking
 export LESS_TERMCAP_md=$'\E[1;38;5;12m'         # begin bold
 export LESS_TERMCAP_me=$'\E[0m'                 # end bold
-export LESS_TERMCAP_se=$'\E[0m'                 # end highlight
 export LESS_TERMCAP_so=$'\E[38;5;0m\E[48;5;11m' # begin highlight
-export LESS_TERMCAP_ue=$'\E[0m'                 # end underline
+export LESS_TERMCAP_se=$'\E[0m'                 # end highlight
 export LESS_TERMCAP_us=$'\E[4;38;5;13m'         # begin underline
+export LESS_TERMCAP_ue=$'\E[0m'                 # end underline
+
+# Newer groff needs to be told explicitly to respect the
+# LESS_TERMCAP_xx variables.
+# https://unix.stackexchange.com/a/108840
+export GROFF_NO_SGR=1
 
 # fasd {{{1
 # ---------

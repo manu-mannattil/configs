@@ -228,7 +228,7 @@ __install_firefox() {
     then
         while IFS= read -r profile
         do
-            ln -v -sf "$REPO/firefox/.mozilla/firefox/profile/user.js" \
+            ln -v -sf "$REPO/firefox/.mozilla/firefox/profile/user.js"      \
                 "$HOME/.mozilla/firefox/$profile"
             echo >&2 "${0##*/}: firefox: linked user.js for $profile"
 
@@ -504,6 +504,17 @@ __install_wget() {
 __install_x() {
     install "X/.XCompose" "X/.xinitrc" "X/.Xresources"
     [[ "$DISPLAY" ]] && xrdb -merge "$HOME/.Xresources"
+
+    # Location info for redshift.
+    echo >&2 "${0##*/}: attempting to fetch location info"
+    location=$(wget -q --no-config -T 5 -O - http://ip-api.com/line/?fields=lat,lon 2>/dev/null)
+    if [[ "$location" ]]
+    then
+        printf '%s:%s\n' $location >"$HOME/.location"
+        echo >&2 "${0##*/}: location info written to ~/.location"
+    else
+        echo >&2 "${0##*/}: failed to fetch location info"
+    fi
 }
 
 # :target: xdg - common configuration used by all X desktop environments

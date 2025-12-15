@@ -30,7 +30,7 @@ case "$HOSTNAME" in
     magrathea)
         : ${DE:=i3}
         ;;
-    # Nukbox
+    # NukBox G1.
     carbon)
         : ${DE:=i3}
         ;;
@@ -167,6 +167,8 @@ setxkbmap -option caps:swapescape          \
 # Start redshift to adjust screen temperature.
 # The actual latitude:longitude is set in ~/.location
 # for cleaner version control.
+# Command to get current latitude:longitude:
+#   $ printf '%s:%s\n' $(curl -s http://ip-api.com/line/?fields=lat,lon) >~/.location
 [[ -f "$HOME/.location" ]] && {
     loc=$(sed '/^\s*#/d
                /^\s*$/d
