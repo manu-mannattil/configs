@@ -37,6 +37,9 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 #
 
+# Environment. Some programs, e.g., fstrim(1), are not in
+# the PATH by default.
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/manu/code/scripts"
 SHELL=/bin/bash
 
 # Clean my Debian system weekly.

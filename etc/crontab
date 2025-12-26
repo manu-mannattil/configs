@@ -36,7 +36,9 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 #
 
-# By default cron uses sh(1), but we like Bash more.
+# Environment. Some programs, e.g., fstrim(1), are not in
+# the PATH by default.
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/manu/code/scripts"
 SHELL=/bin/bash
 
 # Backup some system configuration files hourly/daily.
@@ -46,12 +48,8 @@ SHELL=/bin/bash
 # least a day ago.
 @hourly find ~/.cache/mutt/attach -type f -mtime +1 -delete
 
-# Clean temporary files created by my scripts "web" and "editinvim".
-@hourly rm -f /tmp/web.*.html
-@hourly rm -f /tmp/editinvim.*
-
 # Clean *.torrent files from ~/ and ~/downloads.
-@hourly rm -f ~/*.torrent ~/downloads/*.torrent /tmp/downloads/*.torrent
+@hourly rm -f ~/*.torrent ~/downloads/*.torrent
 
 # Backup to Hetzner Storage Box at 3:00 AM.
 * 3 * * * ~/code/bckp/bckp_bx11 backup

@@ -422,8 +422,8 @@ for_window [class="Virt-manager"] resize set 60 ppt 80 ppt
 # Large/bloated GUIs II (workspace $ws9) {{{2
 # -------------------------------------------
 
-# for_window [class="(zoom|join\?)"] move container to workspace $ws9
-# for_window [class="(zoom|join\?)"] focus
+for_window [class="(zoom|join\?)"] move container to workspace $ws9
+for_window [class="(zoom|join\?)"] focus
 for_window [class="(zoom|join\?)"] floating enable
 
 # The hyphen is so that Inkscape extracted from the AppImage gets

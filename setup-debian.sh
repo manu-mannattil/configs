@@ -343,6 +343,10 @@ PACKAGES=(
 
   # Miscellaneous
   wine # Windows API implementation - standard suite
+
+  # Printing.
+  cups # Common Unix Priting System
+  smbclient # talk to computers and printers that understand Microsoft's SMB protocol.
 )
 
 # Packages to be installed with --no-install-recommends.
