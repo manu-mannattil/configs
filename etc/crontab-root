@@ -43,7 +43,7 @@ PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/manu/co
 SHELL=/bin/bash
 
 # Clean my Debian system weekly.
-@weekly /home/manu/code/scripts/deb-squeaky-clean
+@weekly deb-squeaky-clean
 
 # Clean temporary files.
 @hourly rm -f /tmp/web.*.html

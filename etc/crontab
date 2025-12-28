@@ -52,7 +52,7 @@ SHELL=/bin/bash
 @hourly rm -f ~/*.torrent ~/downloads/*.torrent
 
 # Backup to Hetzner Storage Box at 3:00 AM.
-* 3 * * * ~/code/bckp/bckp_bx11 backup
+0 3 * * * ~/code/bckp/bckp_bx11 backup
 
 # Backup to Hetzner Storage Box every 8 hours.
 # Triggered at 08:00, 16:00, and 00:00 -- 3 snapshots per day.
