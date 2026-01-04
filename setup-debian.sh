@@ -215,10 +215,11 @@ PACKAGES=(
   exif # command-line utility to show EXIF information in JPEG files
   exiftran # digital camera JPEG image transformer
   gifsicle # GIF compressor
-  gimp-data-extras # Extra brushes and patterns for GIMP
   gimp # GNU Image Manipulation Program
+  gimp-data-extras # Extra brushes and patterns for GIMP
   gimp-help-en # Documentation for the GIMP (English)
   gmic # GREYC's Magic for Image Computing
+  inkscape python3-tinycss2 # Vector graphics editor + dependency
   libimage-exiftool-perl # library and program to read and write meta information in multimedia files
   optipng # advanced PNG (Portable Network Graphics) optimizer
   pngcrush # optimizes PNG (Portable Network Graphics) files
@@ -355,6 +356,7 @@ PACKAGES_NO_RECOMMENDS=(
 )
 
 PACKAGES_TO_REMOVE=(
+  # Out, out automation!
   unattended-upgrades
 
   # gnome-keyring creates isses with XDG something.

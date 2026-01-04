@@ -364,13 +364,13 @@ __install_mutt() {
 
     # Create cache directories.
     mkdir -vp "$HOME/.cache/mutt/attach"
-    mkdir -vp "$HOME/.cache/mutt/notmuch"
     mkdir -vp "$HOME/.cache/mutt/headers"
 }
 
 # :target: notmuch - notmuch mail indexer configuration
 __install_notmuch() {
     install "notmuch/.notmuch-config"
+    mkdir -vp "$HOME/.cache/mutt/notmuch/"{cur,new,tmp}
 }
 
 # :target: openbox - openbox stacking window manager

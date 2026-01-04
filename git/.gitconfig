@@ -59,9 +59,6 @@
 [help]
   autocorrect = 1
 
-[interactive]
-  difffilter = perl /usr/share/doc/git/contrib/diff-highlight/diff-highlight
-
 # After GitHub removed support for password-based HTTP authentication,
 # the simplest way to pull/push from/to a repository is using SSH.
 # However, sometimes the displayed repository URI is an HTTP URI.  The
