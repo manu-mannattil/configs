@@ -149,7 +149,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 
 # Axel with sensible defaults.
-alias axel='axel -n 4 -a -U "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.101 Safari/537.36"'
+alias axel='axel -n 4 -a -U "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.3"'
 
 # Show calendar 2 months before and 3 months after current month.
 alias cal='ncal -A 3 -B 2'
