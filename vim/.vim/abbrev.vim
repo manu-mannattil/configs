@@ -387,6 +387,7 @@ if &ft == "tex"
   iabbrev <buffer> Polya P\'{o}lya
   iabbrev <buffer> Schrodinger Schr\"{o}dinger
   iabbrev <buffer> Sierpinski Sierpi\'{n}ski
+  iabbrev <buffer> Larche Larch\'{e}
 else
   iabbrev <buffer> Ampere Ampère
   iabbrev <buffer> Amperian Ampèrian
@@ -401,6 +402,7 @@ else
   iabbrev <buffer> Polya Pólya
   iabbrev <buffer> Schrodinger Schrödinger
   iabbrev <buffer> Sierpinski Sierpiński
+  iabbrev <buffer> Larche Larché
 endif
 
 " vim: ft=vim fdm=marker et sts=2 sw=2

@@ -183,6 +183,7 @@ PACKAGES=(
   gsmartcontrol # graphical user interface for smartctl
   gvfs # userspace virtual filesystem - GIO module
   gvfs-backends # userspace virtual filesystem - backends
+  hdparm # view hard drive info and run simple benchmarks
   inotify-tools # provides a simple interface to inotify (inotifywait & inotifywatch)
   jmtpfs # FUSE based filesystem for accessing MTP devices
   scalpel # fast filesystem-independent file recovery

@@ -1,5 +1,6 @@
 {
   "policies": {
+    "AppUpdateURL": "https://0.0.0.0",
     "AutofillAddressEnabled": false,
     "AutofillCreditCardEnabled": false,
     "BackgroundAppUpdate": false,
@@ -18,7 +19,13 @@
         "Pocket": false,
         "Search": false,
         "Snippets": false,
+        "SponsoredStories": false,
+        "SponsoredTopSites": false,
+        "Stories": false,
         "TopSites": false
+    },
+    "GenerativeAI": {
+      "Enabled": false
     },
     "FirefoxSuggest": {
       "SponsoredSuggestions": false

@@ -158,8 +158,8 @@ alias cal='ncal -A 3 -B 2'
 alias cowsay='cowsay -n'
 
 # Write to the physical medium before exiting.  Important when making bootable
-# Linux USB sticks.
-alias dd='dd conv=fdatasync'
+# Linux USB sticks.  Also show progress.
+alias dd='dd conv=fdatasync status=progress'
 
 # dos2unix and unix2dos using sed.
 alias dos2unix='sed -r "s/\r*$//"'

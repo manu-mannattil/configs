@@ -1,7 +1,8 @@
-// Resources for user.js tweaking:
+// Resources for Firefox tweaking:
 //
 //    https://github.com/arkenfox/user.js
 //    https://github.com/yokoffing/Betterfox
+//    https://github.com/corbindavenport/just-the-browser/tree/main/firefox
 //
 // Librewolf policies file: https://codeberg.org/librewolf/settings/src/branch/master/distribution/policies.json
 // Librewolf config: https://codeberg.org/librewolf/settings/src/branch/master/librewolf.cfg

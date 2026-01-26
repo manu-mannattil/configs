@@ -41,8 +41,8 @@ exec awk -F = '
             username = "manu-mannattil"
             entry = "dev/gitlab"
         } else if (host ~ /git.overleaf.com/) {
-            username = "mm2718@proton.me"
-            entry = "misc/overleaf"
+            username = "git"
+            entry = "misc/overleaf-token"
         } else {
             printf("error: no matches found for %s\n", host)
             exit 1

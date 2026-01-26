@@ -4,5 +4,4 @@
 unset GDK_SCALE
 unset GDK_DPI_SCALE
 
-[[ "$HOSTNAME" = "magrathea" ]] && set -- --disable-gpu "$@" 
 exec /opt/Obsidian/obsidian "$@"
