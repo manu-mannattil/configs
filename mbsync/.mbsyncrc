@@ -53,7 +53,7 @@ Host imap.gmail.com
 User manu.mannattil@gmail.com
 AuthMechs LOGIN
 PassCmd "pass email/gmail"
-SSLType IMAPS
+TLSType IMAPS
 
 IMAPStore gmail-remote
 Account gmail
@@ -100,7 +100,7 @@ Host posteo.de
 User manu.mannattil@posteo.net
 AuthMechs LOGIN
 PassCmd "pass email/posteo"
-SSLType IMAPS
+TLSType IMAPS
 
 IMAPStore posteo-remote
 Account posteo

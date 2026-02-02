@@ -106,7 +106,8 @@ PACKAGES=(
   needrestart # tells you whether a restart is required after installing packages
 
   # Desktop and window managers
-  adwaita-qt # Adwaita light/dark theme for Qt
+  adwaita-qt adwaita-qt6 # Adwaita light/dark theme for Qt
+  adwaita-icon-theme-legacy # old Adwaita icon theme (required for SpaceFM).
   gnome-icon-theme # GNOME Desktop icon theme
   gnome-themes-extra # Adwaita GTK+ 2 theme — engine
   i3 # metapackage (i3 window manager, screen locker, menu, statusbar)
@@ -299,7 +300,7 @@ PACKAGES=(
   asciidoc # ASCIIDOC to other formats
   bibtool # tool to manipulate BibTeX files
   diction # Utilities to help with style and diction (English and German)
-  libreoffice-gtk3 # office productivity suite
+  libreoffice libreoffice-gtk3 libreoffice-gtk4 # office productivity suite
   sdcv # StarDict Console Version
   texlive-full # TeX Live: metapackage pulling in all components of TeX Live
   wdiff # compare two files word by word
@@ -332,6 +333,7 @@ PACKAGES=(
   pv # Shell pipeline element to meter data passing through
   rename # Perl extension for renaming multiple files
   rlwrap # readline feature command line wrapper
+  rsync # file copying tool
   screen # terminal multiplexer with VT100/ANSI terminal emulation
   scrot # command line screen capture utility
   stow # Organizer for /usr/local software packages

@@ -1,43 +1,46 @@
 {
-  "policies": {
-    "AppUpdateURL": "https://0.0.0.0",
-    "AutofillAddressEnabled": false,
-    "AutofillCreditCardEnabled": false,
-    "BackgroundAppUpdate": false,
-    "DisableAppUpdate": true,
-    "DisableFeedbackCommands": true,
-    "DisableFirefoxAccounts": true,
-    "DisableFirefoxStudies": true,
-    "DisablePocket": true,
-    "DisableProfileImport": true,
-    "DisableSetDesktopBackground": true,
-    "DisableTelemetry": true,
-    "DisplayBookmarksToolbar": true,
-    "DontCheckDefaultBrowser": true,
-    "FirefoxHome": {
-        "Highlights": false,
-        "Pocket": false,
-        "Search": false,
-        "Snippets": false,
-        "SponsoredStories": false,
-        "SponsoredTopSites": false,
-        "Stories": false,
-        "TopSites": false
-    },
-    "GenerativeAI": {
-      "Enabled": false
-    },
-    "FirefoxSuggest": {
-      "SponsoredSuggestions": false
-    },
-    "EnableTrackingProtection": {
-      "Value": true,
-      "Cryptomining": true,
-      "Fingerprinting": true,
-      "EmailTracking": true
-    },
-    "NoDefaultBookmarks": true,
-    "OverrideFirstRunPage": "",
-    "OverridePostUpdatePage": ""
-  }
+    "policies": {
+        "AppUpdateURL": "https://0.0.0.0",
+        "AutofillAddressEnabled": false,
+        "AutofillCreditCardEnabled": false,
+        "BackgroundAppUpdate": false,
+        "DisableAppUpdate": true,
+        "DisableFeedbackCommands": true,
+        "DisableFirefoxAccounts": true,
+        "DisableFirefoxStudies": true,
+        "DisablePocket": true,
+        "DisableProfileImport": true,
+        "DisableSetDesktopBackground": true,
+        "DisableTelemetry": true,
+        "DisplayBookmarksToolbar": true,
+        "DontCheckDefaultBrowser": true,
+        "EnableTrackingProtection": {
+            "Value": true,
+            "Cryptomining": true,
+            "Fingerprinting": true,
+            "EmailTracking": true
+        },
+        "FirefoxHome": {
+            "Highlights": false,
+            "Pocket": false,
+            "Search": false,
+            "Snippets": false,
+            "SponsoredStories": false,
+            "SponsoredTopSites": false,
+            "Stories": false,
+            "TopSites": false
+        },
+        "FirefoxSuggest": {
+            "SponsoredSuggestions": false
+        },
+        "GenerativeAI": {
+            "Enabled": false
+        },
+        "NoDefaultBookmarks": true,
+        "OverrideFirstRunPage": "",
+        "OverridePostUpdatePage": "",
+        "SkipTermsOfUse": true,
+        "TranslateEnabled": false,
+        "WindowsSSO": false
+    }
 }

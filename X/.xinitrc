@@ -174,7 +174,7 @@ setxkbmap -option caps:swapescape          \
                /^\s*$/d
                s/\s*#.*$//
                s/^\s*//' "$HOME/.location" | head -n 1)
-    redshift -l "$loc" &
+    redshift -l "$loc" -t 6500:4000 &
 }
 
 # Set the background color.

@@ -6,7 +6,7 @@
 > otherwise is to demean the Buddha, which is to demean oneself." 
 > -- Robert M. Pirsig, *Zen and the Art of Motorcycle Maintenance*
 
-This is a repository for managing my configuration files (aka dotfiles), meticulously yak shaved since 2010 or so and contains about <!--FILES-->223 configuration files for about <!--PROGRAMS-->60
+This is a repository for managing my configuration files (aka dotfiles), meticulously yak shaved since 2010 or so and contains about <!--FILES-->225 configuration files for about <!--PROGRAMS-->60
 programs.  There are [many like it][others], but this one is mine.
 
 ## Setup
