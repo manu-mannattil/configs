@@ -272,10 +272,10 @@ __install_git() {
 
 # :target: gtk - GTK 2/3 configuration
 __install_gtk() {
-    install "gtk/.gtkrc-2.0"                   \
-            "gtk/.gtkrc-hidpi-2.0"             \
-            "gtk/.config/gtk-3.0/settings.ini" \
-            "gtk/.config/gtk-4.0/settings.ini"
+    install "gtk/.gtkrc-2.0"        \
+            "gtk/.gtkrc-hidpi-2.0"  \
+            "gtk/.config/gtk-3.0"   \
+            "gtk/.config/gtk-4.0"
 }
 
 # :target: htop - htop configuration

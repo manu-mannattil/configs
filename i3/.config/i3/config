@@ -425,6 +425,7 @@ for_window [class="Virt-manager"] resize set 60 ppt 80 ppt
 for_window [class="(zoom|join\?)"] move container to workspace $ws9
 for_window [class="(zoom|join\?)"] focus
 for_window [class="(zoom|join\?)"] floating enable
+for_window [class="(zoom|join\?)"] resize set 80 ppt 80 ppt
 
 # The hyphen is so that Inkscape extracted from the AppImage gets
 # recognized.  For reasons I don't understand, just checking the class

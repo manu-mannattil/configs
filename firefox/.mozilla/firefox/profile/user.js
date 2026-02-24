@@ -107,14 +107,6 @@ user_pref("browser.urlbar.yelp.featureGate", false);
 user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsored", false);
 user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSites", false);
 
-// Disable AI BS.
-user_pref("browser.ml.chat.enabled", false);
-user_pref("browser.ml.chat.menu", false);
-user_pref("browser.ml.enabled", false);
-user_pref("browser.tabs.groups.smart.enabled", false);
-user_pref("browser.tabs.groups.smart.userEnable", false);
-user_pref("extensions.ml.enabled", false);
-
 // Quieter fox.
 user_pref("extensions.getAddons.showPane", false);
 user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
@@ -162,6 +154,25 @@ user_pref("identity.fxaccounts.enabled", false);
 
 // Disable "privacy-preserving ad measurement".
 user_pref("dom.private-attribution.submission.enabled", false);
+
+// ------------- AI nonsense -------------
+
+user_pref("browser.preferences.aiControls", false);
+user_pref("browser.ml.chat.enabled", false);
+user_pref("browser.ml.chat.menu", false);
+user_pref("browser.ml.enabled", false);
+user_pref("browser.ml.enable", false);
+user_pref("browser.ml.linkPreview.enabled", false);
+user_pref("browser.ml.pageAssist.enabled", false);
+user_pref("browser.ml.smartAssist.enabled", false);
+user_pref("browser.search.visualSearch.featureGate", false);
+user_pref("browser.tabs.groups.smart.enabled", false);
+user_pref("browser.tabs.groups.smart.userEnable", false);
+user_pref("browser.urlbar.quicksuggest.mlEnabled", false);
+user_pref("extensions.ml.enabled", false);
+user_pref("pdfjs.enableAltText", false);
+user_pref("places.semanticHistory.featureGate", false);
+user_pref("sidebar.revamp", false);
 
 // ------------- DNS -------------
 
@@ -336,6 +347,12 @@ user_pref("browser.translations.panelShown", false);
 
 // Disable grouping tabs.
 user_pref("browser.tabs.groups.enabled", false);
+
+// Disable the right-click menus that allow you to copy the URL + add
+// parameters that highlight the current text selection.  Just clutters
+// the menu in my opinion.
+user_pref("dom.text_fragments.enabled", false);
+user_pref("dom.text_fragments.create_text_fragment.enabled", false);
 
 // Internal custom pref to ensure that we've reach the end without syntax errors.
 user_pref("_user.js.parrot", "SUCCESS: Firefox is not dead, he's, he's restin'!");

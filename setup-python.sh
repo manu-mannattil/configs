@@ -87,6 +87,8 @@ PROGRAMS=(
   'yt-dlp[default,curl-cffi]'
   # open source Dropbox client
   maestral
+  # download files from Google Drive
+  gdown
 )
 
 install_pipx_programs() {
