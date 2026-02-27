@@ -304,7 +304,7 @@ for_window [window_type="(?i)utility"] floating enable
 
 for_window [class="Anki"] floating enable
 for_window [class="Arandr"] floating enable
-for_window [class="matplotlib"] floating enable
+for_window [class="(?i)matplotlib"] floating enable
 for_window [class="(?i)pavucontrol"] floating enable
 for_window [class="(?i)nm-connection-editor"] floating enable
 for_window [title="editinvim"] floating enable

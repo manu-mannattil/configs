@@ -182,7 +182,6 @@ user_pref("pdfjs.enableAltText", false);
 user_pref("places.semanticHistory.featureGate", false);
 user_pref("sidebar.revamp", false);
 
-
 // ------------- DNS -------------
 
 // Cloudflare test page for DOH: https://1.1.1.1/help
