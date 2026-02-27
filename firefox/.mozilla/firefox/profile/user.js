@@ -157,22 +157,31 @@ user_pref("dom.private-attribution.submission.enabled", false);
 
 // ------------- AI nonsense -------------
 
-user_pref("browser.preferences.aiControls", false);
+user_pref("browser.ai.control.default", "blocked");
+user_pref("browser.ai.control.linkPreviewKeyPoints", "blocked");
+user_pref("browser.ai.control.pdfjsAltText", "blocked");
+user_pref("browser.ai.control.sidebarChatbot", "blocked");
+user_pref("browser.ai.control.smartTabGroups", "blocked");
 user_pref("browser.ml.chat.enabled", false);
 user_pref("browser.ml.chat.menu", false);
 user_pref("browser.ml.enabled", false);
 user_pref("browser.ml.enable", false);
 user_pref("browser.ml.linkPreview.enabled", false);
+user_pref("browser.ml.linkPreview.supportedLocales", "null");
 user_pref("browser.ml.pageAssist.enabled", false);
 user_pref("browser.ml.smartAssist.enabled", false);
+user_pref("browser.preferences.aiControls", false);
 user_pref("browser.search.visualSearch.featureGate", false);
 user_pref("browser.tabs.groups.smart.enabled", false);
+user_pref("browser.tabs.groups.smart.userEnabled", false);
 user_pref("browser.tabs.groups.smart.userEnable", false);
 user_pref("browser.urlbar.quicksuggest.mlEnabled", false);
 user_pref("extensions.ml.enabled", false);
+user_pref("extensions.ui.mlmodel.hidden", true);
 user_pref("pdfjs.enableAltText", false);
 user_pref("places.semanticHistory.featureGate", false);
 user_pref("sidebar.revamp", false);
+
 
 // ------------- DNS -------------
 
