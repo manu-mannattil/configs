@@ -199,6 +199,9 @@ alias optipng='optipng --strip all -o7'
 # Don't compress raster images embedded in PDFs.
 alias pdfsizeopt='pdfsizeopt --do-optimize-images=no'
 
+# pdflatex with sensible defaults.
+alias pdflatex='pdflatex -recorder -file-line-error -interaction=nonstopmode -shell-escape -synctex=1'
+
 # Decode QR code without extraneous information.
 alias qrdecode='zbarimg -q --raw'
 
@@ -621,14 +624,18 @@ export _ZO_ECHO=1
 
 eval "$(zoxide init bash --cmd d)"
 
-# o [-i] <query> opens the first match using xdg-open.
+# o <query> opens the first match using xdg-open.
 o() {
-    case "$1" in
-        -i) shift; result="$(zoxide query --interactive --exclude "$(__zoxide_pwd)" -- "$@")" ;;
-        *) result="$(zoxide query --exclude "$(__zoxide_pwd)" -- "$@")" ;;
-    esac
+    result="$(zoxide query --exclude "$(__zoxide_pwd)" -- "$@")"
     [[ "$result" ]] && ( nohup xdg-open "file://$result" &>/dev/null & ) &>/dev/null
 }
+
+# oi <query> interactive o()
+oi() {
+    shift; result="$(zoxide query --interactive --exclude "$(__zoxide_pwd)" -- "$@")"
+    [[ "$result" ]] && ( nohup xdg-open "file://$result" &>/dev/null & ) &>/dev/null
+}
+
 
 # Environment {{{1
 # ----------------

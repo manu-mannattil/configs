@@ -12,3 +12,6 @@
 # bytes.  Instead, print a preview of the line.
 --max-columns=100
 --max-columns-preview
+
+# Don't ignore files/patterns in .gitignore and other VCS files.
+--no-ignore-vcs
