@@ -12,6 +12,7 @@
 # installed:
 #
 #   Anki                  https://github.com/ankitects/anki/releases
+#   Codex                 https://learn.chatgpt.com/docs/codex/cli
 #   DeaDBeeF              https://deadbeef.sourceforge.io/download.html
 #   Geekbench             https://www.geekbench.com/download/linux
 #   git-latexdiff         https://gitlab.com/git-latexdiff/git-latexdiff

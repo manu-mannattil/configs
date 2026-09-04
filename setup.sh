@@ -112,6 +112,11 @@ install() {
 # Targets {{{1
 # ------------
 
+# :target: agents - agent skills
+__install_agents() {
+    install "agents/.agents"
+}
+
 # :target: alacritty - terminal emulator
 __install_alacritty() {
     install "alacritty/.config/alacritty"

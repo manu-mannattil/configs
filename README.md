@@ -12,8 +12,8 @@ user.js, wrapper scripts, etc.  There are [many like it][others], but
 this one is mine.
 
 The files in this repository have been meticulously yak shaved since
-2010 or so and it contains about <!--FILES-->231 configuration files for
-about <!--PROGRAMS-->61 programs.  These days, I get almost all the
+2010 or so and it contains about <!--FILES-->238 configuration files for
+about <!--PROGRAMS-->62 programs.  These days, I get almost all the
 software I use from Debian.  For that reason, most configuration files
 in this repository are meant to be used with the software versions
 available in the latest Debian stable.
