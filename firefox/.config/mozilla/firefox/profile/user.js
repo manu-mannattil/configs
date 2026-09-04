@@ -198,9 +198,10 @@ user_pref("network.trr.mode", 2);
 // DNS server used for resolving the address in network.trr.uri.
 user_pref("network.trr.bootstrapAddress", "9.9.9.9");
 
-// DNS over HTTPS (DoH) with Quad9's DNS.
-// Alternative DoH servers: https://github.com/curl/curl/wiki/DNS-over-HTTPS
-user_pref("network.trr.uri", "https://dns.quad9.net/dns-query");
+// DNS over HTTPS (DoH).
+// https://github.com/curl/curl/wiki/DNS-over-HTTPS
+// https://adguard-dns.io/kb/general/dns-providers
+user_pref("network.trr.uri", "https://family.adguard-dns.com/dns-query");
 
 // Enable encrypted server name indication (SNI), which conceals the
 // hostname during TLS connections: https://www.cloudflare.com/ssl/encrypted-sni/
@@ -326,17 +327,6 @@ user_pref("general.smoothScroll.msdPhysics.enabled", true);
 // Wrap long lines while viewing source and in devtools.
 user_pref("view_source.wrap_long_lines", true);
 user_pref("devtools.debugger.ui.editor-wrapping", true);
-
-// Disable media autoplay.  I would ideally want to better understand
-// these options, but Mozilla keeps changing them all the time, so
-// such a task would not be worth it.
-// https://news.ycombinator.com/item?id=28131896
-// user_pref("media.autoplay.blocking_policy", 2);
-// user_pref("media.autoplay.allow-muted", false);
-// user_pref("media.autoplay.block-event.enabled", true);
-// user_pref("media.autoplay.block-webaudio", true);
-// user_pref("media.autoplay.default", 5);
-// user_pref("media.autoplay.enabled.user-gestures-needed", false);
 
 // Don't show a preview of the tab when I put my mouse cursor on it.
 user_pref("browser.tabs.hoverPreview.enabled", false);

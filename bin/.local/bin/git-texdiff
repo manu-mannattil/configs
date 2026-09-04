@@ -35,6 +35,6 @@ done
                                 --latexpand               \
                                 --makeatletter            \
                                 --output "$out"           \
-                                --ignore-latex-errors "${args[@]}"
+                                --ignore-latex-errors ${args[@]}
 
 nohup xdg-open "$out" </dev/null >/dev/null 2>&1 &

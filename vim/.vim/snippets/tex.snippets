@@ -29,9 +29,7 @@ snippet column
 snippet dc
 	\documentclass${2:[options]}{${1:article}}
 snippet def
-	\begin{definition}
-		$1
-	\end{definition}
+	\def\${1:keyword}{\ensuremath{${2:definition}}}
 snippet desc
 	\begin{description}
 		\item[${1}] ${2}
