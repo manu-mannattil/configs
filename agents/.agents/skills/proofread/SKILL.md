@@ -674,18 +674,10 @@ or more items.
 - `[ERROR]` if "i.e." or "e.g." is not followed by a comma (e.g., "i.e. the
   result" → "i.e., the result"). `[HARD]`
 
-**Em-dashes**: avoid em-dashes (`---`, `\textemdash`, `—`). Use a comma or
-split the sentence instead.
-- `[WARN]` for every em-dash found. Suggest a comma or sentence split as the
-  fix. `[HARD]`
-
 **Comma with "which"**: use a comma before "which" when the clause is
 non-restrictive (i.e., the sentence is understandable without it); omit the
 comma when the clause is restrictive (identifies which specific thing is
 meant).
-- `[INFO]` flag each "which" clause for author review, noting whether a comma
-  is present and whether it seems non-restrictive or restrictive. Do not
-  auto-classify as error — this requires human judgement. `[VIBE]`
 
 #### 4.5 Prohibited words and phrases
 

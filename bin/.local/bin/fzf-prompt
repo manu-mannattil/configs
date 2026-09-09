@@ -1,0 +1,29 @@
+#!/bin/sh
+
+PROMPT_DIR="${PROMPT_DIR:-$HOME/code/prompts}"
+
+file="$(
+  find "$PROMPT_DIR" -type f |
+    fzf \
+      --prompt='Prompt> ' \
+      --preview='cat {}' \
+      --preview-window='right:60%:wrap'
+)"
+
+if [ -n "$file" ]
+then
+    if command -v xclip >/dev/null 2>&1
+    then
+        xclip -selection clipboard <"$file"
+    elif command -v xsel >/dev/null 2>&1
+    then
+        xsel --clipboard --input <"$file"
+    else
+        echo >&2 "${0##*/}: either xclip or xsel must be installed."
+        exit 1
+    fi
+
+    echo >&2 "${0##*/}: prompt copied to clipboard!"
+else
+    echo >&2 "${0##*/}: error reading contents of '$file'"
+fi
